@@ -11,21 +11,24 @@ struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @State private var highlightedCell: Cell? = nil
     @State private var showResults = false
+    @State private var animateTurnChange = false
     
     var body: some View {
         VStack(spacing: 20) {
             
-            // Header - current player and target number
+            // MARK: - Header with animation on player change
             VStack {
                 Text("\(viewModel.currentPlayer.name)'s turn")
                     .font(.title2)
                     .foregroundColor(viewModel.currentPlayer.color)
+                    .transition(.opacity.combined(with: .scale))
                 
                 Text("Find a cell with \(viewModel.currentTarget)")
                     .font(.headline)
             }
+            .id(viewModel.currentPlayer.id) // Ensures animation on player change
             
-            // Game board
+            // MARK: - Game board
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: viewModel.settings.boardSize), spacing: 8) {
                 ForEach(viewModel.cells) { cell in
                     CellView(cell: cell,
@@ -38,7 +41,7 @@ struct GameView: View {
             }
             .padding()
             
-            // End game button
+            // MARK: - End game button
             Button("End Game") {
                 showResults = true
             }
@@ -50,17 +53,27 @@ struct GameView: View {
         .fullScreenCover(isPresented: $showResults) {
             ResultsView(players: viewModel.settings.players)
         }
+        .animation(.easeInOut, value: viewModel.currentPlayer.id)
     }
     
     // MARK: - Helpers
     
     private func handleCellTap(_ cell: Cell) {
         if highlightedCell?.id == cell.id {
-            // Second tap - confirm selection
-            viewModel.selectCell(cell)
+            // Confirm selection
+            withAnimation(.easeInOut(duration: 0.3)) {
+                viewModel.selectCell(cell)
+            }
+            
             highlightedCell = nil
+            
+            // Delay before next turn to show result
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                withAnimation {
+                    viewModel.nextTurn()
+                }
+            }
         } else {
-            // First tap - highlight row and column
             highlightedCell = cell
         }
     }
@@ -71,12 +84,13 @@ struct GameView: View {
     }
 }
 
-// MARK: - Cell View
+// MARK: - Cell View with reveal animation
 
 struct CellView: View {
     let cell: Cell
     let isHighlighted: Bool
     let isTarget: Bool
+    @State private var revealScale: CGFloat = 0.0
     
     var body: some View {
         ZStack {
@@ -92,6 +106,12 @@ struct CellView: View {
                 Text("\(cell.value)")
                     .font(.headline)
                     .foregroundColor(.black)
+                    .scaleEffect(revealScale)
+                    .onAppear {
+                        withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
+                            revealScale = 1.0
+                        }
+                    }
             } else {
                 Text("?")
                     .font(.headline)
@@ -101,4 +121,3 @@ struct CellView: View {
         .frame(height: 40)
     }
 }
-
