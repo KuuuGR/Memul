@@ -2,7 +2,7 @@
 //  Cell.swift
 //  Memul
 //
-//  Created by admin on 02/08/2025.
+//  Created by Grzegorz Kulesza on 02/08/2025.
 //
 
 import Foundation

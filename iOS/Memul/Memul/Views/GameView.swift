@@ -2,16 +2,18 @@
 //  GameView.swift
 //  Memul
 //
-//  Created by admin on 02/08/2025.
+//  Created by Grzegorz Kulesza on 02/08/2025.
 //
 
 import SwiftUI
+import AVFoundation
 
 struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @State private var highlightedCell: Cell? = nil
     @State private var showResults = false
     @State private var scoreAnimation: (CGPoint, Color)? = nil
+    @State private var showConfetti = false
     
     var body: some View {
         ZStack {
@@ -55,10 +57,10 @@ struct GameView: View {
                 .cornerRadius(10)
             }
             
-            // MARK: - HUD with scores
+            // MARK: - HUD
             HUDView(players: viewModel.settings.players)
             
-            // MARK: - "+1" Animation
+            // MARK: - "+1" animation
             if let anim = scoreAnimation {
                 Text("+1")
                     .font(.title)
@@ -68,6 +70,19 @@ struct GameView: View {
                     .onAppear {
                         withAnimation(.easeOut(duration: 1.0)) {
                             scoreAnimation = nil
+                        }
+                    }
+            }
+            
+            // MARK: - Confetti animation
+            if showConfetti {
+                ConfettiView()
+                    .transition(.opacity)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                            withAnimation {
+                                showConfetti = false
+                            }
                         }
                     }
             }
@@ -89,7 +104,13 @@ struct GameView: View {
             }
             
             if wasCorrect {
+                playCorrectSound()
                 scoreAnimation = (position, viewModel.currentPlayer.color)
+                withAnimation {
+                    showConfetti = true
+                }
+            } else {
+                playWrongSound()
             }
             
             highlightedCell = nil
@@ -120,41 +141,55 @@ struct GameView: View {
         
         return CGPoint(x: x, y: y)
     }
+    
+    // MARK: - Sounds
+    
+    private func playCorrectSound() {
+        AudioServicesPlaySystemSound(1057) // "success" sound
+    }
+    
+    private func playWrongSound() {
+        AudioServicesPlaySystemSound(1053) // "error" sound
+    }
 }
 
-// MARK: - HUD View (scores in corners)
+// MARK: - Confetti View
 
-struct HUDView: View {
-    let players: [Player]
+struct ConfettiView: View {
+    @State private var particles: [ConfettiParticle] = []
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                if players.count > 0 {
-                    scoreLabel(players[0], at: CGPoint(x: 50, y: 50))
+                ForEach(particles) { particle in
+                    Circle()
+                        .fill(particle.color)
+                        .frame(width: 8, height: 8)
+                        .position(particle.position)
+                        .animation(.linear(duration: 1.0), value: particle.position)
                 }
-                if players.count > 1 {
-                    scoreLabel(players[1], at: CGPoint(x: geo.size.width - 50, y: 50))
+            }
+            .onAppear {
+                particles = (0..<20).map { _ in
+                    ConfettiParticle(
+                        id: UUID(),
+                        position: CGPoint(x: CGFloat.random(in: 0..<geo.size.width), y: -10),
+                        color: [Color.red, Color.green, Color.blue, Color.yellow, Color.purple].randomElement()!
+                    )
                 }
-                if players.count > 2 {
-                    scoreLabel(players[2], at: CGPoint(x: 50, y: geo.size.height - 50))
-                }
-                if players.count > 3 {
-                    scoreLabel(players[3], at: CGPoint(x: geo.size.width - 50, y: geo.size.height - 50))
+                
+                for i in 0..<particles.count {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.05 * Double(i)) {
+                        particles[i].position.y = geo.size.height + 20
+                    }
                 }
             }
         }
     }
-    
-    private func scoreLabel(_ player: Player, at pos: CGPoint) -> some View {
-        VStack {
-            Text(player.name)
-                .font(.caption)
-                .foregroundColor(player.color)
-            Text("\(player.score)")
-                .font(.title)
-                .foregroundColor(player.color)
-        }
-        .position(pos)
-    }
+}
+
+struct ConfettiParticle: Identifiable {
+    let id: UUID
+    var position: CGPoint
+    let color: Color
 }
