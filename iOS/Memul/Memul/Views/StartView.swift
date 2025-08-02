@@ -8,45 +8,46 @@
 import SwiftUI
 
 struct StartView: View {
-    @State private var navigateToGame = false
-    
+    @State private var settings = GameSettings(
+        boardSize: 5,
+        players: [
+            Player(name: "Player 1", color: .red),
+            Player(name: "Player 2", color: .blue)
+        ]
+    )
+
+    @State private var isActive = false
+    @State private var gameViewModel: GameViewModel?
+
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
                 Text("Memul")
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                
-                Text("Fun way to learn multiplication tables!")
-                    .foregroundColor(.gray)
-                
-                Button(action: {
-                    navigateToGame = true
-                }) {
-                    Text("Start Game")
-                        .font(.title2)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
+
+                Button("Start Game") {
+                    startGame()
                 }
-                .padding(.horizontal, 40)
-                
-                NavigationLink("", isActive: $navigateToGame) {
-                    GameView(viewModel: previewGameViewModel)
+                .buttonStyle(.borderedProminent)
+            }
+            .padding()
+            .navigationDestination(isPresented: $isActive) {
+                if let gameViewModel = gameViewModel {
+                    GameView(viewModel: gameViewModel)
                 }
             }
         }
     }
+
+    /// Starts a new game safely on the main actor
+    @MainActor
+    private func startGame() {
+        gameViewModel = GameViewModel(settings: settings)
+        isActive = true
+    }
 }
 
-// Preview ViewModel for testing
-private var previewGameViewModel: GameViewModel {
-    let players = [
-        Player(name: "Alice", color: .red),
-        Player(name: "Bob", color: .blue)
-    ]
-    let settings = GameSettings(boardSize: 5, players: players)
-    return GameViewModel(settings: settings)
+#Preview {
+    StartView()
 }

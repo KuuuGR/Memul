@@ -58,7 +58,8 @@ struct GameView: View {
             }
             
             // MARK: - HUD
-            HUDView(players: viewModel.settings.players)
+            HUDView(players: viewModel.settings.players,
+                    currentPlayerIndex: viewModel.settings.players.firstIndex(where: { $0.id == viewModel.currentPlayer.id }))
             
             // MARK: - "+1" animation
             if let anim = scoreAnimation {
