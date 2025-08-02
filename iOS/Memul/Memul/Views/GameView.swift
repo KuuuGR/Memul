@@ -11,44 +11,66 @@ struct GameView: View {
     @ObservedObject var viewModel: GameViewModel
     @State private var highlightedCell: Cell? = nil
     @State private var showResults = false
-    @State private var animateTurnChange = false
+    @State private var scoreAnimation: (CGPoint, Color)? = nil
     
     var body: some View {
-        VStack(spacing: 20) {
-            
-            // MARK: - Header with animation on player change
-            VStack {
-                Text("\(viewModel.currentPlayer.name)'s turn")
-                    .font(.title2)
-                    .foregroundColor(viewModel.currentPlayer.color)
-                    .transition(.opacity.combined(with: .scale))
+        ZStack {
+            VStack(spacing: 20) {
                 
-                Text("Find a cell with \(viewModel.currentTarget)")
-                    .font(.headline)
-            }
-            .id(viewModel.currentPlayer.id) // Ensures animation on player change
-            
-            // MARK: - Game board
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: viewModel.settings.boardSize), spacing: 8) {
-                ForEach(viewModel.cells) { cell in
-                    CellView(cell: cell,
-                             isHighlighted: isCellHighlighted(cell),
-                             isTarget: cell.row == viewModel.currentTarget || cell.col == viewModel.currentTarget)
-                        .onTapGesture {
-                            handleCellTap(cell)
-                        }
+                // MARK: - Header
+                VStack {
+                    Text("\(viewModel.currentPlayer.name)'s turn")
+                        .font(.title2)
+                        .foregroundColor(viewModel.currentPlayer.color)
+                        .transition(.opacity.combined(with: .scale))
+                    
+                    Text("Find a cell with \(viewModel.currentTarget)")
+                        .font(.headline)
                 }
+                .id(viewModel.currentPlayer.id)
+                
+                // MARK: - Game board
+                GeometryReader { geo in
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: viewModel.settings.boardSize), spacing: 8) {
+                        ForEach(viewModel.cells) { cell in
+                            CellView(cell: cell,
+                                     isHighlighted: isCellHighlighted(cell),
+                                     isTarget: cell.row == viewModel.currentTarget || cell.col == viewModel.currentTarget)
+                                .onTapGesture {
+                                    let cellFrame = frameForCell(cell, in: geo.size)
+                                    handleCellTap(cell, at: cellFrame)
+                                }
+                        }
+                    }
+                    .padding()
+                }
+                
+                // MARK: - End game button
+                Button("End Game") {
+                    showResults = true
+                }
+                .padding()
+                .background(Color.red)
+                .foregroundColor(.white)
+                .cornerRadius(10)
             }
-            .padding()
             
-            // MARK: - End game button
-            Button("End Game") {
-                showResults = true
+            // MARK: - HUD with scores
+            HUDView(players: viewModel.settings.players)
+            
+            // MARK: - "+1" Animation
+            if let anim = scoreAnimation {
+                Text("+1")
+                    .font(.title)
+                    .foregroundColor(anim.1)
+                    .position(anim.0)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+                    .onAppear {
+                        withAnimation(.easeOut(duration: 1.0)) {
+                            scoreAnimation = nil
+                        }
+                    }
             }
-            .padding()
-            .background(Color.red)
-            .foregroundColor(.white)
-            .cornerRadius(10)
         }
         .fullScreenCover(isPresented: $showResults) {
             ResultsView(players: viewModel.settings.players)
@@ -58,16 +80,20 @@ struct GameView: View {
     
     // MARK: - Helpers
     
-    private func handleCellTap(_ cell: Cell) {
+    private func handleCellTap(_ cell: Cell, at position: CGPoint) {
         if highlightedCell?.id == cell.id {
-            // Confirm selection
+            let wasCorrect = viewModel.isCorrectSelection(cell)
+            
             withAnimation(.easeInOut(duration: 0.3)) {
                 viewModel.selectCell(cell)
             }
             
+            if wasCorrect {
+                scoreAnimation = (position, viewModel.currentPlayer.color)
+            }
+            
             highlightedCell = nil
             
-            // Delay before next turn to show result
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                 withAnimation {
                     viewModel.nextTurn()
@@ -82,42 +108,53 @@ struct GameView: View {
         guard let highlighted = highlightedCell else { return false }
         return cell.row == highlighted.row || cell.col == highlighted.col
     }
+    
+    private func frameForCell(_ cell: Cell, in size: CGSize) -> CGPoint {
+        let rows = viewModel.settings.boardSize
+        let cols = rows
+        let cellWidth = (size.width - 16) / CGFloat(cols)
+        let cellHeight = (size.height - 16) / CGFloat(rows)
+        
+        let x = CGFloat(cell.col) * (cellWidth + 8) + cellWidth / 2
+        let y = CGFloat(cell.row) * (cellHeight + 8) + cellHeight / 2
+        
+        return CGPoint(x: x, y: y)
+    }
 }
 
-// MARK: - Cell View with reveal animation
+// MARK: - HUD View (scores in corners)
 
-struct CellView: View {
-    let cell: Cell
-    let isHighlighted: Bool
-    let isTarget: Bool
-    @State private var revealScale: CGFloat = 0.0
+struct HUDView: View {
+    let players: [Player]
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(cell.isRevealed ? Color.gray.opacity(0.3) : Color.blue.opacity(isHighlighted ? 0.6 : 0.3))
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(isTarget ? Color.red : Color.clear, lineWidth: 2)
-                )
-            
-            if cell.isRevealed {
-                Text("\(cell.value)")
-                    .font(.headline)
-                    .foregroundColor(.black)
-                    .scaleEffect(revealScale)
-                    .onAppear {
-                        withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
-                            revealScale = 1.0
-                        }
-                    }
-            } else {
-                Text("?")
-                    .font(.headline)
-                    .foregroundColor(.white)
+        GeometryReader { geo in
+            ZStack {
+                if players.count > 0 {
+                    scoreLabel(players[0], at: CGPoint(x: 50, y: 50))
+                }
+                if players.count > 1 {
+                    scoreLabel(players[1], at: CGPoint(x: geo.size.width - 50, y: 50))
+                }
+                if players.count > 2 {
+                    scoreLabel(players[2], at: CGPoint(x: 50, y: geo.size.height - 50))
+                }
+                if players.count > 3 {
+                    scoreLabel(players[3], at: CGPoint(x: geo.size.width - 50, y: geo.size.height - 50))
+                }
             }
         }
-        .frame(height: 40)
+    }
+    
+    private func scoreLabel(_ player: Player, at pos: CGPoint) -> some View {
+        VStack {
+            Text(player.name)
+                .font(.caption)
+                .foregroundColor(player.color)
+            Text("\(player.score)")
+                .font(.title)
+                .foregroundColor(player.color)
+        }
+        .position(pos)
     }
 }
