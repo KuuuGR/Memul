@@ -68,21 +68,25 @@ class GameViewModel: ObservableObject {
     
     /// Checks if the tapped cell is correct for the current target
     func isCorrectSelection(_ cell: Cell) -> Bool {
-        return cell.row == currentTarget || cell.col == currentTarget
+        return cell.value == currentTarget   // ✅ must match multiplication result, not row/col
     }
     
     /// Handles the selection of a cell by the current player
     func selectCell(_ cell: Cell) {
         guard let index = cells.firstIndex(where: { $0.id == cell.id }) else { return }
-        
-        if isCorrectSelection(cell) {
+
+        if cell.value == currentTarget {
             cells[index].isRevealed = true
             addPointToCurrentPlayer()
         }
-        
+
         nextTurn()
+
+        if cells.allSatisfy({ $0.isRevealed }) {
+            isGameOver = true
+        }
     }
-    
+
     /// Adds a point to the current player
     private func addPointToCurrentPlayer() {
         settings.players[currentPlayerIndex].score += 1

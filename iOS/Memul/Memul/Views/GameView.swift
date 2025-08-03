@@ -33,18 +33,45 @@ struct GameView: View {
                 
                 // MARK: - Game board
                 GeometryReader { geo in
-                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: viewModel.settings.boardSize), spacing: 8) {
-                        ForEach(viewModel.cells) { cell in
-                            CellView(cell: cell,
-                                     isHighlighted: isCellHighlighted(cell),
-                                     isTarget: cell.row == viewModel.currentTarget || cell.col == viewModel.currentTarget)
-                                .onTapGesture {
-                                    let cellFrame = frameForCell(cell, in: geo.size)
-                                    handleCellTap(cell, at: cellFrame)
+                    // MARK: - Game board with headers
+                    GeometryReader { geo in
+                        VStack(spacing: 2) {
+                            // Column headers
+                            HStack(spacing: 2) {
+                                Text("") // Empty corner
+                                    .frame(width: 40, height: 40)
+                                ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
+                                    Text("\(col)")
+                                        .frame(width: 40, height: 40)
+                                        .font(.caption)
                                 }
+                            }
+
+                            // Rows with row header + cells
+                            ForEach(1...viewModel.settings.boardSize, id: \.self) { row in
+                                HStack(spacing: 2) {
+                                    Text("\(row)")
+                                        .frame(width: 40, height: 40)
+                                        .font(.caption)
+
+                                    ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
+                                        if let cell = viewModel.cells.first(where: { $0.row == row && $0.col == col }) {
+                                            CellView(
+                                                cell: cell,
+                                                isHighlighted: isCellHighlighted(cell),
+                                                isTarget: cell.value == viewModel.currentTarget
+                                            )
+                                            .onTapGesture {
+                                                let cellFrame = frameForCell(cell, in: geo.size)
+                                                handleCellTap(cell, at: cellFrame)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
+                        .padding()
                     }
-                    .padding()
                 }
                 
                 // MARK: - End game button
@@ -89,7 +116,7 @@ struct GameView: View {
             }
         }
         .fullScreenCover(isPresented: $showResults) {
-            ResultsView(players: viewModel.settings.players)
+            ResultsView(viewModel: viewModel)
         }
         .animation(.easeInOut, value: viewModel.currentPlayer.id)
     }
@@ -99,28 +126,20 @@ struct GameView: View {
     private func handleCellTap(_ cell: Cell, at position: CGPoint) {
         if highlightedCell?.id == cell.id {
             let wasCorrect = viewModel.isCorrectSelection(cell)
-            
+
             withAnimation(.easeInOut(duration: 0.3)) {
                 viewModel.selectCell(cell)
             }
-            
+
             if wasCorrect {
                 playCorrectSound()
                 scoreAnimation = (position, viewModel.currentPlayer.color)
-                withAnimation {
-                    showConfetti = true
-                }
+                withAnimation { showConfetti = true }
             } else {
                 playWrongSound()
             }
-            
+
             highlightedCell = nil
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                withAnimation {
-                    viewModel.nextTurn()
-                }
-            }
         } else {
             highlightedCell = cell
         }

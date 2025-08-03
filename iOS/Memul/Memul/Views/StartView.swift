@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StartView: View {
     @State private var settings = GameSettings(
-        boardSize: 5,
+        boardSize: 12,
         players: [
             Player(name: "Player 1", color: .red),
             Player(name: "Player 2", color: .blue)

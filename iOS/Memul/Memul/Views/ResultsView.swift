@@ -8,30 +8,66 @@
 import SwiftUI
 
 struct ResultsView: View {
-    let players: [Player]
-    
-    var sortedPlayers: [Player] {
-        players.sorted { $0.score > $1.score }
-    }
-    
+    @Environment(\.dismiss) private var dismiss
+    @StateObject var viewModel: GameViewModel
+
     var body: some View {
         VStack(spacing: 20) {
-            Text("Results")
+            Text("Game Over!")
                 .font(.largeTitle)
                 .bold()
-            
-            ForEach(sortedPlayers.prefix(3), id: \.id) { player in
-                Text("\(player.name) - \(player.score) points")
+
+            VStack(alignment: .leading, spacing: 10) {
+                ForEach(viewModel.players) { player in
+                    HStack {
+                        Circle()
+                            .fill(player.color)
+                            .frame(width: 20, height: 20)
+                        Text("\(player.name): \(player.score)")
+                            .font(.title3)
+                    }
+                }
+            }
+
+            // Winner
+            if let winner = viewModel.players.max(by: { $0.score < $1.score }) {
+                Text("🏆 Winner: \(winner.name)!")
                     .font(.title2)
+                    .foregroundColor(winner.color)
+                    .padding(.top, 10)
             }
-            
-            Button("Play Again") {
-                // TODO: Restart game
+
+            // Play Again button
+            Button(action: {
+                // Restart the game with same settings
+                let newViewModel = GameViewModel(settings: viewModel.settings)
+                viewModel.settings = newViewModel.settings
+                viewModel.cells = newViewModel.cells
+                viewModel.currentPlayerIndex = 0
+                viewModel.currentTarget = newViewModel.currentTarget
+                viewModel.isGameOver = false
+                dismiss()
+            }) {
+                Text("Play Again")
+                    .font(.title3)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
             }
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .cornerRadius(10)
+
+            Button(action: {
+                dismiss()
+            }) {
+                Text("Close")
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
         }
+        .padding()
     }
 }
