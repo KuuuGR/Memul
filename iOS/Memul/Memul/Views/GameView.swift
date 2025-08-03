@@ -62,6 +62,9 @@ struct GameView: View {
                                                 isTarget: cell.value == viewModel.currentTarget
                                             )
                                             .onTapGesture {
+                                                // ✅ Ignore taps on already revealed cells
+                                                guard !cell.isRevealed else { return }
+                                                
                                                 let cellFrame = frameForCell(cell, in: geo.size)
                                                 handleCellTap(cell, at: cellFrame)
                                             }

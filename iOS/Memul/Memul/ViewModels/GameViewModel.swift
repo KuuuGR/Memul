@@ -73,7 +73,12 @@ class GameViewModel: ObservableObject {
     
     /// Handles the selection of a cell by the current player
     func selectCell(_ cell: Cell) {
-        guard let index = cells.firstIndex(where: { $0.id == cell.id }) else { return }
+        // Ignore if cell is already revealed
+        guard let index = cells.firstIndex(where: { $0.id == cell.id }),
+              !cells[index].isRevealed else {
+            nextTurn()
+            return
+        }
 
         if cell.value == currentTarget {
             cells[index].isRevealed = true
@@ -81,10 +86,6 @@ class GameViewModel: ObservableObject {
         }
 
         nextTurn()
-
-        if cells.allSatisfy({ $0.isRevealed }) {
-            isGameOver = true
-        }
     }
 
     /// Adds a point to the current player
