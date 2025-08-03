@@ -57,7 +57,7 @@ class GameViewModel: ObservableObject {
     /// Picks a new target number for which at least one unrevealed cell exists
     func pickNextTarget() {
         let unrevealedCells = cells.filter { !$0.isRevealed }
-        let possibleNumbers = Set(unrevealedCells.flatMap { [$0.row, $0.col] })
+        let possibleNumbers = Set(unrevealedCells.map { $0.value })
         
         guard let random = possibleNumbers.randomElement() else {
             isGameOver = true
