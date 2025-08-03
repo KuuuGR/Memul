@@ -16,68 +16,75 @@ struct GameView: View {
     @State private var showConfetti = false
     
     var body: some View {
-        ZStack {
-            VStack(spacing: 20) {
+        VStack(spacing: 20) {
+            
+            // MARK: Header (fixed top)
+            VStack {
+                Text("\(viewModel.currentPlayer.name)'s turn")
+                    .font(.title2)
+                    .foregroundColor(viewModel.currentPlayer.color)
+                    .transition(.opacity.combined(with: .scale))
                 
-                // MARK: - Header
-                VStack {
-                    Text("\(viewModel.currentPlayer.name)'s turn")
-                        .font(.title2)
-                        .foregroundColor(viewModel.currentPlayer.color)
-                        .transition(.opacity.combined(with: .scale))
+                Text("Find a cell with \(viewModel.currentTarget)")
+                    .font(.headline)
+            }
+            .id(viewModel.currentPlayer.id)
+            .padding(.top, 20)
+            
+            // MARK: Scrollable board area (both horizontal and vertical)
+            ScrollView([.horizontal, .vertical]) {
+                VStack(spacing: 2) {
+                    // Column headers
+                    HStack(spacing: 2) {
+                        Text("") // Empty corner
+                            .frame(width: 40, height: 40)
+                        ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
+                            Text("\(col)")
+                                .frame(width: 40, height: 40)
+                                .font(.caption)
+                        }
+                    }
                     
-                    Text("Find a cell with \(viewModel.currentTarget)")
-                        .font(.headline)
-                }
-                .id(viewModel.currentPlayer.id)
-                
-                // MARK: - Game board
-                GeometryReader { geo in
-                    // MARK: - Game board with headers
-                    GeometryReader { geo in
-                        VStack(spacing: 2) {
-                            // Column headers
-                            HStack(spacing: 2) {
-                                Text("") // Empty corner
+                    // Rows with row header + cells
+                    ForEach(1...viewModel.settings.boardSize, id: \.self) { row in
+                        HStack(spacing: 2) {
+                            Text("\(row)")
+                                .frame(width: 40, height: 40)
+                                .font(.caption)
+                            
+                            ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
+                                if let cell = viewModel.cells.first(where: { $0.row == row && $0.col == col }) {
+                                    CellView(
+                                        cell: cell,
+                                        isHighlighted: isCellHighlighted(cell),
+                                        isTarget: cell.value == viewModel.currentTarget
+                                    )
                                     .frame(width: 40, height: 40)
-                                ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
-                                    Text("\(col)")
-                                        .frame(width: 40, height: 40)
-                                        .font(.caption)
-                                }
-                            }
-
-                            // Rows with row header + cells
-                            ForEach(1...viewModel.settings.boardSize, id: \.self) { row in
-                                HStack(spacing: 2) {
-                                    Text("\(row)")
-                                        .frame(width: 40, height: 40)
-                                        .font(.caption)
-
-                                    ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
-                                        if let cell = viewModel.cells.first(where: { $0.row == row && $0.col == col }) {
-                                            CellView(
-                                                cell: cell,
-                                                isHighlighted: isCellHighlighted(cell),
-                                                isTarget: cell.value == viewModel.currentTarget
-                                            )
-                                            .onTapGesture {
-                                                // ✅ Ignore taps on already revealed cells
-                                                guard !cell.isRevealed else { return }
-                                                
-                                                let cellFrame = frameForCell(cell, in: geo.size)
-                                                handleCellTap(cell, at: cellFrame)
-                                            }
-                                        }
+                                    .onTapGesture {
+                                        guard !cell.isRevealed else { return }
+                                        // Using .zero here; if you want exact positions, you can calculate separately
+                                        handleCellTap(cell, at: CGPoint.zero)
                                     }
                                 }
                             }
                         }
-                        .padding()
                     }
                 }
+                .padding()
+                // Force minimum size to allow scrolling when content is larger than screen
+                .frame(
+                    minWidth: CGFloat(viewModel.settings.boardSize + 1) * 40 + 16,
+                    minHeight: CGFloat(viewModel.settings.boardSize + 1) * 40 + 16
+                )
+            }
+            
+            // MARK: Scores and End Game Button (fixed bottom)
+            VStack(spacing: 10) {
+                HUDView(
+                    players: viewModel.settings.players,
+                    currentPlayerIndex: viewModel.settings.players.firstIndex(where: { $0.id == viewModel.currentPlayer.id })
+                )
                 
-                // MARK: - End game button
                 Button("End Game") {
                     showResults = true
                 }
@@ -86,38 +93,35 @@ struct GameView: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
             }
-            
-            // MARK: - HUD
-            HUDView(players: viewModel.settings.players,
-                    currentPlayerIndex: viewModel.settings.players.firstIndex(where: { $0.id == viewModel.currentPlayer.id }))
-            
-            // MARK: - "+1" animation
-            if let anim = scoreAnimation {
-                Text("+1")
-                    .font(.title)
-                    .foregroundColor(anim.1)
-                    .position(anim.0)
-                    .transition(.move(edge: .top).combined(with: .opacity))
-                    .onAppear {
-                        withAnimation(.easeOut(duration: 1.0)) {
-                            scoreAnimation = nil
-                        }
-                    }
-            }
-            
-            // MARK: - Confetti animation
-            if showConfetti {
-                ConfettiView()
-                    .transition(.opacity)
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                            withAnimation {
-                                showConfetti = false
+            .padding(.bottom, 20)
+            .background(Color(UIColor.systemBackground))
+        }
+        .overlay(
+            ZStack {
+                if let anim = scoreAnimation {
+                    Text("+1")
+                        .font(.title)
+                        .foregroundColor(anim.1)
+                        .position(anim.0)
+                        .transition(.move(edge: .top).combined(with: .opacity))
+                        .onAppear {
+                            withAnimation(.easeOut(duration: 1.0)) {
+                                scoreAnimation = nil
                             }
                         }
-                    }
+                }
+                
+                if showConfetti {
+                    ConfettiView()
+                        .transition(.opacity)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                withAnimation { showConfetti = false }
+                            }
+                        }
+                }
             }
-        }
+        )
         .fullScreenCover(isPresented: $showResults) {
             ResultsView(viewModel: viewModel)
         }
@@ -129,11 +133,11 @@ struct GameView: View {
     private func handleCellTap(_ cell: Cell, at position: CGPoint) {
         if highlightedCell?.id == cell.id {
             let wasCorrect = viewModel.isCorrectSelection(cell)
-
+            
             withAnimation(.easeInOut(duration: 0.3)) {
                 viewModel.selectCell(cell)
             }
-
+            
             if wasCorrect {
                 playCorrectSound()
                 scoreAnimation = (position, viewModel.currentPlayer.color)
@@ -141,7 +145,7 @@ struct GameView: View {
             } else {
                 playWrongSound()
             }
-
+            
             highlightedCell = nil
         } else {
             highlightedCell = cell
@@ -151,18 +155,6 @@ struct GameView: View {
     private func isCellHighlighted(_ cell: Cell) -> Bool {
         guard let highlighted = highlightedCell else { return false }
         return cell.row == highlighted.row || cell.col == highlighted.col
-    }
-    
-    private func frameForCell(_ cell: Cell, in size: CGSize) -> CGPoint {
-        let rows = viewModel.settings.boardSize
-        let cols = rows
-        let cellWidth = (size.width - 16) / CGFloat(cols)
-        let cellHeight = (size.height - 16) / CGFloat(rows)
-        
-        let x = CGFloat(cell.col) * (cellWidth + 8) + cellWidth / 2
-        let y = CGFloat(cell.row) * (cellHeight + 8) + cellHeight / 2
-        
-        return CGPoint(x: x, y: y)
     }
     
     // MARK: - Sounds
