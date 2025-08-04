@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StartView: View {
     @State private var settings = GameSettings(
-        boardSize: 12,
+        boardSize: 5,
         players: [
             Player(name: "Player 1", color: .red),
             Player(name: "Player 2", color: .blue)
@@ -18,6 +18,7 @@ struct StartView: View {
 
     @State private var isActive = false
     @State private var gameViewModel: GameViewModel?
+    @State private var isShowingSettings = false
 
     var body: some View {
         NavigationStack {
@@ -30,12 +31,22 @@ struct StartView: View {
                     startGame()
                 }
                 .buttonStyle(.borderedProminent)
+
+                Button("Settings") {
+                    isShowingSettings = true
+                }
+                .buttonStyle(.bordered)
+
+                Spacer()
             }
             .padding()
             .navigationDestination(isPresented: $isActive) {
                 if let gameViewModel = gameViewModel {
                     GameView(viewModel: gameViewModel)
                 }
+            }
+            .navigationDestination(isPresented: $isShowingSettings) {
+                SettingsView(settings: $settings)
             }
         }
     }

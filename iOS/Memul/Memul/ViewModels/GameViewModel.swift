@@ -5,13 +5,6 @@
 //  Created by Grzegorz Kulesza on 02/08/2025.
 //
 
-//
-//  GameViewModel.swift
-//  Memul
-//
-//  Created by Grzegorz Kulesza on 02/08/2025.
-//
-
 import SwiftUI
 
 @MainActor

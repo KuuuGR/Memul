@@ -102,10 +102,7 @@ struct GameView: View {
 
             // MARK: HUD + Button
             VStack(spacing: 10) {
-                HUDView(
-                    players: viewModel.settings.players,
-                    currentPlayerIndex: viewModel.settings.players.firstIndex(where: { $0.id == viewModel.currentPlayer.id })
-                )
+                FlexibleScoreView(players: viewModel.settings.players, currentPlayerId: viewModel.currentPlayer.id)
 
                 Button("End Game") {
                     showResults = true
@@ -221,4 +218,24 @@ struct ConfettiParticle: Identifiable {
     let id: UUID
     var position: CGPoint
     let color: Color
+}
+
+struct FlexibleScoreView: View {
+    let players: [Player]
+    let currentPlayerId: UUID
+
+    var body: some View {
+        let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 4)
+
+        LazyVGrid(columns: columns, alignment: .leading, spacing: 8) {
+            ForEach(players) { player in
+                Text("\(player.name): \(player.score)")
+                    .padding(6)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(player.color.opacity(player.id == currentPlayerId ? 0.4 : 0.2))
+                    .cornerRadius(8)
+            }
+        }
+        .padding(.horizontal)
+    }
 }

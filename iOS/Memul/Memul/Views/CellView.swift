@@ -24,7 +24,7 @@ struct CellView: View {
                     .foregroundColor(.black)
                     .font(.headline)
             } else if isTarget {
-                Text("?")
+                Text("?") // TODO: GQ_ToDo
                     .foregroundColor(.white)
                     .font(.headline)
             }
