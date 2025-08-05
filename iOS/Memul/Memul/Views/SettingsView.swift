@@ -27,7 +27,7 @@ struct SettingsView: View {
 
                 if settings.players.count < maxPlayers {
                     Button("Add Player") {
-                        let newColor: Color = .green // just rotate through options if needed
+                        let newColor: Color = .green // You may rotate through different colors if needed
                         settings.players.append(Player(name: "Player \(settings.players.count + 1)", color: newColor))
                     }
                 }
@@ -37,6 +37,12 @@ struct SettingsView: View {
                         settings.players.removeLast()
                     }
                 }
+            }
+
+            Section(header: Text("Puzzle")) {
+                Toggle("Use Random Puzzle Image", isOn: $settings.useRandomPuzzleImage)
+                    .disabled(!isPremium)
+                    .opacity(isPremium ? 1.0 : 0.5)
             }
 
             Section(header: Text("Premium Access")) {
@@ -50,6 +56,7 @@ struct SettingsView: View {
                             if settings.players.count > GameSettings.freeMaxPlayers {
                                 settings.players = Array(settings.players.prefix(GameSettings.freeMaxPlayers))
                             }
+                            settings.useRandomPuzzleImage = false
                         }
                     }
 

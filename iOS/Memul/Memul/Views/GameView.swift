@@ -63,7 +63,9 @@ struct GameView: View {
                                     CellView(
                                         cell: cell,
                                         isHighlighted: isCellHighlighted(cell),
-                                        isTarget: cell.value == viewModel.currentTarget
+                                        isTarget: cell.value == viewModel.currentTarget,
+                                        puzzlePiece: getPuzzlePiece(row: row, col: col),
+                                        cellSize: cellSize
                                     )
                                     .frame(width: cellSize, height: cellSize)
                                     .onTapGesture {
@@ -116,28 +118,16 @@ struct GameView: View {
             .background(Color(UIColor.systemBackground))
         }
         .overlay(
-            ZStack {
-                if let anim = scoreAnimation {
-                    Text("+1")
-                        .font(.title)
-                        .foregroundColor(anim.1)
-                        .position(anim.0)
-                        .transition(.move(edge: .top).combined(with: .opacity))
-                        .onAppear {
-                            withAnimation(.easeOut(duration: 1.0)) {
-                                scoreAnimation = nil
-                            }
-                        }
-                }
+            Group {
+                if viewModel.isGameOver, let image = viewModel.puzzleImageName {
+                    Color.black.opacity(0.5) // dim background
+                        .ignoresSafeArea()
 
-                if showConfetti {
-                    ConfettiView()
+                    Image(image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                         .transition(.opacity)
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                                withAnimation { showConfetti = false }
-                            }
-                        }
+                        .padding()
                 }
             }
         )
@@ -176,8 +166,17 @@ struct GameView: View {
 
     private func playCorrectSound() { AudioServicesPlaySystemSound(1057) }
     private func playWrongSound() { AudioServicesPlaySystemSound(1053) }
+    
+    private func getPuzzlePiece(row: Int, col: Int) -> Image? {
+        let r = row - 1
+        let c = col - 1
+        if viewModel.puzzlePieces.indices.contains(r),
+           viewModel.puzzlePieces[r].indices.contains(c) {
+            return viewModel.puzzlePieces[r][c]
+        }
+        return nil
+    }
 }
-
 
 // MARK: - Confetti View
 

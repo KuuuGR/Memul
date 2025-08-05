@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct GameSettings {
-    var boardSize: Int
-    var players: [Player]
-    
-    // wersja darmowa ma ograniczenie
-    static let freeMaxBoardSize = 5
-    static let freeMaxPlayers = 2
+    var boardSize: Int = 4
+    var players: [Player] = [
+        Player(name: "Player 1", color: .red),
+        Player(name: "Player 2", color: .blue)
+    ]
+    var useRandomPuzzleImage: Bool = false
+
+    static let freeMaxBoardSize = 6
+    static let freeMaxPlayers = 4
 }

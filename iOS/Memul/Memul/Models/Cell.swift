@@ -13,4 +13,5 @@ struct Cell: Identifiable {
     let col: Int
     let value: Int
     var isRevealed: Bool = false
+    var puzzlePieceRect: CGRect? = nil
 }
