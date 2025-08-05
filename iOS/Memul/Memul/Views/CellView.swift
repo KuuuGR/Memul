@@ -11,25 +11,34 @@ struct CellView: View {
     let cell: Cell
     let isHighlighted: Bool
     let isTarget: Bool
-    let puzzlePiece: Image?   // New: pre-sliced puzzle piece for this cell
+    let puzzlePiece: Image?   // Pre-sliced puzzle piece
     let cellSize: CGFloat
 
     var body: some View {
         ZStack {
+            // Background
             RoundedRectangle(cornerRadius: 8)
                 .strokeBorder(isHighlighted ? Color.yellow : Color.gray, lineWidth: 2)
-                .background(RoundedRectangle(cornerRadius: 8).fill(cell.isRevealed ? Color.gray.opacity(0.3) : Color.blue))
+                .background(
+                    RoundedRectangle(cornerRadius: 8)
+                        .fill(cell.isRevealed ? Color.clear : Color.blue)
+                )
                 .frame(width: cellSize, height: cellSize)
 
+            // Puzzle piece if revealed
             if cell.isRevealed, let piece = puzzlePiece {
                 piece
                     .resizable()
                     .frame(width: cellSize, height: cellSize)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-            } else if cell.isRevealed {
+            }
+
+            // Content overlay
+            if cell.isRevealed {
                 Text("\(cell.value)")
-                    .foregroundColor(.black)
                     .font(.headline)
+                    .foregroundColor(.white)
+                    .shadow(color: .black, radius: 1.5, x: 0, y: 0)
             } else if isTarget {
                 Text("?")
                     .foregroundColor(.white)

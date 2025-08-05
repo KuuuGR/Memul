@@ -120,14 +120,16 @@ struct GameView: View {
         .overlay(
             Group {
                 if viewModel.isGameOver, let image = viewModel.puzzleImageName {
-                    Color.black.opacity(0.5) // dim background
+                    Color.black.opacity(0.5)
                         .ignoresSafeArea()
 
                     Image(image)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .transition(.opacity)
+                        .cornerRadius(20)
+                        .shadow(radius: 10)
                         .padding()
+                        .transition(.opacity)
                 }
             }
         )
