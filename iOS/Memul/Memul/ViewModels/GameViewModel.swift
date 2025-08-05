@@ -15,9 +15,12 @@ class GameViewModel: ObservableObject {
     @Published var currentTarget: Int = 1
     @Published var isGameOver: Bool = false
     @Published var puzzleImageName: String? = nil
-    @Published var puzzlePieces: [[Image]] = []  // Added to hold sliced pieces
+    @Published var puzzlePieces: [[Image]] = []
 
     private let totalPuzzles = 2
+
+    // Static cache: [("puzzle_1", 5)] -> [[Image]]
+    private static var imageCache: [String: [[Image]]] = [:]
 
     var players: [Player] {
         settings.players
@@ -52,21 +55,30 @@ class GameViewModel: ObservableObject {
         for row in 1...size {
             for col in 1...size {
                 let value = row * col
-
                 cells.append(Cell(
                     row: row,
                     col: col,
                     value: value,
-                    puzzlePieceRect: nil  // No longer used
+                    puzzlePieceRect: nil
                 ))
             }
         }
     }
 
-    // New: Pre-slice the puzzle image into pieces
     private func preparePuzzlePieces() {
-        guard let puzzleName = puzzleImageName,
-              let uiImage = UIImage(named: puzzleName) else {
+        guard let puzzleName = puzzleImageName else {
+            puzzlePieces = []
+            return
+        }
+
+        let cacheKey = "\(puzzleName)_\(settings.boardSize)"
+
+        if let cached = GameViewModel.imageCache[cacheKey] {
+            puzzlePieces = cached
+            return
+        }
+
+        guard let uiImage = UIImage(named: puzzleName) else {
             puzzlePieces = []
             return
         }
@@ -92,13 +104,14 @@ class GameViewModel: ObservableObject {
                     let pieceUIImage = UIImage(cgImage: cgImage)
                     rowPieces.append(Image(uiImage: pieceUIImage))
                 } else {
-                    // If cropping fails, fallback to blank
                     rowPieces.append(Image(systemName: "questionmark.square"))
                 }
             }
             pieces.append(rowPieces)
         }
 
+        // Cache result for future reuse
+        GameViewModel.imageCache[cacheKey] = pieces
         puzzlePieces = pieces
     }
 
