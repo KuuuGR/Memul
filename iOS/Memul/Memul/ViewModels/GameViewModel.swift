@@ -17,7 +17,7 @@ class GameViewModel: ObservableObject {
     @Published var puzzleImageName: String? = nil
     @Published var puzzlePieces: [[Image]] = []
 
-    private let totalPuzzles = 2
+    private let totalPuzzles = 7 //TODO: GQ_puzzle
 
     // Static cache: [("puzzle_1", 5)] -> [[Image]]
     private static var imageCache: [String: [[Image]]] = [:]

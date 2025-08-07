@@ -40,7 +40,7 @@ struct CellView: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 1.5, x: 0, y: 0)
             } else if isTarget {
-                Text("?")
+                Text("") //TODO: GQtodo
                     .foregroundColor(.white)
                     .font(.headline)
             }

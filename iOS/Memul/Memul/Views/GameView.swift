@@ -45,6 +45,7 @@ struct GameView: View {
                             Text("\(col)")
                                 .frame(width: cellSize, height: cellSize)
                                 .font(.caption)
+                                .foregroundColor(.blue)
                         }
                         Text("") // for right corner
                             .frame(width: cellSize, height: cellSize)
@@ -57,6 +58,7 @@ struct GameView: View {
                             Text("\(row)")
                                 .frame(width: cellSize, height: cellSize)
                                 .font(.caption)
+                                .foregroundColor(.red)
 
                             ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
                                 if let cell = viewModel.cells.first(where: { $0.row == row && $0.col == col }) {
@@ -79,6 +81,7 @@ struct GameView: View {
                             Text("\(row)")
                                 .frame(width: cellSize, height: cellSize)
                                 .font(.caption)
+                                .foregroundColor(.red)
                         }
                     }
 
@@ -90,6 +93,8 @@ struct GameView: View {
                             Text("\(col)")
                                 .frame(width: cellSize, height: cellSize)
                                 .font(.caption)
+                                .foregroundColor(.blue)
+                            
                         }
                         Text("") // for bottom-right corner
                             .frame(width: cellSize, height: cellSize)
