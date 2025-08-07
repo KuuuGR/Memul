@@ -9,11 +9,11 @@ import SwiftUI
 
 struct ResultsView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var viewModel: GameViewModel
+    @ObservedObject var viewModel: GameViewModel
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Game Over!")
+            Text("Results")
                 .font(.largeTitle)
                 .bold()
 
@@ -29,7 +29,6 @@ struct ResultsView: View {
                 }
             }
 
-            // Winner
             if let winner = viewModel.players.max(by: { $0.score < $1.score }) {
                 Text("🏆 Winner: \(winner.name)!")
                     .font(.title2)
@@ -37,18 +36,11 @@ struct ResultsView: View {
                     .padding(.top, 10)
             }
 
-            // Play Again button
             Button(action: {
-                // Restart the game with same settings
-                let newViewModel = GameViewModel(settings: viewModel.settings)
-                viewModel.settings = newViewModel.settings
-                viewModel.cells = newViewModel.cells
-                viewModel.currentPlayerIndex = 0
-                viewModel.currentTarget = newViewModel.currentTarget
-                viewModel.isGameOver = false
+                viewModel.newGame()
                 dismiss()
             }) {
-                Text("Play Again")
+                Text("New Game")
                     .font(.title3)
                     .padding()
                     .frame(maxWidth: .infinity)

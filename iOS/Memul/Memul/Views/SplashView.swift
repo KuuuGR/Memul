@@ -15,7 +15,7 @@ struct SplashView: View {
             Color.white.ignoresSafeArea()
             
             VStack {
-                Image("app_logo") // Add logo to Assets.xcassets
+                Image("app_logo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
@@ -35,6 +35,7 @@ struct SplashView: View {
         }
         .fullScreenCover(isPresented: $isActive) {
             StartView() // The next view after splash
+            StartView()
         }
     }
 }

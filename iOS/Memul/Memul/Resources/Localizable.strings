@@ -1,0 +1,40 @@
+//
+//  Localizable.strings
+//  Memul
+//
+//  Created by admin on 07/08/2025.
+//
+
+"board_size" = "Board Size";
+"board_size_value" = "Size: %d × %d";
+"players" = "Players";
+"player_n" = "Player %d";
+"add_player" = "Add Player";
+"remove_last_player" = "Remove Last Player";
+"puzzle" = "Puzzle";
+"use_random_puzzle" = "Use Random Puzzle Image";
+"index_labels" = "Index Labels";
+"show_top_labels" = "Show top labels";
+"show_bottom_labels" = "Show bottom labels";
+"show_left_labels" = "Show left labels";
+"show_right_labels" = "Show right labels";
+"top_color" = "Top color";
+"bottom_color" = "Bottom color";
+"left_color" = "Left color";
+"right_color" = "Right color";
+"make_labels_transparent" = "Make labels transparent";
+"index_labels_premium_hint" = "Customize label colors requires Premium.";
+"header_options" = "Header";
+"show_selected_coordinates_button" = "Show selected coordinates button";
+"premium_access" = "Premium Access";
+"unlock_premium" = "Unlock Premium";
+"free_limitations" = "Free version: max %d×%d board, %d players.";
+"settings_title" = "Settings";
+"results_title" = "Results";
+"new_game" = "New Game";
+"close" = "Close";
+"turn_title" = "%@'s turn";
+"find_cell_with" = "Find a cell with %d";
+"selected_coordinates" = "(%d, %d)";
+"tap_to_close" = "Tap to close";
+"end_game" = "End Game";
