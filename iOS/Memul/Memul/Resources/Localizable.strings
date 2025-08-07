@@ -38,3 +38,16 @@
 "selected_coordinates" = "(%d, %d)";
 "tap_to_close" = "Tap to close";
 "end_game" = "End Game";
+
+//MARK: - About
+"ab_navigation_title" = "About";
+"ab_section_about_app" = "About Memul";
+"ab_app_name" = "Memul — Multiplication Puzzle Game";
+"ab_version" = "Version: %@";
+"ab_developer" = "Developer: Grzegorz Kulesza";
+"ab_section_purpose" = "Purpose";
+"ab_purpose_multiplication" = "Practice multiplication tables through a fun grid puzzle.";
+"ab_purpose_turn_based" = "Turn-based gameplay supports 1–16 players.";
+"ab_purpose_fun_learning" = "Reveal images as you learn and compete!";
+"ab_section_support" = "Support";
+

@@ -19,10 +19,11 @@ struct StartView: View {
     @State private var isActive = false
     @State private var gameViewModel: GameViewModel?
     @State private var isShowingSettings = false
+    @State private var isShowingAbout = false
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
+            VStack(spacing: 24) {
                 Text("Memul")
                     .font(.largeTitle)
                     .fontWeight(.bold)
@@ -32,10 +33,17 @@ struct StartView: View {
                 }
                 .buttonStyle(.borderedProminent)
 
-                Button("Settings") {
-                    isShowingSettings = true
+                HStack(spacing: 12) {
+                    Button("Settings") {
+                        isShowingSettings = true
+                    }
+                    .buttonStyle(.bordered)
+
+                    Button("About") {
+                        isShowingAbout = true
+                    }
+                    .buttonStyle(.bordered)
                 }
-                .buttonStyle(.bordered)
 
                 Spacer()
             }
@@ -48,10 +56,12 @@ struct StartView: View {
             .navigationDestination(isPresented: $isShowingSettings) {
                 SettingsView(settings: $settings)
             }
+            .navigationDestination(isPresented: $isShowingAbout) {
+                AboutView()
+            }
         }
     }
 
-    /// Starts a new game safely on the main actor
     @MainActor
     private func startGame() {
         gameViewModel = GameViewModel(settings: settings)
