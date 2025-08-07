@@ -27,6 +27,9 @@
 		84509F412E3E9DE600CD4871 /* Memul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84509F532E3E9DE900CD4871 /* MemulTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemulTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84509F5D2E3E9DEA00CD4871 /* MemulUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemulUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D9B0532E44AC2500319B20 /* MemulUITests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MemulUITests; sourceTree = "<group>"; };
+		84D9B0542E44AC3B00319B20 /* Memul */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Memul; path = ../..; sourceTree = "<group>"; };
+		84D9B0552E44AC5200319B20 /* MemulTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MemulTests; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +78,9 @@
 		84509F382E3E9DE600CD4871 = {
 			isa = PBXGroup;
 			children = (
+				84D9B0552E44AC5200319B20 /* MemulTests */,
+				84D9B0542E44AC3B00319B20 /* Memul */,
+				84D9B0532E44AC2500319B20 /* MemulUITests */,
 				84509F432E3E9DE600CD4871 /* Memul */,
 				84509F562E3E9DEA00CD4871 /* MemulTests */,
 				84509F602E3E9DEA00CD4871 /* MemulUITests */,

@@ -38,7 +38,8 @@ final class PuzzleSlicer: PuzzleSlicing {
                 ).integral
 
                 if let cg = uiImage.cgImage?.cropping(to: cropRect) {
-                    rowPieces.append(Image(uiImage: UIImage(cgImage: cg)))
+                    let piece = UIImage(cgImage: cg, scale: uiImage.scale, orientation: uiImage.imageOrientation)
+                    rowPieces.append(Image(uiImage: piece))
                 } else {
                     rowPieces.append(Image(systemName: "questionmark.square"))
                 }

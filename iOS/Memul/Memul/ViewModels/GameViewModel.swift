@@ -1,10 +1,3 @@
-//
-//  GameViewModel.swift
-//  Memul
-//
-//  Created by Grzegorz Kulesza on 02/08/2025.
-//
-
 import SwiftUI
 
 @MainActor
@@ -17,9 +10,13 @@ class GameViewModel: ObservableObject {
     @Published var puzzleImageName: String? = nil
     @Published var puzzlePieces: [[Image]] = []
 
-    private let totalPuzzles = 7 // TODO: GQ_puzzle
+    private let totalPuzzles = 7
+
     private let slicer: PuzzleSlicing
     private let random: RandomSourcing
+    private let boardGen: BoardGenerating
+    private var scorer: Scoring
+    private let endGame: EndGameEvaluating
 
     var players: [Player] { settings.players }
     var currentPlayer: Player { settings.players[currentPlayerIndex] }
@@ -27,11 +24,18 @@ class GameViewModel: ObservableObject {
     init(
         settings: GameSettings,
         slicer: PuzzleSlicing = PuzzleSlicer(),
-        random: RandomSourcing = SystemRandomSource()
+        random: RandomSourcing = SystemRandomSource(),
+        boardGen: BoardGenerating = BoardGenerator(),
+        scorer: Scoring = ScoreService(),
+        endGame: EndGameEvaluating = EndGameEvaluator()
     ) {
         self.settings = settings
         self.slicer = slicer
         self.random = random
+        self.boardGen = boardGen
+        self.scorer = scorer
+        self.endGame = endGame
+
         selectPuzzleImage()
         generateBoard()
         pickNextTarget()
@@ -49,20 +53,7 @@ class GameViewModel: ObservableObject {
     }
 
     func generateBoard() {
-        cells = []
-        let size = settings.boardSize
-
-        for row in 1...size {
-            for col in 1...size {
-                let value = row * col
-                cells.append(Cell(
-                    row: row,
-                    col: col,
-                    value: value,
-                    puzzlePieceRect: nil
-                ))
-            }
-        }
+        cells = boardGen.generateBoard(size: settings.boardSize)
     }
 
     private func preparePuzzlePieces() {
@@ -94,24 +85,17 @@ class GameViewModel: ObservableObject {
             return
         }
 
-        if cell.value == currentTarget {
+        if cells[index].value == currentTarget {
             cells[index].isRevealed = true
-            addPointToCurrentPlayer()
+            scorer.applyCorrectSelection(to: &settings.players, currentIndex: currentPlayerIndex)
         }
 
         nextTurn()
     }
 
-    private func addPointToCurrentPlayer() {
-        settings.players[currentPlayerIndex].score += 1
-    }
-
     func nextTurn() {
         currentPlayerIndex = (currentPlayerIndex + 1) % settings.players.count
         pickNextTarget()
-        
-        if cells.allSatisfy({ $0.isRevealed }) {
-            isGameOver = true
-        }
+        isGameOver = endGame.isGameOver(cells: cells)
     }
 }
