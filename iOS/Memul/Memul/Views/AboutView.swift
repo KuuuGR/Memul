@@ -2,8 +2,9 @@ import SwiftUI
 
 struct AboutView: View {
     private var appVersion: String {
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
-        let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
+        // Use object(forInfoDictionaryKey:) — safest across builds
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
+        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "1"
         return "\(version) (\(build))"
     }
 
@@ -102,7 +103,7 @@ struct AboutSection<Content: View>: View {
     }
 }
 
-// Simple app theme palette you can centralize/adjust later
+// Simple app theme palette (no external color manager required)
 enum AppTheme {
     static let primary = Color.blue
     static let onSurface = Color.primary
