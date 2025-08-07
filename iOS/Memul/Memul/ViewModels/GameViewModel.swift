@@ -17,21 +17,21 @@ class GameViewModel: ObservableObject {
     @Published var puzzleImageName: String? = nil
     @Published var puzzlePieces: [[Image]] = []
 
-    private let totalPuzzles = 7 //TODO: GQ_puzzle
+    private let totalPuzzles = 7 // TODO: GQ_puzzle
+    private let slicer: PuzzleSlicing
+    private let random: RandomSourcing
 
-    // Static cache: [("puzzle_1", 5)] -> [[Image]]
-    private static var imageCache: [String: [[Image]]] = [:]
+    var players: [Player] { settings.players }
+    var currentPlayer: Player { settings.players[currentPlayerIndex] }
 
-    var players: [Player] {
-        settings.players
-    }
-    
-    var currentPlayer: Player {
-        settings.players[currentPlayerIndex]
-    }
-
-    init(settings: GameSettings) {
+    init(
+        settings: GameSettings,
+        slicer: PuzzleSlicing = PuzzleSlicer(),
+        random: RandomSourcing = SystemRandomSource()
+    ) {
         self.settings = settings
+        self.slicer = slicer
+        self.random = random
         selectPuzzleImage()
         generateBoard()
         pickNextTarget()
@@ -39,7 +39,7 @@ class GameViewModel: ObservableObject {
 
     private func selectPuzzleImage() {
         if settings.useRandomPuzzleImage {
-            let selectedIndex = Int.random(in: 1...totalPuzzles)
+            let selectedIndex = random.int(in: 1...totalPuzzles)
             puzzleImageName = "puzzle_\(selectedIndex)"
             preparePuzzlePieces()
         } else {
@@ -70,64 +70,21 @@ class GameViewModel: ObservableObject {
             puzzlePieces = []
             return
         }
-
-        let cacheKey = "\(puzzleName)_\(settings.boardSize)"
-
-        if let cached = GameViewModel.imageCache[cacheKey] {
-            puzzlePieces = cached
-            return
-        }
-
-        guard let uiImage = UIImage(named: puzzleName) else {
-            puzzlePieces = []
-            return
-        }
-
-        let size = settings.boardSize
-        let imageSize = uiImage.size
-        let pieceWidth = imageSize.width / CGFloat(size)
-        let pieceHeight = imageSize.height / CGFloat(size)
-
-        var pieces: [[Image]] = []
-
-        for row in 0..<size {
-            var rowPieces: [Image] = []
-            for col in 0..<size {
-                let cropRect = CGRect(
-                    x: CGFloat(col) * pieceWidth,
-                    y: CGFloat(row) * pieceHeight,
-                    width: pieceWidth,
-                    height: pieceHeight
-                ).integral
-
-                if let cgImage = uiImage.cgImage?.cropping(to: cropRect) {
-                    let pieceUIImage = UIImage(cgImage: cgImage)
-                    rowPieces.append(Image(uiImage: pieceUIImage))
-                } else {
-                    rowPieces.append(Image(systemName: "questionmark.square"))
-                }
-            }
-            pieces.append(rowPieces)
-        }
-
-        // Cache result for future reuse
-        GameViewModel.imageCache[cacheKey] = pieces
-        puzzlePieces = pieces
+        puzzlePieces = slicer.slice(imageNamed: puzzleName, grid: settings.boardSize)
     }
 
     func pickNextTarget() {
-        let unrevealedCells = cells.filter { !$0.isRevealed }
-        let possibleNumbers = Set(unrevealedCells.map { $0.value })
-
-        guard let random = possibleNumbers.randomElement() else {
+        let unrevealed = cells.filter { !$0.isRevealed }
+        let possibleNumbers = Array(Set(unrevealed.map { $0.value }))
+        guard let next = random.element(from: possibleNumbers) else {
             isGameOver = true
             return
         }
-        currentTarget = random
+        currentTarget = next
     }
 
     func isCorrectSelection(_ cell: Cell) -> Bool {
-        return cell.value == currentTarget
+        cell.value == currentTarget
     }
 
     func selectCell(_ cell: Cell) {
