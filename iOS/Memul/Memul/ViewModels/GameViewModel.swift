@@ -18,7 +18,7 @@ class GameViewModel: ObservableObject {
     // End-game overlay visibility
     @Published var showPuzzleOverlay: Bool = false
 
-    private let totalPuzzles = 7
+    private let totalPuzzles = 50 //TODO: GQTODO
 
     private let slicer: PuzzleSlicing
     private let random: RandomSourcing
