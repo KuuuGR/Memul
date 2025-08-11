@@ -32,6 +32,10 @@ struct GameSettings {
     ]
     var useRandomPuzzleImage: Bool = false
     
+    // NEW: Turn time limit in seconds, nil = unlimited
+    // Free users → fixed 30 seconds, Premium can change
+    var turnTimeLimit: Int? = 30
+
     // Premium
     var isPremium: Bool = false
     

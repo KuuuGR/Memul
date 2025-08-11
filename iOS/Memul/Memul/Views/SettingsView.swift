@@ -5,7 +5,6 @@
 //  Created by Grzegorz Kulesza on 04/08/2025.
 //
 
-
 import SwiftUI
 
 struct SettingsView: View {
@@ -65,6 +64,23 @@ struct SettingsView: View {
                 }
             }
 
+            Section(header: Text("Turn timer")) {
+                // Free: fixed 30s (disabled UI). Premium: pick 30 / 60 / 120 / ∞.
+                Picker("Per-turn limit", selection: bindingForTurnLimit()) {
+                    Text("30s").tag(Int?.some(30))
+                    Text("60s").tag(Int?.some(60))
+                    Text("120s").tag(Int?.some(120))
+                    Text("∞").tag(Int?.none) // nil = unlimited
+                }
+                .pickerStyle(.segmented)
+                .disabled(!settings.isPremium) // free users locked to 30s
+                if !settings.isPremium {
+                    Text("Free version uses a fixed 30s per turn.")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+            }
+
             Section(header: Text(NSLocalizedString("header_options", comment: ""))) {
                 Toggle(NSLocalizedString("show_selected_coordinates_button", comment: ""), isOn: $settings.showSelectedCoordinatesButton)
             }
@@ -82,6 +98,8 @@ struct SettingsView: View {
                             }
                             settings.useRandomPuzzleImage = false
                             settings.indexColors = IndexColors()
+                            // Lock timer back to 30s for free users
+                            settings.turnTimeLimit = 30
                         }
                     }
 
@@ -93,6 +111,10 @@ struct SettingsView: View {
             }
         }
         .navigationTitle(NSLocalizedString("settings_title", comment: ""))
+        .onAppear {
+            // Ensure free users always have 30s
+            if !settings.isPremium { settings.turnTimeLimit = 30 }
+        }
     }
 
     private var maxBoardSize: Int {
@@ -101,5 +123,20 @@ struct SettingsView: View {
 
     private var maxPlayers: Int {
         settings.isPremium ? 16 : GameSettings.freeMaxPlayers
+    }
+
+    // Binding helper to support nil (= ∞) in segmented picker.
+    private func bindingForTurnLimit() -> Binding<Int?> {
+        Binding<Int?>(
+            get: { settings.turnTimeLimit },
+            set: { newValue in
+                // If not premium, force back to 30
+                if !settings.isPremium {
+                    settings.turnTimeLimit = 30
+                } else {
+                    settings.turnTimeLimit = newValue // 30/60/120 or nil (∞)
+                }
+            }
+        )
     }
 }

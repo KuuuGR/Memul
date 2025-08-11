@@ -18,6 +18,13 @@ class GameViewModel: ObservableObject {
     // End-game overlay visibility
     @Published var showPuzzleOverlay: Bool = false
 
+    // --- Turn timer (per-turn) ---
+    // Remaining seconds for the current turn. `nil` means unlimited (∞).
+    @Published var timeRemaining: Int? = nil
+
+    private var turnTimer: Timer? // fires every second while a timed turn is active
+    private var isTimerPaused: Bool = false
+
     private let totalPuzzles = 50 //TODO: GQTODO
 
     private let slicer: PuzzleSlicing
@@ -49,6 +56,13 @@ class GameViewModel: ObservableObject {
         pickNextTarget()
         showPuzzleOverlay = false
         currentSelection = nil // ensure it shows empty at game start
+
+        // Initialize timer for the very first turn
+        configureTimerForCurrentTurn()
+    }
+
+    deinit {
+        turnTimer?.invalidate()
     }
 
     private func selectPuzzleImage() {
@@ -80,6 +94,7 @@ class GameViewModel: ObservableObject {
         guard let next = random.element(from: possibleNumbers) else {
             isGameOver = true
             showPuzzleOverlay = true
+            stopTurnTimer()
             return
         }
         currentTarget = next
@@ -103,7 +118,7 @@ class GameViewModel: ObservableObject {
     }
 
     // Internal selection handling (called by submitCurrentSelection())
-    private func selectCell(_ cell: Cell) {
+    func selectCell(_ cell: Cell) {
         guard let index = cells.firstIndex(where: { $0.id == cell.id }),
               !cells[index].isRevealed else {
             // Already revealed or missing: still advance turn as per your original logic
@@ -130,10 +145,20 @@ class GameViewModel: ObservableObject {
         pickNextTarget()
         isGameOver = endGame.isGameOver(cells: cells)
         showPuzzleOverlay = isGameOver
+
+        if isGameOver {
+            stopTurnTimer()
+        } else {
+            configureTimerForCurrentTurn()
+        }
     }
 
     func dismissPuzzleOverlay() {
         showPuzzleOverlay = false
+        // If the game actually ended, there's nothing to resume.
+        if !isGameOver {
+            resumeTurnTimerIfNeeded()
+        }
     }
 
     func newGame() {
@@ -148,5 +173,72 @@ class GameViewModel: ObservableObject {
         selectPuzzleImage()
         generateBoard()
         pickNextTarget()
+        configureTimerForCurrentTurn()
+    }
+
+    // MARK: - Turn timer helpers
+
+    /// Sets up timer state for the current player based on settings.
+    private func configureTimerForCurrentTurn() {
+        // Free users always 30s; premium uses chosen limit (including ∞).
+        timeRemaining = settings.turnTimeLimit
+        isTimerPaused = false
+        restartTurnTimerIfNeeded()
+    }
+
+    /// Start/restart the 1s ticking timer if we have a finite turn time.
+    private func restartTurnTimerIfNeeded() {
+        stopTurnTimer()
+        guard let _ = timeRemaining else { return } // unlimited
+        turnTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            Task { @MainActor in
+                self?.tick()
+            }
+        }
+        RunLoop.main.add(turnTimer!, forMode: .common)
+    }
+
+    /// Decrement remaining time and handle timeouts.
+    private func tick() {
+        guard !isTimerPaused else { return }
+        guard var remaining = timeRemaining else { return } // unlimited
+        guard remaining > 0 else {
+            // Safety: if already 0, treat as timeout
+            handleTurnTimeout()
+            return
+        }
+        remaining -= 1
+        timeRemaining = remaining
+        if remaining == 0 {
+            handleTurnTimeout()
+        }
+    }
+
+    /// On timeout we just advance to the next player without revealing anything.
+    private func handleTurnTimeout() {
+        stopTurnTimer()
+        // As per requirements: no reveal, no score, just move on.
+        currentSelection = nil
+        nextTurn()
+    }
+
+    /// Pause ticking without losing remaining time.
+    func pauseTurnTimer() {
+        isTimerPaused = true
+    }
+
+    /// Resume ticking if finite and game not over.
+    func resumeTurnTimerIfNeeded() {
+        guard !isGameOver else { return }
+        isTimerPaused = false
+        // If we somehow lost the timer (e.g., after a modal), recreate it.
+        if turnTimer == nil, timeRemaining != nil {
+            restartTurnTimerIfNeeded()
+        }
+    }
+
+    private func stopTurnTimer() {
+        turnTimer?.invalidate()
+        turnTimer = nil
     }
 }

@@ -23,10 +23,11 @@ struct GameView: View {
 
             // MARK: Header
             VStack(spacing: 8) {
-                Text("\(viewModel.currentPlayer.name)'s turn")
+                // Turn title + countdown (∞ for unlimited)
+                Text("\(viewModel.currentPlayer.name)'s turn\(timerSuffix())")
                     .font(.title2)
                     .foregroundColor(viewModel.currentPlayer.color)
-                    .transition(.opacity.combined(with: .scale))
+                    .transition(.opacity .combined(with: .scale))
 
                 Text("Find a cell with \(viewModel.currentTarget)")
                     .font(.headline)
@@ -131,7 +132,9 @@ struct GameView: View {
                 if viewModel.showPuzzleOverlay, let image = viewModel.puzzleImageName {
                     Color.black.opacity(0.5)
                         .ignoresSafeArea()
-                        .onTapGesture { viewModel.dismissPuzzleOverlay() }
+                        .onTapGesture {
+                            viewModel.dismissPuzzleOverlay()
+                        }
 
                     Image(image)
                         .resizable()
@@ -140,13 +143,28 @@ struct GameView: View {
                         .shadow(radius: 10)
                         .padding()
                         .transition(.opacity)
-                        .onTapGesture { viewModel.dismissPuzzleOverlay() }
+                        .onTapGesture {
+                            viewModel.dismissPuzzleOverlay()
+                        }
                         .accessibilityLabel("Tap to close")
                 }
             }
         )
-        .fullScreenCover(isPresented: $showResults) {
+        .fullScreenCover(isPresented: $showResults, onDismiss: {
+            // Resume timer when results are dismissed
+            viewModel.resumeTurnTimerIfNeeded()
+        }) {
+            // Pause timer while results are visible
             ResultsView(viewModel: viewModel)
+                .onAppear { viewModel.pauseTurnTimer() }
+        }
+        .onChange(of: viewModel.showPuzzleOverlay) { _, isShown in
+            // Pause while overlay is visible, resume when hidden
+            if isShown {
+                viewModel.pauseTurnTimer()
+            } else {
+                viewModel.resumeTurnTimerIfNeeded()
+            }
         }
         .animation(.easeInOut, value: viewModel.currentPlayer.id)
     }
@@ -229,5 +247,14 @@ struct GameView: View {
             return viewModel.puzzlePieces[r][c]
         }
         return nil
+    }
+
+    // Timer label suffix: " (∞)" or " (28s)". Empty string if something unexpected.
+    private func timerSuffix() -> String {
+        if let remaining = viewModel.timeRemaining {
+            return " (\(remaining)s)"
+        } else {
+            return " (∞)"
+        }
     }
 }
