@@ -1,63 +1,55 @@
+//
+//  GameViewModel.swift
+//  Memul
+//
+
 import SwiftUI
 
 @MainActor
 class GameViewModel: ObservableObject {
+    // MARK: - Published State
     @Published var settings: GameSettings
     @Published var cells: [Cell] = []
     @Published var currentPlayerIndex: Int = 0
     @Published var currentTarget: Int = 1
     @Published var isGameOver: Bool = false
-    @Published var puzzleImageName: String? = nil
-    @Published var puzzlePieces: [[Image]] = []
 
-    // Coordinates UX
-    // The currently highlighted (first tap) coordinates, always visible when enabled in settings.
-    // Reset on turn change and at new game start.
+    // Puzzle
+    @Published var puzzleImageName: String? = nil
+    @Published var puzzlePieces: [[Image]] = []   // sliced pieces for current board
+
+    // Coordinates UX (first tap highlights the coordinates)
     @Published var currentSelection: (row: Int, col: Int)? = nil
 
-    // End-game overlay visibility
+    // End-game overlay visibility (full puzzle)
     @Published var showPuzzleOverlay: Bool = false
 
-    // --- Turn timer (per-turn) ---
-    // Remaining seconds for the current turn. `nil` means unlimited (∞).
+    // Per-turn timer
     @Published var timeRemaining: Int? = nil
-
-    private var turnTimer: Timer? // fires every second while a timed turn is active
+    private var turnTimer: Timer?
     private var isTimerPaused: Bool = false
 
-    private let totalPuzzles = 50 //TODO: GQTODO
+    // MARK: - Config
+    private let totalPuzzles = 50 // adjust to the number of puzzle_N in Assets
 
-    private let slicer: PuzzleSlicing
-    private let random: RandomSourcing
-    private let boardGen: BoardGenerating
-    private var scorer: Scoring
-    private let endGame: EndGameEvaluating
+    // Static cache: reuse slices per (imageName, boardSize)
+    private static var sliceCache: [String: [[Image]]] = [:]
 
+    // MARK: - Convenience
     var players: [Player] { settings.players }
     var currentPlayer: Player { settings.players[currentPlayerIndex] }
 
-    init(
-        settings: GameSettings,
-        slicer: PuzzleSlicing = PuzzleSlicer(),
-        random: RandomSourcing = SystemRandomSource(),
-        boardGen: BoardGenerating = BoardGenerator(),
-        scorer: Scoring = ScoreService(),
-        endGame: EndGameEvaluating = EndGameEvaluator()
-    ) {
+    // MARK: - Init / Deinit
+    init(settings: GameSettings) {
         self.settings = settings
-        self.slicer = slicer
-        self.random = random
-        self.boardGen = boardGen
-        self.scorer = scorer
-        self.endGame = endGame
 
         selectPuzzleImage()
         generateBoard()
         pickNextTarget()
-        showPuzzleOverlay = false
-        currentSelection = nil // ensure it shows empty at game start
 
-        // Initialize timer for the very first turn
+        showPuzzleOverlay = false
+        currentSelection = nil
+
         configureTimerForCurrentTurn()
     }
 
@@ -65,9 +57,10 @@ class GameViewModel: ObservableObject {
         turnTimer?.invalidate()
     }
 
+    // MARK: - Puzzle Selection & Slicing
     private func selectPuzzleImage() {
         if settings.useRandomPuzzleImage {
-            let index = random.int(in: 1...totalPuzzles)
+            let index = Int.random(in: 1...totalPuzzles)
             puzzleImageName = "puzzle_\(index)"
             preparePuzzlePieces()
         } else {
@@ -76,22 +69,74 @@ class GameViewModel: ObservableObject {
         }
     }
 
-    func generateBoard() {
-        cells = boardGen.generateBoard(size: settings.boardSize)
-    }
-
     private func preparePuzzlePieces() {
-        guard let puzzleName = puzzleImageName else {
+        guard let name = puzzleImageName else {
             puzzlePieces = []
             return
         }
-        puzzlePieces = slicer.slice(imageNamed: puzzleName, grid: settings.boardSize)
+
+        let key = "\(name)_\(settings.boardSize)"
+        if let cached = GameViewModel.sliceCache[key] {
+            puzzlePieces = cached
+            return
+        }
+
+        guard let uiImage = UIImage(named: name) else {
+            puzzlePieces = []
+            return
+        }
+
+        let size = settings.boardSize
+        let imageSize = uiImage.size
+        let pieceW = imageSize.width  / CGFloat(size)
+        let pieceH = imageSize.height / CGFloat(size)
+
+        var pieces: [[Image]] = []
+        for r in 0..<size {
+            var row: [Image] = []
+            for c in 0..<size {
+                let rect = CGRect(
+                    x: CGFloat(c) * pieceW,
+                    y: CGFloat(r) * pieceH,
+                    width: pieceW,
+                    height: pieceH
+                ).integral
+
+                if let cg = uiImage.cgImage?.cropping(to: rect) {
+                    row.append(Image(uiImage: UIImage(cgImage: cg)))
+                } else {
+                    row.append(Image(systemName: "questionmark.square"))
+                }
+            }
+            pieces.append(row)
+        }
+
+        GameViewModel.sliceCache[key] = pieces
+        puzzlePieces = pieces
     }
 
+    // Optional public API to clear global slice cache (e.g., from Settings)
+    static func clearPuzzleCache() {
+        sliceCache.removeAll()
+    }
+
+    // MARK: - Board
+    func generateBoard() {
+        cells.removeAll(keepingCapacity: true)
+        let n = settings.boardSize
+        for r in 1...n {
+            for c in 1...n {
+                cells.append(Cell(row: r, col: c, value: r * c))
+            }
+        }
+    }
+
+    // MARK: - Target & Turns
     func pickNextTarget() {
-        let unrevealed = cells.filter { !$0.isRevealed }
-        let possibleNumbers = Array(Set(unrevealed.map { $0.value }))
-        guard let next = random.element(from: possibleNumbers) else {
+        let remaining = cells.filter { !$0.isRevealed }
+        let possible = Array(Set(remaining.map { $0.value }))
+        guard let next = possible.randomElement() else {
+            // No targets left → game over
             isGameOver = true
             showPuzzleOverlay = true
             stopTurnTimer()
@@ -104,38 +149,55 @@ class GameViewModel: ObservableObject {
         cell.value == currentTarget
     }
 
-    // First tap → set highlight + coordinates only (do not answer yet)
+    // First tap only marks coordinates
     func firstTap(row: Int, col: Int) {
         guard !isGameOver else { return }
         currentSelection = (row, col)
     }
 
-    // Second tap or pressing the coordinates button → submit answer
+    // Second tap or a dedicated confirm button submits the selection
     func submitCurrentSelection() {
-        guard let sel = currentSelection else { return }
-        guard let cell = cells.first(where: { $0.row == sel.row && $0.col == sel.col }) else { return }
+        guard let sel = currentSelection,
+              let cell = cells.first(where: { $0.row == sel.row && $0.col == sel.col })
+        else { return }
         selectCell(cell)
     }
 
-    // Internal selection handling (called by submitCurrentSelection())
     func selectCell(_ cell: Cell) {
-        guard let index = cells.firstIndex(where: { $0.id == cell.id }),
-              !cells[index].isRevealed else {
-            // Already revealed or missing: still advance turn as per your original logic
+        guard let i = cells.firstIndex(where: { $0.id == cell.id }),
+              !cells[i].isRevealed else {
             finishTurn()
             return
         }
 
-        if cells[index].value == currentTarget {
-            cells[index].isRevealed = true
-            scorer.applyCorrectSelection(to: &settings.players, currentIndex: currentPlayerIndex)
+        if cells[i].value == currentTarget {
+            // Correct: always +1
+            cells[i].isRevealed = true
+            settings.players[currentPlayerIndex].score += 1
+        } else {
+            // Wrong: apply penalty per difficulty
+            applyPenaltyForWrongAnswer()
         }
 
         finishTurn()
     }
 
+    private func applyPenaltyForWrongAnswer() {
+        switch settings.difficulty {
+        case .easy:
+            // No penalty
+            break
+        case .normal:
+            // -1, clamped to 0
+            let s = settings.players[currentPlayerIndex].score
+            settings.players[currentPlayerIndex].score = max(0, s - 1)
+        case .hard:
+            // -1, can go negative
+            settings.players[currentPlayerIndex].score -= 1
+        }
+    }
+
     private func finishTurn() {
-        // Clear the coordinates display for next player
         currentSelection = nil
         nextTurn()
     }
@@ -143,10 +205,10 @@ class GameViewModel: ObservableObject {
     func nextTurn() {
         currentPlayerIndex = (currentPlayerIndex + 1) % settings.players.count
         pickNextTarget()
-        isGameOver = endGame.isGameOver(cells: cells)
-        showPuzzleOverlay = isGameOver
 
-        if isGameOver {
+        if cells.allSatisfy({ $0.isRevealed }) {
+            isGameOver = true
+            showPuzzleOverlay = true
             stopTurnTimer()
         } else {
             configureTimerForCurrentTurn()
@@ -155,47 +217,49 @@ class GameViewModel: ObservableObject {
 
     func dismissPuzzleOverlay() {
         showPuzzleOverlay = false
-        // If the game actually ended, there's nothing to resume.
-        if !isGameOver {
-            resumeTurnTimerIfNeeded()
-        }
+        if !isGameOver { resumeTurnTimerIfNeeded() }
     }
 
     func newGame() {
+        // Reset state
         currentPlayerIndex = 0
         currentTarget = 1
         isGameOver = false
         showPuzzleOverlay = false
         currentSelection = nil
+
+        // Reset scores
         for i in settings.players.indices {
             settings.players[i].score = 0
         }
+
         selectPuzzleImage()
         generateBoard()
         pickNextTarget()
         configureTimerForCurrentTurn()
     }
 
-    // MARK: - Turn timer helpers
-
-    /// Sets up timer state for the current player based on settings.
+    // MARK: - Turn Timer
+    /// Configure timer for the current player based on settings.
     private func configureTimerForCurrentTurn() {
-        // Free users always 30s; premium uses chosen limit (including ∞).
+        // Free users: enforce 30s; Premium: use chosen limit (including nil = unlimited).
+        // If you want to enforce this strictly, uncomment the next two lines:
+        // if !settings.isPremium { settings.turnTimeLimit = 30 }
         timeRemaining = settings.turnTimeLimit
         isTimerPaused = false
         restartTurnTimerIfNeeded()
     }
 
-    /// Start/restart the 1s ticking timer if we have a finite turn time.
+    /// Start or restart the 1s ticking timer if timeRemaining is finite.
     private func restartTurnTimerIfNeeded() {
         stopTurnTimer()
-        guard let _ = timeRemaining else { return } // unlimited
+        guard timeRemaining != nil else { return } // unlimited
         turnTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            Task { @MainActor in
-                self?.tick()
-            }
+            Task { @MainActor in self?.tick() }
         }
-        RunLoop.main.add(turnTimer!, forMode: .common)
+        if let t = turnTimer {
+            RunLoop.main.add(t, forMode: .common)
+        }
     }
 
     /// Decrement remaining time and handle timeouts.
@@ -203,21 +267,17 @@ class GameViewModel: ObservableObject {
         guard !isTimerPaused else { return }
         guard var remaining = timeRemaining else { return } // unlimited
         guard remaining > 0 else {
-            // Safety: if already 0, treat as timeout
             handleTurnTimeout()
             return
         }
         remaining -= 1
         timeRemaining = remaining
-        if remaining == 0 {
-            handleTurnTimeout()
-        }
+        if remaining == 0 { handleTurnTimeout() }
     }
 
-    /// On timeout we just advance to the next player without revealing anything.
     private func handleTurnTimeout() {
         stopTurnTimer()
-        // As per requirements: no reveal, no score, just move on.
+        // No reveal, no score; just advance
         currentSelection = nil
         nextTurn()
     }

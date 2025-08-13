@@ -7,6 +7,24 @@
 
 import SwiftUI
 
+/// Difficulty levels for scoring rules.
+enum Difficulty: String, CaseIterable, Identifiable {
+    case easy    // correct: +1, wrong: 0
+    case normal  // correct: +1, wrong: -1 but not below 0
+    case hard    // correct: +1, wrong: -1 (can go negative)
+
+    var id: String { rawValue }
+
+    var displayName: String {
+        switch self {
+        case .easy:   return "Easy"
+        case .normal: return "Normal"
+        case .hard:   return "Hard"
+        }
+    }
+}
+
+/// Colors of index labels around the board.
 struct IndexColors: Equatable {
     var top: Color = .blue
     var bottom: Color = .blue
@@ -14,9 +32,9 @@ struct IndexColors: Equatable {
     var right: Color = .red
     
     static let transparent = IndexColors(top: .clear, bottom: .clear, left: .clear, right: .clear)
-    
 }
 
+/// Visibility of index labels around the board.
 struct IndexVisibility: Equatable {
     var top: Bool = true
     var bottom: Bool = true
@@ -24,29 +42,37 @@ struct IndexVisibility: Equatable {
     var right: Bool = true
 }
 
+/// Global game configuration passed into the view model.
 struct GameSettings {
+    // Board
     var boardSize: Int = 4
+
+    // Players
     var players: [Player] = [
         Player(name: "Player 1", color: .red),
         Player(name: "Player 2", color: .blue)
     ]
+
+    // Puzzle image behavior
     var useRandomPuzzleImage: Bool = false
-    
-    // NEW: Turn time limit in seconds, nil = unlimited
-    // Free users → fixed 30 seconds, Premium can change
+
+    // Scoring rules
+    var difficulty: Difficulty = .easy
+
+    // Premium access
+    var isPremium: Bool = false
+
+    // Per-turn time limit (nil = unlimited)
     var turnTimeLimit: Int? = 30
 
-    // Premium
-    var isPremium: Bool = false
-    
-    // Index labels customization
+    // Index headers customization
     var indexColors: IndexColors = IndexColors()
     var indexVisibility: IndexVisibility = IndexVisibility()
-    
-    // Header coordinates button visibility
+
+    // UX
     var showSelectedCoordinatesButton: Bool = true
-    
+
+    // Free version limits
     static let freeMaxBoardSize = 6
-    static let freeMaxPlayers = 4
-    
+    static let freeMaxPlayers   = 4
 }

@@ -5,14 +5,27 @@
 //  Created by admin on 07/08/2025.
 //
 
+// MARK: - Board & Players
 "board_size" = "Board Size";
 "board_size_value" = "Size: %d × %d";
 "players" = "Players";
 "player_n" = "Player %d";
 "add_player" = "Add Player";
 "remove_last_player" = "Remove Last Player";
+
+// MARK: - Puzzle
 "puzzle" = "Puzzle";
 "use_random_puzzle" = "Use Random Puzzle Image";
+
+// MARK: - Difficulty
+"difficulty" = "Difficulty";
+"difficulty_mode" = "Mode";
+"difficulty_easy" = "Easy";
+"difficulty_normal" = "Normal";
+"difficulty_hard" = "Hard";
+"difficulty_premium_hint" = "Free: Easy only. Normal/Hard require Premium.";
+
+// MARK: - Index Labels
 "index_labels" = "Index Labels";
 "show_top_labels" = "Show top labels";
 "show_bottom_labels" = "Show bottom labels";
@@ -24,11 +37,26 @@
 "right_color" = "Right color";
 "make_labels_transparent" = "Make labels transparent";
 "index_labels_premium_hint" = "Customize label colors requires Premium.";
+
+// MARK: - Header & UX
 "header_options" = "Header";
 "show_selected_coordinates_button" = "Show selected coordinates button";
+
+// MARK: - Turn Timer
+"turn_timer_title" = "Turn timer";
+"turn_timer_per_turn" = "Per-turn limit";
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_timer_free_hint" = "Free version uses a fixed 30s per turn.";
+
+// MARK: - Premium Access
 "premium_access" = "Premium Access";
 "unlock_premium" = "Unlock Premium";
 "free_limitations" = "Free version: max %d×%d board, %d players.";
+
+// MARK: - General UI
 "settings_title" = "Settings";
 "results_title" = "Results";
 "new_game" = "New Game";
@@ -39,7 +67,7 @@
 "tap_to_close" = "Tap to close";
 "end_game" = "End Game";
 
-//MARK: - About
+// MARK: - About
 "ab_navigation_title" = "About";
 "ab_section_about_app" = "About Memul";
 "ab_app_name" = "Memul — Multiplication Puzzle Game";
@@ -50,4 +78,3 @@
 "ab_purpose_turn_based" = "Turn-based gameplay supports 1–16 players.";
 "ab_purpose_fun_learning" = "Reveal images as you learn and compete!";
 "ab_section_support" = "Support";
-
