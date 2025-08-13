@@ -2,388 +2,357 @@
 //  TutorialView.swift
 //  Memul
 //
-//  Created by Grzegorz Kulesza on 08/08/2025.
+//  Created by KuuuGR on 08/08/2025.
 //
 
 import SwiftUI
 
-/// A simple, animated tutorial that teaches:
-/// - Rows vs Columns
-/// - Coordinate intersection
-/// - Multiplication value at the intersection
-///
-/// Flow:
-/// 1) Auto-demo plays N examples (icicle + flame animate to meet).
-/// 2) Switches to "Try it yourself": user taps the intersection cell.
-/// 3) Immediate feedback; tap "Next" for a new round.
 struct TutorialView: View {
-    // Fixed tutorial board size
-    private let boardSize: Int = 4
-    private let cellSize: CGFloat = 40
-    private let spacing: CGFloat = 2
+    // Grid config
+    private let boardSize = 4
+    private let cellSize: CGFloat = 42
+    private let spacing: CGFloat = 4
 
-    // Phases of the tutorial
-    private enum Phase {
-        case demo      // Auto animation
-        case pause     // Show result briefly
-        case practice  // User interaction
-        case feedback  // Show correct/incorrect briefly
-    }
+    // Tutorial phases
+    private enum Phase { case rowsDemo, colsDemo, intersectDemo, intersectPause, practice, feedback }
 
-    @State private var phase: Phase = .demo
-    @State private var demoLeft: Int = 3 // how many auto demos before practice
+    @State private var phase: Phase = .rowsDemo
+    @State private var demosLeftRows = 2
+    @State private var demosLeftCols = 2
+    @State private var demosLeftIntersect = 3
 
-    // Current target intersection
-    @State private var targetRow: Int = 1
-    @State private var targetCol: Int = 1
+    // Targets
+    @State private var targetRow = 1
+    @State private var targetCol = 1
 
-    // Animation controls (percent along the path: 0 → 1)
-    @State private var icicleProgress: CGFloat = 0   // vertical (top → intersection row)
-    @State private var flameProgress: CGFloat = 0    // horizontal (left → intersection col)
+    // Animation progress (0..1)
+    @State private var rowProgress: CGFloat = 0
+    @State private var colProgress: CGFloat = 0
 
-    // Practice selection
-    @State private var userSelection: (row: Int, col: Int)? = nil
-    @State private var wasCorrect: Bool = false
+    // Practice
+    @State private var userSelection: (row: Int, col: Int)?
+    @State private var wasCorrect = false
 
-    // Timing
-    @State private var isAnimating: Bool = false
+    // Tuning
+    private let sweepDuration = 0.55
+    private let pauseAfterDemo = 0.5
 
     var body: some View {
         VStack(spacing: 16) {
             header
 
-            // Board area: headers + grid + animated overlays
-            GeometryReader { geo in
-                ZStack {
-                    VStack(spacing: spacing) {
-                        // Top header row (blank corner + 1..N + blank corner)
-                        HStack(spacing: spacing) {
-                            headerCorner()
-                            ForEach(1...boardSize, id: \.self) { col in
-                                headerLabel("\(col)")
-                            }
-                            headerCorner()
-                        }
-
-                        // Rows with left/right headers
-                        ForEach(1...boardSize, id: \.self) { row in
-                            HStack(spacing: spacing) {
-                                headerLabel("\(row)")
-                                ForEach(1...boardSize, id: \.self) { col in
-                                    CellRect(
-                                        row: row,
-                                        col: col,
-                                        size: cellSize,
-                                        isHighlighted: isHighlighted(row: row, col: col)
-                                    )
-                                    .onTapGesture {
-                                        handleTap(row: row, col: col)
-                                    }
-                                }
-                                headerLabel("\(row)")
-                            }
-                        }
-
-                        // Bottom header row
-                        HStack(spacing: spacing) {
-                            headerCorner()
-                            ForEach(1...boardSize, id: \.self) { col in
-                                headerLabel("\(col)")
-                            }
-                            headerCorner()
-                        }
-                    }
-                    .frame(
-                        width: gridPixelWidth,
-                        height: gridPixelHeight
-                    )
-
-                    // Animated overlays (icicle + flame)
-                    icicleOverlay
-                    flameOverlay
-
-                    // Intersection glow during demo/pause/feedback
-                    if phase == .pause || phase == .feedback {
-                        intersectionGlow
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            ZStack {
+                gridWithHeaders
+                rowLaser             // <- fixed @ViewBuilder, no type error
+                colLaser             // <- fixed @ViewBuilder, no type error
+                if phase == .intersectPause || phase == .feedback { intersectionGlow }
             }
-            .frame(height: gridPixelHeight + 20)
+            .frame(width: gridPixelWidth, height: gridPixelHeight)
 
-            footerControls
+            footer
         }
         .padding()
         .navigationTitle("Tutorial")
-        .onAppear {
-            startNewRound(isDemo: true)
-        }
+        .onAppear { startRowsDemo() }
     }
 
-    // MARK: - Layout helpers
-
-    private var gridPixelWidth: CGFloat {
-        // (board + 2 headers) * cell + gaps
-        CGFloat(boardSize + 2) * cellSize + CGFloat(boardSize + 1 + 2) * spacing
-    }
-
-    private var gridPixelHeight: CGFloat {
-        CGFloat(boardSize + 2) * cellSize + CGFloat(boardSize + 1 + 2) * spacing
-    }
-
-    private func headerLabel(_ text: String) -> some View {
-        Text(text)
-            .font(.caption)
-            .frame(width: cellSize, height: cellSize)
-            .foregroundStyle(.primary)
-            .background(Color(UIColor.secondarySystemBackground))
-            .clipShape(RoundedRectangle(cornerRadius: 6))
-    }
-
-    private func headerCorner() -> some View {
-        Color.clear
-            .frame(width: cellSize, height: cellSize)
-    }
-
-    // Grid cell (simple rounded square)
-    private func CellRect(row: Int, col: Int, size: CGFloat, isHighlighted: Bool) -> some View {
-        RoundedRectangle(cornerRadius: 8)
-            .strokeBorder(isHighlighted ? Color.yellow : Color.gray, lineWidth: isHighlighted ? 3 : 1)
-            .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.blue.opacity(0.2))
-            )
-            .frame(width: size, height: size)
-    }
-
-    private func isHighlighted(row: Int, col: Int) -> Bool {
-        (row == targetRow || col == targetCol) && (phase == .pause || phase == .feedback)
-    }
-
-    // MARK: - Header / Footer
+    // MARK: Header / Footer
 
     private var header: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: 6) {
             switch phase {
-            case .demo:
-                Text("Watch: rows meet columns at a cell")
-                    .font(.headline)
-                labelLine
-            case .pause:
-                Text("Intersection")
-                    .font(.headline)
-                resultLine
+            case .rowsDemo:
+                Text("Rows").font(.title3).bold()
+                Text("Watch the horizontal line sweep a row.")
+            case .colsDemo:
+                Text("Columns").font(.title3).bold()
+                Text("Watch the vertical line sweep a column.")
+            case .intersectDemo, .intersectPause:
+                Text("Intersection").font(.title3).bold()
+                Text("Where a row meets a column: row × column.")
             case .practice:
-                Text("Your turn: tap the intersection")
-                    .font(.headline)
-                labelLine
+                Text("Try it!").font(.title3).bold()
+                Text("Tap the cell where the lasers will cross.")
             case .feedback:
-                Text(wasCorrect ? "Great!" : "Not quite – try the next one")
-                    .font(.headline)
-                resultLine
+                Text(wasCorrect ? "Great!" : "Not quite").font(.title3).bold()
+                Text("\(targetRow) × \(targetCol) = \(targetRow * targetCol)")
             }
+            HStack(spacing: 16) {
+                Text("Row: \(targetRow)").foregroundStyle(.red)
+                Text("Column: \(targetCol)").foregroundStyle(.blue)
+            }.font(.subheadline)
         }
     }
 
-    private var labelLine: some View {
-        HStack(spacing: 12) {
-            Text("Row: \(targetRow)")
-                .foregroundStyle(.red)
-            Text("Column: \(targetCol)")
-                .foregroundStyle(.blue)
-        }
-        .font(.subheadline)
-    }
-
-    private var resultLine: some View {
-        Text("\(targetRow) × \(targetCol) = \(targetRow * targetCol)")
-            .font(.title3)
-            .fontWeight(.semibold)
-    }
-
-    private var footerControls: some View {
+    private var footer: some View {
         HStack {
             if phase == .practice || phase == .feedback {
-                Button("Next") {
-                    // Next practice round
-                    startNewRound(isDemo: false)
-                }
-                .buttonStyle(.borderedProminent)
+                Button("Next") { nextPracticeRound() }
+                    .buttonStyle(.borderedProminent)
             } else {
-                Button("Skip Demo") {
-                    // Jump straight to practice
-                    phase = .practice
-                    demoLeft = 0
-                }
-                .buttonStyle(.bordered)
+                Button("Skip to Practice") { phase = .practice }
+                    .buttonStyle(.bordered)
             }
             Spacer()
         }
         .padding(.top, 4)
     }
 
-    // MARK: - Animated overlays
+    // MARK: Grid
 
-    private var icicleOverlay: some View {
-        // Icicle falls from the top along the selected column
-        // Draw only during demo
-        Group {
-            if phase == .demo {
-                let x = columnCenterX(col: targetCol)
-                let y = lerp(from: topHeaderBottomY, to: rowCenterY(row: targetRow), t: icicleProgress)
-                Image(systemName: "snowflake")
-                    .font(.title2)
-                    .foregroundStyle(.blue)
-                    .position(x: x, y: y)
-                    .opacity(isAnimating ? 1 : 0)
+    private var gridPixelWidth: CGFloat {
+        let items = CGFloat(boardSize + 2)
+        let gaps = CGFloat(boardSize + 1 + 2)
+        return items * cellSize + gaps * spacing
+    }
+
+    private var gridPixelHeight: CGFloat {
+        let items = CGFloat(boardSize + 2)
+        let gaps = CGFloat(boardSize + 1 + 2)
+        return items * cellSize + gaps * spacing
+    }
+
+    private var gridWithHeaders: some View {
+        VStack(spacing: spacing) {
+            // top numbers
+            HStack(spacing: spacing) {
+                headerCorner
+                ForEach(1...boardSize, id: \.self) { c in topHeader(c) }
+                headerCorner
+            }
+            // rows
+            ForEach(1...boardSize, id: \.self) { r in
+                HStack(spacing: spacing) {
+                    leftHeader(r)
+                    ForEach(1...boardSize, id: \.self) { c in
+                        cellAt(r, c).onTapGesture { handleTap(row: r, col: c) }
+                    }
+                    rightHeader(r)
+                }
+            }
+            // bottom numbers
+            HStack(spacing: spacing) {
+                headerCorner
+                ForEach(1...boardSize, id: \.self) { c in bottomHeader(c) }
+                headerCorner
             }
         }
     }
 
-    private var flameOverlay: some View {
-        // Flame moves from left along the selected row
-        Group {
-            if phase == .demo {
-                let y = rowCenterY(row: targetRow)
-                let x = lerp(from: leftHeaderRightX, to: columnCenterX(col: targetCol), t: flameProgress)
-                Image(systemName: "flame.fill")
-                    .font(.title2)
-                    .foregroundStyle(.red)
-                    .position(x: x, y: y)
-                    .opacity(isAnimating ? 1 : 0)
-            }
+    private var headerCorner: some View { Color.clear.frame(width: cellSize, height: cellSize) }
+
+    private func topHeader(_ col: Int) -> some View {
+        Text("\(col)")
+            .font(.caption)
+            .frame(width: cellSize, height: cellSize)
+            .background(Color(UIColor.secondarySystemBackground))
+            .overlay(RoundedRectangle(cornerRadius: 6)
+                .stroke(col == targetCol ? Color.blue : .clear, lineWidth: 2))
+            .clipShape(RoundedRectangle(cornerRadius: 6))
+    }
+
+    private func bottomHeader(_ col: Int) -> some View {
+        Text("\(col)")
+            .font(.caption)
+            .frame(width: cellSize, height: cellSize)
+            .background(Color(UIColor.secondarySystemBackground))
+            .overlay(RoundedRectangle(cornerRadius: 6)
+                .stroke(col == targetCol ? Color.blue : .clear, lineWidth: 2))
+            .clipShape(RoundedRectangle(cornerRadius: 6))
+    }
+
+    private func leftHeader(_ row: Int) -> some View {
+        Text("\(row)")
+            .font(.caption)
+            .frame(width: cellSize, height: cellSize)
+            .background(Color(UIColor.secondarySystemBackground))
+            .overlay(RoundedRectangle(cornerRadius: 6)
+                .stroke(row == targetRow ? Color.red : .clear, lineWidth: 2))
+            .clipShape(RoundedRectangle(cornerRadius: 6))
+    }
+
+    private func rightHeader(_ row: Int) -> some View {
+        Text("\(row)")
+            .font(.caption)
+            .frame(width: cellSize, height: cellSize)
+            .background(Color(UIColor.secondarySystemBackground))
+            .overlay(RoundedRectangle(cornerRadius: 6)
+                .stroke(row == targetRow ? Color.red : .clear, lineWidth: 2))
+            .clipShape(RoundedRectangle(cornerRadius: 6))
+    }
+
+    private func cellAt(_ row: Int, _ col: Int) -> some View {
+        let highlighted = (phase == .intersectPause || phase == .feedback) && (row == targetRow || col == targetCol)
+        return RoundedRectangle(cornerRadius: 8)
+            .strokeBorder(highlighted ? Color.yellow : Color.gray, lineWidth: highlighted ? 3 : 1)
+            .background(RoundedRectangle(cornerRadius: 8).fill(Color.blue.opacity(0.18)))
+            .frame(width: cellSize, height: cellSize)
+    }
+
+    // MARK: Lasers (fixed with @ViewBuilder)
+
+    @ViewBuilder private var rowLaser: some View {
+        if phase == .rowsDemo || phase == .intersectDemo {
+            let y = rowCenterY(rowIndex: targetRow)
+            let xStart = leftHeaderRightX
+            let xEndIntersect = columnCenterX(colIndex: targetCol)
+            let xEndRowsOnly = rightHeaderLeftX
+            let endX = (phase == .rowsDemo)
+                ? lerp(from: xStart, to: xEndRowsOnly, t: rowProgress)
+                : lerp(from: xStart, to: xEndIntersect, t: rowProgress)
+            LaserHorizontal(y: y, fromX: xStart, toX: endX)
+        }
+    }
+
+    @ViewBuilder private var colLaser: some View {
+        if phase == .colsDemo || phase == .intersectDemo {
+            let x = columnCenterX(colIndex: targetCol)
+            let yStart = topHeaderBottomY
+            let yEndIntersect = rowCenterY(rowIndex: targetRow)
+            let yEndColsOnly = bottomHeaderTopY
+            let endY = (phase == .colsDemo)
+                ? lerp(from: yStart, to: yEndColsOnly, t: colProgress)
+                : lerp(from: yStart, to: yEndIntersect, t: colProgress)
+            LaserVertical(x: x, fromY: yStart, toY: endY)
         }
     }
 
     private var intersectionGlow: some View {
-        let x = columnCenterX(col: targetCol)
-        let y = rowCenterY(row: targetRow)
-        return Circle()
-            .fill(Color.yellow.opacity(0.35))
-            .frame(width: cellSize * 0.9, height: cellSize * 0.9)
-            .position(x: x, y: y)
-            .overlay(
-                Text("\(targetRow * targetCol)")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .shadow(color: .black.opacity(0.6), radius: 1.5)
-            )
-            .allowsHitTesting(false)
-            .transition(.scale.combined(with: .opacity))
+        let x = columnCenterX(colIndex: targetCol)
+        let y = rowCenterY(rowIndex: targetRow)
+        return ZStack {
+            Circle()
+                .fill(Color.yellow.opacity(0.35))
+                .frame(width: cellSize * 0.9, height: cellSize * 0.9)
+            Text("\(targetRow * targetCol)")
+                .font(.headline)
+                .foregroundStyle(.white)
+                .shadow(color: .black.opacity(0.7), radius: 1.5)
+        }
+        .position(x: x, y: y)
+        .allowsHitTesting(false)
+        .transition(.scale.combined(with: .opacity))
     }
 
-    // MARK: - Coordinates helpers (centers/edges)
+    // MARK: Geometry helpers
 
-    private var gridTopY: CGFloat {
-        // top header row (first row in VStack)
-        0
+    private func rowCenterY(rowIndex: Int) -> CGFloat {
+        let rowsBefore = CGFloat(rowIndex)
+        let gapsBefore = rowsBefore
+        return rowsBefore * (cellSize + spacing) + cellSize / 2
     }
 
-    private var topHeaderBottomY: CGFloat {
-        // bottom edge of top header row's cells
-        cellCenterY(forRowIndex: 0) + cellSize / 2
-    }
-
-    private var leftHeaderRightX: CGFloat {
-        cellCenterX(forColIndex: 0) + cellSize / 2
-    }
-
-    private func rowCenterY(row: Int) -> CGFloat {
-        // Row indexes in the VStack:
-        // 0: top headers
-        // 1..boardSize: grid rows
-        // boardSize+1: bottom headers
-        cellCenterY(forRowIndex: row)
-    }
-
-    private func columnCenterX(col: Int) -> CGFloat {
-        // Column indexes in the HStack:
-        // 0: left header
-        // 1..boardSize: grid cols
-        // boardSize+1: right header
-        cellCenterX(forColIndex: col)
-    }
-
-    private func cellCenterY(forRowIndex idx: Int) -> CGFloat {
-        // Sum heights of previous rows + this cell center
-        let rowsBefore = CGFloat(idx) // number of rows above this one
-        let gapsBefore = rowsBefore   // spacing gaps between those rows
-        return (rowsBefore * cellSize) + (gapsBefore * spacing) + (cellSize / 2)
-    }
-
-    private func cellCenterX(forColIndex idx: Int) -> CGFloat {
-        let colsBefore = CGFloat(idx)
+    private func columnCenterX(colIndex: Int) -> CGFloat {
+        let colsBefore = CGFloat(colIndex)
         let gapsBefore = colsBefore
-        return (colsBefore * cellSize) + (gapsBefore * spacing) + (cellSize / 2)
+        return colsBefore * (cellSize + spacing) + cellSize / 2
     }
 
-    // MARK: - Flow control
+    private var topHeaderBottomY: CGFloat { rowCenterY(rowIndex: 0) + cellSize / 2 }
+    private var bottomHeaderTopY: CGFloat { rowCenterY(rowIndex: boardSize + 1) - cellSize / 2 }
+    private var leftHeaderRightX: CGFloat { columnCenterX(colIndex: 0) + cellSize / 2 }
+    private var rightHeaderLeftX: CGFloat { columnCenterX(colIndex: boardSize + 1) - cellSize / 2 }
 
-    private func startNewRound(isDemo: Bool) {
-        // Pick random target
+    // MARK: Flow
+
+    private func startRowsDemo() {
+        phase = .rowsDemo
         targetRow = Int.random(in: 1...boardSize)
         targetCol = Int.random(in: 1...boardSize)
-        userSelection = nil
-        wasCorrect = false
-
-        if isDemo {
-            phase = .demo
-            runDemoAnimation()
-        } else {
-            phase = .practice
+        rowProgress = 0
+        withAnimation(.easeInOut(duration: sweepDuration)) { rowProgress = 1 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + pauseAfterDemo) {
+            if demosLeftRows > 1 { demosLeftRows -= 1; startRowsDemo() }
+            else { demosLeftRows = 0; startColsDemo() }
         }
     }
 
-    private func runDemoAnimation() {
-        isAnimating = true
-        icicleProgress = 0
-        flameProgress = 0
-
-        // Animate icicle first, then flame to meet at the intersection.
-        withAnimation(.easeInOut(duration: 0.9)) {
-            icicleProgress = 1.0
+    private func startColsDemo() {
+        phase = .colsDemo
+        targetRow = Int.random(in: 1...boardSize)
+        targetCol = Int.random(in: 1...boardSize)
+        colProgress = 0
+        withAnimation(.easeInOut(duration: sweepDuration)) { colProgress = 1 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + pauseAfterDemo) {
+            if demosLeftCols > 1 { demosLeftCols -= 1; startColsDemo() }
+            else { demosLeftCols = 0; startIntersectDemo() }
         }
+    }
 
-        // Chain the flame animation slightly after
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
-            withAnimation(.easeInOut(duration: 0.9)) {
-                flameProgress = 1.0
+    private func startIntersectDemo() {
+        phase = .intersectDemo
+        targetRow = Int.random(in: 1...boardSize)
+        targetCol = Int.random(in: 1...boardSize)
+        rowProgress = 0
+        colProgress = 0
+        withAnimation(.easeInOut(duration: sweepDuration)) { rowProgress = 1 }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+            withAnimation(.easeInOut(duration: sweepDuration)) { colProgress = 1 }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + 0.15) {
+            withAnimation { phase = .intersectPause }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                if demosLeftIntersect > 1 { demosLeftIntersect -= 1; startIntersectDemo() }
+                else { demosLeftIntersect = 0; phase = .practice }
             }
         }
+    }
 
-        // After animations complete, highlight and pause
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.2) {
-            isAnimating = false
-            phase = .pause
-
-            // Hold the result briefly, then proceed
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                if demoLeft > 1 {
-                    demoLeft -= 1
-                    startNewRound(isDemo: true)
-                } else {
-                    // Switch to practice after the last demo
-                    demoLeft = 0
-                    phase = .practice
-                }
-            }
-        }
+    private func nextPracticeRound() {
+        phase = .practice
+        userSelection = nil
+        wasCorrect = false
+        targetRow = Int.random(in: 1...boardSize)
+        targetCol = Int.random(in: 1...boardSize)
     }
 
     private func handleTap(row: Int, col: Int) {
         guard phase == .practice else { return }
         userSelection = (row, col)
         wasCorrect = (row == targetRow && col == targetCol)
-        phase = .feedback
-
-        // Brief feedback, then stay in practice (Next → new round)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-            // do nothing; user uses "Next" to continue
-        }
+        withAnimation { phase = .feedback }
     }
 
-    // MARK: - Math helpers
+    // MARK: Math
     private func lerp(from a: CGFloat, to b: CGFloat, t: CGFloat) -> CGFloat {
-        a + (b - a) * min(max(t, 0), 1)
+        a + (b - a) * max(0, min(1, t))
+    }
+}
+
+// MARK: Laser shapes
+
+private struct LaserHorizontal: View {
+    let y: CGFloat
+    let fromX: CGFloat
+    let toX: CGFloat
+
+    var body: some View {
+        let width = max(0, toX - fromX)
+        RoundedRectangle(cornerRadius: 3)
+            .fill(LinearGradient(colors: [.blue.opacity(0.1), .blue, .white, .blue, .blue.opacity(0.1)],
+                                 startPoint: .leading, endPoint: .trailing))
+            .frame(width: width, height: 6)
+            .overlay(RoundedRectangle(cornerRadius: 3).stroke(.white.opacity(0.7), lineWidth: 0.5))
+            .position(x: fromX + width / 2, y: y)
+            .shadow(color: .blue.opacity(0.6), radius: 4)
+            .allowsHitTesting(false)
+    }
+}
+
+private struct LaserVertical: View {
+    let x: CGFloat
+    let fromY: CGFloat
+    let toY: CGFloat
+
+    var body: some View {
+        let height = max(0, toY - fromY)
+        RoundedRectangle(cornerRadius: 3)
+            .fill(LinearGradient(colors: [.red.opacity(0.1), .red, .white, .red, .red.opacity(0.1)],
+                                 startPoint: .top, endPoint: .bottom))
+            .frame(width: 6, height: height)
+            .overlay(RoundedRectangle(cornerRadius: 3).stroke(.white.opacity(0.7), lineWidth: 0.5))
+            .position(x: x, y: fromY + height / 2)
+            .shadow(color: .red.opacity(0.6), radius: 4)
+            .allowsHitTesting(false)
     }
 }
