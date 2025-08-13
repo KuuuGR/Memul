@@ -18,8 +18,10 @@ struct StartView: View {
 
     @State private var isActive = false
     @State private var gameViewModel: GameViewModel?
+
     @State private var isShowingSettings = false
     @State private var isShowingAbout = false
+    @State private var isShowingTutorial = false   // NEW
 
     var body: some View {
         NavigationStack {
@@ -32,6 +34,12 @@ struct StartView: View {
                     startGame()
                 }
                 .buttonStyle(.borderedProminent)
+
+                // NEW: Tutorial button just under Start Game
+                Button("Tutorial") {
+                    isShowingTutorial = true
+                }
+                .buttonStyle(.bordered)
 
                 HStack(spacing: 12) {
                     Button("Settings") {
@@ -52,6 +60,9 @@ struct StartView: View {
                 if let gameViewModel = gameViewModel {
                     GameView(viewModel: gameViewModel)
                 }
+            }
+            .navigationDestination(isPresented: $isShowingTutorial) {
+                TutorialView() // ensure you have TutorialView.swift
             }
             .navigationDestination(isPresented: $isShowingSettings) {
                 SettingsView(settings: $settings)
