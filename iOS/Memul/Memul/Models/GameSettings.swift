@@ -66,6 +66,7 @@ struct GameSettings {
     var turnTimeLimit: Int? = 30
 
     // Index headers customization
+    var enableIndexCustomization: Bool = false
     var indexColors: IndexColors = IndexColors()
     var indexVisibility: IndexVisibility = IndexVisibility()
 

@@ -37,6 +37,8 @@
 "right_color" = "Right color";
 "make_labels_transparent" = "Make labels transparent";
 "index_labels_premium_hint" = "Customize label colors requires Premium.";
+"index_customize" = "Customize labels";
+"reset_label_colors" = "Reset colors";
 
 // MARK: - Header & UX
 "header_options" = "Header";
@@ -78,3 +80,4 @@
 "ab_purpose_turn_based" = "Turn-based gameplay supports 1–16 players.";
 "ab_purpose_fun_learning" = "Reveal images as you learn and compete!";
 "ab_section_support" = "Support";
+

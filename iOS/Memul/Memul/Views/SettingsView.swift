@@ -51,17 +51,13 @@ struct SettingsView: View {
             // MARK: Difficulty
             Section(header: Text(NSLocalizedString("difficulty", comment: ""))) {
                 Picker(NSLocalizedString("difficulty_mode", comment: ""), selection: $settings.difficulty) {
-                    Text(NSLocalizedString("difficulty_easy", comment: ""))
-                        .tag(Difficulty.easy)
-                    Text(NSLocalizedString("difficulty_normal", comment: ""))
-                        .tag(Difficulty.normal)
-                    Text(NSLocalizedString("difficulty_hard", comment: ""))
-                        .tag(Difficulty.hard)
+                    Text(NSLocalizedString("difficulty_easy", comment: "")).tag(Difficulty.easy)
+                    Text(NSLocalizedString("difficulty_normal", comment: "")).tag(Difficulty.normal)
+                    Text(NSLocalizedString("difficulty_hard", comment: "")).tag(Difficulty.hard)
                 }
                 .pickerStyle(.segmented)
                 .disabled(!settings.isPremium) // Free → Easy only
                 .onChange(of: settings.difficulty) { _, newValue in
-                    // If premium is off, enforce Easy
                     if !settings.isPremium && newValue != .easy {
                         settings.difficulty = .easy
                     }
@@ -74,20 +70,42 @@ struct SettingsView: View {
                 }
             }
 
-            // MARK: Index Labels
+            // MARK: Index Labels (cleaned)
             Section(header: Text(NSLocalizedString("index_labels", comment: ""))) {
-                Toggle(NSLocalizedString("show_top_labels", comment: ""), isOn: $settings.indexVisibility.top)
-                Toggle(NSLocalizedString("show_bottom_labels", comment: ""), isOn: $settings.indexVisibility.bottom)
-                Toggle(NSLocalizedString("show_left_labels", comment: ""), isOn: $settings.indexVisibility.left)
-                Toggle(NSLocalizedString("show_right_labels", comment: ""), isOn: $settings.indexVisibility.right)
+                Toggle(NSLocalizedString("index_customize", comment: ""), isOn: $settings.enableIndexCustomization)
+                    .disabled(!settings.isPremium)
+                    .opacity(settings.isPremium ? 1.0 : 0.5)
+                    .onChange(of: settings.isPremium) { _, isPremium in
+                        if !isPremium {
+                            settings.enableIndexCustomization = false
+                        }
+                    }
 
-                if settings.isPremium {
-                    ColorPicker(NSLocalizedString("top_color", comment: ""), selection: $settings.indexColors.top)
-                    ColorPicker(NSLocalizedString("bottom_color", comment: ""), selection: $settings.indexColors.bottom)
-                    ColorPicker(NSLocalizedString("left_color", comment: ""), selection: $settings.indexColors.left)
-                    ColorPicker(NSLocalizedString("right_color", comment: ""), selection: $settings.indexColors.right)
-                    Button(NSLocalizedString("make_labels_transparent", comment: "")) {
-                        settings.indexColors = .transparent
+                if settings.isPremium && settings.enableIndexCustomization {
+                    // Visibility toggles
+                    Group {
+                        Toggle(NSLocalizedString("show_top_labels", comment: ""), isOn: $settings.indexVisibility.top)
+                        Toggle(NSLocalizedString("show_bottom_labels", comment: ""), isOn: $settings.indexVisibility.bottom)
+                        Toggle(NSLocalizedString("show_left_labels", comment: ""), isOn: $settings.indexVisibility.left)
+                        Toggle(NSLocalizedString("show_right_labels", comment: ""), isOn: $settings.indexVisibility.right)
+                    }
+
+                    // Color pickers
+                    Group {
+                        ColorPicker(NSLocalizedString("top_color", comment: ""), selection: $settings.indexColors.top)
+                        ColorPicker(NSLocalizedString("bottom_color", comment: ""), selection: $settings.indexColors.bottom)
+                        ColorPicker(NSLocalizedString("left_color", comment: ""), selection: $settings.indexColors.left)
+                        ColorPicker(NSLocalizedString("right_color", comment: ""), selection: $settings.indexColors.right)
+                    }
+
+                    HStack {
+                        Button(NSLocalizedString("make_labels_transparent", comment: "")) {
+                            settings.indexColors = .transparent
+                        }
+                        Spacer()
+                        Button(NSLocalizedString("reset_label_colors", comment: "")) {
+                            settings.indexColors = IndexColors() // back to defaults
+                        }
                     }
                 } else {
                     Text(NSLocalizedString("index_labels_premium_hint", comment: ""))
@@ -135,7 +153,9 @@ struct SettingsView: View {
                             settings.difficulty = .easy
                             // Lock timer back to 30s for free users
                             settings.turnTimeLimit = 30
-                            // Reset index colors to defaults (non-transparent)
+
+                            // Collapse / reset Index Labels customization
+                            settings.enableIndexCustomization = false
                             settings.indexColors = IndexColors()
                         }
                     }
