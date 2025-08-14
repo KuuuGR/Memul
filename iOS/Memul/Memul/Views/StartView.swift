@@ -21,33 +21,32 @@ struct StartView: View {
 
     @State private var isShowingSettings = false
     @State private var isShowingAbout = false
-    @State private var isShowingTutorial = false   // NEW
+    @State private var isShowingTutorial = false
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
-                Text("Memul")
+                Text(NSLocalizedString("app_title", comment: "App title on start screen"))
                     .font(.largeTitle)
                     .fontWeight(.bold)
 
-                Button("Start Game") {
+                Button(NSLocalizedString("start_game", comment: "Start game button")) {
                     startGame()
                 }
                 .buttonStyle(.borderedProminent)
 
-                // NEW: Tutorial button just under Start Game
-                Button("Tutorial") {
+                Button(NSLocalizedString("tutorial", comment: "Open tutorial")) {
                     isShowingTutorial = true
                 }
                 .buttonStyle(.bordered)
 
                 HStack(spacing: 12) {
-                    Button("Settings") {
+                    Button(NSLocalizedString("settings", comment: "Open settings")) {
                         isShowingSettings = true
                     }
                     .buttonStyle(.bordered)
 
-                    Button("About") {
+                    Button(NSLocalizedString("about", comment: "Open about")) {
                         isShowingAbout = true
                     }
                     .buttonStyle(.bordered)
@@ -62,7 +61,7 @@ struct StartView: View {
                 }
             }
             .navigationDestination(isPresented: $isShowingTutorial) {
-                TutorialView() // ensure you have TutorialView.swift
+                TutorialView()
             }
             .navigationDestination(isPresented: $isShowingSettings) {
                 SettingsView(settings: $settings)

@@ -4,95 +4,103 @@
 //
 //  Created by KuuuGR on 08/08/2025.
 //
-//  Changes:
-//  - Swap laser colors so ROW (horizontal) is RED and COLUMN (vertical) is BLUE.
-//  - Slow down animations by increasing `sweepDuration` and `pauseAfterDemo`.
-//  - In Intersection demo, lasers sweep ACROSS the whole grid (don’t stop at the crossing).
-//  - Show intersection glow AS SOON AS both lasers have reached the crossing point during the sweep.
-//
 
 import SwiftUI
 
 struct TutorialView: View {
+    // Grid config
     private let boardSize = 4
     private let cellSize: CGFloat = 42
     private let spacing: CGFloat = 4
 
-    private enum Phase { case rowsDemo, colsDemo, intersectDemo, intersectPause, practice, feedback }
+    // Tutorial phases
+    private enum Phase { case rowsDemo, rowsPause, colsDemo, colsPause, intersectDemo, intersectPause, practice, feedback }
 
     @State private var phase: Phase = .rowsDemo
-    @State private var demosLeftRows = 2
-    @State private var demosLeftCols = 2
-    @State private var demosLeftIntersect = 3
 
+    // Targets
     @State private var targetRow = 1
     @State private var targetCol = 1
 
+    // Animation progress (0..1)
     @State private var rowProgress: CGFloat = 0
     @State private var colProgress: CGFloat = 0
 
+    // Practice
     @State private var userSelection: (row: Int, col: Int)?
     @State private var wasCorrect = false
 
-    private let sweepDuration = 1.05
-    private let pauseAfterDemo = 0.6
+    // Tuning (4× slower)
+    private let sweepDuration = 4.20   // previously 1.05
+    private let pauseAfterDemo = 0.6   // small pause after completion
 
     var body: some View {
         VStack(spacing: 16) {
             header
+
             ZStack {
                 gridWithHeaders
                 rowLaser
                 colLaser
-                if shouldShowIntersectionGlow { intersectionGlow }
             }
             .frame(width: gridPixelWidth, height: gridPixelHeight)
+
             footer
         }
         .padding()
-        .navigationTitle("Tutorial")
-        .onAppear { startRowsDemo() }
+        .navigationTitle(NSLocalizedString("tutorial_title", comment: "Tutorial screen title"))
+        .onAppear { startRowsDemo(randomizeTarget: true) }
     }
+
+    // MARK: Header / Footer
 
     private var header: some View {
         VStack(spacing: 6) {
             switch phase {
-            case .rowsDemo:
-                Text("Rows").font(.title3).bold()
-                Text("Watch the horizontal line sweep a row.")
-            case .colsDemo:
-                Text("Columns").font(.title3).bold()
-                Text("Watch the vertical line sweep a column.")
+            case .rowsDemo, .rowsPause:
+                Text(NSLocalizedString("tutorial_rows_title", comment: "Rows title")).font(.title3).bold()
+                Text(NSLocalizedString("tutorial_rows_sub", comment: "Rows subtitle"))
+            case .colsDemo, .colsPause:
+                Text(NSLocalizedString("tutorial_cols_title", comment: "Columns title")).font(.title3).bold()
+                Text(NSLocalizedString("tutorial_cols_sub", comment: "Columns subtitle"))
             case .intersectDemo, .intersectPause:
-                Text("Intersection").font(.title3).bold()
-                Text("Where a row meets a column: row × column.")
+                Text(NSLocalizedString("tutorial_intersect_title", comment: "Intersection title")).font(.title3).bold()
+                Text(NSLocalizedString("tutorial_intersect_sub", comment: "Intersection subtitle"))
             case .practice:
-                Text("Try it!").font(.title3).bold()
-                Text("Tap the cell where the lasers will cross.")
+                Text(NSLocalizedString("tutorial_practice_title", comment: "Practice title")).font(.title3).bold()
+                Text(NSLocalizedString("tutorial_practice_sub", comment: "Practice subtitle"))
             case .feedback:
-                Text(wasCorrect ? "Great!" : "Not quite").font(.title3).bold()
-                Text("\(targetRow) × \(targetCol) = \(targetRow * targetCol)")
+                Text(wasCorrect ? NSLocalizedString("tutorial_feedback_great", comment: "Great") : NSLocalizedString("tutorial_feedback_not_quite", comment: "Not quite")).font(.title3).bold()
+                Text(String(format: NSLocalizedString("tutorial_equation", comment: "r × c = product"), targetRow, targetCol, targetRow * targetCol))
             }
             HStack(spacing: 16) {
-                Text("Row: \(targetRow)").foregroundStyle(.red)
-                Text("Column: \(targetCol)").foregroundStyle(.blue)
+                Text(String(format: NSLocalizedString("tutorial_row_label", comment: "Row label"), targetRow)).foregroundStyle(.red)
+                Text(String(format: NSLocalizedString("tutorial_col_label", comment: "Column label"), targetCol)).foregroundStyle(.blue)
             }.font(.subheadline)
         }
     }
 
     private var footer: some View {
         HStack {
-            if phase == .practice || phase == .feedback {
-                Button("Next") { nextPracticeRound() }
+            switch phase {
+            case .rowsPause, .colsPause, .intersectPause:
+                Button(NSLocalizedString("repeat", comment: "Repeat button")) { repeatCurrentAnimation() }
+                    .buttonStyle(.bordered)
+                Button(NSLocalizedString("next", comment: "Next button")) { nextFromPause() }
                     .buttonStyle(.borderedProminent)
-            } else {
-                Button("Skip to Practice") { phase = .practice }
+            case .practice, .feedback:
+                Button(NSLocalizedString("next", comment: "Next button")) { nextPracticeRound() }
+                    .buttonStyle(.borderedProminent)
+            default:
+                Button(NSLocalizedString("skip_to_practice", comment: "Skip to Practice")) { phase = .practice }
                     .buttonStyle(.bordered)
             }
             Spacer()
         }
         .padding(.top, 4)
     }
+
+    // MARK: Grid
 
     private var gridPixelWidth: CGFloat {
         let items = CGFloat(boardSize + 2)
@@ -108,11 +116,13 @@ struct TutorialView: View {
 
     private var gridWithHeaders: some View {
         VStack(spacing: spacing) {
+            // top numbers
             HStack(spacing: spacing) {
                 headerCorner
                 ForEach(1...boardSize, id: \.self) { c in topHeader(c) }
                 headerCorner
             }
+            // rows
             ForEach(1...boardSize, id: \.self) { r in
                 HStack(spacing: spacing) {
                     leftHeader(r)
@@ -122,6 +132,7 @@ struct TutorialView: View {
                     rightHeader(r)
                 }
             }
+            // bottom numbers
             HStack(spacing: spacing) {
                 headerCorner
                 ForEach(1...boardSize, id: \.self) { c in bottomHeader(c) }
@@ -174,15 +185,38 @@ struct TutorialView: View {
 
     private func cellAt(_ row: Int, _ col: Int) -> some View {
         let highlighted = shouldHighlightRowCol && (row == targetRow || col == targetCol)
+        let isIntersection = row == targetRow && col == targetCol
+
         return RoundedRectangle(cornerRadius: 8)
             .strokeBorder(highlighted ? Color.yellow : Color.gray, lineWidth: highlighted ? 3 : 1)
-            .background(RoundedRectangle(cornerRadius: 8).fill(Color.blue.opacity(0.18)))
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.blue.opacity(0.18))
+                    .overlay(
+                        // Intersection number glow — centered in this cell
+                        Group {
+                            if isIntersection && shouldShowIntersectionGlow {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.yellow.opacity(0.35))
+                                        .frame(width: cellSize * 0.9, height: cellSize * 0.9)
+                                    Text("\(targetRow * targetCol)")
+                                        .font(.headline)
+                                        .foregroundStyle(.white)
+                                        .shadow(color: .black.opacity(0.7), radius: 1.5)
+                                }
+                            }
+                        }
+                    )
+            )
             .frame(width: cellSize, height: cellSize)
     }
 
     private var shouldHighlightRowCol: Bool {
         (phase == .intersectPause || phase == .feedback) || (phase == .intersectDemo && shouldShowIntersectionGlow)
     }
+
+    // MARK: Lasers
 
     @ViewBuilder private var rowLaser: some View {
         if phase == .rowsDemo || phase == .intersectDemo {
@@ -210,22 +244,7 @@ struct TutorialView: View {
         return rowProgress >= rowIntersectT && colProgress >= colIntersectT
     }
 
-    private var intersectionGlow: some View {
-        let x = columnCenterX(colIndex: targetCol)
-        let y = rowCenterY(rowIndex: targetRow)
-        return ZStack {
-            Circle()
-                .fill(Color.yellow.opacity(0.35))
-                .frame(width: cellSize * 0.9, height: cellSize * 0.9)
-            Text("\(targetRow * targetCol)")
-                .font(.headline)
-                .foregroundStyle(.white)
-                .shadow(color: .black.opacity(0.7), radius: 1.5)
-        }
-        .position(x: x, y: y)
-        .allowsHitTesting(false)
-        .transition(.scale.combined(with: .opacity))
-    }
+    // MARK: Geometry helpers
 
     private func rowCenterY(rowIndex: Int) -> CGFloat {
         let rowsBefore = CGFloat(rowIndex)
@@ -242,6 +261,7 @@ struct TutorialView: View {
     private var leftHeaderRightX: CGFloat { columnCenterX(colIndex: 0) + cellSize / 2 }
     private var rightHeaderLeftX: CGFloat { columnCenterX(colIndex: boardSize + 1) - cellSize / 2 }
 
+    // Fractions of sweep where the intersection lies (used to reveal glow mid-sweep)
     private var rowIntersectT: CGFloat {
         let xStart = leftHeaderRightX
         let xEndAcross = rightHeaderLeftX
@@ -258,34 +278,40 @@ struct TutorialView: View {
         return max(0, min(1, (yCross - yStart) / total))
     }
 
-    private func startRowsDemo() {
+    // MARK: Flow helpers
+
+    private func startRowsDemo(randomizeTarget: Bool) {
+        if randomizeTarget {
+            targetRow = Int.random(in: 1...boardSize)
+            targetCol = Int.random(in: 1...boardSize)
+        }
         phase = .rowsDemo
-        targetRow = Int.random(in: 1...boardSize)
-        targetCol = Int.random(in: 1...boardSize)
         rowProgress = 0
         withAnimation(.easeInOut(duration: sweepDuration)) { rowProgress = 1 }
         DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + pauseAfterDemo) {
-            if demosLeftRows > 1 { demosLeftRows -= 1; startRowsDemo() }
-            else { demosLeftRows = 0; startColsDemo() }
+            phase = .rowsPause
         }
     }
 
-    private func startColsDemo() {
+    private func startColsDemo(randomizeTarget: Bool) {
+        if randomizeTarget {
+            targetRow = Int.random(in: 1...boardSize)
+            targetCol = Int.random(in: 1...boardSize)
+        }
         phase = .colsDemo
-        targetRow = Int.random(in: 1...boardSize)
-        targetCol = Int.random(in: 1...boardSize)
         colProgress = 0
         withAnimation(.easeInOut(duration: sweepDuration)) { colProgress = 1 }
         DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + pauseAfterDemo) {
-            if demosLeftCols > 1 { demosLeftCols -= 1; startColsDemo() }
-            else { demosLeftCols = 0; startIntersectDemo() }
+            phase = .colsPause
         }
     }
 
-    private func startIntersectDemo() {
+    private func startIntersectDemo(randomizeTarget: Bool) {
+        if randomizeTarget {
+            targetRow = Int.random(in: 1...boardSize)
+            targetCol = Int.random(in: 1...boardSize)
+        }
         phase = .intersectDemo
-        targetRow = Int.random(in: 1...boardSize)
-        targetCol = Int.random(in: 1...boardSize)
         rowProgress = 0
         colProgress = 0
         withAnimation(.easeInOut(duration: sweepDuration)) { rowProgress = 1 }
@@ -293,11 +319,31 @@ struct TutorialView: View {
             withAnimation(.easeInOut(duration: sweepDuration)) { colProgress = 1 }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + 0.20) {
-            withAnimation { phase = .intersectPause }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
-                if demosLeftIntersect > 1 { demosLeftIntersect -= 1; startIntersectDemo() }
-                else { demosLeftIntersect = 0; phase = .practice }
-            }
+            phase = .intersectPause
+        }
+    }
+
+    private func repeatCurrentAnimation() {
+        switch phase {
+        case .rowsPause:
+            startRowsDemo(randomizeTarget: false)
+        case .colsPause:
+            startColsDemo(randomizeTarget: false)
+        case .intersectPause:
+            startIntersectDemo(randomizeTarget: false)
+        default: break
+        }
+    }
+
+    private func nextFromPause() {
+        switch phase {
+        case .rowsPause:
+            startColsDemo(randomizeTarget: true)
+        case .colsPause:
+            startIntersectDemo(randomizeTarget: true)
+        case .intersectPause:
+            phase = .practice
+        default: break
         }
     }
 
@@ -316,12 +362,16 @@ struct TutorialView: View {
         withAnimation { phase = .feedback }
     }
 
+    // MARK: Math
     private func lerp(from a: CGFloat, to b: CGFloat, t: CGFloat) -> CGFloat {
         a + (b - a) * max(0, min(1, t))
     }
 }
 
+// MARK: Laser shapes (COLORS SWAPPED)
+
 private struct LaserHorizontal: View {
+    // ROW laser — RED
     let y: CGFloat
     let fromX: CGFloat
     let toX: CGFloat
@@ -340,6 +390,7 @@ private struct LaserHorizontal: View {
 }
 
 private struct LaserVertical: View {
+    // COLUMN laser — BLUE
     let x: CGFloat
     let fromY: CGFloat
     let toY: CGFloat

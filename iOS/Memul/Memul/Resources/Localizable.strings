@@ -5,6 +5,13 @@
 //  Created by admin on 07/08/2025.
 //
 
+// MARK: - Start Screen
+"app_title" = "Memul";
+"start_game" = "Start Game";
+"tutorial" = "Tutorial";
+"settings" = "Settings";
+"about" = "About";
+
 // MARK: - Board & Players
 "board_size" = "Board Size";
 "board_size_value" = "Size: %d × %d";
@@ -81,3 +88,22 @@
 "ab_purpose_fun_learning" = "Reveal images as you learn and compete!";
 "ab_section_support" = "Support";
 
+// MARK: - Tutorial
+"tutorial_title" = "Tutorial";
+"tutorial_rows_title" = "Rows";
+"tutorial_rows_sub" = "Watch the horizontal line sweep a row.";
+"tutorial_cols_title" = "Columns";
+"tutorial_cols_sub" = "Watch the vertical line sweep a column.";
+"tutorial_intersect_title" = "Intersection";
+"tutorial_intersect_sub" = "Where a row meets a column: row × column.";
+"tutorial_practice_title" = "Try it!";
+"tutorial_practice_sub" = "Tap the cell where the lasers will cross.";
+"tutorial_feedback_great" = "Great!";
+"tutorial_feedback_not_quite" = "Not quite";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_row_label" = "Row: %d";
+"tutorial_col_label" = "Column: %d";
+// Buttons shown during tutorial
+"next" = "Next";
+"repeat" = "Repeat";
+"skip_to_practice" = "Skip to Practice";
