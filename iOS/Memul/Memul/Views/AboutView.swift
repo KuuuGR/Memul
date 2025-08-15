@@ -2,7 +2,6 @@ import SwiftUI
 
 struct AboutView: View {
     private var appVersion: String {
-        // Use object(forInfoDictionaryKey:) — safest across builds
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0"
         let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "1"
         return "\(version) (\(build))"
@@ -24,23 +23,45 @@ struct AboutView: View {
                     .foregroundColor(AppTheme.primary)
                     .padding(.top, 4)
 
-                // About app
+                // About (app facts)
                 AboutSection(
-                    title: NSLocalizedString("ab_section_about_app", comment: ""),
+                    title: NSLocalizedString("ab_section_about_app", comment: "About section title"),
                     items: [
-                        NSLocalizedString("ab_app_name", comment: ""),
-                        String(format: NSLocalizedString("ab_version", comment: "Version format string"), appVersion),
-                        NSLocalizedString("ab_developer", comment: "")
+                        NSLocalizedString("ab_app_name", comment: "App display name"),
+                        String(format: NSLocalizedString("ab_version", comment: "Version format"), appVersion),
+                        NSLocalizedString("ab_developer", comment: "Developer line")
                     ]
                 )
 
-                // Purpose
+                // Purpose (why this exists)
                 AboutSection(
-                    title: NSLocalizedString("ab_section_purpose", comment: ""),
+                    title: NSLocalizedString("ab_section_purpose", comment: "Purpose section title"),
                     items: [
-                        NSLocalizedString("ab_purpose_multiplication", comment: ""),
-                        NSLocalizedString("ab_purpose_turn_based", comment: ""),
-                        NSLocalizedString("ab_purpose_fun_learning", comment: "")
+                        NSLocalizedString("ab_purpose_learn_tables", comment: ""),
+                        NSLocalizedString("ab_purpose_carries_forward", comment: ""),
+                        NSLocalizedString("ab_purpose_commutativity", comment: ""),
+                        NSLocalizedString("ab_purpose_accessible", comment: "")
+                    ]
+                )
+
+                // App features / what it includes
+                AboutSection(
+                    title: NSLocalizedString("ab_section_features", comment: "Features section title"),
+                    items: [
+                        NSLocalizedString("ab_feature_multiplayer", comment: ""),
+                        NSLocalizedString("ab_feature_puzzle_reveal", comment: ""),
+                        NSLocalizedString("ab_feature_tutorial", comment: ""),
+                        NSLocalizedString("ab_feature_quick_practice", comment: ""),
+                        NSLocalizedString("ab_feature_customization", comment: "")
+                    ]
+                )
+
+                // Author
+                AboutSection(
+                    title: NSLocalizedString("ab_section_author", comment: "Author section title"),
+                    items: [
+                        NSLocalizedString("ab_author_line1", comment: ""),
+                        NSLocalizedString("ab_author_line2", comment: "")
                     ]
                 )
 

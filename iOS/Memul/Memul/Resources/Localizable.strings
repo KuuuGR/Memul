@@ -76,14 +76,34 @@
 
 // MARK: - About
 "ab_navigation_title" = "About";
+
+// About Memul
 "ab_section_about_app" = "About Memul";
 "ab_app_name" = "Memul — Multiplication Puzzle Game";
 "ab_version" = "Version: %@";
 "ab_developer" = "Developer: Grzegorz Kulesza";
+
+// Purpose
 "ab_section_purpose" = "Purpose";
-"ab_purpose_multiplication" = "Practice multiplication tables through a fun grid puzzle.";
-"ab_purpose_turn_based" = "Turn-based gameplay supports 1–16 players.";
-"ab_purpose_fun_learning" = "Reveal images as you learn and compete!";
+"ab_purpose_learn_tables" = "Make learning the multiplication table simpler—for kids and adults.";
+"ab_purpose_carries_forward" = "Builds skills that carry into later studies: array notation, row–column positions, and Cartesian thinking.";
+"ab_purpose_commutativity" = "Helps learners intuitively grasp the commutative property of multiplication.";
+"ab_purpose_accessible" = "Approachable for primary school yet useful far beyond it.";
+
+// Features
+"ab_section_features" = "Features";
+"ab_feature_multiplayer" = "Turn-based multiplayer (1–16 players) keeps practice engaging with friends.";
+"ab_feature_puzzle_reveal" = "Hidden picture puzzle reveals piece-by-piece as you answer correctly.";
+"ab_feature_tutorial" = "Interactive tutorial explains rows, columns, and intersections.";
+"ab_feature_quick_practice" = "Quick Practice modes for multiplication and (Premium) division.";
+"ab_feature_customization" = "Rich customization: board size, difficulty (Easy/Normal/Hard with optional penalties), timers, label options, puzzle toggle, and coordinate hints.";
+
+// Author
+"ab_section_author" = "Author";
+"ab_author_line1" = "Created by Grzegorz Kulesza, with a background across electrical engineering, computer science, physics, medical studies, and teacher training.";
+"ab_author_line2" = "That cross-disciplinary experience shaped Memul’s focus on concepts I wished I’d learned earlier: arrays, coordinates, and intuitive problem-solving.";
+
+// Support
 "ab_section_support" = "Support";
 
 // MARK: - Tutorial
