@@ -30,9 +30,14 @@ struct TutorialView: View {
     @State private var userSelection: (row: Int, col: Int)?
     @State private var wasCorrect = false
 
+    // Manual controls
+    @State private var isAnimating = false
+    @State private var lastRowPlayed: Int? = nil
+    @State private var lastColPlayed: Int? = nil
+
     // Tuning (4× slower)
     private let sweepDuration = 4.20   // previously 1.05
-    private let pauseAfterDemo = 0.6   // small pause after completion
+    private let pauseAfterDemo = 0.6   // small pause after completion (kept for intersect)
 
     var body: some View {
         VStack(spacing: 16) {
@@ -45,14 +50,27 @@ struct TutorialView: View {
             }
             .frame(width: gridPixelWidth, height: gridPixelHeight)
 
-            footer
+            // === Annotation goes directly UNDER the board ===
+            annotationView
+
+            // === Rows/Columns trigger buttons under annotation ===
+            if phase == .rowsDemo || phase == .rowsPause {
+                rowButtons
+                controlBarRowsCols
+            } else if phase == .colsDemo || phase == .colsPause {
+                columnButtons
+                controlBarRowsCols
+            } else {
+                // Fallback footer for other phases (unchanged behavior)
+                footerOtherPhases
+            }
         }
         .padding()
         .navigationTitle(NSLocalizedString("tutorial_title", comment: "Tutorial screen title"))
-        .onAppear { startRowsDemo(randomizeTarget: true) }
+        // NOTE: no auto-run; user taps Row/Column buttons to animate
     }
 
-    // MARK: Header / Footer
+    // MARK: Header
 
     private var header: some View {
         VStack(spacing: 6) {
@@ -80,10 +98,114 @@ struct TutorialView: View {
         }
     }
 
-    private var footer: some View {
+    // MARK: Annotation (below board)
+
+    private var annotationView: some View {
+        let title: String
+        let body: String
+        switch phase {
+        case .rowsDemo, .rowsPause:
+            title = "Now we practice rows"
+            body = "Imagine earthworm tunnels across the ground—lava rushes through the tunnels and the worm escapes sideways. That’s a horizontal sweep."
+        case .colsDemo, .colsPause:
+            title = "Now we practice columns"
+            body = "Imagine icicles falling from the roof—straight down in a line. That’s a vertical sweep."
+        default:
+            title = ""
+            body = ""
+        }
+
+        return Group {
+            if !title.isEmpty {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(title).font(.headline)
+                    Text(body).font(.subheadline).foregroundStyle(.secondary)
+                }
+                .padding(12)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color(UIColor.secondarySystemBackground))
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
+                )
+            }
+        }
+    }
+
+    // MARK: Row / Column button strips
+
+    private var rowButtons: some View {
+        HStack(spacing: 8) {
+            ForEach(1...boardSize, id: \.self) { r in
+                Button("Row \(r)") { playRow(r) }
+                    .buttonStyle(.bordered)
+                    .disabled(isAnimating)
+            }
+        }
+    }
+
+    private var columnButtons: some View {
+        HStack(spacing: 8) {
+            ForEach(1...boardSize, id: \.self) { c in
+                Button("Column \(c)") { playCol(c) }
+                    .buttonStyle(.bordered)
+                    .disabled(isAnimating)
+            }
+        }
+    }
+
+    // MARK: Controls (Repeat left, Next right) — under row/column buttons
+
+    private var controlBarRowsCols: some View {
+        HStack {
+            Button(NSLocalizedString("repeat", comment: "Repeat button")) { repeatCurrentAnimation() }
+                .buttonStyle(.bordered)
+                .disabled(isAnimating || repeatDisabled)
+
+            Spacer()
+
+            Button(NSLocalizedString("next", comment: "Next button")) { nextFromRowsCols() }
+                .buttonStyle(.borderedProminent)
+                .disabled(isAnimating || nextDisabled)
+        }
+        .padding(.top, 2)
+    }
+
+    private var repeatDisabled: Bool {
+        switch phase {
+        case .rowsDemo, .rowsPause: return lastRowPlayed == nil
+        case .colsDemo, .colsPause: return lastColPlayed == nil
+        default: return true
+        }
+    }
+
+    private var nextDisabled: Bool {
+        switch phase {
+        case .rowsDemo, .rowsPause: return lastRowPlayed == nil
+        case .colsDemo, .colsPause: return lastColPlayed == nil
+        default: return true
+        }
+    }
+
+    private func nextFromRowsCols() {
+        switch phase {
+        case .rowsDemo, .rowsPause:
+            phase = .colsDemo
+        case .colsDemo, .colsPause:
+            startIntersectDemo(randomizeTarget: true) // keep your original intersection step
+        default:
+            break
+        }
+    }
+
+    // MARK: Fallback footer for other phases (kept from your version)
+
+    private var footerOtherPhases: some View {
         HStack {
             switch phase {
-            case .rowsPause, .colsPause, .intersectPause:
+            case .intersectPause:
                 Button(NSLocalizedString("repeat", comment: "Repeat button")) { repeatCurrentAnimation() }
                     .buttonStyle(.bordered)
                 Button(NSLocalizedString("next", comment: "Next button")) { nextFromPause() }
@@ -278,31 +400,51 @@ struct TutorialView: View {
         return max(0, min(1, (yCross - yStart) / total))
     }
 
-    // MARK: Flow helpers
+    // MARK: Manual play actions
 
-    private func startRowsDemo(randomizeTarget: Bool) {
-        if randomizeTarget {
-            targetRow = Int.random(in: 1...boardSize)
-            targetCol = Int.random(in: 1...boardSize)
-        }
+    private func playRow(_ r: Int) {
         phase = .rowsDemo
+        lastRowPlayed = r
+        targetRow = r
         rowProgress = 0
+        isAnimating = true
         withAnimation(.easeInOut(duration: sweepDuration)) { rowProgress = 1 }
-        DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + pauseAfterDemo) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + 0.05) {
+            isAnimating = false
             phase = .rowsPause
         }
     }
 
-    private func startColsDemo(randomizeTarget: Bool) {
-        if randomizeTarget {
-            targetRow = Int.random(in: 1...boardSize)
-            targetCol = Int.random(in: 1...boardSize)
-        }
+    private func playCol(_ c: Int) {
         phase = .colsDemo
+        lastColPlayed = c
+        targetCol = c
         colProgress = 0
+        isAnimating = true
         withAnimation(.easeInOut(duration: sweepDuration)) { colProgress = 1 }
-        DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + pauseAfterDemo) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + 0.05) {
+            isAnimating = false
             phase = .colsPause
+        }
+    }
+
+    private func repeatCurrentAnimation() {
+        switch phase {
+        case .rowsPause:
+            if let r = lastRowPlayed { playRow(r) }
+        case .colsPause:
+            if let c = lastColPlayed { playCol(c) }
+        case .intersectPause:
+            startIntersectDemo(randomizeTarget: false)
+        default: break
+        }
+    }
+
+    private func nextFromPause() {
+        switch phase {
+        case .intersectPause:
+            phase = .practice
+        default: break
         }
     }
 
@@ -320,30 +462,6 @@ struct TutorialView: View {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + sweepDuration + 0.20) {
             phase = .intersectPause
-        }
-    }
-
-    private func repeatCurrentAnimation() {
-        switch phase {
-        case .rowsPause:
-            startRowsDemo(randomizeTarget: false)
-        case .colsPause:
-            startColsDemo(randomizeTarget: false)
-        case .intersectPause:
-            startIntersectDemo(randomizeTarget: false)
-        default: break
-        }
-    }
-
-    private func nextFromPause() {
-        switch phase {
-        case .rowsPause:
-            startColsDemo(randomizeTarget: true)
-        case .colsPause:
-            startIntersectDemo(randomizeTarget: true)
-        case .intersectPause:
-            phase = .practice
-        default: break
         }
     }
 
