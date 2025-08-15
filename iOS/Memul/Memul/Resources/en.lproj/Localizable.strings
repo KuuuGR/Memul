@@ -115,16 +115,45 @@
 "tutorial_intersect_title" = "Intersection";
 "tutorial_intersect_sub" = "Where a row meets a column: row × column.";
 "tutorial_practice_title" = "Try it!";
-"tutorial_practice_sub" = "Tap the cell where the lasers will cross.";
+"tutorial_practice_sub" = "Tap the cell where the lasers will cross."; // legacy, use tutorial_practice_hint
+"tutorial_practice_hint" = "Find the crossing cell for the given row and column.";
 "tutorial_feedback_great" = "Great!";
 "tutorial_feedback_not_quite" = "Not quite";
 "tutorial_equation" = "%d × %d = %d";
 "tutorial_row_label" = "Row: %d";
 "tutorial_col_label" = "Column: %d";
-// Buttons shown during tutorial
+
+// Tutorial inline cards
+"tutorial_rows_card_title" = "Now we practice rows";
+"tutorial_rows_card_body" = "Imagine earthworm tunnels across the ground—lava rushes through the tunnels and the worm escapes sideways. That’s a horizontal sweep.";
+"tutorial_cols_card_title" = "Now we practice columns";
+"tutorial_cols_card_body" = "Imagine icicles falling from the roof—straight down in a line. That’s a vertical sweep.";
+"tutorial_intersect_card_title" = "Intersections in the game";
+"tutorial_intersect_card_body" = "Where a row meets a column: row × column. You’ll be asked to find a specific crossing cell.";
+"tutorial_framed_title" = "Intersection — Part 2";
+"tutorial_framed_sub" = "Tap where a row meets a column.";
+"tutorial_framed_card_title" = "Intersection — Part 2";
+"tutorial_framed_card_body" = "Tap the intersection of the shown row and column. A correct tap shows ✅; a wrong tap shows ❌ briefly.";
+"tutorial_practice_callout" = "Test your might!";
+"tutorial_quest_title" = "Quest:";
+"tutorial_quest_tap_pair" = "Tap (%d ; %d)";
+
+// MARK: - Tutorial Buttons (⚠️ The following KEYS are visible UI text and MUST be translated)
 "next" = "Next";
 "repeat" = "Repeat";
 "skip_to_practice" = "Skip to Practice";
+"tutorial_row_button" = "Row %d";
+"tutorial_col_button" = "Col. %d";
+"tutorial_next_quest" = "Next Quest";
+"back" = "Back";
+"quit" = "Quit";
+"cancel" = "Cancel";
+
+// Tutorial alerts / scores
+"tutorial_quit_title" = "Are you sure?";
+"tutorial_quit_message" = "You’ll exit the tutorial. You can come back anytime.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
 
 /// StartView & Practice
 "quick_multiply" = "Quick Multiplication";

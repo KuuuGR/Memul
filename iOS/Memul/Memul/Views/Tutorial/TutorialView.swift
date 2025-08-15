@@ -177,13 +177,12 @@ struct TutorialView: View {
         }
         .padding()
         .navigationTitle(NSLocalizedString("tutorial_title", comment: "Tutorial"))
-        .alert("Are you sure?", isPresented: $showQuitConfirm) {
-            Button("Cancel", role: .cancel) { }
-            Button("Quit", role: .destructive) {
-                dismiss()
-            }
+        .alert(NSLocalizedString("tutorial_quit_title", comment: "Quit confirm title"),
+               isPresented: $showQuitConfirm) {
+            Button(NSLocalizedString("cancel", comment: "Cancel"), role: .cancel) { }
+            Button(NSLocalizedString("quit", comment: "Quit"), role: .destructive) { dismiss() }
         } message: {
-            Text("You’ll exit the tutorial. You can come back anytime.")
+            Text(NSLocalizedString("tutorial_quit_message", comment: "Quit message"))
         }
     }
 
@@ -218,22 +217,22 @@ struct TutorialView: View {
                 .font(.subheadline)
 
             case .framed:
-                Text("Intersection — Part 2")
+                Text(NSLocalizedString("tutorial_framed_title", comment: "Intersection — Part 2"))
                     .font(.title3).bold()
-                Text("Tap where a row meets a column.")
+                Text(NSLocalizedString("tutorial_framed_sub", comment: "Tap where a row meets a column."))
                 HStack(spacing: 16) {
-                    Text("Row: \(targetRow)").foregroundStyle(.red)
-                    Text("Column: \(targetCol)").foregroundStyle(.blue)
+                    Text(String(format: NSLocalizedString("tutorial_row_label", comment: "Row"), targetRow)).foregroundStyle(.red)
+                    Text(String(format: NSLocalizedString("tutorial_col_label", comment: "Col"), targetCol)).foregroundStyle(.blue)
                 }
                 .font(.subheadline)
 
             case .practice:
-                // Keep "Try it!" at the top
-                Text("Try it!").font(.title3).bold()
-                Text("Find the crossing cell for the given row and column.")
+                Text(NSLocalizedString("tutorial_practice_title", comment: "Try it!"))
+                    .font(.title3).bold()
+                Text(NSLocalizedString("tutorial_practice_hint", comment: "Find the crossing cell..."))
                 HStack(spacing: 16) {
-                    Text("Row: \(targetRow)").foregroundStyle(.red)
-                    Text("Column: \(targetCol)").foregroundStyle(.blue)
+                    Text(String(format: NSLocalizedString("tutorial_row_label", comment: "Row"), targetRow)).foregroundStyle(.red)
+                    Text(String(format: NSLocalizedString("tutorial_col_label", comment: "Col"), targetCol)).foregroundStyle(.blue)
                 }
                 .font(.subheadline)
             }
@@ -245,36 +244,33 @@ struct TutorialView: View {
         switch phase {
         case .rows:
             return AnyView(infoCard(
-                title: "Now we practice rows",
-                body: "Imagine earthworm tunnels across the ground — lava rushes through the tunnels and the worm escapes sideways. That’s a horizontal sweep."
+                title: NSLocalizedString("tutorial_rows_card_title", comment: "Rows card title"),
+                body: NSLocalizedString("tutorial_rows_card_body", comment: "Rows card body")
             ))
         case .cols:
             return AnyView(infoCard(
-                title: "Now we practice columns",
-                body: "Imagine icicles falling from the roof — straight down in a line. That’s a vertical sweep."
+                title: NSLocalizedString("tutorial_cols_card_title", comment: "Columns card title"),
+                body: NSLocalizedString("tutorial_cols_card_body", comment: "Columns card body")
             ))
         case .intersect:
             return AnyView(infoCard(
-                title: "Intersections in the game",
-                body: "Where a row meets a column: row × column. You’ll be asked to find a specific crossing cell."
+                title: NSLocalizedString("tutorial_intersect_card_title", comment: "Intersect card title"),
+                body: NSLocalizedString("tutorial_intersect_card_body", comment: "Intersect card body")
             ))
         case .framed:
             return AnyView(infoCard(
-                title: "Intersection — Part 2",
-                body: "Tap the intersection of the shown row and column. A correct tap shows ✅ in that cell; a wrong tap shows ❌ briefly."
+                title: NSLocalizedString("tutorial_framed_card_title", comment: "Framed card title"),
+                body: NSLocalizedString("tutorial_framed_card_body", comment: "Framed card body")
             ))
         case .practice:
-            // Centered label + two stable cards side by side
             return AnyView(
                 VStack(spacing: 8) {
-                    Text("Test your might!")
+                    Text(NSLocalizedString("tutorial_practice_callout", comment: "Practice headline"))
                         .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .center) // centered
+                        .frame(maxWidth: .infinity, alignment: .center)
                     HStack(spacing: 12) {
-                        scoreCard
-                            .frame(maxWidth: .infinity)
-                        questCard
-                            .frame(maxWidth: .infinity)
+                        scoreCard.frame(maxWidth: .infinity)
+                        questCard.frame(maxWidth: .infinity)
                     }
                 }
             )
@@ -283,10 +279,12 @@ struct TutorialView: View {
 
     private var scoreCard: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Score").font(.headline)
+            Text(NSLocalizedString("qp_score_title", comment: "Score")).font(.headline)
             HStack {
-                Text("✅ \(rightCount)").foregroundStyle(.green)
-                Text("❌ \(wrongCount)").foregroundStyle(.red)
+                Text(String(format: NSLocalizedString("tutorial_score_right", comment: "Right count"), rightCount))
+                    .foregroundStyle(.green)
+                Text(String(format: NSLocalizedString("tutorial_score_wrong", comment: "Wrong count"), wrongCount))
+                    .foregroundStyle(.red)
             }
             .font(.subheadline)
         }
@@ -298,13 +296,15 @@ struct TutorialView: View {
 
     private var questCard: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Quest:").font(.headline)
+            Text(NSLocalizedString("tutorial_quest_title", comment: "Quest")).font(.headline)
             if wasCorrect {
-                Text("Great! \(targetRow) × \(targetCol) = \(targetRow * targetCol)")
+                Text(String(format: NSLocalizedString("tutorial_equation", comment: "a × b = c"),
+                            targetRow, targetCol, targetRow * targetCol))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             } else {
-                Text("Tap (\(targetRow) ; \(targetCol))")
+                Text(String(format: NSLocalizedString("tutorial_quest_tap_pair", comment: "Tap (r ; c)"),
+                            targetRow, targetCol))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -329,7 +329,7 @@ struct TutorialView: View {
     private var rowButtons: some View {
         HStack(spacing: 8) {
             ForEach(1...boardSize, id: \.self) { r in
-                Button("Row \(r)") { playRow(r) }
+                Button(String(format: NSLocalizedString("tutorial_row_button", comment: "Row n"), r)) { playRow(r) }
                     .buttonStyle(.bordered)
                     .tint(.red)               // rows are red
                     .disabled(isAnimating)
@@ -340,7 +340,7 @@ struct TutorialView: View {
     private var columnButtons: some View {
         HStack(spacing: 8) {
             ForEach(1...boardSize, id: \.self) { c in
-                Button("Col. \(c)") { playCol(c) }
+                Button(String(format: NSLocalizedString("tutorial_col_button", comment: "Col. n"), c)) { playCol(c) }
                     .buttonStyle(.bordered)
                     .tint(.blue)              // columns are blue
                     .disabled(isAnimating)
@@ -351,7 +351,7 @@ struct TutorialView: View {
     // MARK: - Controls
     private var standardControlBar: some View {
         HStack {
-            Button("Back") { goBack() }
+            Button(NSLocalizedString("back", comment: "Back")) { goBack() }
                 .buttonStyle(.bordered)
                 .disabled(isAnimating || phase == .rows)
 
@@ -373,7 +373,7 @@ struct TutorialView: View {
 
     private var practiceControlBar: some View {
         HStack {
-            Button("Back") {
+            Button(NSLocalizedString("back", comment: "Back")) {
                 // Reset practice state when going back (keep score)
                 practiceWrongCell = nil
                 userSelection = nil
@@ -384,14 +384,14 @@ struct TutorialView: View {
 
             Spacer()
 
-            Button("Next Quest") {
+            Button(NSLocalizedString("tutorial_next_quest", comment: "Next Quest")) {
                 newPracticeRound() // keep cumulative score
             }
             .buttonStyle(.bordered)
 
             Spacer()
 
-            Button("Quit") {
+            Button(NSLocalizedString("quit", comment: "Quit")) {
                 showQuitConfirm = true
             }
             .buttonStyle(.borderedProminent)
