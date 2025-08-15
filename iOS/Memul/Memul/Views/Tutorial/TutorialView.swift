@@ -47,7 +47,7 @@ struct TutorialView: View {
     @State private var framedWrongCell: (row: Int, col: Int)?
 
     // MARK: - Timing
-    private let sweepDuration: Double = 2.0
+    private let sweepDuration: Double = 1.1
 
     @Environment(\.dismiss) private var dismiss
 
