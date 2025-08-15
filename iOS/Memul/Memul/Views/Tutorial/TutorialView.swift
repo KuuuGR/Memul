@@ -35,6 +35,10 @@ struct TutorialView: View {
     @State private var userSelection: (row: Int, col: Int)?
     @State private var wasCorrect = false
 
+    // NEW: framed feedback (no auto-advance)
+    private enum FramedResult { case none, correct, wrong }
+    @State private var framedResult: FramedResult = .none
+
     // Timing
     private let sweepDuration: Double = 2.0
 
@@ -49,14 +53,18 @@ struct TutorialView: View {
                 spacing: spacing,
                 targetRow: targetRow,
                 targetCol: targetCol,
+                // lasers
                 showRowLaser: phase == .rows || phase == .intersect,
                 showColLaser: phase == .cols || phase == .intersect,
                 rowProgress: rowProgress,
                 colProgress: colProgress,
+                // header highlights (top/left)
                 highlightTopHeader: phase == .cols || phase == .intersect || phase == .framed || phase == .practice || phase == .feedback,
                 highlightLeftHeader: phase == .rows || phase == .intersect || phase == .framed || phase == .practice || phase == .feedback,
+                // row/col frame overlays (framed only)
                 highlightRowCells: phase == .framed,
                 highlightColCells: phase == .framed,
+                // intersection glow only in intersect
                 enableIntersectionGlow: phase == .intersect,
                 // Taps on headers/cells
                 onTapTopHeader: { c in
@@ -68,8 +76,15 @@ struct TutorialView: View {
                     if phase == .rows || phase == .intersect { playRow(r) }
                 },
                 onTapCell: { r, c in
-                    guard phase == .practice else { return }
-                    handleTap(row: r, col: c)
+                    switch phase {
+                    case .practice:
+                        handleTap(row: r, col: c)
+                    case .framed:
+                        // Show feedback, but do NOT advance automatically
+                        framedResult = (r == targetRow && c == targetCol) ? .correct : .wrong
+                    default:
+                        break
+                    }
                 }
             )
             .frame(
@@ -77,7 +92,7 @@ struct TutorialView: View {
                 height: TutorialBoardView.pixelHeight(boardSize: boardSize, cellSize: cellSize, spacing: spacing)
             )
 
-            // Annotation under board (Rows / Cols / Intersect)
+            // Annotation under board (Rows / Cols / Intersect / Framed)
             annotation
 
             // Trigger buttons (keep buttons + header taps)
@@ -150,35 +165,65 @@ struct TutorialView: View {
         }
     }
 
-    // MARK: Annotation
+    // MARK: Annotation (Rows / Cols / Intersect / **Framed** with feedback)
     private var annotation: some View {
-        let (title, body): (String, String) = {
-            switch phase {
-            case .rows:
-                return ("Now we practice rows",
-                        "Imagine earthworm tunnels across the ground — lava rushes through the tunnels and the worm escapes sideways. That’s a horizontal sweep.")
-            case .cols:
-                return ("Now we practice columns",
-                        "Imagine icicles falling from the roof — straight down in a line. That’s a vertical sweep.")
-            case .intersect:
-                return ("Intersections in the game",
-                        "Multiple row and column numbers cross to give products. You’ll be asked to find a cell where a specific row and column meet.")
-            default:
-                return ("","")
-            }
-        }()
-
-        return Group {
-            if !title.isEmpty {
+        switch phase {
+        case .rows:
+            return AnyView(
+                infoCard(
+                    title: "Now we practice rows",
+                    body: "Imagine earthworm tunnels across the ground — lava rushes through the tunnels and the worm escapes sideways. That’s a horizontal sweep."
+                )
+            )
+        case .cols:
+            return AnyView(
+                infoCard(
+                    title: "Now we practice columns",
+                    body: "Imagine icicles falling from the roof — straight down in a line. That’s a vertical sweep."
+                )
+            )
+        case .intersect:
+            return AnyView(
+                infoCard(
+                    title: "Intersections in the game",
+                    body: "Multiple row and column numbers cross to give products. You’ll be asked to find a cell where a specific row and column meet."
+                )
+            )
+        case .framed:
+            // Three lines + feedback: Title, instruction, Row/Column line; then feedback line when tapped
+            return AnyView(
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(title).font(.headline)
-                    Text(body).font(.subheadline).foregroundStyle(.secondary)
+                    Text("Framed selection").font(.headline)
+                    Text("Tap the intersection of the selected row and column.").font(.subheadline).foregroundStyle(.secondary)
+                    HStack(spacing: 16) {
+                        Text("Row: \(targetRow)").foregroundStyle(.red)
+                        Text("Column: \(targetCol)").foregroundStyle(.blue)
+                    }.font(.subheadline)
+
+                    if framedResult != .none {
+                        Text(framedResult == .correct ? "Correct" : "Not quite — try again")
+                            .font(.subheadline).bold()
+                            .foregroundStyle(framedResult == .correct ? .green : .red)
+                            .padding(.top, 4)
+                    }
                 }
                 .padding(12)
                 .background(RoundedRectangle(cornerRadius: 12).fill(Color(UIColor.secondarySystemBackground)))
                 .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.gray.opacity(0.2), lineWidth: 1))
-            }
+            )
+        default:
+            return AnyView(EmptyView())
         }
+    }
+
+    private func infoCard(title: String, body: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title).font(.headline)
+            Text(body).font(.subheadline).foregroundStyle(.secondary)
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 12).fill(Color(UIColor.secondarySystemBackground)))
+        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.gray.opacity(0.2), lineWidth: 1))
     }
 
     // MARK: Trigger buttons (optional; header taps also work)
@@ -239,7 +284,7 @@ struct TutorialView: View {
         case .rows:      return lastRowPlayed == nil
         case .cols:      return lastColPlayed == nil
         case .intersect: return (lastRowPlayed == nil || lastColPlayed == nil)
-        case .framed:    return false
+        case .framed:    return false            // user can proceed after seeing feedback (optional)
         case .practice:  return userSelection == nil
         case .feedback:  return false
         }
@@ -264,9 +309,13 @@ struct TutorialView: View {
         case .cols:
             phase = .intersect
         case .intersect:
+            // Reset framed feedback when entering framed step
+            framedResult = .none
             phase = .framed
         case .framed:
-            newPracticeRound()
+            // Keep SAME targets for practice; clear any prior selection
+            userSelection = nil
+            wasCorrect = false
             phase = .practice
         case .practice:
             if userSelection != nil { phase = .feedback }
