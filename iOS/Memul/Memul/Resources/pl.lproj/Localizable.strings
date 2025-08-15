@@ -9,6 +9,7 @@
 "tutorial" = "Samouczek";
 "settings" = "Ustawienia";
 "about" = "O grze";
+"start_tagline" = "Mnoż. Graj. Ucz się.";
 
 // MARK: - Board & Players
 "add_player" = "Dodaj gracza";

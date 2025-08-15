@@ -9,6 +9,7 @@
 "tutorial" = "Tutorial";
 "settings" = "Settings";
 "about" = "About";
+"start_tagline" = "Multiply. Play. Learn.";
 
 // MARK: - Board & Players
 "add_player" = "Add Player";

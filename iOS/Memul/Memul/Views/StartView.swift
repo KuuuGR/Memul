@@ -46,7 +46,7 @@ struct StartView: View {
                                 .font(.system(.largeTitle, design: .rounded).weight(.bold))
                                 .multilineTextAlignment(.center)
 
-                            Text("Multiply. Play. Learn.")
+                            Text(NSLocalizedString("start_tagline", comment: "Short tagline under app title on the start screen"))
                                 .font(.callout)
                                 .foregroundStyle(.secondary)
                         }
