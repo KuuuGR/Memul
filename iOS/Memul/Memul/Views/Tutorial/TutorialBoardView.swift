@@ -2,8 +2,8 @@
 //  TutorialBoardView.swift
 //  Memul
 //
-//  Grid with ONLY top & left headers.
-//  Lasers run through the exact centers of cells and sweep the full grid.
+//  Top & left headers only; centered lasers; optional row/col frames.
+//  Supports taps on headers and cells via closures.
 //
 
 import SwiftUI
@@ -33,16 +33,18 @@ struct TutorialBoardView: View {
     // glow
     let enableIntersectionGlow: Bool
 
+    // taps
+    var onTapTopHeader: ((Int) -> Void)? = nil
+    var onTapLeftHeader: ((Int) -> Void)? = nil
+    var onTapCell: ((Int, Int) -> Void)? = nil
+
     var body: some View {
         ZStack {
             grid
-            // optional row/col frames
             if highlightRowCells { rowFrame }
             if highlightColCells { colFrame }
-            // lasers
             if showRowLaser { rowLaser }
             if showColLaser { colLaser }
-            // cross glow
             if enableIntersectionGlow && lasersCrossed { intersectionGlow }
         }
     }
@@ -50,12 +52,10 @@ struct TutorialBoardView: View {
     // MARK: Grid (top & left headers only)
     private var grid: some View {
         VStack(spacing: spacing) {
-            // top header row
             HStack(spacing: spacing) {
                 headerCorner
                 ForEach(1...boardSize, id: \.self) { c in topHeader(c) }
             }
-            // grid rows
             ForEach(1...boardSize, id: \.self) { r in
                 HStack(spacing: spacing) {
                     leftHeader(r)
@@ -81,6 +81,8 @@ struct TutorialBoardView: View {
                     .stroke(highlightTopHeader && col == targetCol ? Color.blue : .clear, lineWidth: 2)
             )
             .clipShape(RoundedRectangle(cornerRadius: 6))
+            .contentShape(Rectangle())
+            .onTapGesture { onTapTopHeader?(col) }
     }
 
     private func leftHeader(_ row: Int) -> some View {
@@ -93,34 +95,27 @@ struct TutorialBoardView: View {
                     .stroke(highlightLeftHeader && row == targetRow ? Color.red : .clear, lineWidth: 2)
             )
             .clipShape(RoundedRectangle(cornerRadius: 6))
+            .contentShape(Rectangle())
+            .onTapGesture { onTapLeftHeader?(row) }
     }
 
     private func cellAt(_ row: Int, _ col: Int) -> some View {
         RoundedRectangle(cornerRadius: 8)
-            .strokeBorder(borderColor(row: row, col: col), lineWidth: borderWidth(row: row, col: col))
+            .strokeBorder(Color.gray, lineWidth: 1)
             .background(RoundedRectangle(cornerRadius: 8).fill(Color.blue.opacity(0.18)))
             .frame(width: cellSize, height: cellSize)
-    }
-
-    private func borderColor(row: Int, col: Int) -> Color {
-        if highlightRowCells && row == targetRow { return .yellow }
-        if highlightColCells && col == targetCol { return .yellow }
-        return .gray
-    }
-
-    private func borderWidth(row: Int, col: Int) -> CGFloat {
-        if (highlightRowCells && row == targetRow) || (highlightColCells && col == targetCol) { return 3 }
-        return 1
+            .contentShape(Rectangle())
+            .onTapGesture { onTapCell?(row, col) }
     }
 
     // MARK: Lasers (centered, full length)
-
     private var rowLaser: some View {
         let y = centerY(forRow: targetRow)
         let xStart = gridLeftEdgeX
         let xEnd = lerp(from: xStart, to: gridRightEdgeX, t: rowProgress)
         return LaserHorizontal(y: y, fromX: xStart, toX: xEnd)
             .accessibilityLabel("Row laser")
+            .allowsHitTesting(false)
     }
 
     private var colLaser: some View {
@@ -129,10 +124,10 @@ struct TutorialBoardView: View {
         let yEnd = lerp(from: yStart, to: gridBottomEdgeY, t: colProgress)
         return LaserVertical(x: x, fromY: yStart, toY: yEnd)
             .accessibilityLabel("Column laser")
+            .allowsHitTesting(false)
     }
 
     private var lasersCrossed: Bool {
-        // both beams have passed the crossing point
         rowProgress >= rowIntersectT && colProgress >= colIntersectT
     }
 
@@ -152,39 +147,38 @@ struct TutorialBoardView: View {
         .allowsHitTesting(false)
     }
 
-    // MARK: Frame overlays
+    // MARK: Frames (use red for row, blue for column)
     private var rowFrame: some View {
         let y = centerY(forRow: targetRow)
         return RoundedRectangle(cornerRadius: 0)
-            .stroke(Color.yellow, lineWidth: 3)
+            .stroke(Color.red, lineWidth: 3)
             .frame(width: gridWidth, height: cellSize)
             .position(x: gridMidX, y: y)
+            .opacity(0.45)
             .allowsHitTesting(false)
-            .opacity(0.4)
     }
 
     private var colFrame: some View {
         let x = centerX(forCol: targetCol)
         return RoundedRectangle(cornerRadius: 0)
-            .stroke(Color.yellow, lineWidth: 3)
+            .stroke(Color.blue, lineWidth: 3)
             .frame(width: cellSize, height: gridHeight)
             .position(x: x, y: gridMidY)
+            .opacity(0.45)
             .allowsHitTesting(false)
-            .opacity(0.4)
     }
 
-    // MARK: Geometry (top-left origin includes headers)
+    // MARK: Geometry
     private func centerX(forCol col: Int) -> CGFloat {
-        // col index 0 is the left header; first grid col is 1
+        // col 0 = left header; first grid col is 1
         return CGFloat(col) * (cellSize + spacing) + cellSize / 2
     }
-
     private func centerY(forRow row: Int) -> CGFloat {
-        // row index 0 is the top header; first grid row is 1
+        // row 0 = top header; first grid row is 1
         return CGFloat(row) * (cellSize + spacing) + cellSize / 2
     }
 
-    // Inner grid edges (exclude headers)
+    // inner grid edges (exclude headers)
     private var gridLeftEdgeX: CGFloat { centerX(forCol: 1) - cellSize / 2 }
     private var gridRightEdgeX: CGFloat { centerX(forCol: boardSize) + cellSize / 2 }
     private var gridTopEdgeY: CGFloat { centerY(forRow: 1) - cellSize / 2 }
@@ -199,23 +193,19 @@ struct TutorialBoardView: View {
         let total = max(0.0001, gridRightEdgeX - gridLeftEdgeX)
         return max(0, min(1, (centerX(forCol: targetCol) - gridLeftEdgeX) / total))
     }
-
     private var colIntersectT: CGFloat {
         let total = max(0.0001, gridBottomEdgeY - gridTopEdgeY)
         return max(0, min(1, (centerY(forRow: targetRow) - gridTopEdgeY) / total))
     }
 
-    // Public helpers for parent sizing
+    // Public sizing helpers
     static func pixelWidth(boardSize: Int, cellSize: CGFloat, spacing: CGFloat) -> CGFloat {
-        // columns = left header + N grid columns
-        let items = CGFloat(boardSize + 1)
+        let items = CGFloat(boardSize + 1) // left header + N columns
         let gaps = CGFloat(boardSize)
         return items * cellSize + gaps * spacing
     }
-
     static func pixelHeight(boardSize: Int, cellSize: CGFloat, spacing: CGFloat) -> CGFloat {
-        // rows = top header + N grid rows
-        let items = CGFloat(boardSize + 1)
+        let items = CGFloat(boardSize + 1) // top header + N rows
         let gaps = CGFloat(boardSize)
         return items * cellSize + gaps * spacing
     }

@@ -8,23 +8,20 @@
 import SwiftUI
 
 struct TutorialView: View {
-    // MARK: Config
+    // Config
     private let boardSize = 4
     private let cellSize: CGFloat = 42
     private let spacing: CGFloat = 4
 
-    // MARK: Phases
-    private enum Phase {
-        case rows, cols, intersect, framed, practice, feedback
-    }
-
+    // Stages
+    private enum Phase { case rows, cols, intersect, framed, practice, feedback }
     @State private var phase: Phase = .rows
 
-    // Selection
+    // Targets
     @State private var targetRow = 1
     @State private var targetCol = 1
 
-    // Animation progress (0...1)
+    // Animation progress (0..1)
     @State private var rowProgress: CGFloat = 0
     @State private var colProgress: CGFloat = 0
 
@@ -32,49 +29,58 @@ struct TutorialView: View {
     @State private var isAnimating = false
     @State private var lastRowPlayed: Int? = nil
     @State private var lastColPlayed: Int? = nil
-    @State private var lastPlayedWasRow: Bool = true
+    @State private var lastPlayedWasRow = true
 
     // Practice
     @State private var userSelection: (row: Int, col: Int)?
     @State private var wasCorrect = false
 
-    // Timing — 2s sweep (faster, because user is in control)
+    // Timing
     private let sweepDuration: Double = 2.0
 
     var body: some View {
         VStack(spacing: 16) {
             header
 
-            // Board
+            // Board (lasers, frames, header highlights)
             TutorialBoardView(
                 boardSize: boardSize,
                 cellSize: cellSize,
                 spacing: spacing,
                 targetRow: targetRow,
                 targetCol: targetCol,
-                // lasers
                 showRowLaser: phase == .rows || phase == .intersect,
                 showColLaser: phase == .cols || phase == .intersect,
                 rowProgress: rowProgress,
                 colProgress: colProgress,
-                // header highlights (top/left)
                 highlightTopHeader: phase == .cols || phase == .intersect || phase == .framed || phase == .practice || phase == .feedback,
                 highlightLeftHeader: phase == .rows || phase == .intersect || phase == .framed || phase == .practice || phase == .feedback,
-                // row/col frame overlays
                 highlightRowCells: phase == .framed,
                 highlightColCells: phase == .framed,
-                // intersection glow only in intersect
-                enableIntersectionGlow: phase == .intersect
+                enableIntersectionGlow: phase == .intersect,
+                // Taps on headers/cells
+                onTapTopHeader: { c in
+                    guard !isAnimating else { return }
+                    if phase == .cols || phase == .intersect { playCol(c) }
+                },
+                onTapLeftHeader: { r in
+                    guard !isAnimating else { return }
+                    if phase == .rows || phase == .intersect { playRow(r) }
+                },
+                onTapCell: { r, c in
+                    guard phase == .practice else { return }
+                    handleTap(row: r, col: c)
+                }
             )
             .frame(
                 width: TutorialBoardView.pixelWidth(boardSize: boardSize, cellSize: cellSize, spacing: spacing),
                 height: TutorialBoardView.pixelHeight(boardSize: boardSize, cellSize: cellSize, spacing: spacing)
             )
 
-            // Annotation (Rows / Columns / Intersection)
+            // Annotation under board (Rows / Cols / Intersect)
             annotation
 
-            // Buttons strips (Rows / Columns / Intersection keep their triggers)
+            // Trigger buttons (keep buttons + header taps)
             if phase == .rows {
                 rowButtons
             } else if phase == .cols {
@@ -86,7 +92,7 @@ struct TutorialView: View {
                 }
             }
 
-            // Controls (Back • Repeat? • Next)
+            // Controls: Back (left), Repeat (center on teach stages), Next (right)
             controlBar
         }
         .padding()
@@ -121,11 +127,18 @@ struct TutorialView: View {
 
             case .framed:
                 Text("Framed selection").font(.title3).bold()
-                Text("We highlight a row and a column — notice their crossing cell.")
+                HStack(spacing: 16) {
+                    Text("Row: \(targetRow)").foregroundStyle(.red)
+                    Text("Column: \(targetCol)").foregroundStyle(.blue)
+                }.font(.subheadline)
 
             case .practice:
                 Text(NSLocalizedString("tutorial_practice_title", comment: "Practice")).font(.title3).bold()
                 Text("Find the crossing cell for the given row and column.")
+                HStack(spacing: 16) {
+                    Text("Row: \(targetRow)").foregroundStyle(.red)
+                    Text("Column: \(targetCol)").foregroundStyle(.blue)
+                }.font(.subheadline)
 
             case .feedback:
                 Text(wasCorrect ? NSLocalizedString("tutorial_feedback_great", comment: "")
@@ -137,7 +150,7 @@ struct TutorialView: View {
         }
     }
 
-    // MARK: Annotation under board
+    // MARK: Annotation
     private var annotation: some View {
         let (title, body): (String, String) = {
             switch phase {
@@ -168,7 +181,7 @@ struct TutorialView: View {
         }
     }
 
-    // MARK: Row / Column triggers
+    // MARK: Trigger buttons (optional; header taps also work)
     private var rowButtons: some View {
         HStack(spacing: 8) {
             ForEach(1...boardSize, id: \.self) { r in
@@ -189,38 +202,27 @@ struct TutorialView: View {
         }
     }
 
-    // MARK: Controls (Back • Repeat? • Next)
+    // MARK: Controls
     private var controlBar: some View {
         HStack {
-            // Back (always shown; disabled only on first page)
             Button("Back") { goBack() }
                 .buttonStyle(.bordered)
-                .disabled(isAnimating || isBackDisabled)
+                .disabled(isAnimating || phase == .rows)
 
             Spacer()
 
-            // Repeat (only for rows/cols/intersect)
-            if showsRepeat {
+            if phase == .rows || phase == .cols || phase == .intersect {
                 Button(NSLocalizedString("repeat", comment: "Repeat")) { repeatCurrent() }
                     .buttonStyle(.bordered)
                     .disabled(isAnimating || isRepeatDisabled)
                 Spacer()
             }
 
-            // Next
             Button(NSLocalizedString("next", comment: "Next")) { goNext() }
                 .buttonStyle(.borderedProminent)
                 .disabled(isAnimating || isNextDisabled)
         }
         .padding(.top, 2)
-    }
-
-    private var showsRepeat: Bool {
-        phase == .rows || phase == .cols || phase == .intersect
-    }
-
-    private var isBackDisabled: Bool {
-        phase == .rows
     }
 
     private var isRepeatDisabled: Bool {
@@ -236,13 +238,14 @@ struct TutorialView: View {
         switch phase {
         case .rows:      return lastRowPlayed == nil
         case .cols:      return lastColPlayed == nil
-        case .intersect: return (lastRowPlayed == nil || lastColPlayed == nil) // need both to proceed
+        case .intersect: return (lastRowPlayed == nil || lastColPlayed == nil)
         case .framed:    return false
-        case .practice:  return userSelection == nil // tap required
+        case .practice:  return userSelection == nil
         case .feedback:  return false
         }
     }
 
+    // MARK: Navigation
     private func goBack() {
         switch phase {
         case .cols:      phase = .rows
@@ -261,17 +264,13 @@ struct TutorialView: View {
         case .cols:
             phase = .intersect
         case .intersect:
-            // move to framed step; keep current targets highlighted
             phase = .framed
         case .framed:
-            // start practice challenge without frames
             newPracticeRound()
             phase = .practice
         case .practice:
-            // after a tap, move to feedback
             if userSelection != nil { phase = .feedback }
         case .feedback:
-            // another practice round
             newPracticeRound()
             phase = .practice
         }
@@ -291,9 +290,8 @@ struct TutorialView: View {
         }
     }
 
-    // MARK: Row / Column playback
+    // MARK: Playback
     private func playRow(_ r: Int) {
-        // In rows/intersect we can set targetRow; in pure rows we must NOT force a column selection
         targetRow = r
         lastRowPlayed = r
         lastPlayedWasRow = true
@@ -306,7 +304,6 @@ struct TutorialView: View {
     }
 
     private func playCol(_ c: Int) {
-        // In cols/intersect we can set targetCol; in pure cols we must NOT force a row selection
         targetCol = c
         lastColPlayed = c
         lastPlayedWasRow = false
@@ -318,7 +315,7 @@ struct TutorialView: View {
         }
     }
 
-    // MARK: Practice flow
+    // MARK: Practice
     private func newPracticeRound() {
         userSelection = nil
         wasCorrect = false
@@ -327,7 +324,6 @@ struct TutorialView: View {
     }
 
     private func handleTap(row: Int, col: Int) {
-        guard phase == .practice else { return }
         userSelection = (row, col)
         wasCorrect = (row == targetRow && col == targetCol)
     }
