@@ -2,8 +2,8 @@
 //  TutorialBoardView.swift
 //  Memul
 //
-//  Top & left headers only; centered lasers; optional row/col frames.
-//  Supports taps on headers and cells, plus framed-step overlays.
+//  Top & left headers only; centered lasers; optional in-cell overlays.
+//  Supports taps on headers and cells.
 //
 
 import SwiftUI
@@ -26,16 +26,18 @@ struct TutorialBoardView: View {
     let highlightTopHeader: Bool
     let highlightLeftHeader: Bool
 
-    // frame overlays
+    // (deprecated in this version – kept for signature parity)
     let highlightRowCells: Bool
     let highlightColCells: Bool
 
-    // glow
-    let enableIntersectionGlow: Bool
+    // glow flags
+    let enableIntersectionGlow: Bool           // for the intersect demo (requires beams to cross)
+    let practiceShowGlow: Bool                 // show product glow during Practice on correct tap
 
-    // FRAMED overlays
+    // overlays
     let framedCorrectCell: (row: Int, col: Int)?
     let framedWrongCell: (row: Int, col: Int)?
+    let practiceWrongCell: (row: Int, col: Int)?
 
     // taps
     var onTapTopHeader: ((Int) -> Void)? = nil
@@ -45,11 +47,12 @@ struct TutorialBoardView: View {
     var body: some View {
         ZStack {
             grid
-            if highlightRowCells { rowFrame }
-            if highlightColCells { colFrame }
             if showRowLaser { rowLaser }
             if showColLaser { colLaser }
-            if enableIntersectionGlow && lasersCrossed { intersectionGlow }
+            // intersection/product glow:
+            if (enableIntersectionGlow && lasersCrossed) || practiceShowGlow {
+                intersectionGlow
+            }
         }
     }
 
@@ -104,27 +107,31 @@ struct TutorialBoardView: View {
     }
 
     private func cellAt(_ row: Int, _ col: Int) -> some View {
-        let isRowFrame = highlightRowCells && row == targetRow
-        let isColFrame = highlightColCells && col == targetCol
-        let borderColor: Color = (isRowFrame || isColFrame) ? .yellow : .gray
-        let borderWidth: CGFloat = (isRowFrame || isColFrame) ? 3 : 1
-        let isCorrectBadge = framedCorrectCell?.row == row && framedCorrectCell?.col == col
-        let isWrongBadge = framedWrongCell?.row == row && framedWrongCell?.col == col
+        let isFramedCorrect = framedCorrectCell?.row == row && framedCorrectCell?.col == col
+        let isFramedWrong   = framedWrongCell?.row == row && framedWrongCell?.col == col
+        let isPracticeWrong = practiceWrongCell?.row == row && practiceWrongCell?.col == col
 
         return RoundedRectangle(cornerRadius: 8)
-            .strokeBorder(borderColor, lineWidth: borderWidth)
+            .strokeBorder(Color.gray, lineWidth: 1)
             .background(
                 RoundedRectangle(cornerRadius: 8)
                     .fill(Color.blue.opacity(0.18))
                     .overlay(
                         ZStack {
-                            // ✅ only (no "OK" text). ❌ stays for wrong.
-                            if isCorrectBadge {
+                            // Framed step badges
+                            if isFramedCorrect {
                                 Text("✅")
                                     .font(.title).bold()
                                     .foregroundStyle(.green)
                                     .shadow(color: .black.opacity(0.5), radius: 1)
-                            } else if isWrongBadge {
+                            } else if isFramedWrong {
+                                Text("❌")
+                                    .font(.title).bold()
+                                    .foregroundStyle(.red)
+                                    .shadow(color: .black.opacity(0.5), radius: 1)
+                            }
+                            // Practice wrong tap badge (0.5s)
+                            if isPracticeWrong {
                                 Text("❌")
                                     .font(.title).bold()
                                     .foregroundStyle(.red)
@@ -177,27 +184,6 @@ struct TutorialBoardView: View {
         .allowsHitTesting(false)
     }
 
-    // MARK: Frames (use red for row, blue for column)
-    private var rowFrame: some View {
-        let y = centerY(forRow: targetRow)
-        return RoundedRectangle(cornerRadius: 0)
-            .stroke(Color.red, lineWidth: 3)
-            .frame(width: gridWidth, height: cellSize)
-            .position(x: gridMidX, y: y)
-            .opacity(0.45)
-            .allowsHitTesting(false)
-    }
-
-    private var colFrame: some View {
-        let x = centerX(forCol: targetCol)
-        return RoundedRectangle(cornerRadius: 0)
-            .stroke(Color.blue, lineWidth: 3)
-            .frame(width: cellSize, height: gridHeight)
-            .position(x: x, y: gridMidY)
-            .opacity(0.45)
-            .allowsHitTesting(false)
-    }
-
     // MARK: Geometry
     private func centerX(forCol col: Int) -> CGFloat {
         // col 0 = left header; first grid col is 1
@@ -213,11 +199,6 @@ struct TutorialBoardView: View {
     private var gridRightEdgeX: CGFloat { centerX(forCol: boardSize) + cellSize / 2 }
     private var gridTopEdgeY: CGFloat { centerY(forRow: 1) - cellSize / 2 }
     private var gridBottomEdgeY: CGFloat { centerY(forRow: boardSize) + cellSize / 2 }
-
-    private var gridWidth: CGFloat { gridRightEdgeX - gridLeftEdgeX }
-    private var gridHeight: CGFloat { gridBottomEdgeY - gridTopEdgeY }
-    private var gridMidX: CGFloat { (gridLeftEdgeX + gridRightEdgeX) / 2 }
-    private var gridMidY: CGFloat { (gridTopEdgeY + gridBottomEdgeY) / 2 }
 
     private var rowIntersectT: CGFloat {
         let total = max(0.0001, gridRightEdgeX - gridLeftEdgeX)
