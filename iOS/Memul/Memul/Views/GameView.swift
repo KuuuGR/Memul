@@ -75,13 +75,39 @@ struct GameView: View {
 
                             ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
                                 if let cell = viewModel.cells.first(where: { $0.row == row && $0.col == col }) {
-                                    CellView(
-                                        cell: cell,
-                                        isHighlighted: isCellHighlighted(cell),
-                                        isTarget: cell.value == viewModel.currentTarget,
-                                        puzzlePiece: getPuzzlePiece(row: row, col: col),
-                                        cellSize: cellSize
-                                    )
+
+                                    ZStack {
+                                        // Base cell
+                                        CellView(
+                                            cell: cell,
+                                            isHighlighted: isCellHighlighted(cell),
+                                            isTarget: cell.value == viewModel.currentTarget,
+                                            puzzlePiece: getPuzzlePiece(row: row, col: col),
+                                            cellSize: cellSize
+                                        )
+                                        // Slim highlight for selected row/column
+                                        if isCellHighlighted(cell) {
+                                            RoundedRectangle(cornerRadius: cellSize * 0.5)
+                                                .stroke(Color(.systemYellow), lineWidth: 2)
+                                                .frame(width: cellSize / 4, height: cellSize / 4)
+                                        }
+                                        // 🎯 Target emoji at tapped crossing (current selection)
+                                        if let sel = viewModel.currentSelection,
+                                           sel.row == row && sel.col == col {
+                                            Text("🎯")
+                                                .font(.system(size: cellSize * 0.6))
+                                                .shadow(color: .black.opacity(0.25), radius: 2, x: 0, y: 1)
+                                                .transition(.scale.combined(with: .opacity))
+                                                .accessibilityLabel(
+                                                    Text(
+                                                        String(
+                                                            format: NSLocalizedString("selected_coordinates", comment: "(%d, %d)"),
+                                                            row, col
+                                                        )
+                                                    )
+                                                )
+                                        }
+                                    }
                                     .frame(width: cellSize, height: cellSize)
                                     .contentShape(Rectangle())
                                     .onTapGesture {
@@ -211,8 +237,10 @@ struct GameView: View {
             }
             if wasCorrect { playCorrectSound() } else { playWrongSound() }
         } else {
-            // First tap -> set highlight/coordinates only
-            viewModel.firstTap(row: row, col: col)
+            // First tap -> set highlight/coordinates only + pop-in animation for 🎯
+            withAnimation(.spring(response: 0.25, dampingFraction: 0.7)) {
+                viewModel.firstTap(row: row, col: col)
+            }
         }
     }
 
@@ -252,3 +280,4 @@ struct GameView: View {
         }
     }
 }
+

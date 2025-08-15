@@ -16,9 +16,9 @@ struct CellView: View {
 
     var body: some View {
         ZStack {
-            // Background
+            // Base outline (slimmer) — highlight frame is now drawn in GameView
             RoundedRectangle(cornerRadius: 8)
-                .strokeBorder(isHighlighted ? Color.yellow : Color.gray, lineWidth: 2)
+                .strokeBorder(Color.gray, lineWidth: 1)
                 .background(
                     RoundedRectangle(cornerRadius: 8)
                         .fill(cell.isRevealed ? Color.clear : Color.blue)
@@ -40,9 +40,11 @@ struct CellView: View {
                     .foregroundColor(.white)
                     .shadow(color: .black, radius: 1.5, x: 0, y: 0)
             } else if isTarget {
-                Text("") //TODO: GQtodo
-                    .foregroundColor(.white)
-                    .font(.headline)
+//                Text("") //TODO: GQtodo
+//                    .foregroundColor(.white)
+//                    .font(.headline)
+                // Keep empty or any subtle hint; 🎯 is handled in GameView at the selected intersection.
+                EmptyView()
             }
         }
     }
