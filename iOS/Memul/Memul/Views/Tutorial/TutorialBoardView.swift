@@ -2,7 +2,7 @@
 //  TutorialBoardView.swift
 //  Memul
 //
-//  Top & left headers only; centered lasers; optional in-cell overlays.
+//  Top & left headers only; centered lasers; stage-gated overlays.
 //  Supports taps on headers and cells.
 //
 
@@ -30,11 +30,15 @@ struct TutorialBoardView: View {
     let highlightRowCells: Bool
     let highlightColCells: Bool
 
+    // stage gates
+    let showFramedOverlays: Bool
+    let showPracticeOverlays: Bool
+
     // glow flags
     let enableIntersectionGlow: Bool           // for intersect demo
     let practiceShowGlow: Bool                 // show product glow + green outline on correct
 
-    // overlays
+    // overlays data
     let framedCorrectCell: (row: Int, col: Int)?
     let framedWrongCell: (row: Int, col: Int)?
     let practiceWrongCell: (row: Int, col: Int)?
@@ -51,7 +55,7 @@ struct TutorialBoardView: View {
             if showColLaser { colLaser }
 
             // intersection/product glow in the target cell
-            if (enableIntersectionGlow && lasersCrossed) || practiceShowGlow {
+            if (enableIntersectionGlow && lasersCrossed) || (showPracticeOverlays && practiceShowGlow) {
                 intersectionGlow
             }
         }
@@ -108,10 +112,10 @@ struct TutorialBoardView: View {
     }
 
     private func cellAt(_ row: Int, _ col: Int) -> some View {
-        let isFramedCorrect = framedCorrectCell?.row == row && framedCorrectCell?.col == col
-        let isFramedWrong   = framedWrongCell?.row == row && framedWrongCell?.col == col
-        let isPracticeWrong = practiceWrongCell?.row == row && practiceWrongCell?.col == col
-        let isPracticeCorrect = practiceShowGlow && (row == targetRow && col == targetCol)
+        let isFramedCorrect = showFramedOverlays && framedCorrectCell?.row == row && framedCorrectCell?.col == col
+        let isFramedWrong   = showFramedOverlays && framedWrongCell?.row == row && framedWrongCell?.col == col
+        let isPracticeWrong = showPracticeOverlays && practiceWrongCell?.row == row && practiceWrongCell?.col == col
+        let isPracticeCorrect = showPracticeOverlays && practiceShowGlow && (row == targetRow && col == targetCol)
 
         return RoundedRectangle(cornerRadius: 8)
             .strokeBorder(Color.gray, lineWidth: 1)

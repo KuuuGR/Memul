@@ -67,16 +67,20 @@ struct TutorialView: View {
                 highlightTopHeader: phase == .cols || phase == .intersect || phase == .framed || phase == .practice,
                 highlightLeftHeader: phase == .rows || phase == .intersect || phase == .framed || phase == .practice,
 
-                // no row/col cell frames in this version
+                // (frames disabled)
                 highlightRowCells: false,
                 highlightColCells: false,
 
-                // glows / badges
-                enableIntersectionGlow: phase == .intersect,               // lasers-cross glow
-                practiceShowGlow: phase == .practice && wasCorrect,        // product glow + green outline on correct
-                framedCorrectCell: framedCorrectCell,                      // ✅ on cell in framed
-                framedWrongCell: framedWrongCell,                          // ❌ on cell in framed
-                practiceWrongCell: practiceWrongCell,                      // ❌ 0.5s in practice
+                // stage-gated overlays/glows
+                showFramedOverlays: phase == .framed,
+                showPracticeOverlays: phase == .practice,
+                enableIntersectionGlow: phase == .intersect,                 // lasers-cross glow
+                practiceShowGlow: phase == .practice && wasCorrect,          // product glow + green outline on correct
+
+                // overlay data
+                framedCorrectCell: framedCorrectCell,                        // ✅ in framed
+                framedWrongCell: framedWrongCell,                            // ❌ in framed
+                practiceWrongCell: practiceWrongCell,                        // ❌ 0.5s in practice
 
                 // Taps
                 onTapTopHeader: { c in
@@ -90,7 +94,7 @@ struct TutorialView: View {
                 onTapCell: { r, c in
                     switch phase {
                     case .practice:
-                        // Wrong -> ❌ for 0.5s; Correct -> show glow+outline and enable buttons
+                        // Wrong -> ❌ for 0.5s; Correct -> show glow+outline and enable control bar
                         if r == targetRow && c == targetCol {
                             practiceWrongCell = nil
                             userSelection = (r, c)
@@ -108,7 +112,7 @@ struct TutorialView: View {
                         }
 
                     case .framed:
-                        // Show ✅ on correct; ❌ for 1s on wrong; no auto-advance.
+                        // ✅ on correct; ❌ for 1s on wrong; no auto-advance.
                         if r == targetRow && c == targetCol {
                             framedWrongCell = nil
                             framedCorrectCell = (r, c)
@@ -274,7 +278,7 @@ struct TutorialView: View {
     private var columnButtons: some View {
         HStack(spacing: 8) {
             ForEach(1...boardSize, id: \.self) { c in
-                Button("Col. \(c)") { playCol(c) }   // shorter label with dot
+                Button("Col. \(c)") { playCol(c) }   // short label with dot
                     .buttonStyle(.bordered)
                     .disabled(isAnimating)
             }
@@ -373,11 +377,14 @@ struct TutorialView: View {
         case .rows:       phase = .cols
         case .cols:       phase = .intersect
         case .intersect:
+            // entering framed fresh
             framedCorrectCell = nil
             framedWrongCell = nil
             phase = .framed
         case .framed:
-            // transition into practice, keep same targets
+            // clear any framed badges on exit, then move to practice
+            framedCorrectCell = nil
+            framedWrongCell = nil
             practiceWrongCell = nil
             userSelection = nil
             wasCorrect = false
