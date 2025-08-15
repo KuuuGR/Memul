@@ -15,7 +15,8 @@ struct SettingsView: View {
             // MARK: Board Size
             Section(header: Text(NSLocalizedString("board_size", comment: ""))) {
                 Stepper(value: $settings.boardSize, in: 1...maxBoardSize) {
-                    Text(String(format: NSLocalizedString("board_size_value", comment: ""), settings.boardSize, settings.boardSize))
+                    Text(String(format: NSLocalizedString("board_size_value", comment: ""),
+                                settings.boardSize, settings.boardSize))
                 }
             }
 
@@ -28,7 +29,6 @@ struct SettingsView: View {
 
                 if settings.players.count < maxPlayers {
                     Button(NSLocalizedString("add_player", comment: "")) {
-                        // You can rotate colors if you wish; using green as a simple default.
                         let newColor: Color = .green
                         settings.players.append(Player(name: "Player \(settings.players.count + 1)", color: newColor))
                     }
@@ -70,19 +70,69 @@ struct SettingsView: View {
                 }
             }
 
+            // MARK: Quick practice
+            Section(header: Text(NSLocalizedString("quick_practice", comment: ""))) {
+                // Multiplication range (always available)
+                Stepper {
+                    Text(String(
+                        format: NSLocalizedString("range_multiplication", comment: "Multiplication range"),
+                        settings.multiplicationMin, settings.multiplicationMax
+                    ))
+                } onIncrement: {
+                    settings.multiplicationMax = min(settings.multiplicationMax + 1, 20)
+                } onDecrement: {
+                    if settings.multiplicationMin < settings.multiplicationMax {
+                        settings.multiplicationMax = max(settings.multiplicationMin, settings.multiplicationMax - 1)
+                    } else {
+                        settings.multiplicationMin = max(0, settings.multiplicationMin - 1)
+                    }
+                }
+
+                // Unlock Division (premium-gated)
+                Toggle(NSLocalizedString("unlock_division", comment: ""), isOn: $settings.isDivisionUnlocked)
+                    .disabled(!settings.isPremium)
+                    .opacity(settings.isPremium ? 1.0 : 0.5)
+                    .onChange(of: settings.isPremium) { _, isPremium in
+                        if !isPremium { settings.isDivisionUnlocked = false }
+                    }
+
+                // Division range (only visible when unlocked)
+                if settings.isDivisionUnlocked {
+                    Stepper {
+                        Text(String(
+                            format: NSLocalizedString("range_division", comment: "Division range"),
+                            settings.divisionMin, settings.divisionMax
+                        ))
+                    } onIncrement: {
+                        settings.divisionMax = min(settings.divisionMax + 1, 20)
+                    } onDecrement: {
+                        if settings.divisionMin < settings.divisionMax {
+                            settings.divisionMax = max(settings.divisionMin, settings.divisionMax - 1)
+                        } else {
+                            settings.divisionMin = max(1, settings.divisionMin - 1)
+                        }
+                    }
+
+                    Text(NSLocalizedString("division_note", comment: "Division note"))
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                } else {
+                    Text(NSLocalizedString("division_premium_hint", comment: ""))
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                }
+            }
+
             // MARK: Index Labels (cleaned)
             Section(header: Text(NSLocalizedString("index_labels", comment: ""))) {
                 Toggle(NSLocalizedString("index_customize", comment: ""), isOn: $settings.enableIndexCustomization)
                     .disabled(!settings.isPremium)
                     .opacity(settings.isPremium ? 1.0 : 0.5)
                     .onChange(of: settings.isPremium) { _, isPremium in
-                        if !isPremium {
-                            settings.enableIndexCustomization = false
-                        }
+                        if !isPremium { settings.enableIndexCustomization = false }
                     }
 
                 if settings.isPremium && settings.enableIndexCustomization {
-                    // Visibility toggles
                     Group {
                         Toggle(NSLocalizedString("show_top_labels", comment: ""), isOn: $settings.indexVisibility.top)
                         Toggle(NSLocalizedString("show_bottom_labels", comment: ""), isOn: $settings.indexVisibility.bottom)
@@ -90,7 +140,6 @@ struct SettingsView: View {
                         Toggle(NSLocalizedString("show_right_labels", comment: ""), isOn: $settings.indexVisibility.right)
                     }
 
-                    // Color pickers
                     Group {
                         ColorPicker(NSLocalizedString("top_color", comment: ""), selection: $settings.indexColors.top)
                         ColorPicker(NSLocalizedString("bottom_color", comment: ""), selection: $settings.indexColors.bottom)
@@ -104,7 +153,7 @@ struct SettingsView: View {
                         }
                         Spacer()
                         Button(NSLocalizedString("reset_label_colors", comment: "")) {
-                            settings.indexColors = IndexColors() // back to defaults
+                            settings.indexColors = IndexColors()
                         }
                     }
                 } else {
@@ -120,10 +169,10 @@ struct SettingsView: View {
                     Text(NSLocalizedString("turn_30s", comment: "30s")).tag(Int?.some(30))
                     Text(NSLocalizedString("turn_60s", comment: "60s")).tag(Int?.some(60))
                     Text(NSLocalizedString("turn_120s", comment: "120s")).tag(Int?.some(120))
-                    Text(NSLocalizedString("turn_infinity", comment: "∞")).tag(Int?.none) // nil = unlimited
+                    Text(NSLocalizedString("turn_infinity", comment: "∞")).tag(Int?.none)
                 }
                 .pickerStyle(.segmented)
-                .disabled(!settings.isPremium) // Free users locked to 30s
+                .disabled(!settings.isPremium)
 
                 if !settings.isPremium {
                     Text(NSLocalizedString("turn_timer_free_hint", comment: "Free version uses a fixed 30s per turn."))
@@ -134,7 +183,8 @@ struct SettingsView: View {
 
             // MARK: Header/UX Options
             Section(header: Text(NSLocalizedString("header_options", comment: ""))) {
-                Toggle(NSLocalizedString("show_selected_coordinates_button", comment: ""), isOn: $settings.showSelectedCoordinatesButton)
+                Toggle(NSLocalizedString("show_selected_coordinates_button", comment: ""),
+                       isOn: $settings.showSelectedCoordinatesButton)
             }
 
             // MARK: Premium Access
@@ -142,7 +192,6 @@ struct SettingsView: View {
                 Toggle(NSLocalizedString("unlock_premium", comment: ""), isOn: $settings.isPremium)
                     .onChange(of: settings.isPremium) { _, isPremium in
                         if !isPremium {
-                            // Enforce free limitations when premium is turned off
                             if settings.boardSize > GameSettings.freeMaxBoardSize {
                                 settings.boardSize = GameSettings.freeMaxBoardSize
                             }
@@ -151,12 +200,10 @@ struct SettingsView: View {
                             }
                             settings.useRandomPuzzleImage = false
                             settings.difficulty = .easy
-                            // Lock timer back to 30s for free users
                             settings.turnTimeLimit = 30
-
-                            // Collapse / reset Index Labels customization
                             settings.enableIndexCustomization = false
                             settings.indexColors = IndexColors()
+                            settings.isDivisionUnlocked = false
                         }
                     }
 
@@ -171,16 +218,15 @@ struct SettingsView: View {
         }
         .navigationTitle(NSLocalizedString("settings_title", comment: ""))
         .onAppear {
-            // Ensure free users always have 30s at view entry
             if !settings.isPremium { settings.turnTimeLimit = 30 }
-            // Ensure Easy if premium is off
             if !settings.isPremium && settings.difficulty != .easy {
                 settings.difficulty = .easy
             }
         }
     }
 
-    // Premium limits (you can tune these)
+    // MARK: Helpers
+
     private var maxBoardSize: Int {
         settings.isPremium ? 12 : GameSettings.freeMaxBoardSize
     }

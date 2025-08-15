@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// MARK: - Difficulty
+
 /// Difficulty levels for scoring rules.
 enum Difficulty: String, CaseIterable, Identifiable {
     case easy    // correct: +1, wrong: 0
@@ -14,15 +16,9 @@ enum Difficulty: String, CaseIterable, Identifiable {
     case hard    // correct: +1, wrong: -1 (can go negative)
 
     var id: String { rawValue }
-
-    var displayName: String {
-        switch self {
-        case .easy:   return "Easy"
-        case .normal: return "Normal"
-        case .hard:   return "Hard"
-        }
-    }
 }
+
+// MARK: - Index labels customization
 
 /// Colors of index labels around the board.
 struct IndexColors: Equatable {
@@ -42,7 +38,9 @@ struct IndexVisibility: Equatable {
     var right: Bool = true
 }
 
-/// Global game configuration passed into the view model.
+// MARK: - Global settings container
+
+/// Global game configuration passed into the view model and views.
 struct GameSettings {
     // Board
     var boardSize: Int = 4
@@ -72,6 +70,13 @@ struct GameSettings {
 
     // UX
     var showSelectedCoordinatesButton: Bool = true
+
+    // Quick Practice ranges & locks
+    var isDivisionUnlocked: Bool = false          // premium-gated
+    var multiplicationMin: Int = 1
+    var multiplicationMax: Int = 10
+    var divisionMin: Int = 1
+    var divisionMax: Int = 10
 
     // Free version limits
     static let freeMaxBoardSize = 6

@@ -107,3 +107,22 @@
 "next" = "Next";
 "repeat" = "Repeat";
 "skip_to_practice" = "Skip to Practice";
+
+/// StartView & Practice
+"quick_multiply" = "Quick Multiplication";
+"quick_divide" = "Quick Division";
+"quick_divide_locked" = "Quick Division (Locked)";
+"quick_practice" = "Quick Practice";
+"range_multiplication" = "Multiplication range: %d–%d";
+"range_division" = "Division range: %d–%d";
+"unlock_division" = "Unlock Quick Division";
+"division_premium_hint" = "Unlocking Division requires Premium.";
+"division_note" = "Division uses integer results: (quotient × divisor) ÷ divisor = quotient.";
+
+// QuickPracticeView UI
+"qp_score" = "Score: %d  •  %d/%d";
+"qp_m_prompt" = "What is %d × %d ?";
+"qp_d_prompt" = "What is %d ÷ %d ?";
+"qp_correct" = "Correct!";
+"qp_wrong" = "Not quite. Correct answer: %d";
+"qp_next" = "Next";

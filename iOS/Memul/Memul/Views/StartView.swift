@@ -19,10 +19,6 @@ struct StartView: View {
     @State private var isActive = false
     @State private var gameViewModel: GameViewModel?
 
-    @State private var isShowingSettings = false
-    @State private var isShowingAbout = false
-    @State private var isShowingTutorial = false
-
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
@@ -30,24 +26,67 @@ struct StartView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
 
+                // Start game (programmatic so we can create the VM)
                 Button(NSLocalizedString("start_game", comment: "Start game button")) {
                     startGame()
                 }
                 .buttonStyle(.borderedProminent)
 
-                Button(NSLocalizedString("tutorial", comment: "Open tutorial")) {
-                    isShowingTutorial = true
-                }
-                .buttonStyle(.bordered)
-
-                HStack(spacing: 12) {
-                    Button(NSLocalizedString("settings", comment: "Open settings")) {
-                        isShowingSettings = true
+                // Quick Practice
+                VStack(spacing: 12) {
+                    NavigationLink(NSLocalizedString("quick_multiply", comment: "Quick multiplication practice")) {
+                        QuickPracticeView(
+                            mode: .multiplication,
+                            minValue: settings.multiplicationMin,
+                            maxValue: settings.multiplicationMax
+                        )
+                        .navigationTitle(NSLocalizedString("quick_multiply", comment: ""))
                     }
                     .buttonStyle(.bordered)
 
-                    Button(NSLocalizedString("about", comment: "Open about")) {
-                        isShowingAbout = true
+                    if settings.isDivisionUnlocked {
+                        NavigationLink(NSLocalizedString("quick_divide", comment: "Quick division practice")) {
+                            QuickPracticeView(
+                                mode: .division,
+                                minValue: settings.divisionMin,
+                                maxValue: settings.divisionMax
+                            )
+                            .navigationTitle(NSLocalizedString("quick_divide", comment: ""))
+                        }
+                        .buttonStyle(.bordered)
+                    } else {
+                        Button {
+                            // no-op (future: show paywall)
+                        } label: {
+                            HStack(spacing: 8) {
+                                Image(systemName: "lock.fill")
+                                Text(NSLocalizedString("quick_divide_locked", comment: "Locked division"))
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        .disabled(true)
+                        .opacity(0.6)
+                    }
+                }
+
+                // Tutorial
+                NavigationLink(NSLocalizedString("tutorial", comment: "Open tutorial")) {
+                    TutorialView()
+                        .navigationTitle(NSLocalizedString("tutorial_title", comment: ""))
+                }
+                .buttonStyle(.bordered)
+
+                // Settings / About
+                HStack(spacing: 12) {
+                    NavigationLink(NSLocalizedString("settings", comment: "Open settings")) {
+                        SettingsView(settings: $settings)
+                            .navigationTitle(NSLocalizedString("settings_title", comment: ""))
+                    }
+                    .buttonStyle(.bordered)
+
+                    NavigationLink(NSLocalizedString("about", comment: "Open about")) {
+                        AboutView()
+                            .navigationTitle(NSLocalizedString("ab_navigation_title", comment: ""))
                     }
                     .buttonStyle(.bordered)
                 }
@@ -55,23 +94,16 @@ struct StartView: View {
                 Spacer()
             }
             .padding()
+            // Destination for programmatic "Start Game"
             .navigationDestination(isPresented: $isActive) {
                 if let gameViewModel = gameViewModel {
                     GameView(viewModel: gameViewModel)
                 }
             }
-            .navigationDestination(isPresented: $isShowingTutorial) {
-                TutorialView()
-            }
-            .navigationDestination(isPresented: $isShowingSettings) {
-                SettingsView(settings: $settings)
-            }
-            .navigationDestination(isPresented: $isShowingAbout) {
-                AboutView()
-            }
         }
     }
 
+    /// Starts a new game safely on the main actor
     @MainActor
     private func startGame() {
         gameViewModel = GameViewModel(settings: settings)
@@ -80,5 +112,5 @@ struct StartView: View {
 }
 
 #Preview {
-    StartView()
+    NavigationStack { StartView() }
 }
