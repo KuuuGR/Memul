@@ -27,15 +27,15 @@ struct TutorialView: View {
 
     // MARK: - Playback state
     @State private var isAnimating = false
-    @State private var lastRowPlayed: Int? = nil
-    @State private var lastColPlayed: Int? = nil
+    @State private var lastRowPlayed: Int? = nil     // used as “user-selected row” in intersect
+    @State private var lastColPlayed: Int? = nil     // used as “user-selected col” in intersect
     @State private var lastPlayedWasRow = true
 
     // MARK: - Practice state
     @State private var userSelection: (row: Int, col: Int)?
     @State private var wasCorrect = false
     @State private var practiceWrongCell: (row: Int, col: Int)?
-    @State private var hasSolvedOnce = false
+    @State private var hasSolvedOnce = false         // gates Quit button
 
     // MARK: - Framed step: in-cell feedback overlays
     @State private var framedCorrectCell: (row: Int, col: Int)?
@@ -58,15 +58,21 @@ struct TutorialView: View {
                 targetRow: targetRow,
                 targetCol: targetCol,
 
-                // lasers
-                showRowLaser: phase == .rows || phase == .intersect,
-                showColLaser: phase == .cols || phase == .intersect,
+                // lasers (in Intersect, only show after user picked the axis)
+                showRowLaser: (phase == .rows)
+                              || (phase == .intersect && lastRowPlayed != nil),
+                showColLaser: (phase == .cols)
+                              || (phase == .intersect && lastColPlayed != nil),
                 rowProgress: rowProgress,
                 colProgress: colProgress,
 
-                // header highlights (top/left badges)
-                highlightTopHeader: phase == .cols || phase == .intersect || phase == .framed || phase == .practice,
-                highlightLeftHeader: phase == .rows || phase == .intersect || phase == .framed || phase == .practice,
+                // header highlights (only highlight selected header in Intersect)
+                highlightTopHeader: (phase == .cols)
+                                    || (phase == .intersect && lastColPlayed != nil)
+                                    || (phase == .framed) || (phase == .practice),
+                highlightLeftHeader: (phase == .rows)
+                                     || (phase == .intersect && lastRowPlayed != nil)
+                                     || (phase == .framed) || (phase == .practice),
 
                 // (frames disabled)
                 highlightRowCells: false,
@@ -241,7 +247,6 @@ struct TutorialView: View {
                 body: "Tap the intersection of the shown row and column. A correct tap shows ✅ in that cell; a wrong tap shows ❌ briefly."
             ))
         case .practice:
-            // Inline success message under the board
             if wasCorrect {
                 return AnyView(infoCard(
                     title: "Great!",
@@ -281,7 +286,7 @@ struct TutorialView: View {
     private var columnButtons: some View {
         HStack(spacing: 8) {
             ForEach(1...boardSize, id: \.self) { c in
-                Button("Col. \(c)") { playCol(c) }   // short label with dot
+                Button("Col. \(c)") { playCol(c) }
                     .buttonStyle(.bordered)
                     .tint(.blue)
                     .disabled(isAnimating)
@@ -336,7 +341,7 @@ struct TutorialView: View {
                 dismiss()
             }
             .buttonStyle(.borderedProminent)
-            .disabled(!hasSolvedOnce)
+            .disabled(!hasSolvedOnce) // enabled only after first correct solution
         }
         .padding(.top, 2)
     }
@@ -354,7 +359,7 @@ struct TutorialView: View {
         switch phase {
         case .rows:      return lastRowPlayed == nil
         case .cols:      return lastColPlayed == nil
-        case .intersect: return (lastRowPlayed == nil || lastColPlayed == nil)
+        case .intersect: return (lastRowPlayed == nil || lastColPlayed == nil) // must pick both before Next
         case .framed:    return framedCorrectCell == nil
         case .practice:  return true // practice uses Back/Retry/Quit, no Next
         }
@@ -363,8 +368,11 @@ struct TutorialView: View {
     // MARK: - Navigation
     private func goBack() {
         switch phase {
-        case .cols:       phase = .rows
-        case .intersect:  phase = .cols
+        case .cols:
+            phase = .rows
+        case .intersect:
+            // if user goes back from intersect to cols, keep any partial picks
+            phase = .cols
         case .framed:
             framedCorrectCell = nil
             framedWrongCell = nil
@@ -379,21 +387,32 @@ struct TutorialView: View {
 
     private func goNext() {
         switch phase {
-        case .rows:       phase = .cols
-        case .cols:       phase = .intersect
+        case .rows:
+            phase = .cols
+
+        case .cols:
+            // Enter Intersect **clean**: no lasers until user taps.
+            lastRowPlayed = nil
+            lastColPlayed = nil
+            rowProgress = 0
+            colProgress = 0
+            phase = .intersect
+
         case .intersect:
             // entering framed fresh
             framedCorrectCell = nil
             framedWrongCell = nil
             phase = .framed
+
         case .framed:
-            // clear any framed badges on exit, then move to practice
+            // clear framed badges on exit, then move to practice
             framedCorrectCell = nil
             framedWrongCell = nil
             practiceWrongCell = nil
             userSelection = nil
             wasCorrect = false
             phase = .practice
+
         case .practice:
             break
         }
