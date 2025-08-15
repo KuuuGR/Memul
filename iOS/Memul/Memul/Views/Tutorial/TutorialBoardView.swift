@@ -3,7 +3,7 @@
 //  Memul
 //
 //  Top & left headers only; centered lasers; optional row/col frames.
-//  Supports taps on headers and cells via closures.
+//  Supports taps on headers and cells, plus framed-step overlays.
 //
 
 import SwiftUI
@@ -32,6 +32,10 @@ struct TutorialBoardView: View {
 
     // glow
     let enableIntersectionGlow: Bool
+
+    // FRAMED overlays
+    let framedCorrectCell: (row: Int, col: Int)?
+    let framedWrongCell: (row: Int, col: Int)?
 
     // taps
     var onTapTopHeader: ((Int) -> Void)? = nil
@@ -100,9 +104,35 @@ struct TutorialBoardView: View {
     }
 
     private func cellAt(_ row: Int, _ col: Int) -> some View {
-        RoundedRectangle(cornerRadius: 8)
-            .strokeBorder(Color.gray, lineWidth: 1)
-            .background(RoundedRectangle(cornerRadius: 8).fill(Color.blue.opacity(0.18)))
+        let isRowFrame = highlightRowCells && row == targetRow
+        let isColFrame = highlightColCells && col == targetCol
+        let borderColor: Color = (isRowFrame || isColFrame) ? .yellow : .gray
+        let borderWidth: CGFloat = (isRowFrame || isColFrame) ? 3 : 1
+        let isCorrectBadge = framedCorrectCell?.row == row && framedCorrectCell?.col == col
+        let isWrongBadge = framedWrongCell?.row == row && framedWrongCell?.col == col
+
+        return RoundedRectangle(cornerRadius: 8)
+            .strokeBorder(borderColor, lineWidth: borderWidth)
+            .background(
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color.blue.opacity(0.18))
+                    .overlay(
+                        ZStack {
+                            // ✅ only (no "OK" text). ❌ stays for wrong.
+                            if isCorrectBadge {
+                                Text("✅")
+                                    .font(.title).bold()
+                                    .foregroundStyle(.green)
+                                    .shadow(color: .black.opacity(0.5), radius: 1)
+                            } else if isWrongBadge {
+                                Text("❌")
+                                    .font(.title).bold()
+                                    .foregroundStyle(.red)
+                                    .shadow(color: .black.opacity(0.5), radius: 1)
+                            }
+                        }
+                    )
+            )
             .frame(width: cellSize, height: cellSize)
             .contentShape(Rectangle())
             .onTapGesture { onTapCell?(row, col) }
