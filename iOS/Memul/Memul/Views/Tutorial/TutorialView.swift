@@ -35,6 +35,7 @@ struct TutorialView: View {
     @State private var userSelection: (row: Int, col: Int)?
     @State private var wasCorrect = false
     @State private var practiceWrongCell: (row: Int, col: Int)?
+    @State private var hasSolvedOnce = false
 
     // MARK: - Framed step: in-cell feedback overlays
     @State private var framedCorrectCell: (row: Int, col: Int)?
@@ -99,6 +100,7 @@ struct TutorialView: View {
                             practiceWrongCell = nil
                             userSelection = (r, c)
                             wasCorrect = true
+                            hasSolvedOnce = true
                         } else {
                             guard !wasCorrect else { return } // ignore wrong after success
                             wasCorrect = false
@@ -270,6 +272,7 @@ struct TutorialView: View {
             ForEach(1...boardSize, id: \.self) { r in
                 Button("Row \(r)") { playRow(r) }
                     .buttonStyle(.bordered)
+                    .tint(.red)
                     .disabled(isAnimating)
             }
         }
@@ -280,6 +283,7 @@ struct TutorialView: View {
             ForEach(1...boardSize, id: \.self) { c in
                 Button("Col. \(c)") { playCol(c) }   // short label with dot
                     .buttonStyle(.bordered)
+                    .tint(.blue)
                     .disabled(isAnimating)
             }
         }
@@ -332,6 +336,7 @@ struct TutorialView: View {
                 dismiss()
             }
             .buttonStyle(.borderedProminent)
+            .disabled(!hasSolvedOnce)
         }
         .padding(.top, 2)
     }
