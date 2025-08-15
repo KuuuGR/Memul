@@ -38,7 +38,8 @@ struct StartView: View {
                         QuickPracticeView(
                             mode: .multiplication,
                             minValue: settings.multiplicationMin,
-                            maxValue: settings.multiplicationMax
+                            maxValue: settings.multiplicationMax,
+                            difficulty: settings.difficulty
                         )
                         .navigationTitle(NSLocalizedString("quick_multiply", comment: ""))
                     }
@@ -49,7 +50,8 @@ struct StartView: View {
                             QuickPracticeView(
                                 mode: .division,
                                 minValue: settings.divisionMin,
-                                maxValue: settings.divisionMax
+                                maxValue: settings.divisionMax,
+                                difficulty: settings.difficulty
                             )
                             .navigationTitle(NSLocalizedString("quick_divide", comment: ""))
                         }

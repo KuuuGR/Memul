@@ -88,12 +88,12 @@ struct SettingsView: View {
                     }
                 }
 
-                // Unlock Division (premium-gated)
+                // Unlock Division (premium-gated, auto-unlock on premium)
                 Toggle(NSLocalizedString("unlock_division", comment: ""), isOn: $settings.isDivisionUnlocked)
                     .disabled(!settings.isPremium)
                     .opacity(settings.isPremium ? 1.0 : 0.5)
                     .onChange(of: settings.isPremium) { _, isPremium in
-                        if !isPremium { settings.isDivisionUnlocked = false }
+                        settings.isDivisionUnlocked = isPremium
                     }
 
                 // Division range (only visible when unlocked)
