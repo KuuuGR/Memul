@@ -26,13 +26,13 @@ struct TutorialBoardView: View {
     let highlightTopHeader: Bool
     let highlightLeftHeader: Bool
 
-    // (deprecated in this version – kept for signature parity)
+    // kept for signature compatibility (unused visually here)
     let highlightRowCells: Bool
     let highlightColCells: Bool
 
     // glow flags
-    let enableIntersectionGlow: Bool           // for the intersect demo (requires beams to cross)
-    let practiceShowGlow: Bool                 // show product glow during Practice on correct tap
+    let enableIntersectionGlow: Bool           // for intersect demo
+    let practiceShowGlow: Bool                 // show product glow + green outline on correct
 
     // overlays
     let framedCorrectCell: (row: Int, col: Int)?
@@ -49,7 +49,8 @@ struct TutorialBoardView: View {
             grid
             if showRowLaser { rowLaser }
             if showColLaser { colLaser }
-            // intersection/product glow:
+
+            // intersection/product glow in the target cell
             if (enableIntersectionGlow && lasersCrossed) || practiceShowGlow {
                 intersectionGlow
             }
@@ -110,6 +111,7 @@ struct TutorialBoardView: View {
         let isFramedCorrect = framedCorrectCell?.row == row && framedCorrectCell?.col == col
         let isFramedWrong   = framedWrongCell?.row == row && framedWrongCell?.col == col
         let isPracticeWrong = practiceWrongCell?.row == row && practiceWrongCell?.col == col
+        let isPracticeCorrect = practiceShowGlow && (row == targetRow && col == targetCol)
 
         return RoundedRectangle(cornerRadius: 8)
             .strokeBorder(Color.gray, lineWidth: 1)
@@ -139,6 +141,15 @@ struct TutorialBoardView: View {
                             }
                         }
                     )
+            )
+            // Green outline on correct cell during Practice (together with yellow glow)
+            .overlay(
+                Group {
+                    if isPracticeCorrect {
+                        RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.green, lineWidth: 3)
+                    }
+                }
             )
             .frame(width: cellSize, height: cellSize)
             .contentShape(Rectangle())

@@ -14,7 +14,7 @@ struct TutorialView: View {
     private let spacing: CGFloat = 4
 
     // MARK: - Phases
-    private enum Phase { case rows, cols, intersect, framed, practice, feedback }
+    private enum Phase { case rows, cols, intersect, framed, practice }
     @State private var phase: Phase = .rows
 
     // MARK: - Targets
@@ -31,7 +31,7 @@ struct TutorialView: View {
     @State private var lastColPlayed: Int? = nil
     @State private var lastPlayedWasRow = true
 
-    // MARK: - Practice/Feedback
+    // MARK: - Practice state
     @State private var userSelection: (row: Int, col: Int)?
     @State private var wasCorrect = false
     @State private var practiceWrongCell: (row: Int, col: Int)?
@@ -42,6 +42,8 @@ struct TutorialView: View {
 
     // MARK: - Timing
     private let sweepDuration: Double = 2.0
+
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack(spacing: 16) {
@@ -62,19 +64,19 @@ struct TutorialView: View {
                 colProgress: colProgress,
 
                 // header highlights (top/left badges)
-                highlightTopHeader: phase == .cols || phase == .intersect || phase == .framed || phase == .practice || phase == .feedback,
-                highlightLeftHeader: phase == .rows || phase == .intersect || phase == .framed || phase == .practice || phase == .feedback,
+                highlightTopHeader: phase == .cols || phase == .intersect || phase == .framed || phase == .practice,
+                highlightLeftHeader: phase == .rows || phase == .intersect || phase == .framed || phase == .practice,
 
-                // no row/col cell frames
+                // no row/col cell frames in this version
                 highlightRowCells: false,
                 highlightColCells: false,
 
                 // glows / badges
-                enableIntersectionGlow: phase == .intersect,
-                practiceShowGlow: phase == .practice && wasCorrect,
-                framedCorrectCell: framedCorrectCell,
-                framedWrongCell: framedWrongCell,
-                practiceWrongCell: practiceWrongCell,
+                enableIntersectionGlow: phase == .intersect,               // lasers-cross glow
+                practiceShowGlow: phase == .practice && wasCorrect,        // product glow + green outline on correct
+                framedCorrectCell: framedCorrectCell,                      // ✅ on cell in framed
+                framedWrongCell: framedWrongCell,                          // ❌ on cell in framed
+                practiceWrongCell: practiceWrongCell,                      // ❌ 0.5s in practice
 
                 // Taps
                 onTapTopHeader: { c in
@@ -88,7 +90,7 @@ struct TutorialView: View {
                 onTapCell: { r, c in
                     switch phase {
                     case .practice:
-                        // Show ❌ for 0.5s on wrong; show glow on correct
+                        // Wrong -> ❌ for 0.5s; Correct -> show glow+outline and enable buttons
                         if r == targetRow && c == targetCol {
                             practiceWrongCell = nil
                             userSelection = (r, c)
@@ -131,7 +133,7 @@ struct TutorialView: View {
                 height: TutorialBoardView.pixelHeight(boardSize: boardSize, cellSize: cellSize, spacing: spacing)
             )
 
-            // Annotation (Rows / Cols / Intersect / Framed)
+            // Annotation / inline messages (Rows / Cols / Intersect / Framed / Practice)
             annotation
 
             // Trigger buttons (keep buttons + header taps)
@@ -146,8 +148,12 @@ struct TutorialView: View {
                 }
             }
 
-            // Controls: Back (left), Repeat (center on teach stages), Next (right)
-            controlBar
+            // Controls
+            if phase == .practice {
+                practiceControlBar
+            } else {
+                standardControlBar
+            }
         }
         .padding()
         .navigationTitle(NSLocalizedString("tutorial_title", comment: "Tutorial"))
@@ -201,63 +207,57 @@ struct TutorialView: View {
                     Text("Column: \(targetCol)").foregroundStyle(.blue)
                 }
                 .font(.subheadline)
-
-            case .feedback:
-                Text(wasCorrect ? NSLocalizedString("tutorial_feedback_great", comment: "")
-                                : NSLocalizedString("tutorial_feedback_not_quite", comment: ""))
-                    .font(.title3).bold()
-                Text(String(format: NSLocalizedString("tutorial_equation", comment: "r × c = product"),
-                            targetRow, targetCol, targetRow * targetCol))
             }
         }
     }
 
-    // MARK: - Annotation (Rows / Cols / Intersect / Framed)
+    // MARK: - Annotation / inline messages
     private var annotation: some View {
-        let (title, body): (String, String) = {
-            switch phase {
-            case .rows:
-                return (
-                    "Now we practice rows",
-                    "Imagine earthworm tunnels across the ground — lava rushes through the tunnels and the worm escapes sideways. That’s a horizontal sweep."
-                )
-            case .cols:
-                return (
-                    "Now we practice columns",
-                    "Imagine icicles falling from the roof — straight down in a line. That’s a vertical sweep."
-                )
-            case .intersect:
-                return (
-                    "Intersections in the game",
-                    "Where a row meets a column: row × column. You’ll be asked to find a specific crossing cell."
-                )
-            case .framed:
-                return (
-                    "Intersection — Part 2",
-                    "Tap the intersection of the shown row and column. A correct tap shows ✅ in that cell; a wrong tap shows ❌ briefly."
-                )
-            default:
-                return ("", "")
-            }
-        }()
-
-        return Group {
-            if !title.isEmpty {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(title).font(.headline)
-                    Text(body).font(.subheadline).foregroundStyle(.secondary)
-                }
-                .padding(12)
-                .background(
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(Color(UIColor.secondarySystemBackground))
-                )
-                .overlay(
-                    RoundedRectangle(cornerRadius: 12)
-                        .stroke(Color.gray.opacity(0.2), lineWidth: 1)
-                )
+        switch phase {
+        case .rows:
+            return AnyView(infoCard(
+                title: "Now we practice rows",
+                body: "Imagine earthworm tunnels across the ground — lava rushes through the tunnels and the worm escapes sideways. That’s a horizontal sweep."
+            ))
+        case .cols:
+            return AnyView(infoCard(
+                title: "Now we practice columns",
+                body: "Imagine icicles falling from the roof — straight down in a line. That’s a vertical sweep."
+            ))
+        case .intersect:
+            return AnyView(infoCard(
+                title: "Intersections in the game",
+                body: "Where a row meets a column: row × column. You’ll be asked to find a specific crossing cell."
+            ))
+        case .framed:
+            return AnyView(infoCard(
+                title: "Intersection — Part 2",
+                body: "Tap the intersection of the shown row and column. A correct tap shows ✅ in that cell; a wrong tap shows ❌ briefly."
+            ))
+        case .practice:
+            // Inline success message under the board
+            if wasCorrect {
+                return AnyView(infoCard(
+                    title: "Great!",
+                    body: "\(targetRow) × \(targetCol) = \(targetRow * targetCol)"
+                ))
+            } else {
+                return AnyView(infoCard(
+                    title: "Try it!",
+                    body: "Tap the cell where row \(targetRow) meets column \(targetCol)."
+                ))
             }
         }
+    }
+
+    private func infoCard(title: String, body: String) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(title).font(.headline)
+            Text(body).font(.subheadline).foregroundStyle(.secondary)
+        }
+        .padding(12)
+        .background(RoundedRectangle(cornerRadius: 12).fill(Color(UIColor.secondarySystemBackground)))
+        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.gray.opacity(0.2), lineWidth: 1))
     }
 
     // MARK: - Row / Column trigger buttons (plus header taps)
@@ -274,24 +274,22 @@ struct TutorialView: View {
     private var columnButtons: some View {
         HStack(spacing: 8) {
             ForEach(1...boardSize, id: \.self) { c in
-                Button("Col \(c)") { playCol(c) }   // <= shorter label
+                Button("Col. \(c)") { playCol(c) }   // shorter label with dot
                     .buttonStyle(.bordered)
                     .disabled(isAnimating)
             }
         }
     }
 
-    // MARK: - Controls (Back • Repeat? • Next)
-    private var controlBar: some View {
+    // MARK: - Controls
+    private var standardControlBar: some View {
         HStack {
-            // Back
             Button("Back") { goBack() }
                 .buttonStyle(.bordered)
                 .disabled(isAnimating || phase == .rows)
 
             Spacer()
 
-            // Repeat (teaching stages only)
             if phase == .rows || phase == .cols || phase == .intersect {
                 Button(NSLocalizedString("repeat", comment: "Repeat")) { repeatCurrent() }
                     .buttonStyle(.bordered)
@@ -299,10 +297,37 @@ struct TutorialView: View {
                 Spacer()
             }
 
-            // Next
             Button(NSLocalizedString("next", comment: "Next")) { goNext() }
                 .buttonStyle(.borderedProminent)
                 .disabled(isAnimating || isNextDisabled)
+        }
+        .padding(.top, 2)
+    }
+
+    private var practiceControlBar: some View {
+        HStack {
+            Button("Back") {
+                // Reset practice state when going back
+                practiceWrongCell = nil
+                userSelection = nil
+                wasCorrect = false
+                phase = .framed
+            }
+            .buttonStyle(.bordered)
+
+            Spacer()
+
+            Button("Retry") {
+                newPracticeRound()
+            }
+            .buttonStyle(.bordered)
+
+            Spacer()
+
+            Button("Quit") {
+                dismiss()
+            }
+            .buttonStyle(.borderedProminent)
         }
         .padding(.top, 2)
     }
@@ -321,31 +346,23 @@ struct TutorialView: View {
         case .rows:      return lastRowPlayed == nil
         case .cols:      return lastColPlayed == nil
         case .intersect: return (lastRowPlayed == nil || lastColPlayed == nil)
-        case .framed:    return framedCorrectCell == nil           // must tap correct first
-        case .practice:  return !wasCorrect                        // must be correct before Next
-        case .feedback:  return false
+        case .framed:    return framedCorrectCell == nil
+        case .practice:  return true // practice uses Back/Retry/Quit, no Next
         }
     }
 
     // MARK: - Navigation
     private func goBack() {
         switch phase {
-        case .cols:
-            phase = .rows
-        case .intersect:
-            phase = .cols
+        case .cols:       phase = .rows
+        case .intersect:  phase = .cols
         case .framed:
             framedCorrectCell = nil
             framedWrongCell = nil
             phase = .intersect
         case .practice:
-            // Reset practice badges & state when returning
-            practiceWrongCell = nil
-            userSelection = nil
-            wasCorrect = false
-            phase = .framed
-        case .feedback:
-            phase = .practice
+            // handled by practiceControlBar Back
+            break
         case .rows:
             break
         }
@@ -353,33 +370,20 @@ struct TutorialView: View {
 
     private func goNext() {
         switch phase {
-        case .rows:
-            phase = .cols
-
-        case .cols:
-            phase = .intersect
-
+        case .rows:       phase = .cols
+        case .cols:       phase = .intersect
         case .intersect:
-            // Enter framed fresh
             framedCorrectCell = nil
             framedWrongCell = nil
             phase = .framed
-
         case .framed:
-            // Clear OK badge on Next and proceed to practice with same targets
-            framedCorrectCell = nil
-            framedWrongCell = nil
+            // transition into practice, keep same targets
             practiceWrongCell = nil
             userSelection = nil
             wasCorrect = false
             phase = .practice
-
         case .practice:
-            if wasCorrect { phase = .feedback }
-
-        case .feedback:
-            newPracticeRound()
-            phase = .practice
+            break
         }
     }
 
@@ -429,15 +433,5 @@ struct TutorialView: View {
         wasCorrect = false
         targetRow = Int.random(in: 1...boardSize)
         targetCol = Int.random(in: 1...boardSize)
-    }
-
-    private func handleTap(row: Int, col: Int) {
-        userSelection = (row, col)
-        wasCorrect = (row == targetRow && col == targetCol)
-        if wasCorrect {
-            practiceWrongCell = nil
-        } else {
-            // handled in onTapCell for practice (timed ❌)
-        }
     }
 }
