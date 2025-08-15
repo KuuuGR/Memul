@@ -24,13 +24,21 @@ struct GameView: View {
             // MARK: Header
             VStack(spacing: 8) {
                 // Turn title + countdown (∞ for unlimited)
-                Text("\(viewModel.currentPlayer.name)'s turn\(timerSuffix())")
-                    .font(.title2)
-                    .foregroundColor(viewModel.currentPlayer.color)
-                    .transition(.opacity .combined(with: .scale))
+                Text(
+                    String(
+                        format: NSLocalizedString("turn_title", comment: "%@'s turn"),
+                        viewModel.currentPlayer.name
+                    ) + timerSuffix()
+                )
+                .font(.title2)
+                .foregroundColor(viewModel.currentPlayer.color)
+                .transition(.opacity.combined(with: .scale))
 
-                Text("Find a cell with \(viewModel.currentTarget)")
-                    .font(.headline)
+                Text(String(
+                    format: NSLocalizedString("find_cell_with", comment: "Find a cell with %d"),
+                    viewModel.currentTarget
+                ))
+                .font(.headline)
 
                 if viewModel.settings.showSelectedCoordinatesButton {
                     coordinatesButton
@@ -116,7 +124,7 @@ struct GameView: View {
             VStack(spacing: 10) {
                 FlexibleScoreView(players: viewModel.settings.players, currentPlayerId: viewModel.currentPlayer.id)
 
-                Button("End Game") {
+                Button(NSLocalizedString("end_game", comment: "End Game")) {
                     showResults = true
                 }
                 .padding()
@@ -132,9 +140,7 @@ struct GameView: View {
                 if viewModel.showPuzzleOverlay, let image = viewModel.puzzleImageName {
                     Color.black.opacity(0.5)
                         .ignoresSafeArea()
-                        .onTapGesture {
-                            viewModel.dismissPuzzleOverlay()
-                        }
+                        .onTapGesture { viewModel.dismissPuzzleOverlay() }
 
                     Image(image)
                         .resizable()
@@ -143,28 +149,20 @@ struct GameView: View {
                         .shadow(radius: 10)
                         .padding()
                         .transition(.opacity)
-                        .onTapGesture {
-                            viewModel.dismissPuzzleOverlay()
-                        }
-                        .accessibilityLabel("Tap to close")
+                        .onTapGesture { viewModel.dismissPuzzleOverlay() }
+                        .accessibilityLabel(Text(NSLocalizedString("tap_to_close", comment: "Tap to close")))
                 }
             }
         )
         .fullScreenCover(isPresented: $showResults, onDismiss: {
-            // Resume timer when results are dismissed
             viewModel.resumeTurnTimerIfNeeded()
         }) {
-            // Pause timer while results are visible
             ResultsView(viewModel: viewModel)
                 .onAppear { viewModel.pauseTurnTimer() }
         }
         .onChange(of: viewModel.showPuzzleOverlay) { _, isShown in
-            // Pause while overlay is visible, resume when hidden
-            if isShown {
-                viewModel.pauseTurnTimer()
-            } else {
-                viewModel.resumeTurnTimerIfNeeded()
-            }
+            if isShown { viewModel.pauseTurnTimer() }
+            else { viewModel.resumeTurnTimerIfNeeded() }
         }
         .animation(.easeInOut, value: viewModel.currentPlayer.id)
     }
@@ -176,37 +174,31 @@ struct GameView: View {
         let colText = coords?.col != nil ? "\(coords!.col)" : " "
 
         return Button {
-            // Submit only if we have a current selection
             viewModel.submitCurrentSelection()
         } label: {
             HStack(spacing: 8) {
-                Text("(")
-                    .foregroundColor(.secondary)
-                Text(rowText)
-                    .fontWeight(.bold)
-                    .foregroundColor(viewModel.settings.indexColors.left)
-                Text(",")
-                    .foregroundColor(.secondary)
-                Text(colText)
-                    .fontWeight(.bold)
-                    .foregroundColor(viewModel.settings.indexColors.top)
-                Text(")")
-                    .foregroundColor(.secondary)
+                Text("(").foregroundColor(.secondary)
+                Text(rowText).fontWeight(.bold).foregroundColor(viewModel.settings.indexColors.left)
+                Text(",").foregroundColor(.secondary)
+                Text(colText).fontWeight(.bold).foregroundColor(viewModel.settings.indexColors.top)
+                Text(")").foregroundColor(.secondary)
             }
-            .font(.title3) // bigger and more button-like
+            .font(.title3)
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color(.systemGray6))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(.separator), lineWidth: 1)
-            )
+            .background(RoundedRectangle(cornerRadius: 10).fill(Color(.systemGray6)))
+            .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color(.separator), lineWidth: 1))
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("(\(rowText), \(colText))")
+        .accessibilityLabel(
+            Text(
+                String(
+                    format: NSLocalizedString("selected_coordinates", comment: "(%d, %d)"),
+                    Int(rowText) ?? 0,
+                    Int(colText) ?? 0
+                )
+            )
+        )
     }
 
     // MARK: - Tap handling
@@ -217,11 +209,7 @@ struct GameView: View {
             withAnimation(.easeInOut(duration: 0.25)) {
                 viewModel.submitCurrentSelection()
             }
-            if wasCorrect {
-                playCorrectSound()
-            } else {
-                playWrongSound()
-            }
+            if wasCorrect { playCorrectSound() } else { playWrongSound() }
         } else {
             // First tap -> set highlight/coordinates only
             viewModel.firstTap(row: row, col: col)
@@ -249,12 +237,18 @@ struct GameView: View {
         return nil
     }
 
-    // Timer label suffix: " (∞)" or " (28s)". Empty string if something unexpected.
+    // Timer label suffix: localized " (%ds)" or " (∞)"
     private func timerSuffix() -> String {
         if let remaining = viewModel.timeRemaining {
-            return " (\(remaining)s)"
+            return String(
+                format: NSLocalizedString("turn_seconds_suffix", comment: "e.g. ' (%ds)'"),
+                remaining
+            )
         } else {
-            return " (∞)"
+            return String(
+                format: NSLocalizedString("turn_infinity_suffix", comment: "e.g. ' (∞)'"),
+                NSLocalizedString("turn_infinity", comment: "∞")
+            )
         }
     }
 }

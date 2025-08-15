@@ -11,11 +11,11 @@
 "about" = "About";
 
 // MARK: - Board & Players
+"add_player" = "Add Player";
 "board_size" = "Board Size";
 "board_size_value" = "Size: %d × %d";
-"players" = "Players";
 "player_n" = "Player %d";
-"add_player" = "Add Player";
+"players" = "Players";
 "remove_last_player" = "Remove Last Player";
 
 // MARK: - Puzzle
@@ -32,47 +32,51 @@
 
 // MARK: - Index Labels
 "index_labels" = "Index Labels";
-"show_top_labels" = "Show top labels";
+"index_customize" = "Customize labels";
+"index_labels_premium_hint" = "Customize label colors requires Premium.";
+"left_color" = "Left color";
+"make_labels_transparent" = "Make labels transparent";
+"reset_label_colors" = "Reset colors";
+"right_color" = "Right color";
 "show_bottom_labels" = "Show bottom labels";
 "show_left_labels" = "Show left labels";
 "show_right_labels" = "Show right labels";
+"show_top_labels" = "Show top labels";
 "top_color" = "Top color";
 "bottom_color" = "Bottom color";
-"left_color" = "Left color";
-"right_color" = "Right color";
-"make_labels_transparent" = "Make labels transparent";
-"index_labels_premium_hint" = "Customize label colors requires Premium.";
-"index_customize" = "Customize labels";
-"reset_label_colors" = "Reset colors";
 
 // MARK: - Header & UX
 "header_options" = "Header";
 "show_selected_coordinates_button" = "Show selected coordinates button";
 
 // MARK: - Turn Timer
-"turn_timer_title" = "Turn timer";
-"turn_timer_per_turn" = "Per-turn limit";
 "turn_30s" = "30s";
 "turn_60s" = "60s";
 "turn_120s" = "120s";
 "turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
 "turn_timer_free_hint" = "Free version uses a fixed 30s per turn.";
+"turn_timer_per_turn" = "Per-turn limit";
+"turn_timer_title" = "Turn timer";
 
 // MARK: - Premium Access
+"free_limitations" = "Free version: max %d×%d board, %d players.";
 "premium_access" = "Premium Access";
 "unlock_premium" = "Unlock Premium";
-"free_limitations" = "Free version: max %d×%d board, %d players.";
 
 // MARK: - General UI
-"settings_title" = "Settings";
-"results_title" = "Results";
-"new_game" = "New Game";
 "close" = "Close";
-"turn_title" = "%@'s turn";
-"find_cell_with" = "Find a cell with %d";
-"selected_coordinates" = "(%d, %d)";
-"tap_to_close" = "Tap to close";
 "end_game" = "End Game";
+"find_cell_with" = "Find a cell with %d";
+"new_game" = "New Game";
+"results_title" = "Results";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Settings";
+"tap_to_close" = "Tap to close";
+"turn_title" = "%@'s turn";
+"winner_announcement" = "🏆 Winner: %@!";
+"player_score" = "%@: %d";
 
 // MARK: - About
 "ab_navigation_title" = "About";
@@ -138,16 +142,16 @@
 "tutorial_quest_title" = "Quest:";
 "tutorial_quest_tap_pair" = "Tap (%d ; %d)";
 
-// MARK: - Tutorial Buttons (⚠️ The following KEYS are visible UI text and MUST be translated)
+// MARK: - Tutorial Buttons
+"back" = "Back";
+"cancel" = "Cancel";
 "next" = "Next";
+"quit" = "Quit";
 "repeat" = "Repeat";
 "skip_to_practice" = "Skip to Practice";
 "tutorial_row_button" = "Row %d";
 "tutorial_col_button" = "Col. %d";
 "tutorial_next_quest" = "Next Quest";
-"back" = "Back";
-"quit" = "Quit";
-"cancel" = "Cancel";
 
 // Tutorial alerts / scores
 "tutorial_quit_title" = "Are you sure?";
@@ -155,24 +159,24 @@
 "tutorial_score_right" = "✅ %d";
 "tutorial_score_wrong" = "❌ %d";
 
-/// StartView & Practice
-"quick_multiply" = "Quick Multiplication";
+// MARK: - Quick Practice
+"division_note" = "Division uses integer results: (quotient × divisor) ÷ divisor = quotient.";
+"division_premium_hint" = "Unlocking Division requires Premium.";
 "quick_divide" = "Quick Division";
 "quick_divide_locked" = "Quick Division (Locked)";
+"quick_multiply" = "Quick Multiplication";
 "quick_practice" = "Quick Practice";
-"range_multiplication" = "Multiplication range: %d–%d";
 "range_division" = "Division range: %d–%d";
+"range_multiplication" = "Multiplication range: %d–%d";
 "unlock_division" = "Unlock Quick Division";
-"division_premium_hint" = "Unlocking Division requires Premium.";
-"division_note" = "Division uses integer results: (quotient × divisor) ÷ divisor = quotient.";
 
 // MARK: - QuickPracticeView UI
-"qp_score_title" = "Score";
-"qp_correct_title" = "Correct";
-"qp_incorrect_title" = "Incorrect";
-"qp_score" = "Score: %d  •  %d/%d"; // legacy format, can be removed if unused
-"qp_m_prompt" = "What is %d × %d ?";
-"qp_d_prompt" = "What is %d ÷ %d ?";
 "qp_correct" = "Correct!";
-"qp_wrong" = "Not quite. Correct answer: %d";
+"qp_correct_title" = "Correct";
+"qp_d_prompt" = "What is %d ÷ %d ?";
+"qp_incorrect_title" = "Incorrect";
+"qp_m_prompt" = "What is %d × %d ?";
 "qp_next" = "Next";
+"qp_score" = "Score: %d  •  %d/%d"; // legacy
+"qp_score_title" = "Score";
+"qp_wrong" = "Not quite. Correct answer: %d";
