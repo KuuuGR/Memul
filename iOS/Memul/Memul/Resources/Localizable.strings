@@ -2,8 +2,6 @@
 //  Localizable.strings
 //  Memul
 //
-//  Created by admin on 07/08/2025.
-//
 
 // MARK: - Start Screen
 "app_title" = "Memul";
@@ -119,8 +117,11 @@
 "division_premium_hint" = "Unlocking Division requires Premium.";
 "division_note" = "Division uses integer results: (quotient × divisor) ÷ divisor = quotient.";
 
-// QuickPracticeView UI
-"qp_score" = "Score: %d  •  %d/%d";
+// MARK: - QuickPracticeView UI
+"qp_score_title" = "Score";
+"qp_correct_title" = "Correct";
+"qp_incorrect_title" = "Incorrect";
+"qp_score" = "Score: %d  •  %d/%d"; // legacy format, can be removed if unused
 "qp_m_prompt" = "What is %d × %d ?";
 "qp_d_prompt" = "What is %d ÷ %d ?";
 "qp_correct" = "Correct!";
