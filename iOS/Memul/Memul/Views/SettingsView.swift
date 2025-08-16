@@ -43,9 +43,22 @@ struct SettingsView: View {
 
             // MARK: Puzzle
             Section(header: Text(NSLocalizedString("puzzle", comment: ""))) {
-                Toggle(NSLocalizedString("use_random_puzzle", comment: ""), isOn: $settings.useRandomPuzzleImage)
-                    .disabled(!settings.isPremium)
-                    .opacity(settings.isPremium ? 1.0 : 0.5)
+                Toggle(
+                    NSLocalizedString("puzzle_enable", comment: "Show puzzle under grid"),
+                    isOn: $settings.puzzlesEnabled
+                )
+
+                if settings.isPremium {
+                    Text(NSLocalizedString("puzzle_premium_info", comment: ""))
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .fixedSize(horizontal: false, vertical: true)
+                } else {
+                    Text(NSLocalizedString("puzzle_free_info", comment: ""))
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
             }
 
             // MARK: Difficulty
@@ -198,12 +211,12 @@ struct SettingsView: View {
                             if settings.players.count > GameSettings.freeMaxPlayers {
                                 settings.players = Array(settings.players.prefix(GameSettings.freeMaxPlayers))
                             }
-                            settings.useRandomPuzzleImage = false
                             settings.difficulty = .easy
                             settings.turnTimeLimit = 30
                             settings.enableIndexCustomization = false
                             settings.indexColors = IndexColors()
                             settings.isDivisionUnlocked = false
+                            // Keep puzzlesEnabled as set by the user (global feature for everyone)
                         }
                     }
 

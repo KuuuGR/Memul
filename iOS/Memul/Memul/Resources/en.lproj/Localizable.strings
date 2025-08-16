@@ -21,7 +21,9 @@
 
 // MARK: - Puzzle
 "puzzle" = "Puzzle";
-"use_random_puzzle" = "Use Random Puzzle Image";
+"puzzle_enable" = "Show puzzle image under the grid";
+"puzzle_free_info" = "Free users see a random image from the free pack.";
+"puzzle_premium_info" = "Premium users see a random image from both free and premium packs.";
 
 // MARK: - Difficulty
 "difficulty" = "Difficulty";

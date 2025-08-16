@@ -29,9 +29,6 @@ class GameViewModel: ObservableObject {
     private var turnTimer: Timer?
     private var isTimerPaused: Bool = false
 
-    // MARK: - Config
-    private let totalPuzzles = 50 // adjust to the number of puzzle_N in Assets
-
     // Static cache: reuse slices per (imageName, boardSize)
     private static var sliceCache: [String: [[Image]]] = [:]
 
@@ -59,14 +56,37 @@ class GameViewModel: ObservableObject {
 
     // MARK: - Puzzle Selection & Slicing
     private func selectPuzzleImage() {
-        if settings.useRandomPuzzleImage {
-            let index = Int.random(in: 1...totalPuzzles)
-            puzzleImageName = "puzzle_\(index)"
-            preparePuzzlePieces()
-        } else {
+        // If user turned puzzles off → no image
+        guard settings.puzzlesEnabled else {
             puzzleImageName = nil
             puzzlePieces = []
+            return
         }
+
+        // Build candidate names based on premium access
+        var candidates: [String] = []
+
+        // Free pack (always included if > 0)
+        if PuzzlePacks.freeCount > 0 {
+            let free = (1...PuzzlePacks.freeCount).map { String(format: "puzzle_free_%02d", $0) }
+            candidates.append(contentsOf: free)
+        }
+
+        // Premium pack (only for premium users)
+        if settings.isPremium, PuzzlePacks.premiumCount > 0 {
+            let premium = (1...PuzzlePacks.premiumCount).map { String(format: "puzzle_%02d", $0) }
+            candidates.append(contentsOf: premium)
+        }
+
+        // If nothing to choose → disable puzzle safely
+        guard let chosen = candidates.randomElement() else {
+            puzzleImageName = nil
+            puzzlePieces = []
+            return
+        }
+
+        puzzleImageName = chosen
+        preparePuzzlePieces()
     }
 
     private func preparePuzzlePieces() {
@@ -242,9 +262,6 @@ class GameViewModel: ObservableObject {
     // MARK: - Turn Timer
     /// Configure timer for the current player based on settings.
     private func configureTimerForCurrentTurn() {
-        // Free users: enforce 30s; Premium: use chosen limit (including nil = unlimited).
-        // If you want to enforce this strictly, uncomment the next two lines:
-        // if !settings.isPremium { settings.turnTimeLimit = 30 }
         timeRemaining = settings.turnTimeLimit
         isTimerPaused = false
         restartTurnTimerIfNeeded()

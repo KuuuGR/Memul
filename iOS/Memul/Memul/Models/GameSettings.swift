@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+// MARK: - Puzzle packs sizes (adjust to match Assets.xcassets)
+enum PuzzlePacks {
+    static let freeCount = 2      // puzzle_free_01 ... puzzle_free_02
+    static let premiumCount = 50  // puzzle_01 ... puzzle_50
+}
+
 // MARK: - Difficulty
 
 /// Difficulty levels for scoring rules.
@@ -51,8 +57,9 @@ struct GameSettings {
         Player(name: "Player 2", color: .blue)
     ]
 
-    // Puzzle image behavior
-    var useRandomPuzzleImage: Bool = false
+    // Puzzle images
+    /// Everyone can show/hide puzzle image under the grid.
+    var puzzlesEnabled: Bool = true
 
     // Scoring rules
     var difficulty: Difficulty = .easy
