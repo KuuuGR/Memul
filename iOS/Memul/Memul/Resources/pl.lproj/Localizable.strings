@@ -86,7 +86,11 @@
 "gv_submit_hint" = "Najpierw wybierz pole";
 "gv_submit_sel" = "Zatwierdź (%d, %d)";
 "gv_submit_sel_ax" = "Zatwierdź wybrane współrzędne %d, %d";
-"gv_tap_again" = "Stuknij ponownie, aby potwierdzić, lub naciśnij Zatwierdź";
+"gv_tap_again" = "Kliknij ponownie, aby potwierdzić, lub naciśnij Zatwierdź";
+"gv_submit_prefix" = "Zatwierdź (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+
 "gv_target" = "Cel: %d";
 
 // MARK: - About

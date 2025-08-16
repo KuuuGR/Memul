@@ -86,6 +86,9 @@
 "gv_submit_hint" = "Select a cell first";
 "gv_submit_sel" = "Submit (%d, %d)";
 "gv_submit_sel_ax" = "Submit selected coordinates %d, %d";
+"gv_submit_prefix" = "Submit (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
 "gv_tap_again" = "Tap again to confirm or press Submit";
 "gv_target" = "Target: %d";
 
