@@ -15,37 +15,96 @@ struct GameView: View {
     @State private var scoreAnimation: (CGPoint, Color)? = nil
     @State private var showConfetti = false
 
+    // Hide helper after the first confirmed submit
+    @State private var hasConfirmedOnce = false
+
     private let cellSize: CGFloat = 40
     private let spacing: CGFloat = 2
 
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 12) {
 
             // MARK: Header
-            VStack(spacing: 8) {
-                // Turn title + countdown (∞ for unlimited)
-                Text(
-                    String(
-                        format: NSLocalizedString("turn_title", comment: "%@'s turn"),
-                        viewModel.currentPlayer.name
-                    ) + timerSuffix()
-                )
-                .font(.title2)
-                .foregroundColor(viewModel.currentPlayer.color)
+            VStack(spacing: 10) {
+
+                // Player + timer chips
+                HStack(spacing: 8) {
+                    Label(
+                        String(format: NSLocalizedString("turn_title", comment: "%@'s turn"),
+                               viewModel.currentPlayer.name),
+                        systemImage: "person.fill"
+                    )
+                    .font(.subheadline)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background(.ultraThinMaterial, in: Capsule())
+                    .foregroundStyle(viewModel.currentPlayer.color)
+
+                    Text(timerChipText())
+                        .font(.footnote)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .background(.ultraThinMaterial, in: Capsule())
+                        .foregroundStyle(.secondary)
+
+                    Spacer()
+                }
                 .transition(.opacity.combined(with: .scale))
+                .id(viewModel.currentPlayer.id)
 
-                Text(String(
-                    format: NSLocalizedString("find_cell_with", comment: "Find a cell with %d"),
-                    viewModel.currentTarget
-                ))
-                .font(.headline)
+                // Target chip (clear goal)
+                HStack {
+                    Label(
+                        String(format: NSLocalizedString("gv_target", comment: "Target: %d"),
+                               viewModel.currentTarget),
+                        systemImage: "target"
+                    )
+                    .font(.headline)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(.thickMaterial, in: RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).strokeBorder(Color.primary.opacity(0.06)))
+                    Spacer()
+                }
 
-                if viewModel.settings.showSelectedCoordinatesButton {
-                    coordinatesButton
+                // Submit (primary). Disabled until a selection exists.
+                HStack {
+                    if let sel = viewModel.currentSelection {
+                        Button {
+                            submitSelectionConfirmed()
+                        } label: {
+                            Label(
+                                String(format: NSLocalizedString("gv_submit_sel", comment: "Submit (%d, %d)"), sel.row, sel.col),
+                                systemImage: "checkmark.circle.fill"
+                            )
+                            .font(.body.weight(.semibold))
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.blue)
+                        .accessibilityLabel(
+                            Text(
+                                String(format: NSLocalizedString("gv_submit_sel_ax", comment: "Submit selected coordinates %d, %d"),
+                                       sel.row, sel.col)
+                            )
+                        )
+                    } else {
+                        Button {
+                            // no-op (disabled)
+                        } label: {
+                            Label(NSLocalizedString("gv_submit", comment: "Submit"), systemImage: "checkmark.circle.fill")
+                                .font(.body.weight(.semibold))
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.blue)
+                        .disabled(true)
+                        .opacity(0.6)
+                        .accessibilityHint(Text(NSLocalizedString("gv_submit_hint", comment: "Select a cell first")))
+                    }
+                    Spacer()
                 }
             }
-            .id(viewModel.currentPlayer.id)
-            .padding(.top, 20)
+            .padding(.top, 12)
+            .padding(.horizontal)
 
             // MARK: Scrollable Board (both directions)
             ScrollView([.horizontal, .vertical]) {
@@ -85,13 +144,15 @@ struct GameView: View {
                                             puzzlePiece: getPuzzlePiece(row: row, col: col),
                                             cellSize: cellSize
                                         )
-                                        // Slim highlight for selected row/column
+
+                                        // Compact rounded highlight marker (¼ size) for selected row/col
                                         if isCellHighlighted(cell) {
-                                            RoundedRectangle(cornerRadius: cellSize * 0.5)
+                                            RoundedRectangle(cornerRadius: cellSize * 0.2, style: .continuous)
                                                 .stroke(Color(.systemYellow), lineWidth: 2)
-                                                .frame(width: cellSize / 4, height: cellSize / 4)
+                                                .frame(width: cellSize / 2, height: cellSize / 2)
                                         }
-                                        // 🎯 Target emoji at tapped crossing (current selection)
+
+                                        // 🎯 Target emoji at the tapped crossing
                                         if let sel = viewModel.currentSelection,
                                            sel.row == row && sel.col == col {
                                             Text("🎯")
@@ -117,16 +178,18 @@ struct GameView: View {
                                 }
                             }
 
-                            // Right row number
+                            // Right row number (auto-hide if board < 7)
                             Text("\(row)")
                                 .frame(width: cellSize, height: cellSize)
                                 .font(.caption)
                                 .foregroundColor(viewModel.settings.indexColors.right)
-                                .opacity(viewModel.settings.indexVisibility.right ? 1 : 0)
+                                .opacity(
+                                    (viewModel.settings.indexVisibility.right && viewModel.settings.boardSize >= 7) ? 1 : 0
+                                )
                         }
                     }
 
-                    // Bottom column numbers
+                    // Bottom column numbers (auto-hide if board < 7)
                     HStack(spacing: spacing) {
                         Text("").frame(width: cellSize, height: cellSize)
                         ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
@@ -134,7 +197,9 @@ struct GameView: View {
                                 .frame(width: cellSize, height: cellSize)
                                 .font(.caption)
                                 .foregroundColor(viewModel.settings.indexColors.bottom)
-                                .opacity(viewModel.settings.indexVisibility.bottom ? 1 : 0)
+                                .opacity(
+                                    (viewModel.settings.indexVisibility.bottom && viewModel.settings.boardSize >= 7) ? 1 : 0
+                                )
                         }
                         Text("").frame(width: cellSize, height: cellSize)
                     }
@@ -146,19 +211,30 @@ struct GameView: View {
                 )
             }
 
-            // MARK: HUD + Button
+            // Helper hint (shows after a selection until the first confirmed submit)
+            if viewModel.currentSelection != nil && !hasConfirmedOnce {
+                Text(NSLocalizedString("gv_tap_again", comment: "Tap again to confirm or press Submit"))
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .padding(.top, 2)
+                    .transition(.opacity)
+            }
+
+            // MARK: HUD + End Game
             VStack(spacing: 10) {
+                Text(NSLocalizedString("total_points", comment: "Section title for player scores"))
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+
                 FlexibleScoreView(players: viewModel.settings.players, currentPlayerId: viewModel.currentPlayer.id)
 
                 Button(NSLocalizedString("end_game", comment: "End Game")) {
                     showResults = true
                 }
-                .padding()
-                .background(Color.red)
-                .foregroundColor(.white)
-                .cornerRadius(10)
+                .buttonStyle(.bordered)
+                .tint(.red)
             }
-            .padding(.bottom, 20)
+            .padding(.bottom, 12)
             .background(Color(UIColor.systemBackground))
         }
         .overlay(
@@ -193,7 +269,85 @@ struct GameView: View {
         .animation(.easeInOut, value: viewModel.currentPlayer.id)
     }
 
-    // MARK: - Coordinates button
+    // MARK: - Tap handling
+
+    private func handleTap(row: Int, col: Int, cell: Cell) {
+        if let current = viewModel.currentSelection, current.row == row && current.col == col {
+            // Second tap on same cell -> submit
+            submitSelectionConfirmed()
+        } else {
+            // First tap -> select + haptic + pop-in
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+            withAnimation(.spring(response: 0.25, dampingFraction: 0.7)) {
+                viewModel.firstTap(row: row, col: col)
+            }
+            UIAccessibility.post(notification: .announcement, argument:
+                String(format: NSLocalizedString("gv_selected_ax", comment: "Selected row %d, column %d"), row, col)
+            )
+        }
+    }
+
+    private func submitSelectionConfirmed() {
+        guard let sel = viewModel.currentSelection,
+              let cell = viewModel.cells.first(where: { $0.row == sel.row && $0.col == sel.col })
+        else { return }
+
+        let wasCorrect = viewModel.isCorrectSelection(cell)
+
+        // Haptics
+        if wasCorrect {
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        } else {
+            UINotificationFeedbackGenerator().notificationOccurred(.error)
+        }
+
+        withAnimation(.easeInOut(duration: 0.25)) {
+            viewModel.submitCurrentSelection()
+            hasConfirmedOnce = true
+        }
+
+        if wasCorrect { playCorrectSound() } else { playWrongSound() }
+    }
+
+    // MARK: - Helpers
+
+    private func isCellHighlighted(_ cell: Cell) -> Bool {
+        if let sel = viewModel.currentSelection {
+            return sel.row == cell.row || sel.col == cell.col
+        }
+        return false
+    }
+
+    private func playCorrectSound() { AudioServicesPlaySystemSound(1057) }
+    private func playWrongSound() { AudioServicesPlaySystemSound(1053) }
+    
+    private func getPuzzlePiece(row: Int, col: Int) -> Image? {
+        let r = row - 1
+        let c = col - 1
+        if viewModel.puzzlePieces.indices.contains(r),
+           viewModel.puzzlePieces[r].indices.contains(c) {
+            return viewModel.puzzlePieces[r][c]
+        }
+        return nil
+    }
+
+    // Timer label inside the chip (localized suffix)
+    private func timerChipText() -> String {
+        if let remaining = viewModel.timeRemaining {
+            return String(
+                format: NSLocalizedString("turn_seconds_suffix", comment: " (%ds)"),
+                remaining
+            )
+        } else {
+            return String(
+                format: NSLocalizedString("turn_infinity_suffix", comment: " (%@)"),
+                NSLocalizedString("turn_infinity", comment: "∞")
+            )
+        }
+    }
+
+    // (Optional) You can still keep the coordinates button if you want it elsewhere:
     private var coordinatesButton: some View {
         let coords = viewModel.currentSelection
         let rowText = coords?.row != nil ? "\(coords!.row)" : " "
@@ -226,58 +380,4 @@ struct GameView: View {
             )
         )
     }
-
-    // MARK: - Tap handling
-    private func handleTap(row: Int, col: Int, cell: Cell) {
-        if let current = viewModel.currentSelection, current.row == row && current.col == col {
-            // Second tap on same cell -> submit answer
-            let wasCorrect = viewModel.isCorrectSelection(cell)
-            withAnimation(.easeInOut(duration: 0.25)) {
-                viewModel.submitCurrentSelection()
-            }
-            if wasCorrect { playCorrectSound() } else { playWrongSound() }
-        } else {
-            // First tap -> set highlight/coordinates only + pop-in animation for 🎯
-            withAnimation(.spring(response: 0.25, dampingFraction: 0.7)) {
-                viewModel.firstTap(row: row, col: col)
-            }
-        }
-    }
-
-    // MARK: - Helpers
-    private func isCellHighlighted(_ cell: Cell) -> Bool {
-        if let sel = viewModel.currentSelection {
-            return sel.row == cell.row || sel.col == cell.col
-        }
-        return false
-    }
-
-    private func playCorrectSound() { AudioServicesPlaySystemSound(1057) }
-    private func playWrongSound() { AudioServicesPlaySystemSound(1053) }
-    
-    private func getPuzzlePiece(row: Int, col: Int) -> Image? {
-        let r = row - 1
-        let c = col - 1
-        if viewModel.puzzlePieces.indices.contains(r),
-           viewModel.puzzlePieces[r].indices.contains(c) {
-            return viewModel.puzzlePieces[r][c]
-        }
-        return nil
-    }
-
-    // Timer label suffix: localized " (%ds)" or " (∞)"
-    private func timerSuffix() -> String {
-        if let remaining = viewModel.timeRemaining {
-            return String(
-                format: NSLocalizedString("turn_seconds_suffix", comment: "e.g. ' (%ds)'"),
-                remaining
-            )
-        } else {
-            return String(
-                format: NSLocalizedString("turn_infinity_suffix", comment: "e.g. ' (∞)'"),
-                NSLocalizedString("turn_infinity", comment: "∞")
-            )
-        }
-    }
 }
-
