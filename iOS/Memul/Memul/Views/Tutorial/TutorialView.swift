@@ -388,6 +388,7 @@ struct TutorialView: View {
                 newPracticeRound() // keep cumulative score
             }
             .buttonStyle(.bordered)
+            .tint(.yellow)
 
             Spacer()
 
