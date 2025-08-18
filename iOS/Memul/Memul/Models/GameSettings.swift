@@ -85,7 +85,12 @@ struct GameSettings {
     var divisionMin: Int = 1
     var divisionMax: Int = 10
 
-    // Free version limits
+    // MARK: - Free version limits
+    static let freeMinBoardSize = 3
     static let freeMaxBoardSize = 6
-    static let freeMaxPlayers   = 4
+    static let freeMaxPlayers   = 3
+
+    // MARK: - Premium version limits
+    static let premiumMaxBoardSize = 33
+    static let premiumMaxPlayers   = 32
 }

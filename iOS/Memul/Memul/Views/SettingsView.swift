@@ -14,23 +14,32 @@ struct SettingsView: View {
         Form {
             // MARK: Board Size
             Section(header: Text(NSLocalizedString("board_size", comment: ""))) {
-                Stepper(value: $settings.boardSize, in: 1...maxBoardSize) {
-                    Text(String(format: NSLocalizedString("board_size_value", comment: ""),
-                                settings.boardSize, settings.boardSize))
+                Stepper(
+                    value: $settings.boardSize,
+                    in: boardRange
+                ) {
+                    Text(String(
+                        format: NSLocalizedString("board_size_value", comment: ""),
+                        settings.boardSize, settings.boardSize
+                    ))
                 }
             }
 
             // MARK: Players
             Section(header: Text(NSLocalizedString("players", comment: ""))) {
                 ForEach(0..<settings.players.count, id: \.self) { index in
-                    TextField(String(format: NSLocalizedString("player_n", comment: ""), index + 1),
-                              text: $settings.players[index].name)
+                    TextField(
+                        String(format: NSLocalizedString("player_n", comment: ""), index + 1),
+                        text: $settings.players[index].name
+                    )
                 }
 
                 if settings.players.count < maxPlayers {
                     Button(NSLocalizedString("add_player", comment: "")) {
                         let newColor: Color = .green
-                        settings.players.append(Player(name: "Player \(settings.players.count + 1)", color: newColor))
+                        settings.players.append(
+                            Player(name: "Player \(settings.players.count + 1)", color: newColor)
+                        )
                     }
                 }
 
@@ -208,6 +217,9 @@ struct SettingsView: View {
                             if settings.boardSize > GameSettings.freeMaxBoardSize {
                                 settings.boardSize = GameSettings.freeMaxBoardSize
                             }
+                            if settings.boardSize < GameSettings.freeMinBoardSize {
+                                settings.boardSize = GameSettings.freeMinBoardSize
+                            }
                             if settings.players.count > GameSettings.freeMaxPlayers {
                                 settings.players = Array(settings.players.prefix(GameSettings.freeMaxPlayers))
                             }
@@ -222,8 +234,15 @@ struct SettingsView: View {
 
                 if !settings.isPremium {
                     Text(String(format: NSLocalizedString("free_limitations", comment: ""),
+                                GameSettings.freeMinBoardSize,
                                 GameSettings.freeMaxBoardSize,
                                 GameSettings.freeMaxPlayers))
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                } else {
+                    Text(String(format: NSLocalizedString("premium_limitations", comment: ""),
+                                GameSettings.premiumMaxBoardSize,
+                                GameSettings.premiumMaxPlayers))
                     .font(.caption)
                     .foregroundColor(.gray)
                 }
@@ -240,12 +259,16 @@ struct SettingsView: View {
 
     // MARK: Helpers
 
-    private var maxBoardSize: Int {
-        settings.isPremium ? 12 : GameSettings.freeMaxBoardSize
+    private var boardRange: ClosedRange<Int> {
+        if settings.isPremium {
+            1...GameSettings.premiumMaxBoardSize
+        } else {
+            GameSettings.freeMinBoardSize...GameSettings.freeMaxBoardSize
+        }
     }
 
     private var maxPlayers: Int {
-        settings.isPremium ? 16 : GameSettings.freeMaxPlayers
+        settings.isPremium ? GameSettings.premiumMaxPlayers : GameSettings.freeMaxPlayers
     }
 
     /// Binding helper to support nil (= ∞) in segmented picker.
