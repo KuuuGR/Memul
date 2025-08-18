@@ -73,9 +73,13 @@ struct StartView: View {
 
                             // Quick status chips
                             HStack(spacing: 8) {
-                                Label(String(format: NSLocalizedString("board_size_value", comment: "Size: %d × %d"),
-                                             settings.boardSize, settings.boardSize),
-                                      systemImage: "square.grid.3x3")
+                                Label(
+                                    String(
+                                        format: NSLocalizedString("board_size_value", comment: "Size: %d × %d"),
+                                        settings.boardSize, settings.boardSize
+                                    ),
+                                    systemImage: "square.grid.3x3"
+                                )
                                 .font(.footnote)
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 6)
@@ -161,7 +165,7 @@ struct StartView: View {
                         }
                         .padding(.horizontal)
 
-                        // Settings & About
+                        // Settings, About & Achievements
                         HStack(spacing: 12) {
                             NavigationLink {
                                 SettingsView(settings: $settings)
@@ -175,6 +179,14 @@ struct StartView: View {
                                     .navigationTitle(NSLocalizedString("ab_navigation_title", comment: ""))
                             } label: {
                                 SmallPillButton(title: NSLocalizedString("about", comment: ""), systemImage: "info.circle.fill")
+                            }
+
+                            // Achievements entry (new)
+                            NavigationLink {
+                                AchievementsView()
+                                    .navigationTitle(NSLocalizedString("achievements_title", comment: "Achievements"))
+                            } label: {
+                                SmallPillButton(title: NSLocalizedString("achievements", comment: "Achievements"), systemImage: "star.fill")
                             }
                         }
                         .padding(.horizontal)
@@ -203,7 +215,7 @@ struct StartView: View {
         }
     }
 
-    /// Starts a new game safely on the main actor
+    /// Starts a new game on the main actor
     @MainActor
     private func startGame() {
         gameViewModel = GameViewModel(settings: settings)
@@ -329,7 +341,7 @@ private struct StartInfoCard: View {
     }
 }
 
-/// Compact pill-style buttons for Settings / About
+/// Compact pill-style buttons for Settings / About / Achievements
 private struct SmallPillButton: View {
     let title: String
     let systemImage: String
@@ -351,8 +363,7 @@ private struct SmallPillButton: View {
     }
 }
 
-/// SwiftUI vector illustration to replace a static logo.
-/// It draws a small grid, highlights a crossing, and shows a puzzle piece & magnifying glass.
+/// Decorative vector illustration for the hero area
 private struct StartIllustrationView: View {
     var body: some View {
         GeometryReader { proxy in

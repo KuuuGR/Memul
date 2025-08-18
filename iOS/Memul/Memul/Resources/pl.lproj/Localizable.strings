@@ -4,11 +4,11 @@
 //
 
 // MARK: - Start Screen
-"about" = "O grze";
+"about" = "O aplikacji";
 "app_title" = "Memul";
 "settings" = "Ustawienia";
-"start_game" = "Rozpocznij grę";
-"start_tagline" = "Mnożenie. Gra. Nauka.";
+"start_game" = "Start";
+"start_tagline" = "Mnoż, graj, ucz się.";
 "tutorial" = "Samouczek";
 
 // MARK: - Board & Players
@@ -20,22 +20,24 @@
 "remove_last_player" = "Usuń ostatniego gracza";
 
 // MARK: - Puzzle
-"puzzle" = "Układanka";
-"use_random_puzzle" = "Użyj losowego obrazu układanki";
+"puzzle" = "Puzzle";
+"puzzle_enable" = "Pokazuj obrazek pod siatką";
+"puzzle_free_info" = "Użytkownicy darmowi widzą losowy obraz z paczki darmowej.";
+"puzzle_premium_info" = "Użytkownicy Premium widzą losowy obraz zarówno z paczki darmowej, jak i premium.";
 
 // MARK: - Difficulty
 "difficulty" = "Poziom trudności";
 "difficulty_easy" = "Łatwy";
 "difficulty_hard" = "Trudny";
 "difficulty_mode" = "Tryb";
-"difficulty_normal" = "Średni";
-"difficulty_premium_hint" = "Darmowa wersja: tylko łatwy. Średni/Trudny wymagają Premium.";
+"difficulty_normal" = "Normalny";
+"difficulty_premium_hint" = "Darmowa wersja: tylko Łatwy. Normalny/Trudny wymagają Premium.";
 
 // MARK: - Index Labels
 "bottom_color" = "Kolor dolny";
 "index_customize" = "Dostosuj etykiety";
 "index_labels" = "Etykiety indeksów";
-"index_labels_premium_hint" = "Dostosowywanie kolorów etykiet wymaga Premium.";
+"index_labels_premium_hint" = "Dostosowanie kolorów etykiet wymaga Premium.";
 "left_color" = "Kolor lewy";
 "make_labels_transparent" = "Uczyń etykiety przezroczystymi";
 "reset_label_colors" = "Resetuj kolory";
@@ -51,13 +53,13 @@
 "show_selected_coordinates_button" = "Pokaż przycisk z wybranymi współrzędnymi";
 
 // MARK: - Turn Timer
-"turn_30s" = "30 s";
-"turn_60s" = "60 s";
-"turn_120s" = "120 s";
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
 "turn_infinity" = "∞";
 "turn_infinity_suffix" = " (%@)";
 "turn_seconds_suffix" = " (%ds)";
-"turn_timer_free_hint" = "Darmowa wersja: stały limit 30 s na turę.";
+"turn_timer_free_hint" = "W darmowej wersji każda tura trwa 30 s.";
 "turn_timer_per_turn" = "Limit na turę";
 "turn_timer_title" = "Timer tury";
 
@@ -69,80 +71,79 @@
 // MARK: - General UI
 "close" = "Zamknij";
 "end_game" = "Zakończ grę";
-"find_cell_with" = "Znajdź pole z %d";
+"find_cell_with" = "Znajdź komórkę z %d";
 "new_game" = "Nowa gra";
 "player_score" = "%@: %d";
 "results_title" = "Wyniki";
 "selected_coordinates" = "(%d, %d)";
 "settings_title" = "Ustawienia";
-"tap_to_close" = "Stuknij, aby zamknąć";
-"total_points" = "Łączne punkty";
+"tap_to_close" = "Dotknij, aby zamknąć";
+"total_points" = "Suma punktów";
 "turn_title" = "Tura gracza %@";
 "winner_announcement" = "🏆 Zwycięzca: %@!";
 
 // MARK: - GameView Actions
 "gv_selected_ax" = "Wybrano wiersz %d, kolumna %d";
 "gv_submit" = "Zatwierdź";
-"gv_submit_hint" = "Najpierw wybierz pole";
+"gv_submit_hint" = "Najpierw wybierz komórkę";
 "gv_submit_sel" = "Zatwierdź (%d, %d)";
 "gv_submit_sel_ax" = "Zatwierdź wybrane współrzędne %d, %d";
-"gv_tap_again" = "Kliknij ponownie, aby potwierdzić, lub naciśnij Zatwierdź";
 "gv_submit_prefix" = "Zatwierdź (";
 "gv_submit_separator" = " ; ";
 "gv_submit_suffix" = ")";
-
+"gv_tap_again" = "Dotknij ponownie, aby potwierdzić lub naciśnij Zatwierdź";
 "gv_target" = "Cel: %d";
 
 // MARK: - About
-"ab_navigation_title" = "O grze";
+"ab_navigation_title" = "O aplikacji";
 "ab_section_about_app" = "O Memul";
-"ab_app_name" = "Memul — Gra w układankę z tabliczką mnożenia";
+"ab_app_name" = "Memul — gra z tabliczką mnożenia";
 "ab_version" = "Wersja: %@";
 "ab_developer" = "Autor: Grzegorz Kulesza";
 "ab_section_purpose" = "Cel";
-"ab_purpose_accessible" = "Przystępna dla uczniów szkół podstawowych, ale przydatna także później.";
-"ab_purpose_carries_forward" = "Rozwija umiejętności przydatne w dalszej nauce: zapis w tablicy, pozycje wiersz–kolumna i myślenie kartezjańskie.";
+"ab_purpose_accessible" = "Przystępna dla uczniów szkoły podstawowej, a przydatna również później.";
+"ab_purpose_carries_forward" = "Buduje umiejętności na przyszłość: notacja macierzowa, pozycje wiersz–kolumna i myślenie kartezjańskie.";
 "ab_purpose_commutativity" = "Pomaga intuicyjnie zrozumieć przemienność mnożenia.";
 "ab_purpose_learn_tables" = "Ułatwia naukę tabliczki mnożenia — dla dzieci i dorosłych.";
 "ab_section_features" = "Funkcje";
-"ab_feature_customization" = "Bogate opcje: rozmiar planszy, poziom trudności (Łatwy/Średni/Trudny z opcjonalnymi karami), timery, opcje etykiet, przełącznik układanki i podpowiedzi współrzędnych.";
-"ab_feature_multiplayer" = "Rozgrywka turowa dla 1–16 graczy utrzymuje zaangażowanie w gronie znajomych.";
-"ab_feature_puzzle_reveal" = "Ukryty obrazek odsłania się stopniowo wraz z poprawnymi odpowiedziami.";
-"ab_feature_quick_practice" = "Tryby szybkiej praktyki dla mnożenia oraz (Premium) dzielenia.";
-"ab_feature_tutorial" = "Interaktywny samouczek wyjaśnia wiersze, kolumny i przecięcia.";
+"ab_feature_customization" = "Bogata personalizacja: rozmiar planszy, trudność (Łatwy/Normalny/Trudny z opcjonalnymi karami), timery, etykiety, puzzle i podpowiedzi współrzędnych.";
+"ab_feature_multiplayer" = "Turowy multiplayer (1–16 graczy) urozmaica trening z przyjaciółmi.";
+"ab_feature_puzzle_reveal" = "Ukryty obraz odkrywa się kawałek po kawałku przy poprawnych odpowiedziach.";
+"ab_feature_quick_practice" = "Szybkie ćwiczenia dla mnożenia oraz (Premium) dzielenia.";
+"ab_feature_tutorial" = "Interaktywny samouczek: wiersze, kolumny, przecięcia.";
 "ab_section_author" = "Autor";
-"ab_author_line1" = "Stworzony przez Grzegorza Kuleszę, z doświadczeniem w elektrotechnice, informatyce, fizyce, medycynie i pedagogice.";
-"ab_author_line2" = "To interdyscyplinarne doświadczenie ukształtowało nacisk Memul na pojęcia, które chciałem poznać wcześniej: tablice, współrzędne i intuicyjne rozwiązywanie problemów.";
+"ab_author_line1" = "Stworzone przez Grzegorza Kuleszę, z doświadczeniem w elektrotechnice, informatyce, fizyce, medycynie i dydaktyce.";
+"ab_author_line2" = "To interdyscyplinarne tło skierowało Memul na pojęcia, których brakowało mi wcześniej: tablice, współrzędne i intuicyjne rozwiązywanie.";
 "ab_section_support" = "Wsparcie";
 
 // MARK: - Tutorial
 "tutorial_title" = "Samouczek";
-"tutorial_cols_card_body" = "Wyobraź sobie sople spadające z dachu — prosto w dół w linii. To pionowe przesuwanie.";
-"tutorial_cols_card_title" = "Teraz ćwiczymy kolumny";
+"tutorial_cols_card_body" = "Wyobraź sobie sople spadające z dachu — prosto w dół. To pionowy ruch.";
+"tutorial_cols_card_title" = "Ćwiczymy kolumny";
 "tutorial_cols_sub" = "Obserwuj pionową linię przesuwającą się po kolumnie.";
 "tutorial_col_button" = "Kol. %d";
 "tutorial_col_label" = "Kolumna: %d";
 "tutorial_equation" = "%d × %d = %d";
-"tutorial_framed_card_body" = "Stuknij przecięcie pokazanych wiersza i kolumny. Poprawny wybór pokazuje ✅, błędny na chwilę ❌.";
-"tutorial_framed_card_title" = "Przecięcie — Część 2";
-"tutorial_framed_sub" = "Stuknij, gdzie wiersz spotyka się z kolumną.";
+"tutorial_framed_card_body" = "Stuknij w przecięcie wskazanego wiersza i kolumny. Poprawnie → ✅, błąd → ❌ na chwilę.";
+"tutorial_framed_card_title" = "Przecięcia — część 2";
+"tutorial_framed_sub" = "Stuknij tam, gdzie spotykają się wiersz i kolumna.";
 "tutorial_feedback_great" = "Świetnie!";
 "tutorial_feedback_not_quite" = "Nie do końca";
-"tutorial_intersect_card_body" = "Tam, gdzie wiersz spotyka się z kolumną: wiersz × kolumna. Zostaniesz poproszony o znalezienie konkretnego pola.";
+"tutorial_intersect_card_body" = "Tam, gdzie wiersz spotyka kolumnę: wiersz × kolumna. Będziesz wskazywać konkretne przecięcia.";
 "tutorial_intersect_card_title" = "Przecięcia w grze";
-"tutorial_intersect_sub" = "Tam, gdzie wiersz spotyka się z kolumną: wiersz × kolumna.";
+"tutorial_intersect_sub" = "Tam, gdzie wiersz spotyka kolumnę: wiersz × kolumna.";
 "tutorial_intersect_title" = "Przecięcie";
 "tutorial_next_quest" = "Następne zadanie";
 "tutorial_practice_callout" = "Sprawdź się!";
-"tutorial_practice_hint" = "Znajdź pole przecięcia dla podanego wiersza i kolumny.";
-"tutorial_practice_sub" = "Stuknij pole, w którym przetną się linie.";
+"tutorial_practice_hint" = "Znajdź pole na przecięciu podanego wiersza i kolumny.";
+"tutorial_practice_sub" = "Stuknij w komórkę, gdzie przetną się lasery.";
 "tutorial_practice_title" = "Spróbuj!";
 "tutorial_quest_tap_pair" = "Stuknij (%d ; %d)";
 "tutorial_quest_title" = "Zadanie:";
 "tutorial_row_button" = "Wiersz %d";
 "tutorial_row_label" = "Wiersz: %d";
-"tutorial_rows_card_body" = "Wyobraź sobie tunele dżdżownicy pod ziemią — lawa płynie poziomo, a robak ucieka na boki. To poziome przesuwanie.";
-"tutorial_rows_card_title" = "Teraz ćwiczymy wiersze";
+"tutorial_rows_card_body" = "Pomyśl o tunelach dżdżownicy pod ziemią — lawa płynie wszerz, a dżdżownica ucieka bokiem. To poziomy ruch.";
+"tutorial_rows_card_title" = "Ćwiczymy wiersze";
 "tutorial_rows_sub" = "Obserwuj poziomą linię przesuwającą się po wierszu.";
 "tutorial_score_right" = "✅ %d";
 "tutorial_score_wrong" = "❌ %d";
@@ -153,30 +154,57 @@
 "next" = "Dalej";
 "quit" = "Zakończ";
 "repeat" = "Powtórz";
-"skip_to_practice" = "Pomiń do ćwiczeń";
+"skip_to_practice" = "Przejdź do ćwiczeń";
 
 // MARK: - Tutorial Alerts
-"tutorial_quit_message" = "Opuścisz samouczek. Możesz wrócić w dowolnym momencie.";
+"tutorial_quit_message" = "Opuścisz samouczek. Możesz wrócić w każdej chwili.";
 "tutorial_quit_title" = "Na pewno?";
 
 // MARK: - Quick Practice
 "division_note" = "Dzielenie używa wyników całkowitych: (iloraz × dzielnik) ÷ dzielnik = iloraz.";
-"division_premium_hint" = "Odblokowanie dzielenia wymaga Premium.";
-"quick_divide" = "Szybkie dzielenie";
-"quick_divide_locked" = "Szybkie dzielenie (zablokowane)";
-"quick_multiply" = "Szybkie mnożenie";
-"quick_practice" = "Szybka praktyka";
+"division_premium_hint" = "Odblokowanie Dzielenia wymaga Premium.";
+"quick_divide" = "Szybkie Dzielenie";
+"quick_divide_locked" = "Szybkie Dzielenie (zablokowane)";
+"quick_multiply" = "Szybkie Mnożenie";
+"quick_practice" = "Szybkie Ćwiczenia";
 "range_division" = "Zakres dzielenia: %d–%d";
 "range_multiplication" = "Zakres mnożenia: %d–%d";
-"unlock_division" = "Odblokuj szybkie dzielenie";
+"unlock_division" = "Odblokuj Szybkie Dzielenie";
 
 // MARK: - QuickPracticeView UI
 "qp_correct" = "Poprawnie!";
-"qp_correct_title" = "Poprawnie";
-"qp_d_prompt" = "Ile to jest %d ÷ %d ?";
-"qp_incorrect_title" = "Błędnie";
-"qp_m_prompt" = "Ile to jest %d × %d ?";
+"qp_correct_title" = "Dobrze";
+"qp_d_prompt" = "Ile to %d ÷ %d?";
+"qp_incorrect_title" = "Błąd";
+"qp_m_prompt" = "Ile to %d × %d?";
 "qp_next" = "Dalej";
 "qp_score" = "Wynik: %d  •  %d/%d";
 "qp_score_title" = "Wynik";
 "qp_wrong" = "Nie do końca. Poprawna odpowiedź: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Osiągnięcia";
+"achievements_title" = "Osiągnięcia";
+"achv_locked" = "Zablokowane";
+"achv_unlocked" = "Odblokowane";
+"achv_unlocked_toast" = "Odblokowano osiągnięcie: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Mistrz Samouczka";
+"achv_tutorial_master_sub" = "Zdobądź 1000 punktów w samouczku";
+
+"achv_puzzle_solver_title" = "Układacz";
+"achv_puzzle_solver_sub" = "Ukończ 100 gier z puzzlami";
+
+"achv_explorer_title" = "Odkrywca";
+"achv_explorer_sub" = "Odkryj 50 unikalnych obrazków";
+
+"achv_speedrunner_title" = "Speedrunner";
+"achv_speedrunner_sub" = "Wygraj grę w mniej niż 2 minuty";
+
+"achv_perfectionist_title" = "Perfekcjonista";
+"achv_perfectionist_sub" = "Wygraj grę bez błędów";
+
+"achv_multiplayer_champ_title" = "Mistrz Multiplayer";
+"achv_multiplayer_champ_sub" = "Wygraj grę przy liczbie graczy ≥ 4";

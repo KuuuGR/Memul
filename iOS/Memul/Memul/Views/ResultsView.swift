@@ -11,6 +11,9 @@ struct ResultsView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: GameViewModel
 
+    // Prevent double-firing achievement events when the sheet reappears
+    @State private var didFireAchievements = false
+
     var body: some View {
         VStack(spacing: 24) {
             // Title
@@ -18,7 +21,7 @@ struct ResultsView: View {
                 .font(.largeTitle.bold())
                 .padding(.top)
 
-            // Winner
+            // Winner highlight
             if let winner = viewModel.players.max(by: { $0.score < $1.score }) {
                 HStack {
                     Text("🏆")
@@ -35,7 +38,7 @@ struct ResultsView: View {
                 )
             }
 
-            // Scoreboard
+            // Scoreboard list
             VStack(alignment: .leading, spacing: 12) {
                 Text(NSLocalizedString("total_points", comment: "Total Points"))
                     .font(.headline)
@@ -62,7 +65,7 @@ struct ResultsView: View {
             .padding()
             .background(RoundedRectangle(cornerRadius: 12).fill(Color(.secondarySystemBackground)))
 
-            // Buttons
+            // Actions
             VStack(spacing: 12) {
                 Button {
                     viewModel.newGame()
@@ -87,5 +90,38 @@ struct ResultsView: View {
             }
         }
         .padding()
+        .onAppear {
+            // Fire achievements exactly once per presentation
+            guard !didFireAchievements else { return }
+            didFireAchievements = true
+
+            // Only process if the game truly concluded
+            guard viewModel.isGameOver else { return }
+
+            // Speedrunner: win under 120s
+            AchievementsManager.shared.onSpeedrun(duration: viewModel.gameDuration)
+
+            // Perfectionist: no wrong answers
+            AchievementsManager.shared.onPerfection(errors: viewModel.wrongAnswers)
+
+            // Puzzle Solver (+1 completed) and Explorer (unique image IDs)
+            if let name = viewModel.puzzleImageName,
+               let id = PuzzleIdParser.id(from: name) {
+                AchievementsManager.shared.onPuzzleCompleted(puzzleId: id)
+                AchievementsManager.shared.onImageDiscovered(puzzleId: id)
+            } else {
+                // Fall back if no parseable image id
+                AchievementsManager.shared.onPuzzleCompleted(puzzleId: nil)
+            }
+
+            // Multiplayer Champion: winner with ≥4 total players
+            if viewModel.players.count >= 4,
+               let winner = viewModel.players.max(by: { $0.score < $1.score }) {
+                AchievementsManager.shared.onMultiplayerResult(
+                    winnerName: winner.name,
+                    playersCount: viewModel.players.count
+                )
+            }
+        }
     }
 }

@@ -16,7 +16,7 @@ class GameViewModel: ObservableObject {
 
     // Puzzle
     @Published var puzzleImageName: String? = nil
-    @Published var puzzlePieces: [[Image]] = []   // sliced pieces for current board
+    @Published var puzzlePieces: [[Image]] = []   // Pre-sliced pieces for current board
 
     // Coordinates UX (first tap highlights the coordinates)
     @Published var currentSelection: (row: Int, col: Int)? = nil
@@ -36,9 +36,23 @@ class GameViewModel: ObservableObject {
     var players: [Player] { settings.players }
     var currentPlayer: Player { settings.players[currentPlayerIndex] }
 
+    // MARK: - Achievements helpers (new)
+    /// Number of wrong selections made across the whole game.
+    @Published var wrongAnswers: Int = 0
+
+    /// Start timestamp of the current game session.
+    private var gameStartAt: Date = Date()
+
+    /// Elapsed time since game start. Used to evaluate "Speedrunner".
+    var gameDuration: TimeInterval { Date().timeIntervalSince(gameStartAt) }
+
     // MARK: - Init / Deinit
     init(settings: GameSettings) {
         self.settings = settings
+
+        // Initialize achievement counters/timers
+        self.gameStartAt = Date()
+        self.wrongAnswers = 0
 
         selectPuzzleImage()
         generateBoard()
@@ -87,6 +101,12 @@ class GameViewModel: ObservableObject {
 
         puzzleImageName = chosen
         preparePuzzlePieces()
+
+        // NOTE: If you want to count "Explorer" on selection (not only at Results),
+        // you can send an event here:
+        // if let id = PuzzleIdParser.id(from: chosen) {
+        //     AchievementsManager.shared.onImageDiscovered(puzzleId: id)
+        // }
     }
 
     private func preparePuzzlePieces() {
@@ -135,7 +155,7 @@ class GameViewModel: ObservableObject {
         puzzlePieces = pieces
     }
 
-    // Optional public API to clear global slice cache (e.g., from Settings)
+    /// Optional public API to clear global slice cache (e.g., from Settings)
     static func clearPuzzleCache() {
         sliceCache.removeAll()
     }
@@ -195,7 +215,7 @@ class GameViewModel: ObservableObject {
             cells[i].isRevealed = true
             settings.players[currentPlayerIndex].score += 1
         } else {
-            // Wrong: apply penalty per difficulty
+            // Wrong: apply penalty per difficulty (also increments wrongAnswers)
             applyPenaltyForWrongAnswer()
         }
 
@@ -203,12 +223,15 @@ class GameViewModel: ObservableObject {
     }
 
     private func applyPenaltyForWrongAnswer() {
+        // Count a wrong answer for the whole game (used by "Perfectionist")
+        wrongAnswers += 1
+
         switch settings.difficulty {
         case .easy:
-            // No penalty
+            // No score penalty on Easy
             break
         case .normal:
-            // -1, clamped to 0
+            // -1, clamped at 0
             let s = settings.players[currentPlayerIndex].score
             settings.players[currentPlayerIndex].score = max(0, s - 1)
         case .hard:
@@ -247,6 +270,10 @@ class GameViewModel: ObservableObject {
         isGameOver = false
         showPuzzleOverlay = false
         currentSelection = nil
+
+        // Reset achievement counters
+        wrongAnswers = 0
+        gameStartAt = Date()
 
         // Reset scores
         for i in settings.players.indices {

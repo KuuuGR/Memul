@@ -181,3 +181,30 @@
 "qp_score" = "Score: %d  •  %d/%d";
 "qp_score_title" = "Score";
 "qp_wrong" = "Not quite. Correct answer: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Achievements";
+"achievements_title" = "Achievements";
+"achv_locked" = "Locked";
+"achv_unlocked" = "Unlocked";
+"achv_unlocked_toast" = "Achievement unlocked: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Tutorial Master";
+"achv_tutorial_master_sub" = "Earn 1000 tutorial points";
+
+"achv_puzzle_solver_title" = "Puzzle Solver";
+"achv_puzzle_solver_sub" = "Complete 100 puzzles";
+
+"achv_explorer_title" = "Explorer";
+"achv_explorer_sub" = "Discover 50 unique images";
+
+"achv_speedrunner_title" = "Speedrunner";
+"achv_speedrunner_sub" = "Win a game in under 2 minutes";
+
+"achv_perfectionist_title" = "Perfectionist";
+"achv_perfectionist_sub" = "Win a game with 0 mistakes";
+
+"achv_multiplayer_champ_title" = "Multiplayer Champion";
+"achv_multiplayer_champ_sub" = "Win a game with ≥4 players";

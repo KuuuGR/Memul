@@ -180,7 +180,13 @@ struct TutorialView: View {
         .alert(NSLocalizedString("tutorial_quit_title", comment: "Quit confirm title"),
                isPresented: $showQuitConfirm) {
             Button(NSLocalizedString("cancel", comment: "Cancel"), role: .cancel) { }
-            Button(NSLocalizedString("quit", comment: "Quit"), role: .destructive) { dismiss() }
+            Button(NSLocalizedString("quit", comment: "Quit"), role: .destructive) {
+                // ACHIEVEMENTS HOOK: persist Tutorial progress when user quits after at least one correct solution
+                if hasSolvedOnce {
+                    AchievementsManager.shared.onTutorialScored(rightCount: rightCount)
+                }
+                dismiss()
+            }
         } message: {
             Text(NSLocalizedString("tutorial_quit_message", comment: "Quit message"))
         }
