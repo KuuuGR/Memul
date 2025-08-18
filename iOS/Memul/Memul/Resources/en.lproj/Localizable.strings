@@ -118,35 +118,41 @@
 
 // MARK: - Tutorial
 "tutorial_title" = "Tutorial";
-"tutorial_cols_card_body" = "Imagine icicles falling from the roof—straight down in a line. That’s a vertical sweep.";
+"tutorial_cols_card_body" = "Imagine icicles falling straight down. That’s a vertical sweep. Time to try! Tap one of the four buttons below, or simply tap a column number on the board above.";
 "tutorial_cols_card_title" = "Now we practice columns";
 "tutorial_cols_sub" = "Watch the vertical line sweep a column.";
 "tutorial_col_button" = "Col. %d";
 "tutorial_col_label" = "Column: %d";
 "tutorial_equation" = "%d × %d = %d";
-"tutorial_framed_card_body" = "Tap the intersection of the shown row and column. A correct tap shows ✅; a wrong tap shows ❌ briefly.";
-"tutorial_framed_card_title" = "Intersection — Part 2";
+"tutorial_framed_card_body" = "You’ve selected a red row and a blue column. Try to find the cell where they cross. Imagine placing a rook from chess so it can move freely along both the row and the column. Which position is it? Finding this crossing point is the main goal of the game.";
+"tutorial_framed_card_title" = "The Magic Spot";
+"tutorial_framed_title" = "Intersecition - Part 2";
 "tutorial_framed_sub" = "Tap where a row meets a column.";
 "tutorial_feedback_great" = "Great!";
 "tutorial_feedback_not_quite" = "Not quite";
 "tutorial_intersect_card_body" = "Where a row meets a column: row × column. You’ll be asked to find a specific crossing cell.";
 "tutorial_intersect_card_title" = "Intersections in the game";
 "tutorial_intersect_sub" = "Where a row meets a column: row × column.";
-"tutorial_intersect_title" = "Intersection";
+"tutorial_intersect_title" = "Intersecition - Part 1";
 "tutorial_next_quest" = "Next Quest";
-"tutorial_practice_callout" = "Test your might!";
+"tutorial_practice_callout" = "Endless Challenge";
 "tutorial_practice_hint" = "Find the crossing cell for the given row and column.";
 "tutorial_practice_sub" = "Tap the cell where the lasers will cross.";
-"tutorial_practice_title" = "Try it!";
+"tutorial_practice_title" = "Intersecition - Part 3";
 "tutorial_quest_tap_pair" = "Tap (%d ; %d)";
 "tutorial_quest_title" = "Quest:";
 "tutorial_row_button" = "Row %d";
 "tutorial_row_label" = "Row: %d";
-"tutorial_rows_card_body" = "Imagine earthworm tunnels across the ground—lava rushes through the tunnels and the worm escapes sideways. That’s a horizontal sweep.";
+"tutorial_rows_card_body" = "Imagine lava flowing sideways through tunnels under the ground. That’s a horizontal sweep. Time to try! Tap one of the four buttons below, or simply tap a row number on the board above.";
 "tutorial_rows_card_title" = "Now we practice rows";
 "tutorial_rows_sub" = "Watch the horizontal line sweep a row.";
 "tutorial_score_right" = "✅ %d";
 "tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Rows";
+"tutorial_cols_title" = "Columns";
+"ab_purpose_multiplication" = "Practice multiplication tables through a fun grid puzzle.";
+"ab_purpose_turn_based" = "Turn-based gameplay supports 1–16 players.";
+"ab_purpose_fun_learning" = "Reveal images as you learn and compete.";
 
 // MARK: - Tutorial Buttons
 "back" = "Back";
