@@ -93,32 +93,45 @@ private extension GameView {
         VStack(spacing: 2) {
             HStack {
                 if let sel = viewModel.currentSelection {
+                    // When a selection exists, show either detailed (with coordinates) or plain submit
                     Button { submitSelectionConfirmed() } label: {
-                        Label {
-                            HStack(spacing: 4) {
-                                Text(NSLocalizedString("gv_submit_prefix", comment: "Submit prefix"))
-                                    .foregroundColor(.secondary)
+                        if viewModel.settings.showSelectedCoordinatesButton {
+                            // Detailed label with coordinates capsules
+                            Label {
+                                HStack(spacing: 4) {
+                                    Text(NSLocalizedString("gv_submit_prefix", comment: "Submit prefix"))
+                                        .foregroundColor(.secondary)
 
-                                capsuleText("\(sel.row)", color: .red)
-                                Text(NSLocalizedString("gv_submit_separator", comment: ","))
-                                    .foregroundColor(.secondary)
-                                capsuleText("\(sel.col)", color: .blue)
+                                    capsuleText("\(sel.row)", color: .red)
+                                    Text(NSLocalizedString("gv_submit_separator", comment: ","))
+                                        .foregroundColor(.secondary)
+                                    capsuleText("\(sel.col)", color: .blue)
 
-                                Text(NSLocalizedString("gv_submit_suffix", comment: ")"))
-                                    .foregroundColor(.secondary)
+                                    Text(NSLocalizedString("gv_submit_suffix", comment: ")"))
+                                        .foregroundColor(.secondary)
+                                }
+                                .font(.body.weight(.semibold))
+                            } icon: {
+                                Image(systemName: "checkmark.circle.fill")
                             }
-                            .font(.body.weight(.semibold))
-                        } icon: {
-                            Image(systemName: "checkmark.circle.fill")
+                        } else {
+                            // Plain submit (no coordinates)
+                            Label(NSLocalizedString("gv_submit", comment: "Submit"),
+                                  systemImage: "checkmark.circle.fill")
+                                .font(.body.weight(.semibold))
                         }
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.blue)
                     .accessibilityLabel(
-                        Text(String(format: NSLocalizedString("gv_submit_sel_ax", comment: "Submit %d, %d"),
-                                    sel.row, sel.col))
+                        Text(
+                            viewModel.settings.showSelectedCoordinatesButton
+                            ? String(format: NSLocalizedString("gv_submit_sel_ax", comment: "Submit %d, %d"), sel.row, sel.col)
+                            : NSLocalizedString("gv_submit", comment: "Submit")
+                        )
                     )
                 } else {
+                    // No selection yet → disabled submit
                     Button {} label: {
                         Label(NSLocalizedString("gv_submit", comment: "Submit"),
                               systemImage: "checkmark.circle.fill")
