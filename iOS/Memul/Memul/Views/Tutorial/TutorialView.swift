@@ -402,6 +402,8 @@ struct TutorialView: View {
                 showQuitConfirm = true
             }
             .buttonStyle(.borderedProminent)
+            .tint(.pink)
+            .opacity(0.5)
             .disabled(!hasSolvedOnce) // enabled only after first correct solution
         }
         .padding(.top, 2)

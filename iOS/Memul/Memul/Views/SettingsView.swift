@@ -169,14 +169,16 @@ struct SettingsView: View {
                         ColorPicker(NSLocalizedString("right_color", comment: ""), selection: $settings.indexColors.right)
                     }
 
-                    HStack {
+                    VStack(alignment: .leading, spacing: 8) {
                         Button(NSLocalizedString("make_labels_transparent", comment: "")) {
                             settings.indexColors = .transparent
                         }
-                        Spacer()
+                        .buttonStyle(.bordered)
+
                         Button(NSLocalizedString("reset_label_colors", comment: "")) {
                             settings.indexColors = IndexColors()
                         }
+                        .buttonStyle(.bordered)
                     }
                 } else {
                     Text(NSLocalizedString("index_labels_premium_hint", comment: ""))
@@ -241,6 +243,7 @@ struct SettingsView: View {
                     .foregroundColor(.gray)
                 } else {
                     Text(String(format: NSLocalizedString("premium_limitations", comment: ""),
+                                GameSettings.premiumMaxBoardSize,
                                 GameSettings.premiumMaxBoardSize,
                                 GameSettings.premiumMaxPlayers))
                     .font(.caption)

@@ -65,8 +65,10 @@
 
 // MARK: - Premium Access
 "free_limitations" = "Free version: max %d×%d board, %d players.";
+"premium_limitations" = "All premium features unlocked — up to %dx%d boards and %d players.";
 "premium_access" = "Premium Access";
 "unlock_premium" = "Unlock Premium";
+
 
 // MARK: - General UI
 "close" = "Close";
@@ -159,7 +161,7 @@
 "back" = "Back";
 "cancel" = "Cancel";
 "next" = "Next";
-"quit" = "Quit";
+"quit" = "Finish";
 "repeat" = "Repeat";
 "skip_to_practice" = "Skip to Practice";
 
