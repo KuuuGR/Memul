@@ -9,8 +9,17 @@ import SwiftUI
 
 struct SettingsView: View {
     @Binding var settings: GameSettings
-    @State private var showPaywall = false
 
+    // Use a single sheet with an enum to avoid double-present issues
+    private enum ActiveSheet: Identifiable {
+        case paywall
+        case privacy
+        case terms
+        var id: String { String(describing: self) }
+    }
+    @State private var activeSheet: ActiveSheet?
+
+    // MARK: - Body
     var body: some View {
         Form {
             // MARK: Board Size
@@ -95,6 +104,7 @@ struct SettingsView: View {
 
             // MARK: Quick practice
             Section(header: Text(NSLocalizedString("quick_practice", comment: ""))) {
+                // Multiplication range (always available)
                 Stepper {
                     Text(String(
                         format: NSLocalizedString("range_multiplication", comment: "Multiplication range"),
@@ -110,6 +120,7 @@ struct SettingsView: View {
                     }
                 }
 
+                // Unlock Division (premium-gated, auto-unlock on premium)
                 Toggle(NSLocalizedString("unlock_division", comment: ""), isOn: $settings.isDivisionUnlocked)
                     .disabled(!settings.isPremium)
                     .opacity(settings.isPremium ? 1.0 : 0.5)
@@ -117,6 +128,7 @@ struct SettingsView: View {
                         settings.isDivisionUnlocked = isPremium
                     }
 
+                // Division range (only visible when unlocked)
                 if settings.isDivisionUnlocked {
                     Stepper {
                         Text(String(
@@ -216,19 +228,40 @@ struct SettingsView: View {
                         .font(.headline)
                         .foregroundColor(.green)
                 } else {
-                    Button(action: { showPaywall = true }) {
+                    Button {
+                        activeSheet = .paywall
+                    } label: {
                         Text("Unlock Premium")
                             .font(.headline)
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.borderedProminent)
+
+                    // Links
+                    HStack {
+                        Button("Privacy Policy") { activeSheet = .privacy }
+                        Spacer()
+                        Button("Terms of Use")   { activeSheet = .terms }
+                    }
+                    .font(.footnote)
                 }
             }
         }
         .navigationTitle(NSLocalizedString("settings_title", comment: ""))
-        .sheet(isPresented: $showPaywall) {
-            NavigationStack {
-                PaywallView(settings: $settings)
+
+        // Single sheet handles all cases → prevents double opening
+        .sheet(item: $activeSheet, onDismiss: { activeSheet = nil }) { sheet in
+            switch sheet {
+            case .paywall:
+                NavigationStack {
+                    PaywallView(settings: $settings)
+                }
+            case .privacy:
+                SafariView(url: URL(string: "https://github.com/KuuuGR/Memul/wiki/POLICIES#privacy-policy-for-memul")!)
+                    .ignoresSafeArea()
+            case .terms:
+                SafariView(url: URL(string: "https://github.com/KuuuGR/Memul/wiki/TERMS#terms-of-use-for-memul")!)
+                    .ignoresSafeArea()
             }
         }
         .onAppear {
@@ -253,6 +286,7 @@ struct SettingsView: View {
         settings.isPremium ? GameSettings.premiumMaxPlayers : GameSettings.freeMaxPlayers
     }
 
+    /// Binding helper to support nil (= ∞) in segmented picker.
     private func bindingForTurnLimit() -> Binding<Int?> {
         Binding<Int?>(
             get: { settings.turnTimeLimit },
@@ -260,7 +294,7 @@ struct SettingsView: View {
                 if !settings.isPremium {
                     settings.turnTimeLimit = 30
                 } else {
-                    settings.turnTimeLimit = newValue
+                    settings.turnTimeLimit = newValue // 30/60/120 or nil (∞)
                 }
             }
         )
