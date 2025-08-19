@@ -9,14 +9,19 @@ import SwiftUI
 
 @main
 struct MemulApp: App {
-    @Environment(\.colorScheme) var colorScheme
+    // Keep a reference so SwiftUI observes IAP changes (optional but handy)
+    @StateObject private var iap = IAPManager.shared
+
+    init() {
+        // Configure StoreKit on app launch
+        IAPManager.shared.configureOnLaunch()
+    }
 
     var body: some Scene {
         WindowGroup {
-            // Show animated splash first, like in your TimeToSkill app
             SplashView()
-                .preferredColorScheme(.dark)           // Force dark during splash (and app if you want)
-                .environment(\.colorScheme, .dark)     // Apply to all views
+                .preferredColorScheme(.dark)   // force dark if you want
+                .environment(\.colorScheme, .dark)
         }
     }
 }

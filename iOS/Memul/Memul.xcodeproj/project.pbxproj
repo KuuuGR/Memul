@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		847ABE5A2E54A9CD00C16388 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 847ABE592E54A9CD00C16388 /* StoreKit.framework */; };
+		847ABE602E54ACCD00C16388 /* Memulx.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 847ABE5F2E54ACCD00C16388 /* Memulx.storekit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		84509F542E3E9DEA00CD4871 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +32,8 @@
 		84509F412E3E9DE600CD4871 /* Memul.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memul.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84509F532E3E9DE900CD4871 /* MemulTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemulTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84509F5D2E3E9DEA00CD4871 /* MemulUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemulUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		847ABE592E54A9CD00C16388 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		847ABE5F2E54ACCD00C16388 /* Memulx.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Memulx.storekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847ABE5A2E54A9CD00C16388 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +83,11 @@
 		84509F382E3E9DE600CD4871 = {
 			isa = PBXGroup;
 			children = (
+				847ABE5F2E54ACCD00C16388 /* Memulx.storekit */,
 				84509F432E3E9DE600CD4871 /* Memul */,
 				84509F562E3E9DEA00CD4871 /* MemulTests */,
 				84509F602E3E9DEA00CD4871 /* MemulUITests */,
+				847ABE582E54A9CD00C16388 /* Frameworks */,
 				84509F422E3E9DE600CD4871 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +100,14 @@
 				84509F5D2E3E9DEA00CD4871 /* MemulUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		847ABE582E54A9CD00C16388 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				847ABE592E54A9CD00C16388 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847ABE602E54ACCD00C16388 /* Memulx.storekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
