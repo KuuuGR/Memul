@@ -224,14 +224,14 @@ struct SettingsView: View {
             // MARK: Premium Access
             Section(header: Text(NSLocalizedString("premium_access", comment: ""))) {
                 if settings.isPremium {
-                    Text("✅ Premium Unlocked")
+                    Text(NSLocalizedString("premium_unlocked_badge", comment: ""))
                         .font(.headline)
                         .foregroundColor(.green)
                 } else {
                     Button {
                         activeSheet = .paywall
                     } label: {
-                        Text("Unlock Premium")
+                        Text(NSLocalizedString("unlock_premium_cta", comment: ""))
                             .font(.headline)
                             .frame(maxWidth: .infinity)
                     }
@@ -239,9 +239,9 @@ struct SettingsView: View {
 
                     // Links
                     HStack {
-                        Button("Privacy Policy") { activeSheet = .privacy }
+                        Button(NSLocalizedString("privacy_policy", comment: "")) { activeSheet = .privacy }
                         Spacer()
-                        Button("Terms of Use")   { activeSheet = .terms }
+                        Button(NSLocalizedString("terms_of_use", comment: ""))   { activeSheet = .terms }
                     }
                     .font(.footnote)
                 }

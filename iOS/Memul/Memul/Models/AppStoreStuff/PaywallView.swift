@@ -29,10 +29,10 @@ struct PaywallView: View {
                     .foregroundStyle(.yellow)
                     .padding(.top, 24)
 
-                Text("Memul Premium")
+                Text(NSLocalizedString("paywall_title", comment: ""))
                     .font(.title2).bold()
 
-                Text("Unlock all features and remove free limits.")
+                Text(NSLocalizedString("paywall_subtitle", comment: ""))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -42,12 +42,24 @@ struct PaywallView: View {
 
             // Feature list
             VStack(alignment: .leading, spacing: 10) {
-                FeatureRow(icon: "square.grid.3x3.fill", title: "Bigger boards", detail: "Up to 33×33")
-                FeatureRow(icon: "person.3.fill",      title: "More players", detail: "Up to 32 players")
-                FeatureRow(icon: "timer.square",       title: "Turn timer",   detail: "∞ / 30 / 60 / 120 seconds")
-                FeatureRow(icon: "rectangle.and.pencil.and.ellipsis", title: "Label styling", detail: "Colors & positions")
-                FeatureRow(icon: "puzzlepiece.extension", title: "Full puzzle set", detail: "Free + premium images")
-                FeatureRow(icon: "divide.square",      title: "Quick Division", detail: "Unlock division mode")
+                FeatureRow(icon: "square.grid.3x3.fill",
+                           title: NSLocalizedString("feat_bigger_boards_title", comment: ""),
+                           detail: NSLocalizedString("feat_bigger_boards_detail", comment: ""))
+                FeatureRow(icon: "person.3.fill",
+                           title: NSLocalizedString("feat_more_players_title", comment: ""),
+                           detail: NSLocalizedString("feat_more_players_detail", comment: ""))
+                FeatureRow(icon: "timer.square",
+                           title: NSLocalizedString("feat_timer_title", comment: ""),
+                           detail: NSLocalizedString("feat_timer_detail", comment: ""))
+                FeatureRow(icon: "rectangle.and.pencil.and.ellipsis",
+                           title: NSLocalizedString("feat_labels_title", comment: ""),
+                           detail: NSLocalizedString("feat_labels_detail", comment: ""))
+                FeatureRow(icon: "puzzlepiece.extension",
+                           title: NSLocalizedString("feat_puzzles_title", comment: ""),
+                           detail: NSLocalizedString("feat_puzzles_detail", comment: ""))
+                FeatureRow(icon: "divide.square",
+                           title: NSLocalizedString("feat_division_title", comment: ""),
+                           detail: NSLocalizedString("feat_division_detail", comment: ""))
             }
             .padding(.horizontal)
             .padding(.top, 8)
@@ -83,7 +95,7 @@ struct PaywallView: View {
             Button(action: restoreTapped) {
                 HStack {
                     if isRestoring { ProgressView().padding(.trailing, 6) }
-                    Text("Restore Purchases")
+                    Text(NSLocalizedString("restore_purchases", comment: ""))
                 }
                 .frame(maxWidth: .infinity)
             }
@@ -94,15 +106,16 @@ struct PaywallView: View {
 
             // Small print
             VStack(spacing: 4) {
-                Text("One-time purchase. Family Sharing supported. Your purchase is linked to your Apple ID.")
+                Text(NSLocalizedString("paywall_smallprint", comment: ""))
                     .font(.caption2)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
 
-                // Replace with your actual links if you have a webpage
                 HStack(spacing: 12) {
-                    Link("Privacy Policy", destination: URL(string: "https://github.com/KuuuGR/Memul/wiki/POLICIES#privacy-policy-for-memul")!)
-                    Link("Terms of Use",   destination: URL(string: "https://github.com/KuuuGR/Memul/wiki/TERMS#terms-of-use-for-memul")!)
+                    Link(NSLocalizedString("privacy_policy", comment: ""),
+                         destination: URL(string: "https://github.com/KuuuGR/Memul/wiki/POLICIES#privacy-policy-for-memul")!)
+                    Link(NSLocalizedString("terms_of_use", comment: ""),
+                         destination: URL(string: "https://github.com/KuuuGR/Memul/wiki/TERMS#terms-of-use-for-memul")!)
                 }
                 .font(.caption2)
             }
@@ -129,7 +142,7 @@ struct PaywallView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button("Close") { dismiss() }
+                Button(NSLocalizedString("close", comment: "")) { dismiss() }
             }
         }
     }
@@ -157,11 +170,14 @@ struct PaywallView: View {
     // MARK: - UI helpers
 
     private func purchaseButtonTitle() -> String {
-        if premiumUnlocked { return "Premium Unlocked" }
-        if iap.isProductReady, !iap.premiumPriceText.isEmpty {
-            return "Unlock Premium – \(iap.premiumPriceText)"
+        if premiumUnlocked {
+            return NSLocalizedString("premium_unlocked_badge", comment: "")
         }
-        return "Loading price…"
+        if iap.isProductReady, !iap.premiumPriceText.isEmpty {
+            let format = NSLocalizedString("unlock_premium_cta", comment: "")
+            return "\(format) – \(iap.premiumPriceText)"
+        }
+        return NSLocalizedString("loading_price", comment: "")
     }
 }
 
