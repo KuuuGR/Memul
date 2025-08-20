@@ -1,0 +1,245 @@
+//
+//  Localizable.strings (Catalan - ca)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Quant a";
+"app_title" = "Memul";
+"settings" = "Configuració";
+"start_game" = "Inicia joc";
+"start_tagline" = "Multiplica. Juga. Aprèn.";
+"tutorial" = "Tutorial";
+
+// MARK: - Board & Players
+"add_player" = "Afegeix jugador";
+"board_size" = "Mida del tauler";
+"board_size_value" = "Mida: %d × %d";
+"player_n" = "Jugador %d";
+"players" = "Jugadors";
+"remove_last_player" = "Elimina l’últim";
+
+// MARK: - Puzzle
+"puzzle" = "Imatge";
+"puzzle_enable" = "Mostra la imatge sota el tauler";
+"puzzle_free_info" = "Els usuaris gratuïts veuen una imatge aleatòria del paquet gratuït.";
+"puzzle_premium_info" = "Els usuaris Premium veuen una imatge aleatòria dels paquets gratuït i Premium.";
+
+// MARK: - Difficulty
+"difficulty" = "Dificultat";
+"difficulty_easy" = "Fàcil";
+"difficulty_hard" = "Difícil";
+"difficulty_mode" = "Mode";
+"difficulty_normal" = "Normal";
+"difficulty_premium_hint" = "Gratuït: només Fàcil. Normal/Difícil requereixen Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Color inferior";
+"index_customize" = "Personalitza etiquetes";
+"index_labels" = "Etiquetes d’índex";
+"index_labels_premium_hint" = "Personalitzar colors requereix Premium.";
+"left_color" = "Color esquerre";
+"make_labels_transparent" = "Fes-les transparents";
+"reset_label_colors" = "Reinicia colors";
+"right_color" = "Color dret";
+"show_bottom_labels" = "Mostra inferior";
+"show_left_labels" = "Mostra esquerra";
+"show_right_labels" = "Mostra dreta";
+"show_top_labels" = "Mostra superior";
+"top_color" = "Color superior";
+
+// MARK: - Header & UX
+"header_options" = "Capçalera";
+"show_selected_coordinates_button" = "Mostra botó de coordenades";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Versió gratuïta: 30s fixes per torn.";
+"turn_timer_per_turn" = "Límit per torn";
+"turn_timer_title" = "Temporitzador";
+
+// MARK: - Premium Access
+"free_limitations" = "Gratuït: màx. %d×%d, %d jugadors.";
+"premium_limitations" = "Premium desbloquejat — fins a %dx%d i %d jugadors.";
+"premium_access" = "Accés Premium";
+"unlock_premium" = "Desbloqueja Premium";
+
+// MARK: - General UI
+"close" = "Tanca";
+"end_game" = "Finalitza";
+"find_cell_with" = "Troba la casella amb %d";
+"new_game" = "Nou joc";
+"player_score" = "%@: %d";
+"results_title" = "Resultats";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Configuració";
+"tap_to_close" = "Toca per tancar";
+"total_points" = "Punts totals";
+"turn_title" = "Torn de %@";
+"winner_announcement" = "🏆 Guanyador: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Seleccionat fila %d, col %d";
+"gv_submit" = "Envia";
+"gv_submit_hint" = "Primer selecciona una casella";
+"gv_submit_sel" = "Envia (%d, %d)";
+"gv_submit_sel_ax" = "Envia coordenades %d, %d";
+"gv_submit_prefix" = "Envia (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Torna a tocar o prem Envia";
+"gv_target" = "Objectiu: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Quant a";
+"ab_section_about_app" = "Sobre Memul";
+"ab_app_name" = "Memul — Joc de trencaclosques de multiplicació";
+"ab_version" = "Versió: %@";
+"ab_developer" = "Desenvolupador: Grzegorz Kulesza";
+"ab_section_purpose" = "Propòsit";
+"ab_purpose_accessible" = "Apte per a primària i útil més enllà.";
+"ab_purpose_carries_forward" = "Construeix habilitats: notació en matriu, posicions fila–columna i pensament cartesià.";
+"ab_purpose_commutativity" = "Ajuda a comprendre la propietat commutativa.";
+"ab_purpose_learn_tables" = "Fa més fàcil aprendre les taules de multiplicar.";
+"ab_section_features" = "Funcions";
+"ab_feature_customization" = "Gran personalització: mida, dificultat, temporitzadors, etiquetes, imatge i pistes.";
+"ab_feature_multiplayer" = "Multijugador per torns (1–16) amb amics.";
+"ab_feature_puzzle_reveal" = "Imatge amagada que es revela a poc a poc.";
+"ab_feature_quick_practice" = "Pràctica ràpida: multiplicació i (Premium) divisió.";
+"ab_feature_tutorial" = "Tutorial interactiu: files, columnes i interseccions.";
+"ab_section_author" = "Autor";
+"ab_author_line1" = "Creat per Grzegorz Kulesza (enginyeria, ciències, docència).";
+"ab_author_line2" = "Experiència diversa que inspira Memul: matrius, coordenades, resolució intuïtiva.";
+"ab_section_support" = "Suport";
+
+// MARK: - Tutorial
+"tutorial_title" = "Tutorial";
+"tutorial_cols_card_body" = "Imagina caramells caient rectes. Això és una columna. Prova-ho! Prem un botó o un número de columna.";
+"tutorial_cols_card_title" = "Practiquem columnes";
+"tutorial_cols_sub" = "Mira la línia vertical.";
+"tutorial_col_button" = "Col %d"; // ≤6
+"tutorial_col_label" = "Columna: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Has triat una fila vermella i una columna blava. Troba on es creuen. Imagina una torre d’escacs movent-se. Aquest és l’objectiu.";
+"tutorial_framed_card_title" = "Punt màgic";
+"tutorial_framed_title" = "Intersecció - Part 2";
+"tutorial_framed_sub" = "Prem on es troben fila i columna.";
+"tutorial_feedback_great" = "Genial!";
+"tutorial_feedback_not_quite" = "Gairebé";
+"tutorial_intersect_card_body" = "Quan fila i columna es troben: fila × columna.";
+"tutorial_intersect_card_title" = "Interseccions al joc";
+"tutorial_intersect_sub" = "Fila × Columna.";
+"tutorial_intersect_title" = "Intersecció - Part 1";
+"tutorial_next_quest" = "Següent";
+"tutorial_practice_callout" = "Repte infinit";
+"tutorial_practice_hint" = "Troba la casella d’intersecció.";
+"tutorial_practice_sub" = "Prem on es creuen els làsers.";
+"tutorial_practice_title" = "Intersecció - Part 3";
+"tutorial_quest_tap_pair" = "Prem (%d ; %d)";
+"tutorial_quest_title" = "Repte:";
+"tutorial_row_button" = "Fila %d"; // ≤6
+"tutorial_row_label" = "Fila: %d";
+"tutorial_rows_card_body" = "Imagina lava fluint horitzontal. Això és una fila. Prova-ho! Prem un botó o un número de fila.";
+"tutorial_rows_card_title" = "Practiquem files";
+"tutorial_rows_sub" = "Mira la línia horitzontal.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Files";
+"tutorial_cols_title" = "Columnes";
+"ab_purpose_multiplication" = "Practica les taules de multiplicar.";
+"ab_purpose_turn_based" = "Per torns, 1–16 jugadors.";
+"ab_purpose_fun_learning" = "Aprèn descobrint imatges.";
+
+// MARK: - Tutorial Buttons
+"back" = "Enrere";
+"cancel" = "Cancel·la";
+"next" = "Següent";
+"quit" = "Finalitza";
+"repeat" = "Repeteix";
+"skip_to_practice" = "Salta a pràctica";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Sortiràs del tutorial. Pots tornar-hi.";
+"tutorial_quit_title" = "Segur?";
+
+// MARK: - Quick Practice
+"division_note" = "Divisió amb enters: (quocient × divisor) ÷ divisor = quocient.";
+"division_premium_hint" = "La divisió requereix Premium.";
+"quick_divide" = "Divisió ràpida";
+"quick_divide_locked" = "Divisió (bloquejada)";
+"quick_multiply" = "Multiplicació";
+"quick_practice" = "Pràctica ràpida";
+"range_division" = "Rang divisió: %d–%d";
+"range_multiplication" = "Rang multiplicació: %d–%d";
+"unlock_division" = "Desbloqueja divisió";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Correcte!";
+"qp_correct_title" = "Correcte";
+"qp_d_prompt" = "Quant és %d ÷ %d ?";
+"qp_incorrect_title" = "Incorrecte";
+"qp_m_prompt" = "Quant és %d × %d ?";
+"qp_next" = "Següent";
+"qp_score" = "Puntuació: %d  •  %d/%d";
+"qp_score_title" = "Puntuació";
+"qp_wrong" = "No. Resposta: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Assoliments";
+"achievements_title" = "Assoliments";
+"achv_locked" = "Bloquejat";
+"achv_unlocked" = "Desbloquejat";
+"achv_unlocked_toast" = "Assoliment: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Mestre del tutorial";
+"achv_tutorial_master_sub" = "Guanya 1000 punts al tutorial";
+
+"achv_puzzle_solver_title" = "Resol trencaclosques";
+"achv_puzzle_solver_sub" = "Completa 100 imatges";
+
+"achv_explorer_title" = "Explorador";
+"achv_explorer_sub" = "Descobreix 50 imatges";
+
+"achv_speedrunner_title" = "Ràpid";
+"achv_speedrunner_sub" = "Guanya en menys de 2 minuts";
+
+"achv_perfectionist_title" = "Perfeccionista";
+"achv_perfectionist_sub" = "Guanya sense errors";
+
+"achv_multiplayer_champ_title" = "Campió multijugador";
+"achv_multiplayer_champ_sub" = "Guanya amb ≥4 jugadors";
+
+// MARK: - Paywall / Legal
+"legal" = "Legal";
+"privacy_policy" = "Política de privacitat";
+"terms_of_use" = "Condicions d’ús";
+
+"unlock_premium_cta" = "Desbloqueja Premium";
+"premium_unlocked_badge" = "✅ Premium actiu";
+"restore_purchases" = "Restaura compres";
+"loading_price" = "Carregant preu…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Desbloqueja tot i elimina límits.";
+
+"feat_bigger_boards_title" = "Taulers grans";
+"feat_bigger_boards_detail" = "Fins a 33×33";
+"feat_more_players_title" = "Més jugadors";
+"feat_more_players_detail" = "Fins a 32";
+"feat_timer_title" = "Temporitzador";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 s";
+"feat_labels_title" = "Estil etiquetes";
+"feat_labels_detail" = "Colors i posicions";
+"feat_puzzles_title" = "Imatges senceres";
+"feat_puzzles_detail" = "Gratuït + Premium";
+"feat_division_title" = "Divisió ràpida";
+"feat_division_detail" = "Mode divisió";
+
+"paywall_smallprint" = "Compra única. Compartició familiar. Vinculat al teu Apple ID.";

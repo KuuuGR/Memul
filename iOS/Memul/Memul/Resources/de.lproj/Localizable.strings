@@ -1,0 +1,245 @@
+//
+//  Localizable.strings (German)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Über";
+"app_title" = "Memul";
+"settings" = "Einstellungen";
+"start_game" = "Spiel starten";
+"start_tagline" = "Multipliziere. Spiele. Lerne.";
+"tutorial" = "Tutorial";
+
+// MARK: - Board & Players
+"add_player" = "Spieler hinzufügen";
+"board_size" = "Tafelgröße";
+"board_size_value" = "Größe: %d × %d";
+"player_n" = "Spieler %d";
+"players" = "Spieler";
+"remove_last_player" = "Letzten entfernen";
+
+// MARK: - Puzzle
+"puzzle" = "Bild";
+"puzzle_enable" = "Bild unter dem Raster anzeigen";
+"puzzle_free_info" = "Gratisnutzer sehen ein zufälliges Bild aus dem Gratispaket.";
+"puzzle_premium_info" = "Premium sieht ein zufälliges Bild aus Gratis- und Premiumpaket.";
+
+// MARK: - Difficulty
+"difficulty" = "Schwierigkeit";
+"difficulty_easy" = "Leicht";
+"difficulty_hard" = "Schwer";
+"difficulty_mode" = "Modus";
+"difficulty_normal" = "Mittel";
+"difficulty_premium_hint" = "Gratis: nur Leicht. Mittel/Schwer erfordern Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Farbe unten";
+"index_customize" = "Beschriftungen anpassen";
+"index_labels" = "Index-Beschriftungen";
+"index_labels_premium_hint" = "Farbanpassung erfordert Premium.";
+"left_color" = "Farbe links";
+"make_labels_transparent" = "Beschriftungen transparent";
+"reset_label_colors" = "Farben zurücksetzen";
+"right_color" = "Farbe rechts";
+"show_bottom_labels" = "Unten anzeigen";
+"show_left_labels" = "Links anzeigen";
+"show_right_labels" = "Rechts anzeigen";
+"show_top_labels" = "Oben anzeigen";
+"top_color" = "Farbe oben";
+
+// MARK: - Header & UX
+"header_options" = "Kopfzeile";
+"show_selected_coordinates_button" = "Koordinaten-Button anzeigen";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Gratisversion: 30s pro Zug.";
+"turn_timer_per_turn" = "Limit pro Zug";
+"turn_timer_title" = "Zug-Timer";
+
+// MARK: - Premium Access
+"free_limitations" = "Gratis: max. %d×%d und %d Spieler.";
+"premium_limitations" = "Alle Premium-Funktionen — bis %dx%d und %d Spieler.";
+"premium_access" = "Premium-Zugang";
+"unlock_premium" = "Premium freischalten";
+
+// MARK: - General UI
+"close" = "Schließen";
+"end_game" = "Beenden";
+"find_cell_with" = "Finde ein Feld mit %d";
+"new_game" = "Neues Spiel";
+"player_score" = "%@: %d";
+"results_title" = "Ergebnisse";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Einstellungen";
+"tap_to_close" = "Zum Schließen tippen";
+"total_points" = "Gesamtpunkte";
+"turn_title" = "Am Zug: %@";
+"winner_announcement" = "🏆 Sieger: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Gewählt: Zeile %d, Spalte %d";
+"gv_submit" = "Bestätigen";
+"gv_submit_hint" = "Wähle zuerst ein Feld";
+"gv_submit_sel" = "Bestätigen (%d, %d)";
+"gv_submit_sel_ax" = "Koordinaten bestätigen %d, %d";
+"gv_submit_prefix" = "Bestätigen (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Nochmal tippen oder Bestätigen";
+"gv_target" = "Ziel: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Über";
+"ab_section_about_app" = "Über Memul";
+"ab_app_name" = "Memul — Multiplikations-Puzzle";
+"ab_version" = "Version: %@";
+"ab_developer" = "Entwickler: Grzegorz Kulesza";
+"ab_section_purpose" = "Zweck";
+"ab_purpose_accessible" = "Leicht für die Grundschule, nützlich weit darüber hinaus.";
+"ab_purpose_carries_forward" = "Fördert: Array-Notation, Positionen Zeile–Spalte, kartesisches Denken.";
+"ab_purpose_commutativity" = "Hilft, die Kommutativität der Multiplikation zu verinnerlichen.";
+"ab_purpose_learn_tables" = "Erleichtert das Lernen des Einmaleins — für Kinder und Erwachsene.";
+"ab_section_features" = "Funktionen";
+"ab_feature_customization" = "Vielseitig anpassbar: Größe, Schwierigkeit (Leicht/Mittel/Schwer, optional Strafen), Timer, Labels, Bild, Koordinatenhinweise.";
+"ab_feature_multiplayer" = "Rundenbasiertes Mehrspieler (1–16) hält das Üben spannend.";
+"ab_feature_puzzle_reveal" = "Verstecktes Bild deckt sich Stück für Stück auf.";
+"ab_feature_quick_practice" = "Schnellübungen für Multiplikation und (Premium) Division.";
+"ab_feature_tutorial" = "Interaktives Tutorial zu Zeilen, Spalten und Schnittpunkten.";
+"ab_section_author" = "Autor";
+"ab_author_line1" = "Erstellt von Grzegorz Kulesza (Elektrotechnik, Informatik, Physik, Medizin, Pädagogik).";
+"ab_author_line2" = "Diese Breite prägte Memul: Arrays, Koordinaten, intuitives Problemlösen.";
+"ab_section_support" = "Support";
+
+// MARK: - Tutorial
+"tutorial_title" = "Tutorial";
+"tutorial_cols_card_body" = "Stell dir Eiszapfen vor, die gerade nach unten fallen. Das ist ein vertikaler Sweep. Probier’s aus! Tippe unten einen Button oder oben eine Spaltenzahl.";
+"tutorial_cols_card_title" = "Jetzt üben wir Spalten";
+"tutorial_cols_sub" = "Sieh zu, wie die Vertikale eine Spalte abfährt.";
+"tutorial_col_button" = "Sp %d";
+"tutorial_col_label" = "Spalte: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Du hast eine rote Zeile und eine blaue Spalte gewählt. Finde ihren Schnittpunkt. Stell dir einen Turm aus dem Schach vor, der sich frei entlang Zeile und Spalte bewegt. Dieser Punkt ist das Ziel.";
+"tutorial_framed_card_title" = "Der magische Punkt";
+"tutorial_framed_title" = "Schnittpunkt – Teil 2";
+"tutorial_framed_sub" = "Tippe, wo sich Zeile und Spalte treffen.";
+"tutorial_feedback_great" = "Super!";
+"tutorial_feedback_not_quite" = "Fast";
+"tutorial_intersect_card_body" = "Wo sich Zeile und Spalte treffen: Zeile × Spalte. Du sollst ein bestimmtes Feld finden.";
+"tutorial_intersect_card_title" = "Schnittpunkte im Spiel";
+"tutorial_intersect_sub" = "Wo Zeile und Spalte sich schneiden: Zeile × Spalte.";
+"tutorial_intersect_title" = "Schnittpunkt – Teil 1";
+"tutorial_next_quest" = "Nächste Aufgabe";
+"tutorial_practice_callout" = "Endlose Herausforderung";
+"tutorial_practice_hint" = "Finde das Schnittfeld für die gegebene Zeile und Spalte.";
+"tutorial_practice_sub" = "Tippe das Feld, wo sich die Laser kreuzen.";
+"tutorial_practice_title" = "Schnittpunkt – Teil 3";
+"tutorial_quest_tap_pair" = "Tippe (%d ; %d)";
+"tutorial_quest_title" = "Aufgabe:";
+"tutorial_row_button" = "Ze %d";
+"tutorial_row_label" = "Zeile: %d";
+"tutorial_rows_card_body" = "Stell dir Lava vor, die waagerecht unter der Erde fließt. Das ist ein Horizontal-Sweep. Tippe einen Button oder oben eine Zeilenzahl.";
+"tutorial_rows_card_title" = "Jetzt üben wir Zeilen";
+"tutorial_rows_sub" = "Sieh zu, wie die Horizontale eine Zeile abfährt.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Zeilen";
+"tutorial_cols_title" = "Spalten";
+"ab_purpose_multiplication" = "Einmaleins üben mit Raster-Puzzle.";
+"ab_purpose_turn_based" = "Rundenbasiert für 1–16 Spieler.";
+"ab_purpose_fun_learning" = "Bilder aufdecken, während du lernst.";
+
+// MARK: - Tutorial Buttons
+"back" = "Zurück";
+"cancel" = "Abbrechen";
+"next" = "Weiter";
+"quit" = "Beenden";
+"repeat" = "Wiederholen";
+"skip_to_practice" = "Zur Übung springen";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Du verlässt das Tutorial. Du kannst jederzeit zurückkehren.";
+"tutorial_quit_title" = "Bist du sicher?";
+
+// MARK: - Quick Practice
+"division_note" = "Division mit ganzzahligem Ergebnis: (Quotient × Divisor) ÷ Divisor = Quotient.";
+"division_premium_hint" = "Division freischalten erfordert Premium.";
+"quick_divide" = "Schnelle Division";
+"quick_divide_locked" = "Schnelle Division (gesperrt)";
+"quick_multiply" = "Schnelles Multiplizieren";
+"quick_practice" = "Schnellübung";
+"range_division" = "Divisionsbereich: %d–%d";
+"range_multiplication" = "Multiplikationsbereich: %d–%d";
+"unlock_division" = "Division freischalten";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Richtig!";
+"qp_correct_title" = "Richtig";
+"qp_d_prompt" = "Wie viel ist %d ÷ %d ?";
+"qp_incorrect_title" = "Falsch";
+"qp_m_prompt" = "Wie viel ist %d × %d ?";
+"qp_next" = "Weiter";
+"qp_score" = "Punkte: %d  •  %d/%d";
+"qp_score_title" = "Punkte";
+"qp_wrong" = "Nicht ganz. Richtig: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Erfolge";
+"achievements_title" = "Erfolge";
+"achv_locked" = "Gesperrt";
+"achv_unlocked" = "Freigeschaltet";
+"achv_unlocked_toast" = "Erfolg freigeschaltet: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Tutorial-Meister";
+"achv_tutorial_master_sub" = "1000 Punkte im Tutorial";
+
+"achv_puzzle_solver_title" = "Bildexperte";
+"achv_puzzle_solver_sub" = "100 Bilder abschließen";
+
+"achv_explorer_title" = "Entdecker";
+"achv_explorer_sub" = "50 Bilder entdecken";
+
+"achv_speedrunner_title" = "Speedrunner";
+"achv_speedrunner_sub" = "Spiel in unter 2 Minuten gewinnen";
+
+"achv_perfectionist_title" = "Perfektionist";
+"achv_perfectionist_sub" = "Spiel ohne Fehler gewinnen";
+
+"achv_multiplayer_champ_title" = "Mehrspieler-Champion";
+"achv_multiplayer_champ_sub" = "Spiel mit ≥4 Spielern gewinnen";
+
+// MARK: - Paywall / Legal
+"legal" = "Rechtliches";
+"privacy_policy" = "Datenschutzrichtlinie";
+"terms_of_use" = "Nutzungsbedingungen";
+
+"unlock_premium_cta" = "Premium freischalten";
+"premium_unlocked_badge" = "✅ Premium aktiviert";
+"restore_purchases" = "Käufe wiederherstellen";
+"loading_price" = "Preis wird geladen…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Alles freischalten und Limits entfernen.";
+
+"feat_bigger_boards_title" = "Größere Tafeln";
+"feat_bigger_boards_detail" = "Bis 33×33";
+"feat_more_players_title" = "Mehr Spieler";
+"feat_more_players_detail" = "Bis 32 Spieler";
+"feat_timer_title" = "Zug-Timer";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 s";
+"feat_labels_title" = "Label-Stil";
+"feat_labels_detail" = "Farben & Positionen";
+"feat_puzzles_title" = "Voller Bildsatz";
+"feat_puzzles_detail" = "Gratis + Premium-Bilder";
+"feat_division_title" = "Schnelle Division";
+"feat_division_detail" = "Divisionsmodus freischalten";
+
+"paywall_smallprint" = "Einmalkauf. Familienfreigabe unterstützt. Kauf ist mit deiner Apple-ID verknüpft.";

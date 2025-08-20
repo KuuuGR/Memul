@@ -1,0 +1,245 @@
+//
+//  Localizable.strings (Arabic)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "حول";
+"app_title" = "Memul";
+"settings" = "الإعدادات";
+"start_game" = "ابدأ اللعبة";
+"start_tagline" = "اضرب. العب. تعلم.";
+"tutorial" = "شرح";
+
+// MARK: - Board & Players
+"add_player" = "إضافة لاعب";
+"board_size" = "حجم اللوحة";
+"board_size_value" = "الحجم: %d × %d";
+"player_n" = "لاعب %d";
+"players" = "اللاعبون";
+"remove_last_player" = "إزالة الأخير";
+
+// MARK: - Puzzle
+"puzzle" = "صورة";
+"puzzle_enable" = "إظهار الصورة أسفل اللوحة";
+"puzzle_free_info" = "المستخدمون المجانيون يرون صورة عشوائية من الحزمة المجانية.";
+"puzzle_premium_info" = "مستخدمو بريميوم يرون صورة عشوائية من الحزمتين المجانية والمميزة.";
+
+// MARK: - Difficulty
+"difficulty" = "الصعوبة";
+"difficulty_easy" = "سهل";
+"difficulty_hard" = "صعب";
+"difficulty_mode" = "الوضع";
+"difficulty_normal" = "متوسط";
+"difficulty_premium_hint" = "مجاني: سهل فقط. متوسط/صعب يتطلب بريميوم.";
+
+// MARK: - Index Labels
+"bottom_color" = "لون الأسفل";
+"index_customize" = "تخصيص العلامات";
+"index_labels" = "علامات الفهرس";
+"index_labels_premium_hint" = "تخصيص الألوان يتطلب بريميوم.";
+"left_color" = "لون اليسار";
+"make_labels_transparent" = "اجعل العلامات شفافة";
+"reset_label_colors" = "إعادة تعيين الألوان";
+"right_color" = "لون اليمين";
+"show_bottom_labels" = "إظهار الأسفل";
+"show_left_labels" = "إظهار اليسار";
+"show_right_labels" = "إظهار اليمين";
+"show_top_labels" = "إظهار الأعلى";
+"top_color" = "لون الأعلى";
+
+// MARK: - Header & UX
+"header_options" = "العنوان";
+"show_selected_coordinates_button" = "إظهار زر الإحداثيات";
+
+// MARK: - Turn Timer
+"turn_30s" = "٣٠ث";
+"turn_60s" = "٦٠ث";
+"turn_120s" = "١٢٠ث";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "النسخة المجانية: ٣٠ ثانية لكل دور.";
+"turn_timer_per_turn" = "حد لكل دور";
+"turn_timer_title" = "مؤقت الدور";
+
+// MARK: - Premium Access
+"free_limitations" = "مجاني: %d×%d كحد أقصى و%d لاعبين.";
+"premium_limitations" = "كل ميزات بريميوم — حتى %dx%d و%d لاعبين.";
+"premium_access" = "وصول بريميوم";
+"unlock_premium" = "افتح بريميوم";
+
+// MARK: - General UI
+"close" = "إغلاق";
+"end_game" = "إنهاء";
+"find_cell_with" = "ابحث عن خانة بـ%d";
+"new_game" = "لعبة جديدة";
+"player_score" = "%@: %d";
+"results_title" = "النتائج";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "الإعدادات";
+"tap_to_close" = "المس للإغلاق";
+"total_points" = "النقاط الكلية";
+"turn_title" = "دور %@";
+"winner_announcement" = "🏆 الفائز: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "المحدد: صف %d، عمود %d";
+"gv_submit" = "تأكيد";
+"gv_submit_hint" = "اختر خانة أولاً";
+"gv_submit_sel" = "تأكيد (%d, %d)";
+"gv_submit_sel_ax" = "تأكيد الإحداثيات %d، %d";
+"gv_submit_prefix" = "تأكيد (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "المس مجددًا أو اضغط تأكيد";
+"gv_target" = "الهدف: %d";
+
+// MARK: - About
+"ab_navigation_title" = "حول";
+"ab_section_about_app" = "عن Memul";
+"ab_app_name" = "Memul — لعبة جداول الضرب";
+"ab_version" = "الإصدار: %@";
+"ab_developer" = "المطور: Grzegorz Kulesza";
+"ab_section_purpose" = "الهدف";
+"ab_purpose_accessible" = "مناسب للابتدائية ومفيد بعد ذلك.";
+"ab_purpose_carries_forward" = "ينمي مهارات: التمثيل بالمصفوفات، مواقع الصف–العمود، التفكير الإحداثي.";
+"ab_purpose_commutativity" = "يساعد على فهم خاصية الإبدال في الضرب.";
+"ab_purpose_learn_tables" = "يبسط تعلم جدول الضرب للأطفال والبالغين.";
+"ab_section_features" = "المزايا";
+"ab_feature_customization" = "تخصيص واسع: الحجم، الصعوبة (سهل/متوسط/صعب)، مؤقتات، علامات، صورة، تلميحات إحداثيات.";
+"ab_feature_multiplayer" = "لعب تبادلي (١–١٦ لاعب) يجعل التدريب ممتعًا.";
+"ab_feature_puzzle_reveal" = "الصورة المخفية تنكشف جزءًا جزءًا مع الإجابات الصحيحة.";
+"ab_feature_quick_practice" = "تدريبات سريعة: ضرب و(بريميوم) قسمة.";
+"ab_feature_tutorial" = "شرح تفاعلي للصفوف والأعمدة والتقاطعات.";
+"ab_section_author" = "المؤلف";
+"ab_author_line1" = "أنشأه Grzegorz Kulesza (هندسة كهرباء، حاسوب، فيزياء، طب، تربية).";
+"ab_author_line2" = "خبرته الواسعة صاغت Memul: مصفوفات، إحداثيات، حل مشكلات intuitif.";
+"ab_section_support" = "الدعم";
+
+// MARK: - Tutorial
+"tutorial_title" = "شرح";
+"tutorial_cols_card_body" = "تخيل كتل ثلج تسقط للأسفل. هذا مسح عمودي. جرّب! المس زرًا أدناه أو رقم عمود.";
+"tutorial_cols_card_title" = "الآن الأعمدة";
+"tutorial_cols_sub" = "شاهد الخط العمودي يمسح العمود.";
+"tutorial_col_button" = "عم %d";
+"tutorial_col_label" = "عمود: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "اخترت صفًا أحمر وعمودًا أزرق. ابحث عن نقطة التقاطع. تخيل قلعة الشطرنج تتحرك على الصف والعمود. تلك هي الهدف.";
+"tutorial_framed_card_title" = "النقطة السحرية";
+"tutorial_framed_title" = "التقاطع - الجزء 2";
+"tutorial_framed_sub" = "المس حيث يلتقي الصف مع العمود.";
+"tutorial_feedback_great" = "رائع!";
+"tutorial_feedback_not_quite" = "ليس تمامًا";
+"tutorial_intersect_card_body" = "حيث يلتقي الصف بالعمود: صف × عمود. سيُطلب منك خانة محددة.";
+"tutorial_intersect_card_title" = "التقاطعات في اللعبة";
+"tutorial_intersect_sub" = "حيث الصف × العمود = التقاطع.";
+"tutorial_intersect_title" = "التقاطع - الجزء 1";
+"tutorial_next_quest" = "المهمة التالية";
+"tutorial_practice_callout" = "تحدي لا نهائي";
+"tutorial_practice_hint" = "ابحث عن خانة التقاطع للصف والعمود المعطى.";
+"tutorial_practice_sub" = "المس الخانة حيث ستتقاطع الأشعة.";
+"tutorial_practice_title" = "التقاطع - الجزء 3";
+"tutorial_quest_tap_pair" = "المس (%d ; %d)";
+"tutorial_quest_title" = "مهمة:";
+"tutorial_row_button" = "صف %d";
+"tutorial_row_label" = "صف: %d";
+"tutorial_rows_card_body" = "تخيل حممًا تتدفق أفقياً تحت الأرض. هذا مسح أفقي. جرّب! المس زرًا أدناه أو رقم صف.";
+"tutorial_rows_card_title" = "الآن الصفوف";
+"tutorial_rows_sub" = "شاهد الخط الأفقي يمسح الصف.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "صفوف";
+"tutorial_cols_title" = "أعمدة";
+"ab_purpose_multiplication" = "تدرّب على الجداول عبر لغز شبكي.";
+"ab_purpose_turn_based" = "لعب تبادلي (١–١٦ لاعب).";
+"ab_purpose_fun_learning" = "اكشف الصور أثناء التعلم.";
+
+// MARK: - Tutorial Buttons
+"back" = "رجوع";
+"cancel" = "إلغاء";
+"next" = "التالي";
+"quit" = "إنهاء";
+"repeat" = "إعادة";
+"skip_to_practice" = "تخطي للتدريب";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "ستخرج من الشرح. يمكنك العودة بأي وقت.";
+"tutorial_quit_title" = "هل أنت متأكد؟";
+
+// MARK: - Quick Practice
+"division_note" = "القسمة بنتائج صحيحة: (خارج × مقسوم) ÷ مقسوم = خارج.";
+"division_premium_hint" = "فتح القسمة يتطلب بريميوم.";
+"quick_divide" = "قسمة سريعة";
+"quick_divide_locked" = "قسمة سريعة (مقفلة)";
+"quick_multiply" = "ضرب سريع";
+"quick_practice" = "تدريب سريع";
+"range_division" = "مدى القسمة: %d–%d";
+"range_multiplication" = "مدى الضرب: %d–%d";
+"unlock_division" = "افتح القسمة";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "صحيح!";
+"qp_correct_title" = "صحيح";
+"qp_d_prompt" = "كم يساوي %d ÷ %d ؟";
+"qp_incorrect_title" = "خطأ";
+"qp_m_prompt" = "كم يساوي %d × %d ؟";
+"qp_next" = "التالي";
+"qp_score" = "النتيجة: %d  •  %d/%d";
+"qp_score_title" = "النتيجة";
+"qp_wrong" = "غير صحيح. الإجابة: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "الإنجازات";
+"achievements_title" = "الإنجازات";
+"achv_locked" = "مقفل";
+"achv_unlocked" = "مفتوح";
+"achv_unlocked_toast" = "تم فتح إنجاز: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "سيد الشرح";
+"achv_tutorial_master_sub" = "احصل على 1000 نقطة في الشرح";
+
+"achv_puzzle_solver_title" = "خبير الصور";
+"achv_puzzle_solver_sub" = "أكمل 100 صورة";
+
+"achv_explorer_title" = "مستكشف";
+"achv_explorer_sub" = "اكتشف 50 صورة";
+
+"achv_speedrunner_title" = "عداء السرعة";
+"achv_speedrunner_sub" = "افز لعبة في أقل من دقيقتين";
+
+"achv_perfectionist_title" = "مثالي";
+"achv_perfectionist_sub" = "افز لعبة دون أخطاء";
+
+"achv_multiplayer_champ_title" = "بطل الجماعة";
+"achv_multiplayer_champ_sub" = "افز لعبة مع ≥٤ لاعبين";
+
+// MARK: - Paywall / Legal
+"legal" = "قانوني";
+"privacy_policy" = "سياسة الخصوصية";
+"terms_of_use" = "شروط الاستخدام";
+
+"unlock_premium_cta" = "افتح بريميوم";
+"premium_unlocked_badge" = "✅ بريميوم مفعل";
+"restore_purchases" = "استعادة المشتريات";
+"loading_price" = "جاري تحميل السعر…";
+
+"paywall_title" = "Memul بريميوم";
+"paywall_subtitle" = "افتح كل الميزات وأزل القيود.";
+
+"feat_bigger_boards_title" = "ألواح أكبر";
+"feat_bigger_boards_detail" = "حتى 33×33";
+"feat_more_players_title" = "مزيد من اللاعبين";
+"feat_more_players_detail" = "حتى 32 لاعبًا";
+"feat_timer_title" = "مؤقت الدور";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 ث";
+"feat_labels_title" = "نمط العلامات";
+"feat_labels_detail" = "ألوان ومواقع";
+"feat_puzzles_title" = "مجموعة كاملة";
+"feat_puzzles_detail" = "صور مجانية + مميزة";
+"feat_division_title" = "قسمة سريعة";
+"feat_division_detail" = "فتح وضع القسمة";
+
+"paywall_smallprint" = "شراء لمرة واحدة. مشاركة عائلية مدعومة. الشراء مرتبط بـ Apple ID.";

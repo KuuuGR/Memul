@@ -1,0 +1,245 @@
+//
+//  Localizable.strings (Finnish)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Tietoja";
+"app_title" = "Memul";
+"settings" = "Asetukset";
+"start_game" = "Aloita peli";
+"start_tagline" = "Kertaa. Pelaa. Opi.";
+"tutorial" = "Opastus";
+
+// MARK: - Board & Players
+"add_player" = "Lisää pelaaja";
+"board_size" = "Ruudukon koko";
+"board_size_value" = "Koko: %d × %d";
+"player_n" = "Pelaaja %d";
+"players" = "Pelaajat";
+"remove_last_player" = "Poista viimeinen";
+
+// MARK: - Puzzle
+"puzzle" = "Kuva";
+"puzzle_enable" = "Näytä kuva ruudukon alla";
+"puzzle_free_info" = "Ilmaisversio näyttää satunnaisen kuvan ilmais­paketista.";
+"puzzle_premium_info" = "Premium näyttää satunnaisen kuvan sekä ilmais- että premium­paketista.";
+
+// MARK: - Difficulty
+"difficulty" = "Vaikeus";
+"difficulty_easy" = "Helppo";
+"difficulty_hard" = "Vaikea";
+"difficulty_mode" = "Tila";
+"difficulty_normal" = "Normaali";
+"difficulty_premium_hint" = "Ilmainen: vain helppo. Normaali/vaikea vaatii Premiumin.";
+
+// MARK: - Index Labels
+"bottom_color" = "Alaväri";
+"index_customize" = "Mukauta tunnisteet";
+"index_labels" = "Indeksitunnisteet";
+"index_labels_premium_hint" = "Tunnisteiden värien muokkaus vaatii Premiumin.";
+"left_color" = "Vasen väri";
+"make_labels_transparent" = "Tee tunnisteet läpinäkyviksi";
+"reset_label_colors" = "Palauta värit";
+"right_color" = "Oikea väri";
+"show_bottom_labels" = "Näytä alamerkit";
+"show_left_labels" = "Näytä vasemmat merkit";
+"show_right_labels" = "Näytä oikeat merkit";
+"show_top_labels" = "Näytä ylämerkit";
+"top_color" = "Yläväri";
+
+// MARK: - Header & UX
+"header_options" = "Otsikko";
+"show_selected_coordinates_button" = "Näytä valitut koordinaatit -painike";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Ilmaisversiossa jokainen vuoro kestää 30s.";
+"turn_timer_per_turn" = "Vuorokohtainen raja";
+"turn_timer_title" = "Vuoron aikaraja";
+
+// MARK: - Premium Access
+"free_limitations" = "Ilmainen: enintään %d×%d ja %d pelaajaa.";
+"premium_limitations" = "Kaikki Premium-ominaisuudet — jopa %dx%d ja %d pelaajaa.";
+"premium_access" = "Premium-käyttö";
+"unlock_premium" = "Avaa Premium";
+
+// MARK: - General UI
+"close" = "Sulje";
+"end_game" = "Lopeta peli";
+"find_cell_with" = "Etsi solu: %d";
+"new_game" = "Uusi peli";
+"player_score" = "%@: %d";
+"results_title" = "Tulokset";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Asetukset";
+"tap_to_close" = "Napauta sulkeaksesi";
+"total_points" = "Pisteet yhteensä";
+"turn_title" = "%@:n vuoro";
+"winner_announcement" = "🏆 Voittaja: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Valittu rivi %d, sarake %d";
+"gv_submit" = "Vahvista";
+"gv_submit_hint" = "Valitse solu ensin";
+"gv_submit_sel" = "Vahvista (%d, %d)";
+"gv_submit_sel_ax" = "Vahvista koordinaatit %d, %d";
+"gv_submit_prefix" = "Vahvista (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Napauta uudelleen tai paina Vahvista";
+"gv_target" = "Tavoite: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Tietoja";
+"ab_section_about_app" = "Tietoja Memulista";
+"ab_app_name" = "Memul — Kertolaskupeli";
+"ab_version" = "Versio: %@";
+"ab_developer" = "Kehittäjä: Grzegorz Kulesza";
+"ab_section_purpose" = "Tarkoitus";
+"ab_purpose_accessible" = "Sopii alakoululle, mutta hyödyllinen paljon pidemmälle.";
+"ab_purpose_carries_forward" = "Harjoittaa taitoja, jotka tukevat myöhempiä opintoja: taulukot, rivit ja sarakkeet, koordinaatisto.";
+"ab_purpose_commutativity" = "Auttaa ymmärtämään kertolaskun vaihdannaisuuden.";
+"ab_purpose_learn_tables" = "Helpottaa kertotaulujen oppimista — lapsille ja aikuisille.";
+"ab_section_features" = "Ominaisuudet";
+"ab_feature_customization" = "Monipuolinen muokkaus: koko, vaikeus (helppo/normaali/vaikea), ajastin, tunnisteet, kuvan näyttö, vihjeet.";
+"ab_feature_multiplayer" = "Vuoropohjainen moninpeli (1–16 pelaajaa).";
+"ab_feature_puzzle_reveal" = "Piilokuva paljastuu pala palalta.";
+"ab_feature_quick_practice" = "Nopeat harjoitukset kertolaskulle ja (Premium) jakolaskulle.";
+"ab_feature_tutorial" = "Interaktiivinen opastus rivit, sarakkeet ja risteykset.";
+"ab_section_author" = "Tekijä";
+"ab_author_line1" = "Grzegorz Kulesza — taustana sähkötekniikka, tietojenkäsittely, fysiikka, lääketiede ja opettajankoulutus.";
+"ab_author_line2" = "Kokemus muovasi Memulia painottamaan taulukointia, koordinaatteja ja intuitiivista ongelmanratkaisua.";
+"ab_section_support" = "Tuki";
+
+// MARK: - Tutorial
+"tutorial_title" = "Opastus";
+"tutorial_cols_card_body" = "Kuvittele jääpuikkoja putoamassa alas. Se on pystysuora pyyhkäisy. Nyt kokeile! Napauta alla olevaa painiketta tai saraketta taulukosta.";
+"tutorial_cols_card_title" = "Harjoitellaan sarakkeita";
+"tutorial_cols_sub" = "Katso pystysuora viiva.";
+"tutorial_col_button" = "Sar %d";
+"tutorial_col_label" = "Sarake: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Olet valinnut rivin ja sarakkeen. Etsi solu, jossa ne kohtaavat. Kuvittele tornin liike shakkilaudalla. Mikä paikka se on? Risteyksen löytäminen on pelin tavoite.";
+"tutorial_framed_card_title" = "Taikapiste";
+"tutorial_framed_title" = "Risteys - osa 2";
+"tutorial_framed_sub" = "Napauta, missä rivi kohtaa sarakkeen.";
+"tutorial_feedback_great" = "Hienoa!";
+"tutorial_feedback_not_quite" = "Ei aivan";
+"tutorial_intersect_card_body" = "Rivi × sarake = risteyssolu. Sinua pyydetään löytämään se.";
+"tutorial_intersect_card_title" = "Risteykset pelissä";
+"tutorial_intersect_sub" = "Rivi × sarake = solu.";
+"tutorial_intersect_title" = "Risteys - osa 1";
+"tutorial_next_quest" = "Seuraava tehtävä";
+"tutorial_practice_callout" = "Loputon haaste";
+"tutorial_practice_hint" = "Etsi annettu risteyssolu.";
+"tutorial_practice_sub" = "Napauta solua, jossa viivat leikkaavat.";
+"tutorial_practice_title" = "Risteys - osa 3";
+"tutorial_quest_tap_pair" = "Napauta (%d ; %d)";
+"tutorial_quest_title" = "Tehtävä:";
+"tutorial_row_button" = "Riv %d";
+"tutorial_row_label" = "Rivi: %d";
+"tutorial_rows_card_body" = "Kuvittele laavaa virtaamassa vaakasuunnassa. Se on vaakapyyhkäisy. Kokeile! Napauta alla olevaa painiketta tai riviä taulukosta.";
+"tutorial_rows_card_title" = "Harjoitellaan rivejä";
+"tutorial_rows_sub" = "Katso vaakasuora viiva.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Rivit";
+"tutorial_cols_title" = "Sarakkeet";
+"ab_purpose_multiplication" = "Harjoittele kertotauluja hauskassa ruudukossa.";
+"ab_purpose_turn_based" = "Vuoropohjainen peli 1–16 pelaajalle.";
+"ab_purpose_fun_learning" = "Paljasta kuvia samalla kun opit.";
+
+// MARK: - Tutorial Buttons
+"back" = "Takaisin";
+"cancel" = "Peruuta";
+"next" = "Seuraava";
+"quit" = "Lopeta";
+"repeat" = "Uudista";
+"skip_to_practice" = "Hyppää harjoitukseen";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Poistut opastuksesta. Voit palata milloin tahansa.";
+"tutorial_quit_title" = "Oletko varma?";
+
+// MARK: - Quick Practice
+"division_note" = "Jakolaskussa käytetään kokonaislukuja.";
+"division_premium_hint" = "Jakolasku vaatii Premiumin.";
+"quick_divide" = "Nopea jako";
+"quick_divide_locked" = "Nopea jako (lukittu)";
+"quick_multiply" = "Nopea kerto";
+"quick_practice" = "Nopea harjoitus";
+"range_division" = "Jakoväli: %d–%d";
+"range_multiplication" = "Kertoväli: %d–%d";
+"unlock_division" = "Avaa jakoharjoitus";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Oikein!";
+"qp_correct_title" = "Oikein";
+"qp_d_prompt" = "Mikä on %d ÷ %d ?";
+"qp_incorrect_title" = "Väärin";
+"qp_m_prompt" = "Mikä on %d × %d ?";
+"qp_next" = "Seuraava";
+"qp_score" = "Pisteet: %d  •  %d/%d";
+"qp_score_title" = "Pisteet";
+"qp_wrong" = "Ei aivan. Oikea vastaus: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Saavutukset";
+"achievements_title" = "Saavutukset";
+"achv_locked" = "Lukittu";
+"achv_unlocked" = "Avattu";
+"achv_unlocked_toast" = "Saavutus avattu: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Opastuksen mestari";
+"achv_tutorial_master_sub" = "Saa 1000 pistettä opastuksesta";
+
+"achv_puzzle_solver_title" = "Pulmanratkaisija";
+"achv_puzzle_solver_sub" = "Ratkaise 100 kuvaa";
+
+"achv_explorer_title" = "Tutkija";
+"achv_explorer_sub" = "Löydä 50 kuvaa";
+
+"achv_speedrunner_title" = "Nopeuspelaaja";
+"achv_speedrunner_sub" = "Voita peli alle 2 minuutissa";
+
+"achv_perfectionist_title" = "Täydellisyyden tavoittelija";
+"achv_perfectionist_sub" = "Voita peli ilman virheitä";
+
+"achv_multiplayer_champ_title" = "Moninpelin mestari";
+"achv_multiplayer_champ_sub" = "Voita peli ≥4 pelaajalla";
+
+// MARK: - Paywall / Legal
+"legal" = "Oikeudelliset";
+"privacy_policy" = "Tietosuojakäytäntö";
+"terms_of_use" = "Käyttöehdot";
+
+"unlock_premium_cta" = "Avaa Premium";
+"premium_unlocked_badge" = "✅ Premium avattu";
+"restore_purchases" = "Palauta ostot";
+"loading_price" = "Ladataan hintaa…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Avaa kaikki ominaisuudet ja poista rajat.";
+
+"feat_bigger_boards_title" = "Suuremmat ruudukot";
+"feat_bigger_boards_detail" = "Jopa 33×33";
+"feat_more_players_title" = "Lisää pelaajia";
+"feat_more_players_detail" = "Jopa 32";
+"feat_timer_title" = "Aikaraja";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 sekuntia";
+"feat_labels_title" = "Tunnisteiden muotoilu";
+"feat_labels_detail" = "Värit ja sijainnit";
+"feat_puzzles_title" = "Kuvatäysi sarja";
+"feat_puzzles_detail" = "Ilmaiset + Premium";
+"feat_division_title" = "Nopea jako";
+"feat_division_detail" = "Avaa jakotila";
+
+"paywall_smallprint" = "Kertaostos. Perhejaolla tuettu. Osto liittyy Apple ID:hen.";

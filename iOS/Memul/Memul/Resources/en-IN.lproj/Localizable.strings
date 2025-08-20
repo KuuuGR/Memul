@@ -1,0 +1,245 @@
+//
+//  Localizable.strings (English - India)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "About";
+"app_title" = "Memul";
+"settings" = "Settings";
+"start_game" = "Start Game";
+"start_tagline" = "Multiply. Play. Learn.";
+"tutorial" = "Tutorial";
+
+// MARK: - Board & Players
+"add_player" = "Add Player";
+"board_size" = "Board Size";
+"board_size_value" = "Size: %d × %d";
+"player_n" = "Player %d";
+"players" = "Players";
+"remove_last_player" = "Remove Last Player";
+
+// MARK: - Puzzle
+"puzzle" = "Puzzle";
+"puzzle_enable" = "Show puzzle image under the grid";
+"puzzle_free_info" = "Free users see a random image from the free pack.";
+"puzzle_premium_info" = "Premium users see a random image from both free and premium packs.";
+
+// MARK: - Difficulty
+"difficulty" = "Difficulty";
+"difficulty_easy" = "Easy";
+"difficulty_hard" = "Hard";
+"difficulty_mode" = "Mode";
+"difficulty_normal" = "Normal";
+"difficulty_premium_hint" = "Free: Easy only. Normal/Hard require Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Bottom colour";
+"index_customize" = "Customise labels";
+"index_labels" = "Index Labels";
+"index_labels_premium_hint" = "Customising label colours requires Premium.";
+"left_color" = "Left colour";
+"make_labels_transparent" = "Make labels transparent";
+"reset_label_colors" = "Reset colours";
+"right_color" = "Right colour";
+"show_bottom_labels" = "Show bottom labels";
+"show_left_labels" = "Show left labels";
+"show_right_labels" = "Show right labels";
+"show_top_labels" = "Show top labels";
+"top_color" = "Top colour";
+
+// MARK: - Header & UX
+"header_options" = "Header";
+"show_selected_coordinates_button" = "Show selected coordinates button";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Free version uses a fixed 30s per turn.";
+"turn_timer_per_turn" = "Per-turn limit";
+"turn_timer_title" = "Turn timer";
+
+// MARK: - Premium Access
+"free_limitations" = "Free version: max %d×%d board, %d players.";
+"premium_limitations" = "All premium features unlocked — up to %dx%d boards and %d players.";
+"premium_access" = "Premium Access";
+"unlock_premium" = "Unlock Premium";
+
+// MARK: - General UI
+"close" = "Close";
+"end_game" = "End Game";
+"find_cell_with" = "Find a cell with %d";
+"new_game" = "New Game";
+"player_score" = "%@: %d";
+"results_title" = "Results";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Settings";
+"tap_to_close" = "Tap to close";
+"total_points" = "Total Points";
+"turn_title" = "%@'s turn";
+"winner_announcement" = "🏆 Winner: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Selected row %d, column %d";
+"gv_submit" = "Submit";
+"gv_submit_hint" = "Select a cell first";
+"gv_submit_sel" = "Submit (%d, %d)";
+"gv_submit_sel_ax" = "Submit selected coordinates %d, %d";
+"gv_submit_prefix" = "Submit (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Tap again to confirm or press Submit";
+"gv_target" = "Target: %d";
+
+// MARK: - About
+"ab_navigation_title" = "About";
+"ab_section_about_app" = "About Memul";
+"ab_app_name" = "Memul — Multiplication Puzzle Game";
+"ab_version" = "Version: %@";
+"ab_developer" = "Developer: Grzegorz Kulesza";
+"ab_section_purpose" = "Purpose";
+"ab_purpose_accessible" = "Approachable for primary school yet useful far beyond it.";
+"ab_purpose_carries_forward" = "Builds skills that carry into later studies: array notation, row–column positions, and Cartesian thinking.";
+"ab_purpose_commutativity" = "Helps learners intuitively grasp the commutative property of multiplication.";
+"ab_purpose_learn_tables" = "Make learning the multiplication table simpler—for kids and adults.";
+"ab_section_features" = "Features";
+"ab_feature_customization" = "Rich customisation: board size, difficulty (Easy/Normal/Hard with optional penalties), timers, label options, puzzle toggle, and coordinate hints.";
+"ab_feature_multiplayer" = "Turn-based multiplayer (1–16 players) keeps practice engaging with friends.";
+"ab_feature_puzzle_reveal" = "Hidden picture puzzle reveals piece-by-piece as you answer correctly.";
+"ab_feature_quick_practice" = "Quick Practice modes for multiplication and (Premium) division.";
+"ab_feature_tutorial" = "Interactive tutorial explains rows, columns, and intersections.";
+"ab_section_author" = "Author";
+"ab_author_line1" = "Created by Grzegorz Kulesza, with a background across electrical engineering, computer science, physics, medical studies, and teacher training.";
+"ab_author_line2" = "That cross-disciplinary experience shaped Memul’s focus on concepts I wished I’d learned earlier: arrays, coordinates, and intuitive problem-solving.";
+"ab_section_support" = "Support";
+
+// MARK: - Tutorial
+"tutorial_title" = "Tutorial";
+"tutorial_cols_card_body" = "Imagine icicles falling straight down. That’s a vertical sweep. Time to try! Tap one of the four buttons below, or simply tap a column number on the board above.";
+"tutorial_cols_card_title" = "Now we practise columns";
+"tutorial_cols_sub" = "Watch the vertical line sweep a column.";
+"tutorial_col_button" = "Col %d";
+"tutorial_col_label" = "Column: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "You’ve selected a red row and a blue column. Try to find the cell where they cross. Imagine placing a rook from chess so it can move freely along both the row and the column. Which position is it? Finding this crossing point is the main goal of the game.";
+"tutorial_framed_card_title" = "The Magic Spot";
+"tutorial_framed_title" = "Intersection - Part 2";
+"tutorial_framed_sub" = "Tap where a row meets a column.";
+"tutorial_feedback_great" = "Great!";
+"tutorial_feedback_not_quite" = "Not quite";
+"tutorial_intersect_card_body" = "Where a row meets a column: row × column. You’ll be asked to find a specific crossing cell.";
+"tutorial_intersect_card_title" = "Intersections in the game";
+"tutorial_intersect_sub" = "Where a row meets a column: row × column.";
+"tutorial_intersect_title" = "Intersection - Part 1";
+"tutorial_next_quest" = "Next Quest";
+"tutorial_practice_callout" = "Endless Challenge";
+"tutorial_practice_hint" = "Find the crossing cell for the given row and column.";
+"tutorial_practice_sub" = "Tap the cell where the lasers will cross.";
+"tutorial_practice_title" = "Intersection - Part 3";
+"tutorial_quest_tap_pair" = "Tap (%d ; %d)";
+"tutorial_quest_title" = "Quest:";
+"tutorial_row_button" = "Row %d";
+"tutorial_row_label" = "Row: %d";
+"tutorial_rows_card_body" = "Imagine lava flowing sideways through tunnels under the ground. That’s a horizontal sweep. Time to try! Tap one of the four buttons below, or simply tap a row number on the board above.";
+"tutorial_rows_card_title" = "Now we practise rows";
+"tutorial_rows_sub" = "Watch the horizontal line sweep a row.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Rows";
+"tutorial_cols_title" = "Columns";
+"ab_purpose_multiplication" = "Practise multiplication tables through a fun grid puzzle.";
+"ab_purpose_turn_based" = "Turn-based gameplay supports 1–16 players.";
+"ab_purpose_fun_learning" = "Reveal images as you learn and compete.";
+
+// MARK: - Tutorial Buttons
+"back" = "Back";
+"cancel" = "Cancel";
+"next" = "Next";
+"quit" = "Finish";
+"repeat" = "Repeat";
+"skip_to_practice" = "Skip to Practice";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "You’ll exit the tutorial. You can come back anytime.";
+"tutorial_quit_title" = "Are you sure?";
+
+// MARK: - Quick Practice
+"division_note" = "Division uses integer results: (quotient × divisor) ÷ divisor = quotient.";
+"division_premium_hint" = "Unlocking Division requires Premium.";
+"quick_divide" = "Quick Division";
+"quick_divide_locked" = "Quick Division (Locked)";
+"quick_multiply" = "Quick Multiplication";
+"quick_practice" = "Quick Practice";
+"range_division" = "Division range: %d–%d";
+"range_multiplication" = "Multiplication range: %d–%d";
+"unlock_division" = "Unlock Quick Division";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Correct!";
+"qp_correct_title" = "Correct";
+"qp_d_prompt" = "What is %d ÷ %d ?";
+"qp_incorrect_title" = "Incorrect";
+"qp_m_prompt" = "What is %d × %d ?";
+"qp_next" = "Next";
+"qp_score" = "Score: %d  •  %d/%d";
+"qp_score_title" = "Score";
+"qp_wrong" = "Not quite. Correct answer: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Achievements";
+"achievements_title" = "Achievements";
+"achv_locked" = "Locked";
+"achv_unlocked" = "Unlocked";
+"achv_unlocked_toast" = "Achievement unlocked: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Tutorial Master";
+"achv_tutorial_master_sub" = "Earn 1000 tutorial points";
+
+"achv_puzzle_solver_title" = "Puzzle Solver";
+"achv_puzzle_solver_sub" = "Complete 100 puzzles";
+
+"achv_explorer_title" = "Explorer";
+"achv_explorer_sub" = "Discover 50 unique images";
+
+"achv_speedrunner_title" = "Speedrunner";
+"achv_speedrunner_sub" = "Win a game in under 2 minutes";
+
+"achv_perfectionist_title" = "Perfectionist";
+"achv_perfectionist_sub" = "Win a game with 0 mistakes";
+
+"achv_multiplayer_champ_title" = "Multiplayer Champion";
+"achv_multiplayer_champ_sub" = "Win a game with ≥4 players";
+
+// MARK: - Paywall / Legal
+"legal" = "Legal";
+"privacy_policy" = "Privacy Policy";
+"terms_of_use" = "Terms of Use";
+
+"unlock_premium_cta" = "Unlock Premium";
+"premium_unlocked_badge" = "✅ Premium Unlocked";
+"restore_purchases" = "Restore Purchases";
+"loading_price" = "Loading price…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Unlock all features and remove free limits.";
+
+"feat_bigger_boards_title" = "Bigger boards";
+"feat_bigger_boards_detail" = "Up to 33×33";
+"feat_more_players_title" = "More players";
+"feat_more_players_detail" = "Up to 32 players";
+"feat_timer_title" = "Turn timer";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 seconds";
+"feat_labels_title" = "Label styling";
+"feat_labels_detail" = "Colours & positions";
+"feat_puzzles_title" = "Full puzzle set";
+"feat_puzzles_detail" = "Free + premium images";
+"feat_division_title" = "Quick Division";
+"feat_division_detail" = "Unlock division mode";
+
+"paywall_smallprint" = "One-time purchase. Family Sharing supported. Your purchase is linked to your Apple ID.";

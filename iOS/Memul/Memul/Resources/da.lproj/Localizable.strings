@@ -1,0 +1,245 @@
+//
+//  Localizable.strings (Danish - da)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Om";
+"app_title" = "Memul";
+"settings" = "Indstillinger";
+"start_game" = "Start spil";
+"start_tagline" = "Gang. Spil. Lær.";
+"tutorial" = "Vejledning";
+
+// MARK: - Board & Players
+"add_player" = "Tilføj spiller";
+"board_size" = "Brætstørrelse";
+"board_size_value" = "Størrelse: %d × %d";
+"player_n" = "Spiller %d";
+"players" = "Spillere";
+"remove_last_player" = "Fjern sidste spiller";
+
+// MARK: - Puzzle
+"puzzle" = "Billede";
+"puzzle_enable" = "Vis billede under brættet";
+"puzzle_free_info" = "Gratis: tilfældigt billede fra gratispakken.";
+"puzzle_premium_info" = "Premium: tilfældigt billede fra alle pakker.";
+
+// MARK: - Difficulty
+"difficulty" = "Sværhedsgrad";
+"difficulty_easy" = "Let";
+"difficulty_hard" = "Svær";
+"difficulty_mode" = "Tilstand";
+"difficulty_normal" = "Mellem";
+"difficulty_premium_hint" = "Gratis: kun Let. Mellem/Svær kræver Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Bundfarve";
+"index_customize" = "Tilpas etiketter";
+"index_labels" = "Etiketter";
+"index_labels_premium_hint" = "Tilpasning kræver Premium.";
+"left_color" = "Venstre farve";
+"make_labels_transparent" = "Gør etiketter gennemsigtige";
+"reset_label_colors" = "Nulstil farver";
+"right_color" = "Højre farve";
+"show_bottom_labels" = "Vis nederst";
+"show_left_labels" = "Vis til venstre";
+"show_right_labels" = "Vis til højre";
+"show_top_labels" = "Vis øverst";
+"top_color" = "Topfarve";
+
+// MARK: - Header & UX
+"header_options" = "Overskrift";
+"show_selected_coordinates_button" = "Vis knap med koordinater";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Gratis: altid 30s pr. tur.";
+"turn_timer_per_turn" = "Tidsgrænse pr. tur";
+"turn_timer_title" = "Tur-timer";
+
+// MARK: - Premium Access
+"free_limitations" = "Gratis: maks. %d×%d bræt, %d spillere.";
+"premium_limitations" = "Premium: alt låst op — op til %dx%d og %d spillere.";
+"premium_access" = "Premium-adgang";
+"unlock_premium" = "Lås op for Premium";
+
+// MARK: - General UI
+"close" = "Luk";
+"end_game" = "Afslut spil";
+"find_cell_with" = "Find felt med %d";
+"new_game" = "Nyt spil";
+"player_score" = "%@: %d";
+"results_title" = "Resultater";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Indstillinger";
+"tap_to_close" = "Tryk for at lukke";
+"total_points" = "Samlet point";
+"turn_title" = "%@'s tur";
+"winner_announcement" = "🏆 Vinder: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Valgt række %d, kolonne %d";
+"gv_submit" = "Bekræft";
+"gv_submit_hint" = "Vælg et felt først";
+"gv_submit_sel" = "Bekræft (%d, %d)";
+"gv_submit_sel_ax" = "Bekræft koordinater %d, %d";
+"gv_submit_prefix" = "Bekræft (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Tryk igen eller tryk Bekræft";
+"gv_target" = "Mål: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Om";
+"ab_section_about_app" = "Om Memul";
+"ab_app_name" = "Memul — multiplikationsspil med billeder";
+"ab_version" = "Version: %@";
+"ab_developer" = "Udvikler: Grzegorz Kulesza";
+"ab_section_purpose" = "Formål";
+"ab_purpose_accessible" = "Tilgængelig for grundskolen og videre.";
+"ab_purpose_carries_forward" = "Træner arrays, rækker–kolonner og koordinattænkning.";
+"ab_purpose_commutativity" = "Hjælper med at forstå kommutativitet.";
+"ab_purpose_learn_tables" = "Gør læring af gangetabellen lettere.";
+"ab_section_features" = "Funktioner";
+"ab_feature_customization" = "Indstillinger: brætstørrelse, sværhedsgrad, timer, etiketter, billeder, hints.";
+"ab_feature_multiplayer" = "Tur-baseret multiplayer (1–16 spillere).";
+"ab_feature_puzzle_reveal" = "Skjult billede vises stykke for stykke.";
+"ab_feature_quick_practice" = "Hurtig træning: multiplikation og (Premium) division.";
+"ab_feature_tutorial" = "Interaktiv vejledning: rækker, kolonner og kryds.";
+"ab_section_author" = "Forfatter";
+"ab_author_line1" = "Skabt af Grzegorz Kulesza med baggrund i el, IT, fysik, medicin og undervisning.";
+"ab_author_line2" = "Det inspirerede Memul: arrays, koordinater og problemløsning.";
+"ab_section_support" = "Support";
+
+// MARK: - Tutorial
+"tutorial_title" = "Vejledning";
+"tutorial_cols_card_body" = "Forestil dig istapper, der falder lige ned. Det er en kolonne. Prøv! Tryk på en knap nedenfor eller et kolonnenummer.";
+"tutorial_cols_card_title" = "Øv kolonner";
+"tutorial_cols_sub" = "Se den lodrette linje.";
+"tutorial_col_button" = "Kol %d"; // ≤6 tegn
+"tutorial_col_label" = "Kolonne: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Du har valgt en rød række og en blå kolonne. Find krydset. Som et tårn i skak der bevæger sig på række og kolonne.";
+"tutorial_framed_card_title" = "Magisk punkt";
+"tutorial_framed_title" = "Kryds - del 2";
+"tutorial_framed_sub" = "Tryk hvor række og kolonne mødes.";
+"tutorial_feedback_great" = "Super!";
+"tutorial_feedback_not_quite" = "Ikke helt";
+"tutorial_intersect_card_body" = "Kryds: række × kolonne. Du skal finde et bestemt felt.";
+"tutorial_intersect_card_title" = "Kryds i spillet";
+"tutorial_intersect_sub" = "Række × kolonne.";
+"tutorial_intersect_title" = "Kryds - del 1";
+"tutorial_next_quest" = "Næste";
+"tutorial_practice_callout" = "Uendelig udfordring";
+"tutorial_practice_hint" = "Find kryds for den givne række og kolonne.";
+"tutorial_practice_sub" = "Tryk hvor linjerne krydser.";
+"tutorial_practice_title" = "Kryds - del 3";
+"tutorial_quest_tap_pair" = "Tryk (%d ; %d)";
+"tutorial_quest_title" = "Opgave:";
+"tutorial_row_button" = "R %d"; // ≤6 tegn
+"tutorial_row_label" = "Række: %d";
+"tutorial_rows_card_body" = "Forestil dig lava der flyder vandret. Det er en række. Prøv! Tryk på en knap nedenfor eller rækkenummer.";
+"tutorial_rows_card_title" = "Øv rækker";
+"tutorial_rows_sub" = "Se den vandrette linje.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Rækker";
+"tutorial_cols_title" = "Kolonner";
+"ab_purpose_multiplication" = "Øv gangetabellen på en sjov måde.";
+"ab_purpose_turn_based" = "Tur-baseret spil for 1–16 spillere.";
+"ab_purpose_fun_learning" = "Lær og afslør billeder.";
+
+// MARK: - Tutorial Buttons
+"back" = "Tilbage";
+"cancel" = "Annuller";
+"next" = "Næste";
+"quit" = "Afslut";
+"repeat" = "Gentag";
+"skip_to_practice" = "Spring til øvelse";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Du forlader vejledningen. Du kan altid vende tilbage.";
+"tutorial_quit_title" = "Er du sikker?";
+
+// MARK: - Quick Practice
+"division_note" = "Division kun med heltal: (kvotient × divisor) ÷ divisor = kvotient.";
+"division_premium_hint" = "Division kræver Premium.";
+"quick_divide" = "Hurtig division";
+"quick_divide_locked" = "Hurtig division (låst)";
+"quick_multiply" = "Hurtig multiplikation";
+"quick_practice" = "Hurtig øvelse";
+"range_division" = "Divisionsområde: %d–%d";
+"range_multiplication" = "Multiplikationsområde: %d–%d";
+"unlock_division" = "Lås op for division";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Korrekt!";
+"qp_correct_title" = "Korrekt";
+"qp_d_prompt" = "Hvad er %d ÷ %d ?";
+"qp_incorrect_title" = "Forkert";
+"qp_m_prompt" = "Hvad er %d × %d ?";
+"qp_next" = "Næste";
+"qp_score" = "Point: %d  •  %d/%d";
+"qp_score_title" = "Point";
+"qp_wrong" = "Korrekt svar: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Præstationer";
+"achievements_title" = "Præstationer";
+"achv_locked" = "Låst";
+"achv_unlocked" = "Låst op";
+"achv_unlocked_toast" = "Præstation låst op: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Vejledningsmester";
+"achv_tutorial_master_sub" = "Tjen 1000 point i vejledningen";
+
+"achv_puzzle_solver_title" = "Billedløser";
+"achv_puzzle_solver_sub" = "Fuldfør 100 billeder";
+
+"achv_explorer_title" = "Opdager";
+"achv_explorer_sub" = "Opdag 50 unikke billeder";
+
+"achv_speedrunner_title" = "Speedrunner";
+"achv_speedrunner_sub" = "Vind et spil under 2 min";
+
+"achv_perfectionist_title" = "Perfektionist";
+"achv_perfectionist_sub" = "Vind uden fejl";
+
+"achv_multiplayer_champ_title" = "Multiplayer-mester";
+"achv_multiplayer_champ_sub" = "Vind med ≥4 spillere";
+
+// MARK: - Paywall / Legal
+"legal" = "Juridisk";
+"privacy_policy" = "Privatlivspolitik";
+"terms_of_use" = "Brugsbetingelser";
+
+"unlock_premium_cta" = "Lås op for Premium";
+"premium_unlocked_badge" = "✅ Premium låst op";
+"restore_purchases" = "Gendan køb";
+"loading_price" = "Indlæser pris…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Lås op for alle funktioner og fjern begrænsninger.";
+
+"feat_bigger_boards_title" = "Større brætter";
+"feat_bigger_boards_detail" = "Op til 33×33";
+"feat_more_players_title" = "Flere spillere";
+"feat_more_players_detail" = "Op til 32 spillere";
+"feat_timer_title" = "Tur-timer";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 sek";
+"feat_labels_title" = "Etiketter stil";
+"feat_labels_detail" = "Farver & placering";
+"feat_puzzles_title" = "Fuld billedpakke";
+"feat_puzzles_detail" = "Gratis + Premium";
+"feat_division_title" = "Hurtig division";
+"feat_division_detail" = "Divisionstilstand";
+
+"paywall_smallprint" = "Engangskøb. Familiedeling understøttet. Dit køb er knyttet til dit Apple-ID.";

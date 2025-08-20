@@ -1,0 +1,246 @@
+//
+//  Localizable.strings (Hungarian - hu)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Névjegy";
+"app_title" = "Memul";
+"settings" = "Beállítások";
+"start_game" = "Játék indítása";
+"start_tagline" = "Szorzás. Játék. Tanulás.";
+"tutorial" = "Útmutató";
+
+// MARK: - Board & Players
+"add_player" = "Játékos hozzáadása";
+"board_size" = "Tábla mérete";
+"board_size_value" = "Méret: %d × %d";
+"player_n" = "%d. játékos";
+"players" = "Játékosok";
+"remove_last_player" = "Utolsó törlése";
+
+// MARK: - Puzzle
+"puzzle" = "Kép";
+"puzzle_enable" = "Kép megjelenítése a tábla alatt";
+"puzzle_free_info" = "Ingyenes verzió: véletlen kép az ingyenes csomagból.";
+"puzzle_premium_info" = "Prémium: véletlen kép az ingyenes és prémium csomagból.";
+
+// MARK: - Difficulty
+"difficulty" = "Nehézség";
+"difficulty_easy" = "Könnyű";
+"difficulty_hard" = "Nehéz";
+"difficulty_mode" = "Mód";
+"difficulty_normal" = "Közepes";
+"difficulty_premium_hint" = "Ingyenes: csak könnyű. Közepes/nehéz: Prémium szükséges.";
+
+// MARK: - Index Labels
+"bottom_color" = "Alsó szín";
+"index_customize" = "Címkék testreszabása";
+"index_labels" = "Indexcímkék";
+"index_labels_premium_hint" = "Címkék színének módosításához Prémium kell.";
+"left_color" = "Bal szín";
+"make_labels_transparent" = "Címkék átlátszóvá tétele";
+"reset_label_colors" = "Színek visszaállítása";
+"right_color" = "Jobb szín";
+"show_bottom_labels" = "Alsó címkék";
+"show_left_labels" = "Bal címkék";
+"show_right_labels" = "Jobb címkék";
+"show_top_labels" = "Felső címkék";
+"top_color" = "Felső szín";
+
+// MARK: - Header & UX
+"header_options" = "Fejléc";
+"show_selected_coordinates_button" = "Kijelölt koordináta gomb";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Ingyenes verzió: fix 30s minden körben.";
+"turn_timer_per_turn" = "Körönkénti limit";
+"turn_timer_title" = "Köridő";
+
+// MARK: - Premium Access
+"free_limitations" = "Ingyenes: max %d×%d tábla, %d játékos.";
+"premium_limitations" = "Prémium: minden funkció elérhető — %dx%d tábla és %d játékos.";
+"premium_access" = "Prémium hozzáférés";
+"unlock_premium" = "Prémium feloldása";
+
+// MARK: - General UI
+"close" = "Bezárás";
+"end_game" = "Játék vége";
+"find_cell_with" = "Keresd a %d mezőt";
+"new_game" = "Új játék";
+"player_score" = "%@: %d";
+"results_title" = "Eredmények";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Beállítások";
+"tap_to_close" = "Érintsd a bezáráshoz";
+"total_points" = "Összpontszám";
+"turn_title" = "%@ köre";
+"winner_announcement" = "🏆 Nyertes: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Kiválasztva: sor %d, oszlop %d";
+"gv_submit" = "Megerősít";
+"gv_submit_hint" = "Előbb válassz egy mezőt";
+"gv_submit_sel" = "Megerősít (%d, %d)";
+"gv_submit_sel_ax" = "Kiválasztott koordináták megerősítése %d, %d";
+"gv_submit_prefix" = "Megerősít (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Érintsd újra a megerősítéshez";
+"gv_target" = "Cél: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Névjegy";
+"ab_section_about_app" = "A Memulról";
+"ab_app_name" = "Memul — Szorzós puzzle játék";
+"ab_version" = "Verzió: %@";
+"ab_developer" = "Fejlesztő: Grzegorz Kulesza";
+"ab_section_purpose" = "Cél";
+"ab_purpose_accessible" = "Általános iskolásoknak is érthető, de később is hasznos.";
+"ab_purpose_carries_forward" = "Készségeket fejleszt: tömbök, sor–oszlop helyzetek, koordináták.";
+"ab_purpose_commutativity" = "Segít megérteni a szorzás felcserélhetőségét.";
+"ab_purpose_learn_tables" = "Megkönnyíti a szorzótábla megtanulását — gyerekeknek és felnőtteknek.";
+"ab_section_features" = "Funkciók";
+"ab_feature_customization" = "Széles testreszabás: tábla, nehézség, időzítő, címkék, kép, koordináták.";
+"ab_feature_multiplayer" = "Körökre osztott többjátékos (1–16 fő).";
+"ab_feature_puzzle_reveal" = "A rejtett kép helyes válaszokkal lassan felfedődik.";
+"ab_feature_quick_practice" = "Gyors gyakorlás: szorzás és (Prémium) osztás.";
+"ab_feature_tutorial" = "Interaktív útmutató: sorok, oszlopok, metszéspontok.";
+"ab_section_author" = "Szerző";
+"ab_author_line1" = "Készítette: Grzegorz Kulesza — villamosmérnöki, informatika, fizika, orvosi és pedagógiai háttérrel.";
+"ab_author_line2" = "Ez a sokrétű tapasztalat alakította a Memul fókuszát: tömbök, koordináták, intuitív gondolkodás.";
+"ab_section_support" = "Támogatás";
+
+// MARK: - Tutorial
+"tutorial_title" = "Útmutató";
+"tutorial_cols_card_body" = "Képzeld el, ahogy a jégcsapok lefelé esnek — ez egy oszlop. Próbáld ki! Nyomj meg egy gombot vagy válassz oszlopszámot a táblán.";
+"tutorial_cols_card_title" = "Oszlop gyakorlása";
+"tutorial_cols_sub" = "Nézd, ahogy a függőleges vonal végigmegy az oszlopon.";
+"tutorial_col_button" = "Oszl %d"; // ≤6
+"tutorial_col_label" = "Oszlop: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Kiválasztottál egy piros sort és egy kék oszlopot. Keresd meg a metszéspontot. Gondolj a sakk bástyára, ami sorban és oszlopban mozog.";
+"tutorial_framed_card_title" = "Varázspont";
+"tutorial_framed_title" = "Metszéspont - 2. rész";
+"tutorial_framed_sub" = "Érintsd, ahol sor és oszlop találkozik.";
+"tutorial_feedback_great" = "Szuper!";
+"tutorial_feedback_not_quite" = "Majdnem";
+"tutorial_intersect_card_body" = "Ahol sor × oszlop. Egy adott mezőt kell megtalálnod.";
+"tutorial_intersect_card_title" = "Metszéspont a játékban";
+"tutorial_intersect_sub" = "Sor × oszlop.";
+"tutorial_intersect_title" = "Metszéspont - 1. rész";
+"tutorial_next_quest" = "Következő feladat";
+"tutorial_practice_callout" = "Végtelen kihívás";
+"tutorial_practice_hint" = "Keresd meg a megadott sor és oszlop metszéspontját.";
+"tutorial_practice_sub" = "Érintsd a cellát, ahol a vonalak keresztezik egymást.";
+"tutorial_practice_title" = "Metszéspont - 3. rész";
+"tutorial_quest_tap_pair" = "Érintsd (%d ; %d)";
+"tutorial_quest_title" = "Feladat:";
+"tutorial_row_button" = "Sor %d"; // ≤6
+"tutorial_row_label" = "Sor: %d";
+"tutorial_rows_card_body" = "Képzeld el, ahogy a láva vízszintesen folyik — ez egy sor. Próbáld ki! Nyomj meg egy gombot vagy válassz sorszámot a táblán.";
+"tutorial_rows_card_title" = "Sor gyakorlása";
+"tutorial_rows_sub" = "Nézd, ahogy a vízszintes vonal végigmegy a soron.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Sorok";
+"tutorial_cols_title" = "Oszlopok";
+
+"ab_purpose_multiplication" = "Szorzótábla gyakorlás játékos táblával.";
+"ab_purpose_turn_based" = "Körökre osztott játék, 1–16 fő.";
+"ab_purpose_fun_learning" = "Tanulás közben képek fedődnek fel.";
+
+// MARK: - Tutorial Buttons
+"back" = "Vissza";
+"cancel" = "Mégse";
+"next" = "Következő";
+"quit" = "Befejezés";
+"repeat" = "Ismétlés";
+"skip_to_practice" = "Gyakorlásra ugrás";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Kilépsz az útmutatóból. Bármikor visszatérhetsz.";
+"tutorial_quit_title" = "Biztos vagy benne?";
+
+// MARK: - Quick Practice
+"division_note" = "Osztás egész eredménnyel: (hányados × osztó) ÷ osztó = hányados.";
+"division_premium_hint" = "Osztás mód feloldásához Prémium szükséges.";
+"quick_divide" = "Gyors osztás";
+"quick_divide_locked" = "Gyors osztás (zárva)";
+"quick_multiply" = "Gyors szorzás";
+"quick_practice" = "Gyors gyakorlás";
+"range_division" = "Osztás tartomány: %d–%d";
+"range_multiplication" = "Szorzás tartomány: %d–%d";
+"unlock_division" = "Osztás feloldása";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Helyes!";
+"qp_correct_title" = "Helyes";
+"qp_d_prompt" = "Mennyi %d ÷ %d ?";
+"qp_incorrect_title" = "Helytelen";
+"qp_m_prompt" = "Mennyi %d × %d ?";
+"qp_next" = "Tovább";
+"qp_score" = "Pont: %d  •  %d/%d";
+"qp_score_title" = "Pontszám";
+"qp_wrong" = "Helyes válasz: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Eredmények";
+"achievements_title" = "Eredmények";
+"achv_locked" = "Zárva";
+"achv_unlocked" = "Feloldva";
+"achv_unlocked_toast" = "Eredmény feloldva: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Útmutató mester";
+"achv_tutorial_master_sub" = "Szerezz 1000 pontot az útmutatóban";
+
+"achv_puzzle_solver_title" = "Képmegoldó";
+"achv_puzzle_solver_sub" = "Oldj meg 100 képet";
+
+"achv_explorer_title" = "Felfedező";
+"achv_explorer_sub" = "Fedezz fel 50 képet";
+
+"achv_speedrunner_title" = "Gyorsfutó";
+"achv_speedrunner_sub" = "Nyerj 2 percen belül";
+
+"achv_perfectionist_title" = "Perfekcionista";
+"achv_perfectionist_sub" = "Nyerj hibátlanul";
+
+"achv_multiplayer_champ_title" = "Többjátékos bajnok";
+"achv_multiplayer_champ_sub" = "Nyerj ≥4 játékossal";
+
+// MARK: - Paywall / Legal
+"legal" = "Jogi";
+"privacy_policy" = "Adatvédelem";
+"terms_of_use" = "Felhasználási feltételek";
+
+"unlock_premium_cta" = "Prémium feloldása";
+"premium_unlocked_badge" = "✅ Prémium feloldva";
+"restore_purchases" = "Vásárlások visszaállítása";
+"loading_price" = "Ár betöltése…";
+
+"paywall_title" = "Memul Prémium";
+"paywall_subtitle" = "Nyisd fel az összes funkciót, távolítsd el a korlátokat.";
+
+"feat_bigger_boards_title" = "Nagyobb tábla";
+"feat_bigger_boards_detail" = "Akár 33×33";
+"feat_more_players_title" = "Több játékos";
+"feat_more_players_detail" = "Akár 32 fő";
+"feat_timer_title" = "Köridő";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 mp";
+"feat_labels_title" = "Címke stílus";
+"feat_labels_detail" = "Színek és pozíciók";
+"feat_puzzles_title" = "Teljes készlet";
+"feat_puzzles_detail" = "Ingyenes + prémium képek";
+"feat_division_title" = "Gyors osztás";
+"feat_division_detail" = "Osztás mód";
+
+"paywall_smallprint" = "Egyszeri vásárlás. Családi megosztás támogatott. A vásárlás az Apple ID-hez kötődik.";

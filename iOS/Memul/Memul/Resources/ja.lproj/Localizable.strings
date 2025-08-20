@@ -1,0 +1,246 @@
+//
+//  Localizable.strings (Japanese - ja)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "情報";
+"app_title" = "Memul";
+"settings" = "設定";
+"start_game" = "スタート";
+"start_tagline" = "かけ算・遊ぶ・学ぶ";
+"tutorial" = "チュートリアル";
+
+// MARK: - Board & Players
+"add_player" = "プレイヤー追加";
+"board_size" = "盤サイズ";
+"board_size_value" = "サイズ: %d × %d";
+"player_n" = "プレイヤー%d";
+"players" = "プレイヤー";
+"remove_last_player" = "最後を削除";
+
+// MARK: - Puzzle
+"puzzle" = "パズル";
+"puzzle_enable" = "盤の下にパズルを表示";
+"puzzle_free_info" = "無料版: 無料パックからランダム表示。";
+"puzzle_premium_info" = "プレミアム: 全パックからランダム表示。";
+
+// MARK: - Difficulty
+"difficulty" = "難易度";
+"difficulty_easy" = "やさしい";
+"difficulty_hard" = "むずかしい";
+"difficulty_mode" = "モード";
+"difficulty_normal" = "ふつう";
+"difficulty_premium_hint" = "無料: やさしいのみ。ふつう/むずかしいはプレミアム。";
+
+// MARK: - Index Labels
+"bottom_color" = "下の色";
+"index_customize" = "ラベルをカスタム";
+"index_labels" = "インデックス";
+"index_labels_premium_hint" = "色変更はプレミアムのみ。";
+"left_color" = "左の色";
+"make_labels_transparent" = "ラベルを透明にする";
+"reset_label_colors" = "色をリセット";
+"right_color" = "右の色";
+"show_bottom_labels" = "下を表示";
+"show_left_labels" = "左を表示";
+"show_right_labels" = "右を表示";
+"show_top_labels" = "上を表示";
+"top_color" = "上の色";
+
+// MARK: - Header & UX
+"header_options" = "ヘッダー";
+"show_selected_coordinates_button" = "座標ボタンを表示";
+
+// MARK: - Turn Timer
+"turn_30s" = "30秒";
+"turn_60s" = "60秒";
+"turn_120s" = "120秒";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "無料版: 1ターン30秒固定。";
+"turn_timer_per_turn" = "1ターンの制限";
+"turn_timer_title" = "ターンタイマー";
+
+// MARK: - Premium Access
+"free_limitations" = "無料: 最大 %d×%d, %d人まで。";
+"premium_limitations" = "プレミアム: 最大 %dx%d, %d人まで。";
+"premium_access" = "プレミアム";
+"unlock_premium" = "プレミアム解除";
+
+// MARK: - General UI
+"close" = "閉じる";
+"end_game" = "終了";
+"find_cell_with" = "%d のマスを探す";
+"new_game" = "新しいゲーム";
+"player_score" = "%@: %d";
+"results_title" = "結果";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "設定";
+"tap_to_close" = "タップで閉じる";
+"total_points" = "合計点";
+"turn_title" = "%@ のターン";
+"winner_announcement" = "🏆 勝者: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "行%d, 列%d を選択";
+"gv_submit" = "決定";
+"gv_submit_hint" = "マスを選んでください";
+"gv_submit_sel" = "決定 (%d, %d)";
+"gv_submit_sel_ax" = "座標 %d, %d を決定";
+"gv_submit_prefix" = "決定 (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "もう一度タップで決定";
+"gv_target" = "目標: %d";
+
+// MARK: - About
+"ab_navigation_title" = "情報";
+"ab_section_about_app" = "Memulについて";
+"ab_app_name" = "Memul — かけ算パズルゲーム";
+"ab_version" = "バージョン: %@";
+"ab_developer" = "開発者: Grzegorz Kulesza";
+"ab_section_purpose" = "目的";
+"ab_purpose_accessible" = "小学生から大人まで使いやすい。";
+"ab_purpose_carries_forward" = "配列・座標・デカルト思考を育成。";
+"ab_purpose_commutativity" = "かけ算の交換法則を理解。";
+"ab_purpose_learn_tables" = "九九を楽しく学べる。";
+"ab_section_features" = "特徴";
+"ab_feature_customization" = "サイズ・難易度・タイマー・ラベル・パズルなどを自由設定。";
+"ab_feature_multiplayer" = "1〜16人のターン制マルチプレイ。";
+"ab_feature_puzzle_reveal" = "正解でパズルが少しずつ見える。";
+"ab_feature_quick_practice" = "かけ算と (プレミアム) わり算の練習。";
+"ab_feature_tutorial" = "行・列・交点を学ぶチュートリアル。";
+"ab_section_author" = "作者";
+"ab_author_line1" = "Grzegorz Kulesza による制作。工学・情報・物理・医学・教育の経験を融合。";
+"ab_author_line2" = "配列や座標をもっと早く学びたかった！それがMemulに生かされています。";
+"ab_section_support" = "サポート";
+
+// MARK: - Tutorial
+"tutorial_title" = "チュートリアル";
+"tutorial_cols_card_body" = "つららがまっすぐ落ちるイメージ。それが列。下のボタンや盤面の列をタップ。";
+"tutorial_cols_card_title" = "列を練習";
+"tutorial_cols_sub" = "縦の線を見よう。";
+"tutorial_col_button" = "列 %d"; // ≤6
+"tutorial_col_label" = "列: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "赤い行と青い列を選んだ。交点を探そう。チェスのルークの動きを想像。";
+"tutorial_framed_card_title" = "魔法の場所";
+"tutorial_framed_title" = "交点 - パート2";
+"tutorial_framed_sub" = "行と列の交わる場所をタップ。";
+"tutorial_feedback_great" = "よくできた！";
+"tutorial_feedback_not_quite" = "ちがうよ";
+"tutorial_intersect_card_body" = "行 × 列 = 交点。正しいマスを見つけよう。";
+"tutorial_intersect_card_title" = "交点について";
+"tutorial_intersect_sub" = "行 × 列";
+"tutorial_intersect_title" = "交点 - パート1";
+"tutorial_next_quest" = "つぎの問題";
+"tutorial_practice_callout" = "エンドレスチャレンジ";
+"tutorial_practice_hint" = "指定の行と列の交点を探そう。";
+"tutorial_practice_sub" = "レーザーが交わるマスをタップ。";
+"tutorial_practice_title" = "交点 - パート3";
+"tutorial_quest_tap_pair" = "(%d ; %d) をタップ";
+"tutorial_quest_title" = "クエスト:";
+"tutorial_row_button" = "行 %d"; // ≤6
+"tutorial_row_label" = "行: %d";
+"tutorial_rows_card_body" = "地下のトンネルを横に流れるマグマを想像。それが行。下のボタンや盤面の行をタップ。";
+"tutorial_rows_card_title" = "行を練習";
+"tutorial_rows_sub" = "横の線を見よう。";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "行";
+"tutorial_cols_title" = "列";
+
+"ab_purpose_multiplication" = "九九を楽しく学べるパズル。";
+"ab_purpose_turn_based" = "ターン制で1〜16人プレイ。";
+"ab_purpose_fun_learning" = "学びながら画像を解放。";
+
+// MARK: - Tutorial Buttons
+"back" = "戻る";
+"cancel" = "キャンセル";
+"next" = "次へ";
+"quit" = "終了";
+"repeat" = "リピート";
+"skip_to_practice" = "練習へスキップ";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "チュートリアルを終了します。いつでも再開できます。";
+"tutorial_quit_title" = "よろしいですか？";
+
+// MARK: - Quick Practice
+"division_note" = "整数のわり算: (商 × 除数) ÷ 除数 = 商。";
+"division_premium_hint" = "わり算はプレミアム専用。";
+"quick_divide" = "わり算";
+"quick_divide_locked" = "わり算 (ロック)";
+"quick_multiply" = "かけ算";
+"quick_practice" = "クイック練習";
+"range_division" = "範囲: %d–%d (わり算)";
+"range_multiplication" = "範囲: %d–%d (かけ算)";
+"unlock_division" = "わり算を解除";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "正解！";
+"qp_correct_title" = "正解";
+"qp_d_prompt" = "%d ÷ %d = ?";
+"qp_incorrect_title" = "不正解";
+"qp_m_prompt" = "%d × %d = ?";
+"qp_next" = "次へ";
+"qp_score" = "スコア: %d  •  %d/%d";
+"qp_score_title" = "スコア";
+"qp_wrong" = "正しい答え: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "実績";
+"achievements_title" = "実績";
+"achv_locked" = "ロック中";
+"achv_unlocked" = "解除";
+"achv_unlocked_toast" = "実績解除: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "チュートリアルマスター";
+"achv_tutorial_master_sub" = "1000点を獲得";
+
+"achv_puzzle_solver_title" = "パズル解決者";
+"achv_puzzle_solver_sub" = "100個クリア";
+
+"achv_explorer_title" = "エクスプローラー";
+"achv_explorer_sub" = "50画像発見";
+
+"achv_speedrunner_title" = "スピードランナー";
+"achv_speedrunner_sub" = "2分以内で勝利";
+
+"achv_perfectionist_title" = "パーフェクショニスト";
+"achv_perfectionist_sub" = "ミス0で勝利";
+
+"achv_multiplayer_champ_title" = "マルチチャンプ";
+"achv_multiplayer_champ_sub" = "4人以上で勝利";
+
+// MARK: - Paywall / Legal
+"legal" = "規約";
+"privacy_policy" = "プライバシー";
+"terms_of_use" = "利用規約";
+
+"unlock_premium_cta" = "プレミアム解除";
+"premium_unlocked_badge" = "✅ プレミアム有効";
+"restore_purchases" = "購入を復元";
+"loading_price" = "読み込み中…";
+
+"paywall_title" = "Memul プレミアム";
+"paywall_subtitle" = "全機能を解除し制限なし。";
+
+"feat_bigger_boards_title" = "大きな盤";
+"feat_bigger_boards_detail" = "最大33×33";
+"feat_more_players_title" = "プレイヤー数";
+"feat_more_players_detail" = "最大32人";
+"feat_timer_title" = "ターンタイマー";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 秒";
+"feat_labels_title" = "ラベル設定";
+"feat_labels_detail" = "色 & 位置";
+"feat_puzzles_title" = "全パズル";
+"feat_puzzles_detail" = "無料 + プレミアム";
+"feat_division_title" = "わり算";
+"feat_division_detail" = "わり算モード解除";
+
+"paywall_smallprint" = "買い切り。ファミリー共有対応。Apple IDに紐づきます。";

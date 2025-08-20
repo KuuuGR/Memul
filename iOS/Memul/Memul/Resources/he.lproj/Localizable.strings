@@ -1,0 +1,245 @@
+//
+//  Localizable.strings (Hebrew - he)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "אודות";
+"app_title" = "Memul";
+"settings" = "הגדרות";
+"start_game" = "התחל משחק";
+"start_tagline" = "הכפל. שחק. למד.";
+"tutorial" = "הדרכה";
+
+// MARK: - Board & Players
+"add_player" = "הוסף שחקן";
+"board_size" = "גודל לוח";
+"board_size_value" = "גודל: %d × %d";
+"player_n" = "שחקן %d";
+"players" = "שחקנים";
+"remove_last_player" = "הסר שחקן אחרון";
+
+// MARK: - Puzzle
+"puzzle" = "תמונה";
+"puzzle_enable" = "הצג תמונה מתחת ללוח";
+"puzzle_free_info" = "חינם: תמונה אקראית מחבילת החינם.";
+"puzzle_premium_info" = "פרימיום: תמונה אקראית מכל החבילות.";
+
+// MARK: - Difficulty
+"difficulty" = "רמה";
+"difficulty_easy" = "קל";
+"difficulty_hard" = "קשה";
+"difficulty_mode" = "מצב";
+"difficulty_normal" = "בינוני";
+"difficulty_premium_hint" = "חינם: רק קל. בינוני/קשה דורשים פרימיום.";
+
+// MARK: - Index Labels
+"bottom_color" = "צבע תחתון";
+"index_customize" = "התאם תוויות";
+"index_labels" = "תוויות";
+"index_labels_premium_hint" = "התאמה דורשת פרימיום.";
+"left_color" = "צבע שמאלי";
+"make_labels_transparent" = "תוויות שקופות";
+"reset_label_colors" = "איפוס צבעים";
+"right_color" = "צבע ימני";
+"show_bottom_labels" = "הצג תוויות תחתונות";
+"show_left_labels" = "הצג תוויות שמאליות";
+"show_right_labels" = "הצג תוויות ימניות";
+"show_top_labels" = "הצג תוויות עליונות";
+"top_color" = "צבע עליון";
+
+// MARK: - Header & UX
+"header_options" = "כותרת";
+"show_selected_coordinates_button" = "כפתור קואורדינטות";
+
+// MARK: - Turn Timer
+"turn_30s" = "30ש";
+"turn_60s" = "60ש";
+"turn_120s" = "120ש";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%dש)";
+"turn_timer_free_hint" = "חינם: 30 שניות לתור.";
+"turn_timer_per_turn" = "הגבלת תור";
+"turn_timer_title" = "טיימר תור";
+
+// MARK: - Premium Access
+"free_limitations" = "חינם: עד %d×%d, %d שחקנים.";
+"premium_limitations" = "פרימיום: עד %dx%d ו-%d שחקנים.";
+"premium_access" = "גישה לפרימיום";
+"unlock_premium" = "פתח פרימיום";
+
+// MARK: - General UI
+"close" = "סגור";
+"end_game" = "סיים משחק";
+"find_cell_with" = "מצא תא עם %d";
+"new_game" = "משחק חדש";
+"player_score" = "%@: %d";
+"results_title" = "תוצאות";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "הגדרות";
+"tap_to_close" = "הקש לסגירה";
+"total_points" = "סך נקודות";
+"turn_title" = "תור של %@";
+"winner_announcement" = "🏆 מנצח: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "שורה %d, עמודה %d נבחרו";
+"gv_submit" = "שלח";
+"gv_submit_hint" = "בחר תא קודם";
+"gv_submit_sel" = "שלח (%d, %d)";
+"gv_submit_sel_ax" = "שלח קואורדינטות %d, %d";
+"gv_submit_prefix" = "שלח (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "הקש שוב או שלח";
+"gv_target" = "מטרה: %d";
+
+// MARK: - About
+"ab_navigation_title" = "אודות";
+"ab_section_about_app" = "על Memul";
+"ab_app_name" = "Memul — משחק כפל";
+"ab_version" = "גרסה: %@";
+"ab_developer" = "מפתח: Grzegorz Kulesza";
+"ab_section_purpose" = "מטרה";
+"ab_purpose_accessible" = "מתאים ליסודי ולמעבר.";
+"ab_purpose_carries_forward" = "מפתח כישורים: מערכים, שורות–עמודות, חשיבה קרטזית.";
+"ab_purpose_commutativity" = "מדגים חילופיות בכפל.";
+"ab_purpose_learn_tables" = "מפשט לימוד לוח הכפל.";
+"ab_section_features" = "תכונות";
+"ab_feature_customization" = "התאמה: גודל, רמה, טיימר, תוויות, תמונה, רמזים.";
+"ab_feature_multiplayer" = "רב-משתתפים (1–16).";
+"ab_feature_puzzle_reveal" = "תמונה נחשפת בהדרגה.";
+"ab_feature_quick_practice" = "תרגול מהיר: כפל ו(פרימיום) חילוק.";
+"ab_feature_tutorial" = "הדרכה אינטראקטיבית: שורות, עמודות, חיתוכים.";
+"ab_section_author" = "מחבר";
+"ab_author_line1" = "נוצר ע״י Grzegorz Kulesza (הנדסה, מדעי מחשב, פיזיקה, רפואה, הוראה).";
+"ab_author_line2" = "הניסיון יצר את Memul: מערכים, קואורדינטות, פתרון אינטואיטיבי.";
+"ab_section_support" = "תמיכה";
+
+// MARK: - Tutorial
+"tutorial_title" = "הדרכה";
+"tutorial_cols_card_body" = "דמיין עמודות כמו קווים נופלים. נסה! לחץ כפתור או מספר עמודה.";
+"tutorial_cols_card_title" = "תרגול עמודות";
+"tutorial_cols_sub" = "ראה את הקו יורד בעמודה.";
+"tutorial_col_button" = "עמ %d"; // ≤6
+"tutorial_col_label" = "עמודה: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "בחרת שורה אדומה ועמודה כחולה. מצא את נקודת החיתוך. כמו צריח בשחמט נע בשורה ועמודה.";
+"tutorial_framed_card_title" = "הנקודה הקסומה";
+"tutorial_framed_title" = "חיתוך - חלק 2";
+"tutorial_framed_sub" = "הקש היכן ששורה פוגשת עמודה.";
+"tutorial_feedback_great" = "מעולה!";
+"tutorial_feedback_not_quite" = "לא בדיוק";
+"tutorial_intersect_card_body" = "שורה × עמודה = חיתוך. תתבקש למצוא תא.";
+"tutorial_intersect_card_title" = "חיתוכים במשחק";
+"tutorial_intersect_sub" = "שורה × עמודה.";
+"tutorial_intersect_title" = "חיתוך - חלק 1";
+"tutorial_next_quest" = "משימה הבאה";
+"tutorial_practice_callout" = "אתגר אינסופי";
+"tutorial_practice_hint" = "מצא תא חיתוך לשורה ועמודה נתונות.";
+"tutorial_practice_sub" = "הקש על התא בו נפגשים.";
+"tutorial_practice_title" = "חיתוך - חלק 3";
+"tutorial_quest_tap_pair" = "הקש (%d ; %d)";
+"tutorial_quest_title" = "משימה:";
+"tutorial_row_button" = "שו %d"; // ≤6
+"tutorial_row_label" = "שורה: %d";
+"tutorial_rows_card_body" = "דמיין שורות כמו זרימה לרוחב. נסה! לחץ כפתור או מספר שורה.";
+"tutorial_rows_card_title" = "תרגול שורות";
+"tutorial_rows_sub" = "ראה את הקו נע בשורה.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "שורות";
+"tutorial_cols_title" = "עמודות";
+"ab_purpose_multiplication" = "למד כפל דרך לוח משחק.";
+"ab_purpose_turn_based" = "משחק בתורות 1–16.";
+"ab_purpose_fun_learning" = "חשוף תמונות תוך כדי למידה.";
+
+// MARK: - Tutorial Buttons
+"back" = "חזור";
+"cancel" = "בטל";
+"next" = "הבא";
+"quit" = "סיום";
+"repeat" = "חזור";
+"skip_to_practice" = "דלג לתרגול";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "תצא מההדרכה. אפשר לחזור בכל עת.";
+"tutorial_quit_title" = "בטוח?";
+
+// MARK: - Quick Practice
+"division_note" = "חילוק בשלמים: (מנה × מחלק) ÷ מחלק = מנה.";
+"division_premium_hint" = "חילוק דורש פרימיום.";
+"quick_divide" = "חילוק מהיר";
+"quick_divide_locked" = "חילוק (נעול)";
+"quick_multiply" = "כפל מהיר";
+"quick_practice" = "תרגול מהיר";
+"range_division" = "טווח חילוק: %d–%d";
+"range_multiplication" = "טווח כפל: %d–%d";
+"unlock_division" = "פתח חילוק";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "נכון!";
+"qp_correct_title" = "נכון";
+"qp_d_prompt" = "מהו %d ÷ %d ?";
+"qp_incorrect_title" = "שגוי";
+"qp_m_prompt" = "מהו %d × %d ?";
+"qp_next" = "הבא";
+"qp_score" = "ניקוד: %d  •  %d/%d";
+"qp_score_title" = "ניקוד";
+"qp_wrong" = "לא. תשובה נכונה: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "הישגים";
+"achievements_title" = "הישגים";
+"achv_locked" = "נעול";
+"achv_unlocked" = "נפתח";
+"achv_unlocked_toast" = "הישג: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "מאסטר הדרכה";
+"achv_tutorial_master_sub" = "1000 נק׳ הדרכה";
+
+"achv_puzzle_solver_title" = "פותר תמונות";
+"achv_puzzle_solver_sub" = "השלים 100 תמונות";
+
+"achv_explorer_title" = "חוקר";
+"achv_explorer_sub" = "גילה 50 תמונות";
+
+"achv_speedrunner_title" = "מהיר";
+"achv_speedrunner_sub" = "ניצח בפחות מ־2 דקות";
+
+"achv_perfectionist_title" = "מושלם";
+"achv_perfectionist_sub" = "ניצח ללא טעויות";
+
+"achv_multiplayer_champ_title" = "אלוף";
+"achv_multiplayer_champ_sub" = "ניצח עם ≥4 שחקנים";
+
+// MARK: - Paywall / Legal
+"legal" = "משפטי";
+"privacy_policy" = "מדיניות פרטיות";
+"terms_of_use" = "תנאי שימוש";
+
+"unlock_premium_cta" = "פתח פרימיום";
+"premium_unlocked_badge" = "✅ פרימיום נפתח";
+"restore_purchases" = "שחזור רכישות";
+"loading_price" = "טוען מחיר…";
+
+"paywall_title" = "Memul פרימיום";
+"paywall_subtitle" = "פתח את כל הפיצ׳רים.";
+
+"feat_bigger_boards_title" = "לוחות גדולים";
+"feat_bigger_boards_detail" = "עד 33×33";
+"feat_more_players_title" = "יותר שחקנים";
+"feat_more_players_detail" = "עד 32";
+"feat_timer_title" = "טיימר";
+"feat_timer_detail" = "∞ / 30 / 60 / 120";
+"feat_labels_title" = "עיצוב תוויות";
+"feat_labels_detail" = "צבעים & מיקום";
+"feat_puzzles_title" = "כל התמונות";
+"feat_puzzles_detail" = "חינם + פרימיום";
+"feat_division_title" = "חילוק";
+"feat_division_detail" = "מצב חילוק";
+
+"paywall_smallprint" = "רכישה חד פעמית. שיתוף משפחתי נתמך. קשור ל־Apple ID.";

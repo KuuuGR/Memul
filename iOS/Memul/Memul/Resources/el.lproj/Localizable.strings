@@ -1,0 +1,245 @@
+//
+//  Localizable.strings (Greek - el)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Σχετικά";
+"app_title" = "Memul";
+"settings" = "Ρυθμίσεις";
+"start_game" = "Έναρξη";
+"start_tagline" = "Πολλαπλασίασε. Παίξε. Μάθε.";
+"tutorial" = "Εκμάθηση";
+
+// MARK: - Board & Players
+"add_player" = "Προσθήκη παίκτη";
+"board_size" = "Μέγεθος πίνακα";
+"board_size_value" = "Μέγεθος: %d × %d";
+"player_n" = "Παίκτης %d";
+"players" = "Παίκτες";
+"remove_last_player" = "Αφαίρεση τελευταίου";
+
+// MARK: - Puzzle
+"puzzle" = "Εικόνα";
+"puzzle_enable" = "Εμφάνιση εικόνας κάτω από τον πίνακα";
+"puzzle_free_info" = "Δωρεάν: τυχαία εικόνα από το δωρεάν πακέτο.";
+"puzzle_premium_info" = "Premium: τυχαία εικόνα από δωρεάν και premium πακέτα.";
+
+// MARK: - Difficulty
+"difficulty" = "Δυσκολία";
+"difficulty_easy" = "Εύκολο";
+"difficulty_hard" = "Δύσκολο";
+"difficulty_mode" = "Λειτουργία";
+"difficulty_normal" = "Κανονικό";
+"difficulty_premium_hint" = "Δωρεάν: μόνο Εύκολο. Κανονικό/Δύσκολο απαιτούν Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Χρώμα κάτω";
+"index_customize" = "Προσαρμογή ετικετών";
+"index_labels" = "Ετικέτες";
+"index_labels_premium_hint" = "Η αλλαγή χρωμάτων απαιτεί Premium.";
+"left_color" = "Χρώμα αριστερά";
+"make_labels_transparent" = "Διαφάνεια ετικετών";
+"reset_label_colors" = "Επαναφορά χρωμάτων";
+"right_color" = "Χρώμα δεξιά";
+"show_bottom_labels" = "Κάτω ετικέτες";
+"show_left_labels" = "Αριστερές ετικέτες";
+"show_right_labels" = "Δεξιές ετικέτες";
+"show_top_labels" = "Πάνω ετικέτες";
+"top_color" = "Χρώμα πάνω";
+
+// MARK: - Header & UX
+"header_options" = "Κεφαλίδα";
+"show_selected_coordinates_button" = "Κουμπί συντεταγμένων";
+
+// MARK: - Turn Timer
+"turn_30s" = "30δ";
+"turn_60s" = "60δ";
+"turn_120s" = "120δ";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%dδ)";
+"turn_timer_free_hint" = "Δωρεάν: 30δ ανά γύρο.";
+"turn_timer_per_turn" = "Όριο ανά γύρο";
+"turn_timer_title" = "Χρονόμετρο γύρου";
+
+// MARK: - Premium Access
+"free_limitations" = "Δωρεάν: έως %d×%d, %d παίκτες.";
+"premium_limitations" = "Premium: έως %dx%d και %d παίκτες.";
+"premium_access" = "Πρόσβαση Premium";
+"unlock_premium" = "Ξεκλείδωμα Premium";
+
+// MARK: - General UI
+"close" = "Κλείσιμο";
+"end_game" = "Τέλος";
+"find_cell_with" = "Βρες κελί με %d";
+"new_game" = "Νέα παρτίδα";
+"player_score" = "%@: %d";
+"results_title" = "Αποτελέσματα";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Ρυθμίσεις";
+"tap_to_close" = "Πάτησε για κλείσιμο";
+"total_points" = "Συνολικοί πόντοι";
+"turn_title" = "Σειρά του %@";
+"winner_announcement" = "🏆 Νικητής: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Σειρά %d, στήλη %d επιλεγμένα";
+"gv_submit" = "Υποβολή";
+"gv_submit_hint" = "Επίλεξε κελί πρώτα";
+"gv_submit_sel" = "Υποβολή (%d, %d)";
+"gv_submit_sel_ax" = "Υποβολή συντεταγμένων %d, %d";
+"gv_submit_prefix" = "Υποβολή (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Πάτησε ξανά ή Υποβολή";
+"gv_target" = "Στόχος: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Σχετικά";
+"ab_section_about_app" = "Σχετικά με το Memul";
+"ab_app_name" = "Memul — Παιχνίδι πολλαπλασιασμού";
+"ab_version" = "Έκδοση: %@";
+"ab_developer" = "Προγραμματιστής: Grzegorz Kulesza";
+"ab_section_purpose" = "Σκοπός";
+"ab_purpose_accessible" = "Κατάλληλο για δημοτικό και πέρα.";
+"ab_purpose_carries_forward" = "Χτίζει δεξιότητες: πίνακες, σειρές–στήλες, καρτεσιανή σκέψη.";
+"ab_purpose_commutativity" = "Διδάσκει την αντιμεταθετικότητα.";
+"ab_purpose_learn_tables" = "Απλοποιεί τις προπαίδειες.";
+"ab_section_features" = "Χαρακτηριστικά";
+"ab_feature_customization" = "Προσαρμογή: μέγεθος, δυσκολία, χρονόμετρα, ετικέτες, εικόνα, συντεταγμένες.";
+"ab_feature_multiplayer" = "Πολυπαίκτης (1–16).";
+"ab_feature_puzzle_reveal" = "Κρυφή εικόνα αποκαλύπτεται τμηματικά.";
+"ab_feature_quick_practice" = "Γρήγορη εξάσκηση: πολλαπλασιασμός και (Premium) διαίρεση.";
+"ab_feature_tutorial" = "Διαδραστικό μάθημα: σειρές, στήλες, τομές.";
+"ab_section_author" = "Συγγραφέας";
+"ab_author_line1" = "Δημιουργός: Grzegorz Kulesza (μηχανική, πληροφορική, φυσική, ιατρική, διδασκαλία).";
+"ab_author_line2" = "Η εμπειρία οδήγησε στο Memul: πίνακες, συντεταγμένες, επίλυση.";
+"ab_section_support" = "Υποστήριξη";
+
+// MARK: - Tutorial
+"tutorial_title" = "Εκμάθηση";
+"tutorial_cols_card_body" = "Σαν σταλακτίτες που πέφτουν: μια στήλη. Δοκίμασε! Πάτησε κουμπί ή αριθμό στήλης.";
+"tutorial_cols_card_title" = "Πρακτική στις στήλες";
+"tutorial_cols_sub" = "Παρατήρησε τη γραμμή να κατεβαίνει.";
+"tutorial_col_button" = "Σλ %d"; // ≤6
+"tutorial_col_label" = "Στήλη: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Σειρά κόκκινη + στήλη μπλε. Βρες το σημείο τομής. Σκέψου έναν πύργο σκακιού που κινείται σε σειρά και στήλη.";
+"tutorial_framed_card_title" = "Το μαγικό σημείο";
+"tutorial_framed_title" = "Τομή - Μέρος 2";
+"tutorial_framed_sub" = "Πάτησε όπου σειρά συναντά στήλη.";
+"tutorial_feedback_great" = "Μπράβο!";
+"tutorial_feedback_not_quite" = "Όχι ακριβώς";
+"tutorial_intersect_card_body" = "Σειρά × στήλη = τομή. Θα ζητηθεί συγκεκριμένο κελί.";
+"tutorial_intersect_card_title" = "Τομές στο παιχνίδι";
+"tutorial_intersect_sub" = "Σειρά × στήλη.";
+"tutorial_intersect_title" = "Τομή - Μέρος 1";
+"tutorial_next_quest" = "Επόμενη αποστολή";
+"tutorial_practice_callout" = "Ατελείωτη πρόκληση";
+"tutorial_practice_hint" = "Βρες το κελί τομής για τη δοσμένη σειρά και στήλη.";
+"tutorial_practice_sub" = "Πάτησε το κελί που διασταυρώνονται.";
+"tutorial_practice_title" = "Τομή - Μέρος 3";
+"tutorial_quest_tap_pair" = "Πάτησε (%d ; %d)";
+"tutorial_quest_title" = "Αποστολή:";
+"tutorial_row_button" = "Στ %d"; // ≤6
+"tutorial_row_label" = "Σειρά: %d";
+"tutorial_rows_card_body" = "Σαν λάβα που ρέει: μια σειρά. Δοκίμασε! Πάτησε κουμπί ή αριθμό σειράς.";
+"tutorial_rows_card_title" = "Πρακτική στις σειρές";
+"tutorial_rows_sub" = "Παρατήρησε τη γραμμή να κινείται οριζόντια.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Σειρές";
+"tutorial_cols_title" = "Στήλες";
+"ab_purpose_multiplication" = "Μάθε προπαίδειες με παιχνίδι πλέγμα.";
+"ab_purpose_turn_based" = "Γύροι για 1–16 παίκτες.";
+"ab_purpose_fun_learning" = "Αποκάλυψε εικόνες μαθαίνοντας.";
+
+// MARK: - Tutorial Buttons
+"back" = "Πίσω";
+"cancel" = "Άκυρο";
+"next" = "Επόμενο";
+"quit" = "Τέλος";
+"repeat" = "Επανάληψη";
+"skip_to_practice" = "Μετάβαση στην πρακτική";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Θα φύγεις από την εκμάθηση. Μπορείς να επιστρέψεις οποτεδήποτε.";
+"tutorial_quit_title" = "Σίγουρα;";
+
+// MARK: - Quick Practice
+"division_note" = "Η διαίρεση με ακέραια: (πηλίκο × διαιρέτης) ÷ διαιρέτης = πηλίκο.";
+"division_premium_hint" = "Η διαίρεση απαιτεί Premium.";
+"quick_divide" = "Γρήγορη διαίρεση";
+"quick_divide_locked" = "Διαίρεση (Κλειδ.)";
+"quick_multiply" = "Γρήγορος πολλ/μός";
+"quick_practice" = "Γρήγορη εξάσκηση";
+"range_division" = "Εύρος διαίρεσης: %d–%d";
+"range_multiplication" = "Εύρος πολλ/σμού: %d–%d";
+"unlock_division" = "Ξεκλείδωμα διαίρεσης";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Σωστά!";
+"qp_correct_title" = "Σωστό";
+"qp_d_prompt" = "Πόσο είναι %d ÷ %d;";
+"qp_incorrect_title" = "Λάθος";
+"qp_m_prompt" = "Πόσο είναι %d × %d;";
+"qp_next" = "Επόμενο";
+"qp_score" = "Σκορ: %d  •  %d/%d";
+"qp_score_title" = "Σκορ";
+"qp_wrong" = "Όχι. Σωστό: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Επιτεύγματα";
+"achievements_title" = "Επιτεύγματα";
+"achv_locked" = "Κλειδωμένο";
+"achv_unlocked" = "Ξεκλειδ.";
+"achv_unlocked_toast" = "Επίτευγμα: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Δάσκαλος";
+"achv_tutorial_master_sub" = "1000 πόντοι στο μάθημα";
+
+"achv_puzzle_solver_title" = "Λύτης εικόνων";
+"achv_puzzle_solver_sub" = "Ολοκλήρωσε 100 εικόνες";
+
+"achv_explorer_title" = "Εξερευνητής";
+"achv_explorer_sub" = "Ανακάλυψε 50 εικόνες";
+
+"achv_speedrunner_title" = "Ταχύς νικητής";
+"achv_speedrunner_sub" = "Νίκη σε <2 λεπτά";
+
+"achv_perfectionist_title" = "Τελειομανής";
+"achv_perfectionist_sub" = "Νίκη χωρίς λάθη";
+
+"achv_multiplayer_champ_title" = "Πρωταθλητής";
+"achv_multiplayer_champ_sub" = "Νίκη με ≥4 παίκτες";
+
+// MARK: - Paywall / Legal
+"legal" = "Νομικά";
+"privacy_policy" = "Πολιτική απορρήτου";
+"terms_of_use" = "Όροι χρήσης";
+
+"unlock_premium_cta" = "Ξεκλείδωμα Premium";
+"premium_unlocked_badge" = "✅ Premium ενεργό";
+"restore_purchases" = "Επαναφορά αγορών";
+"loading_price" = "Φόρτωση…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Ξεκλείδωσε όλες τις λειτουργίες.";
+
+"feat_bigger_boards_title" = "Μεγαλύτεροι πίνακες";
+"feat_bigger_boards_detail" = "Έως 33×33";
+"feat_more_players_title" = "Περισσότεροι παίκτες";
+"feat_more_players_detail" = "Έως 32";
+"feat_timer_title" = "Χρονόμετρο";
+"feat_timer_detail" = "∞ / 30 / 60 / 120";
+"feat_labels_title" = "Στυλ ετικετών";
+"feat_labels_detail" = "Χρώματα & θέσεις";
+"feat_puzzles_title" = "Όλες οι εικόνες";
+"feat_puzzles_detail" = "Δωρεάν + Premium";
+"feat_division_title" = "Διαίρεση";
+"feat_division_detail" = "Λειτουργία διαίρεσης";
+
+"paywall_smallprint" = "Μία αγορά. Οικογενειακή κοινή χρήση. Συνδεδεμένο με το Apple ID.";

@@ -1,0 +1,246 @@
+//
+//  Localizable.strings (Romanian - ro)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Despre";
+"app_title" = "Memul";
+"settings" = "Setări";
+"start_game" = "Începe jocul";
+"start_tagline" = "Înmulțește. Joacă. Învață.";
+"tutorial" = "Tutorial";
+
+// MARK: - Board & Players
+"add_player" = "Adaugă jucător";
+"board_size" = "Dimensiune tablă";
+"board_size_value" = "Dimensiune: %d × %d";
+"player_n" = "Jucător %d";
+"players" = "Jucători";
+"remove_last_player" = "Șterge ultimul jucător";
+
+// MARK: - Puzzle
+"puzzle" = "Puzzle";
+"puzzle_enable" = "Afișează imaginea sub tablă";
+"puzzle_free_info" = "Utilizatorii gratuiți văd o imagine din pachetul gratuit.";
+"puzzle_premium_info" = "Utilizatorii Premium văd imagini din toate pachetele.";
+
+// MARK: - Difficulty
+"difficulty" = "Dificultate";
+"difficulty_easy" = "Ușor";
+"difficulty_hard" = "Greu";
+"difficulty_mode" = "Mod";
+"difficulty_normal" = "Normal";
+"difficulty_premium_hint" = "Gratuit: doar Ușor. Normal/Greu necesită Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Culoare jos";
+"index_customize" = "Personalizează etichete";
+"index_labels" = "Etichete index";
+"index_labels_premium_hint" = "Culorile personalizate necesită Premium.";
+"left_color" = "Culoare stânga";
+"make_labels_transparent" = "Etichete transparente";
+"reset_label_colors" = "Resetează culori";
+"right_color" = "Culoare dreapta";
+"show_bottom_labels" = "Afișează jos";
+"show_left_labels" = "Afișează stânga";
+"show_right_labels" = "Afișează dreapta";
+"show_top_labels" = "Afișează sus";
+"top_color" = "Culoare sus";
+
+// MARK: - Header & UX
+"header_options" = "Antet";
+"show_selected_coordinates_button" = "Buton coordonate selectate";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Gratuit: 30s fix pe tur.";
+"turn_timer_per_turn" = "Limită per tur";
+"turn_timer_title" = "Temporizator tur";
+
+// MARK: - Premium Access
+"free_limitations" = "Gratuit: max %d×%d, %d jucători.";
+"premium_limitations" = "Premium: până la %dx%d și %d jucători.";
+"premium_access" = "Acces Premium";
+"unlock_premium" = "Deblochează Premium";
+
+// MARK: - General UI
+"close" = "Închide";
+"end_game" = "Termină jocul";
+"find_cell_with" = "Găsește celula cu %d";
+"new_game" = "Joc nou";
+"player_score" = "%@: %d";
+"results_title" = "Rezultate";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Setări";
+"tap_to_close" = "Atinge pentru a închide";
+"total_points" = "Puncte totale";
+"turn_title" = "Rândul lui %@";
+"winner_announcement" = "🏆 Câștigător: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Linia %d, coloana %d selectate";
+"gv_submit" = "Trimite";
+"gv_submit_hint" = "Selectează mai întâi o celulă";
+"gv_submit_sel" = "Trimite (%d, %d)";
+"gv_submit_sel_ax" = "Trimite coordonatele %d, %d";
+"gv_submit_prefix" = "Trimite (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Atinge din nou sau apasă Trimite";
+"gv_target" = "Țintă: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Despre";
+"ab_section_about_app" = "Despre Memul";
+"ab_app_name" = "Memul — Joc puzzle de înmulțire";
+"ab_version" = "Versiune: %@";
+"ab_developer" = "Dezvoltator: Grzegorz Kulesza";
+"ab_section_purpose" = "Scop";
+"ab_purpose_accessible" = "Accesibil elevilor mici și util mult mai departe.";
+"ab_purpose_carries_forward" = "Dezvoltă abilități: notație de array, poziții linie–coloană și gândire carteziană.";
+"ab_purpose_commutativity" = "Ajută la înțelegerea comutativității.";
+"ab_purpose_learn_tables" = "Face mai ușoară învățarea tablei înmulțirii.";
+"ab_section_features" = "Funcții";
+"ab_feature_customization" = "Personalizare: dimensiune tablă, dificultate, temporizatoare, etichete, puzzle, indicii de coordonate.";
+"ab_feature_multiplayer" = "Multiplayer pe rânduri (1–16).";
+"ab_feature_puzzle_reveal" = "Imagine ascunsă dezvăluită treptat.";
+"ab_feature_quick_practice" = "Practici rapide: înmulțire și (Premium) împărțire.";
+"ab_feature_tutorial" = "Tutorial interactiv: linii, coloane, intersecții.";
+"ab_section_author" = "Autor";
+"ab_author_line1" = "Creat de Grzegorz Kulesza, cu experiență în inginerie, informatică, fizică, medicină și educație.";
+"ab_author_line2" = "Această experiență a format scopul Memul: array-uri, coordonate și rezolvare intuitivă de probleme.";
+"ab_section_support" = "Suport";
+
+// MARK: - Tutorial
+"tutorial_title" = "Tutorial";
+"tutorial_cols_card_body" = "Imaginează-ți țurțuri care cad vertical. Aceasta e o coloană. Încearcă! Atinge un buton mai jos sau o coloană pe tablă.";
+"tutorial_cols_card_title" = "Exersăm coloane";
+"tutorial_cols_sub" = "Privește linia verticală.";
+"tutorial_col_button" = "Col %d"; // ≤6
+"tutorial_col_label" = "Coloana: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Ai selectat o linie roșie și o coloană albastră. Găsește punctul de intersecție. Imaginează-ți turnul de șah care se mișcă pe linie și coloană.";
+"tutorial_framed_card_title" = "Punctul magic";
+"tutorial_framed_title" = "Intersecție - Partea 2";
+"tutorial_framed_sub" = "Atinge unde linia întâlnește coloana.";
+"tutorial_feedback_great" = "Bravo!";
+"tutorial_feedback_not_quite" = "Nu chiar";
+"tutorial_intersect_card_body" = "Linie × Coloană = celula de intersecție.";
+"tutorial_intersect_card_title" = "Intersecții în joc";
+"tutorial_intersect_sub" = "Linie × Coloană";
+"tutorial_intersect_title" = "Intersecție - Partea 1";
+"tutorial_next_quest" = "Următoarea misiune";
+"tutorial_practice_callout" = "Provocare fără sfârșit";
+"tutorial_practice_hint" = "Găsește celula la intersecția date.";
+"tutorial_practice_sub" = "Atinge celula unde se întâlnesc liniile.";
+"tutorial_practice_title" = "Intersecție - Partea 3";
+"tutorial_quest_tap_pair" = "Atinge (%d ; %d)";
+"tutorial_quest_title" = "Misiune:";
+"tutorial_row_button" = "Lin %d"; // ≤6
+"tutorial_row_label" = "Linia: %d";
+"tutorial_rows_card_body" = "Imaginează-ți lava care curge pe orizontală. Aceasta e o linie. Încearcă! Atinge un buton mai jos sau o linie pe tablă.";
+"tutorial_rows_card_title" = "Exersăm linii";
+"tutorial_rows_sub" = "Privește linia orizontală.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Linii";
+"tutorial_cols_title" = "Coloane";
+
+"ab_purpose_multiplication" = "Exersează tabla înmulțirii printr-un puzzle.";
+"ab_purpose_turn_based" = "Joc pe rânduri pentru 1–16 jucători.";
+"ab_purpose_fun_learning" = "Învață și descoperă imagini.";
+
+// MARK: - Tutorial Buttons
+"back" = "Înapoi";
+"cancel" = "Anulează";
+"next" = "Următor";
+"quit" = "Termină";
+"repeat" = "Repetă";
+"skip_to_practice" = "Sari la exercițiu";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Vei ieși din tutorial. Poți reveni oricând.";
+"tutorial_quit_title" = "Sigur?";
+
+// MARK: - Quick Practice
+"division_note" = "Împărțire cu întregi: (cât × divizor) ÷ divizor = cât.";
+"division_premium_hint" = "Împărțirea necesită Premium.";
+"quick_divide" = "Împărțire rapidă";
+"quick_divide_locked" = "Împărțire rapidă (blocat)";
+"quick_multiply" = "Înmulțire rapidă";
+"quick_practice" = "Practică rapidă";
+"range_division" = "Interval împărțire: %d–%d";
+"range_multiplication" = "Interval înmulțire: %d–%d";
+"unlock_division" = "Deblochează împărțirea";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Corect!";
+"qp_correct_title" = "Corect";
+"qp_d_prompt" = "Cât este %d ÷ %d ?";
+"qp_incorrect_title" = "Greșit";
+"qp_m_prompt" = "Cât este %d × %d ?";
+"qp_next" = "Următor";
+"qp_score" = "Scor: %d  •  %d/%d";
+"qp_score_title" = "Scor";
+"qp_wrong" = "Răspuns corect: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Realizări";
+"achievements_title" = "Realizări";
+"achv_locked" = "Blocat";
+"achv_unlocked" = "Deblocat";
+"achv_unlocked_toast" = "Realizare: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Maestru al tutorialului";
+"achv_tutorial_master_sub" = "Obține 1000 puncte în tutorial";
+
+"achv_puzzle_solver_title" = "Rezolvator de puzzle-uri";
+"achv_puzzle_solver_sub" = "Completează 100 puzzle-uri";
+
+"achv_explorer_title" = "Explorator";
+"achv_explorer_sub" = "Descoperă 50 imagini unice";
+
+"achv_speedrunner_title" = "Vitezist";
+"achv_speedrunner_sub" = "Câștigă sub 2 minute";
+
+"achv_perfectionist_title" = "Perfecționist";
+"achv_perfectionist_sub" = "Câștigă cu 0 greșeli";
+
+"achv_multiplayer_champ_title" = "Campion multiplayer";
+"achv_multiplayer_champ_sub" = "Câștigă cu ≥4 jucători";
+
+// MARK: - Paywall / Legal
+"legal" = "Legal";
+"privacy_policy" = "Politica de confidențialitate";
+"terms_of_use" = "Termeni de utilizare";
+
+"unlock_premium_cta" = "Deblochează Premium";
+"premium_unlocked_badge" = "✅ Premium deblocat";
+"restore_purchases" = "Restaurare cumpărături";
+"loading_price" = "Se încarcă preț…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Deblochează toate funcțiile și elimină limitele.";
+
+"feat_bigger_boards_title" = "Table mai mari";
+"feat_bigger_boards_detail" = "Până la 33×33";
+"feat_more_players_title" = "Mai mulți jucători";
+"feat_more_players_detail" = "Până la 32";
+"feat_timer_title" = "Temporizator tur";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 s";
+"feat_labels_title" = "Stil etichete";
+"feat_labels_detail" = "Culori și poziții";
+"feat_puzzles_title" = "Set complet puzzle-uri";
+"feat_puzzles_detail" = "Gratuit + premium";
+"feat_division_title" = "Împărțire rapidă";
+"feat_division_detail" = "Mod împărțire";
+
+"paywall_smallprint" = "Achiziție unică. Partajare familială disponibilă. Asociat Apple ID.";

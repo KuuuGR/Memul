@@ -1,0 +1,246 @@
+//
+//  Localizable.strings (Turkish - tr)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Hakkında";
+"app_title" = "Memul";
+"settings" = "Ayarlar";
+"start_game" = "Oyunu Başlat";
+"start_tagline" = "Çarp. Oyna. Öğren.";
+"tutorial" = "Öğretici";
+
+// MARK: - Board & Players
+"add_player" = "Oyuncu Ekle";
+"board_size" = "Tahta Boyutu";
+"board_size_value" = "Boyut: %d × %d";
+"player_n" = "Oyuncu %d";
+"players" = "Oyuncular";
+"remove_last_player" = "Son Oyuncuyu Sil";
+
+// MARK: - Puzzle
+"puzzle" = "Bulmaca";
+"puzzle_enable" = "Bulmacayı tahtanın altında göster";
+"puzzle_free_info" = "Ücretsiz kullanıcılar ücretsiz paketten rastgele resim görür.";
+"puzzle_premium_info" = "Premium kullanıcılar tüm paketlerden rastgele resim görür.";
+
+// MARK: - Difficulty
+"difficulty" = "Zorluk";
+"difficulty_easy" = "Kolay";
+"difficulty_hard" = "Zor";
+"difficulty_mode" = "Mod";
+"difficulty_normal" = "Normal";
+"difficulty_premium_hint" = "Ücretsiz: sadece kolay. Normal/Zor için Premium gerekir.";
+
+// MARK: - Index Labels
+"bottom_color" = "Alt renk";
+"index_customize" = "Etiketleri özelleştir";
+"index_labels" = "Etiketler";
+"index_labels_premium_hint" = "Etiket renkleri için Premium gerekir.";
+"left_color" = "Sol renk";
+"make_labels_transparent" = "Etiketleri şeffaf yap";
+"reset_label_colors" = "Renkleri sıfırla";
+"right_color" = "Sağ renk";
+"show_bottom_labels" = "Alt etiketleri göster";
+"show_left_labels" = "Sol etiketleri göster";
+"show_right_labels" = "Sağ etiketleri göster";
+"show_top_labels" = "Üst etiketleri göster";
+"top_color" = "Üst renk";
+
+// MARK: - Header & UX
+"header_options" = "Başlık";
+"show_selected_coordinates_button" = "Seçili koordinat butonu";
+
+// MARK: - Turn Timer
+"turn_30s" = "30sn";
+"turn_60s" = "60sn";
+"turn_120s" = "120sn";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Ücretsiz sürüm: sabit 30sn";
+"turn_timer_per_turn" = "Tur başına süre";
+"turn_timer_title" = "Zamanlayıcı";
+
+// MARK: - Premium Access
+"free_limitations" = "Ücretsiz: max %d×%d tahta, %d oyuncu.";
+"premium_limitations" = "Premium: %dx%d tahta ve %d oyuncuya kadar.";
+"premium_access" = "Premium Erişim";
+"unlock_premium" = "Premium Aç";
+
+// MARK: - General UI
+"close" = "Kapat";
+"end_game" = "Oyunu Bitir";
+"find_cell_with" = "%d olan hücreyi bul";
+"new_game" = "Yeni Oyun";
+"player_score" = "%@: %d";
+"results_title" = "Sonuçlar";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Ayarlar";
+"tap_to_close" = "Kapatmak için dokun";
+"total_points" = "Toplam Puan";
+"turn_title" = "%@'ın sırası";
+"winner_announcement" = "🏆 Kazanan: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Seçilen satır %d, sütun %d";
+"gv_submit" = "Onayla";
+"gv_submit_hint" = "Önce hücre seç";
+"gv_submit_sel" = "Onayla (%d, %d)";
+"gv_submit_sel_ax" = "Seçili koordinatı onayla %d, %d";
+"gv_submit_prefix" = "Onayla (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Tekrar dokun veya Onayla'ya bas";
+"gv_target" = "Hedef: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Hakkında";
+"ab_section_about_app" = "Memul Hakkında";
+"ab_app_name" = "Memul — Çarpma Bulmaca Oyunu";
+"ab_version" = "Sürüm: %@";
+"ab_developer" = "Geliştirici: Grzegorz Kulesza";
+"ab_section_purpose" = "Amaç";
+"ab_purpose_accessible" = "İlkokul için kolay, ileri seviye için de yararlı.";
+"ab_purpose_carries_forward" = "Diziler, satır-sütun ve koordinat düşünme becerisi kazandırır.";
+"ab_purpose_commutativity" = "Çarpmanın değişme özelliğini sezgisel öğretir.";
+"ab_purpose_learn_tables" = "Çarpım tablosunu öğrenmeyi kolaylaştırır.";
+"ab_section_features" = "Özellikler";
+"ab_feature_customization" = "Boyut, zorluk, zaman, etiket, bulmaca seçenekleri.";
+"ab_feature_multiplayer" = "1–16 oyunculu sıra tabanlı çoklu oyun.";
+"ab_feature_puzzle_reveal" = "Doğru cevaplarla gizli resim açılır.";
+"ab_feature_quick_practice" = "Hızlı pratik: çarpma ve (Premium) bölme.";
+"ab_feature_tutorial" = "Etkileşimli öğretici: satır, sütun, kesişim.";
+"ab_section_author" = "Yazar";
+"ab_author_line1" = "Grzegorz Kulesza tarafından yaratıldı.";
+"ab_author_line2" = "Deneyimi Memul’un temelini oluşturdu: diziler ve koordinatlar.";
+"ab_section_support" = "Destek";
+
+// MARK: - Tutorial
+"tutorial_title" = "Öğretici";
+"tutorial_cols_card_body" = "Dikey sütunları hayal et. Şimdi dene! Alttaki butonlardan birine bas veya üstte sütun numarasına dokun.";
+"tutorial_cols_card_title" = "Sütunları öğren";
+"tutorial_cols_sub" = "Bir sütunu dikey izle.";
+"tutorial_col_button" = "Süt %d";
+"tutorial_col_label" = "Sütun: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Kırmızı satır ve mavi sütun seçtin. Satrançtaki kale (rook) gibi ikisini kesiştir. Burası oyunun amacı.";
+"tutorial_framed_card_title" = "Sihirli Nokta";
+"tutorial_framed_title" = "Kesişim - Bölüm 2";
+"tutorial_framed_sub" = "Satır ve sütunun kesiştiği yere dokun.";
+"tutorial_feedback_great" = "Harika!";
+"tutorial_feedback_not_quite" = "Tam değil";
+"tutorial_intersect_card_body" = "Satır × sütun = kesişim hücresi.";
+"tutorial_intersect_card_title" = "Oyunda kesişimler";
+"tutorial_intersect_sub" = "Satır × sütun.";
+"tutorial_intersect_title" = "Kesişim - Bölüm 1";
+"tutorial_next_quest" = "Sonraki Görev";
+"tutorial_practice_callout" = "Sonsuz Mücadele";
+"tutorial_practice_hint" = "Verilen satır ve sütuna göre hücreyi bul.";
+"tutorial_practice_sub" = "Çapraz lazerlerin kesiştiği yere dokun.";
+"tutorial_practice_title" = "Kesişim - Bölüm 3";
+"tutorial_quest_tap_pair" = "Dokun (%d ; %d)";
+"tutorial_quest_title" = "Görev:";
+"tutorial_row_button" = "Sat %d";
+"tutorial_row_label" = "Satır: %d";
+"tutorial_rows_card_body" = "Yana akan lav gibi satırları düşün. Hadi dene!";
+"tutorial_rows_card_title" = "Satırları öğren";
+"tutorial_rows_sub" = "Bir satırı yatay izle.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Satırlar";
+"tutorial_cols_title" = "Sütunlar";
+
+"ab_purpose_multiplication" = "Çarpım tablosunu eğlenceli bulmacayla öğren.";
+"ab_purpose_turn_based" = "1–16 oyunculu sıra tabanlı oyun.";
+"ab_purpose_fun_learning" = "Öğrenirken resimleri aç.";
+
+// MARK: - Tutorial Buttons
+"back" = "Geri";
+"cancel" = "İptal";
+"next" = "İleri";
+"quit" = "Bitir";
+"repeat" = "Tekrar";
+"skip_to_practice" = "Pratiğe Geç";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Öğreticiden çıkıyorsun. İstediğin zaman dönebilirsin.";
+"tutorial_quit_title" = "Emin misin?";
+
+// MARK: - Quick Practice
+"division_note" = "Bölme tam sayı: (sonuç × bölen) ÷ bölen = sonuç.";
+"division_premium_hint" = "Bölme için Premium gerekir.";
+"quick_divide" = "Hızlı Bölme";
+"quick_divide_locked" = "Hızlı Bölme (Kilitli)";
+"quick_multiply" = "Hızlı Çarpma";
+"quick_practice" = "Hızlı Pratik";
+"range_division" = "Bölme aralığı: %d–%d";
+"range_multiplication" = "Çarpma aralığı: %d–%d";
+"unlock_division" = "Bölmeyi Aç";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Doğru!";
+"qp_correct_title" = "Doğru";
+"qp_d_prompt" = "%d ÷ %d = ?";
+"qp_incorrect_title" = "Yanlış";
+"qp_m_prompt" = "%d × %d = ?";
+"qp_next" = "İleri";
+"qp_score" = "Puan: %d  •  %d/%d";
+"qp_score_title" = "Puan";
+"qp_wrong" = "Doğru cevap: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Başarılar";
+"achievements_title" = "Başarılar";
+"achv_locked" = "Kilitli";
+"achv_unlocked" = "Açıldı";
+"achv_unlocked_toast" = "Başarı açıldı: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Öğretici Ustası";
+"achv_tutorial_master_sub" = "1000 öğretici puanı kazan";
+
+"achv_puzzle_solver_title" = "Bulmaca Çözücü";
+"achv_puzzle_solver_sub" = "100 bulmaca tamamla";
+
+"achv_explorer_title" = "Kaşif";
+"achv_explorer_sub" = "50 farklı resim keşfet";
+
+"achv_speedrunner_title" = "Hızlı Bitirici";
+"achv_speedrunner_sub" = "2 dakikanın altında kazan";
+
+"achv_perfectionist_title" = "Mükemmeliyetçi";
+"achv_perfectionist_sub" = "Hatasız kazan";
+
+"achv_multiplayer_champ_title" = "Çoklu Oyuncu Şampiyonu";
+"achv_multiplayer_champ_sub" = "≥4 oyuncuyla kazan";
+
+// MARK: - Paywall / Legal
+"legal" = "Yasal";
+"privacy_policy" = "Gizlilik Politikası";
+"terms_of_use" = "Kullanım Şartları";
+
+"unlock_premium_cta" = "Premium Aç";
+"premium_unlocked_badge" = "✅ Premium Açıldı";
+"restore_purchases" = "Satın Alımları Geri Yükle";
+"loading_price" = "Fiyat yükleniyor…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Tüm özellikleri aç, sınırları kaldır.";
+
+"feat_bigger_boards_title" = "Daha büyük tahtalar";
+"feat_bigger_boards_detail" = "33×33’e kadar";
+"feat_more_players_title" = "Daha çok oyuncu";
+"feat_more_players_detail" = "32’ye kadar";
+"feat_timer_title" = "Zamanlayıcı";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 sn";
+"feat_labels_title" = "Etiket stili";
+"feat_labels_detail" = "Renkler & konumlar";
+"feat_puzzles_title" = "Tam bulmaca seti";
+"feat_puzzles_detail" = "Ücretsiz + premium";
+"feat_division_title" = "Hızlı Bölme";
+"feat_division_detail" = "Bölme modu aç";
+
+"paywall_smallprint" = "Tek seferlik satın alma. Aile Paylaşımı desteklenir. Apple ID’nize bağlıdır.";

@@ -1,0 +1,245 @@
+//
+//  Localizable.strings (Dutch - nl)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Over";
+"app_title" = "Memul";
+"settings" = "Instellingen";
+"start_game" = "Start spel";
+"start_tagline" = "Vermenigvuldig. Speel. Leer.";
+"tutorial" = "Uitleg";
+
+// MARK: - Board & Players
+"add_player" = "Speler toevoegen";
+"board_size" = "Bordgrootte";
+"board_size_value" = "Grootte: %d × %d";
+"player_n" = "Speler %d";
+"players" = "Spelers";
+"remove_last_player" = "Verwijder laatste speler";
+
+// MARK: - Puzzle
+"puzzle" = "Plaatje";
+"puzzle_enable" = "Toon plaatje onder het bord";
+"puzzle_free_info" = "Gratis: willekeurig plaatje uit gratis pakket.";
+"puzzle_premium_info" = "Premium: willekeurig plaatje uit alle pakketten.";
+
+// MARK: - Difficulty
+"difficulty" = "Moeilijkheid";
+"difficulty_easy" = "Makkelijk";
+"difficulty_hard" = "Moeilijk";
+"difficulty_mode" = "Modus";
+"difficulty_normal" = "Normaal";
+"difficulty_premium_hint" = "Gratis: alleen Makkelijk. Normaal/Moeilijk vereisen Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Onderkleur";
+"index_customize" = "Labels aanpassen";
+"index_labels" = "Indexlabels";
+"index_labels_premium_hint" = "Aanpassen vereist Premium.";
+"left_color" = "Linkerkleur";
+"make_labels_transparent" = "Labels transparant maken";
+"reset_label_colors" = "Herstel kleuren";
+"right_color" = "Rechterkleur";
+"show_bottom_labels" = "Toon onder";
+"show_left_labels" = "Toon links";
+"show_right_labels" = "Toon rechts";
+"show_top_labels" = "Toon boven";
+"top_color" = "Bovenkleur";
+
+// MARK: - Header & UX
+"header_options" = "Koptekst";
+"show_selected_coordinates_button" = "Toon knop met coördinaten";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Gratis: altijd 30s per beurt.";
+"turn_timer_per_turn" = "Limiet per beurt";
+"turn_timer_title" = "Beurt-timer";
+
+// MARK: - Premium Access
+"free_limitations" = "Gratis: max %d×%d bord, %d spelers.";
+"premium_limitations" = "Premium: alles ontgrendeld — tot %dx%d en %d spelers.";
+"premium_access" = "Premium-toegang";
+"unlock_premium" = "Ontgrendel Premium";
+
+// MARK: - General UI
+"close" = "Sluiten";
+"end_game" = "Beëindig spel";
+"find_cell_with" = "Zoek vak met %d";
+"new_game" = "Nieuw spel";
+"player_score" = "%@: %d";
+"results_title" = "Resultaten";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Instellingen";
+"tap_to_close" = "Tik om te sluiten";
+"total_points" = "Totaalpunten";
+"turn_title" = "Beurt van %@";
+"winner_announcement" = "🏆 Winnaar: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Rij %d, kolom %d geselecteerd";
+"gv_submit" = "Bevestigen";
+"gv_submit_hint" = "Selecteer eerst een vak";
+"gv_submit_sel" = "Bevestig (%d, %d)";
+"gv_submit_sel_ax" = "Bevestig coördinaten %d, %d";
+"gv_submit_prefix" = "Bevestig (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Tik opnieuw of druk Bevestigen";
+"gv_target" = "Doel: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Over";
+"ab_section_about_app" = "Over Memul";
+"ab_app_name" = "Memul — vermenigvuldigingspuzzel";
+"ab_version" = "Versie: %@";
+"ab_developer" = "Ontwikkelaar: Grzegorz Kulesza";
+"ab_section_purpose" = "Doel";
+"ab_purpose_accessible" = "Geschikt voor basisschool en verder.";
+"ab_purpose_carries_forward" = "Oefent arrays, rijen–kolommen en coördinaten-denken.";
+"ab_purpose_commutativity" = "Helpt commutativiteit begrijpen.";
+"ab_purpose_learn_tables" = "Maakt tafels leren eenvoudiger.";
+"ab_section_features" = "Functies";
+"ab_feature_customization" = "Aanpassen: bordgrootte, moeilijkheid, timers, labels, plaatjes.";
+"ab_feature_multiplayer" = "Beurt-gebaseerde multiplayer (1–16 spelers).";
+"ab_feature_puzzle_reveal" = "Verborgen plaatje komt stukje bij beetje tevoorschijn.";
+"ab_feature_quick_practice" = "Snelle oefening: vermenigvuldiging en (Premium) deling.";
+"ab_feature_tutorial" = "Interactieve uitleg: rijen, kolommen en kruispunten.";
+"ab_section_author" = "Auteur";
+"ab_author_line1" = "Gemaakt door Grzegorz Kulesza met brede achtergrond in techniek, IT, fysica, geneeskunde en onderwijs.";
+"ab_author_line2" = "Dat inspireerde Memul: arrays, coördinaten en probleemoplossing.";
+"ab_section_support" = "Support";
+
+// MARK: - Tutorial
+"tutorial_title" = "Uitleg";
+"tutorial_cols_card_body" = "Stel je ijskegels voor die recht naar beneden vallen. Dat is een kolom. Probeer! Tik op een knop hieronder of een kolomnummer.";
+"tutorial_cols_card_title" = "Oefen kolommen";
+"tutorial_cols_sub" = "Bekijk de verticale lijn.";
+"tutorial_col_button" = "Kol %d"; // ≤6 tekens
+"tutorial_col_label" = "Kolom: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Je hebt een rode rij en een blauwe kolom gekozen. Vind het kruispunt. Zoals een toren in schaken die langs rij en kolom beweegt.";
+"tutorial_framed_card_title" = "Magisch punt";
+"tutorial_framed_title" = "Kruis - deel 2";
+"tutorial_framed_sub" = "Tik waar rij en kolom elkaar kruisen.";
+"tutorial_feedback_great" = "Goed zo!";
+"tutorial_feedback_not_quite" = "Niet helemaal";
+"tutorial_intersect_card_body" = "Kruis: rij × kolom. Je moet een specifiek vak vinden.";
+"tutorial_intersect_card_title" = "Kruispunten in spel";
+"tutorial_intersect_sub" = "Rij × kolom.";
+"tutorial_intersect_title" = "Kruis - deel 1";
+"tutorial_next_quest" = "Volgende";
+"tutorial_practice_callout" = "Eindeloze uitdaging";
+"tutorial_practice_hint" = "Vind kruispunt van rij en kolom.";
+"tutorial_practice_sub" = "Tik waar lijnen elkaar kruisen.";
+"tutorial_practice_title" = "Kruis - deel 3";
+"tutorial_quest_tap_pair" = "Tik (%d ; %d)";
+"tutorial_quest_title" = "Opdracht:";
+"tutorial_row_button" = "R %d"; // ≤6 tekens
+"tutorial_row_label" = "Rij: %d";
+"tutorial_rows_card_body" = "Stel je lava voor die horizontaal stroomt. Dat is een rij. Probeer! Tik op een knop hieronder of een rijnummer.";
+"tutorial_rows_card_title" = "Oefen rijen";
+"tutorial_rows_sub" = "Bekijk de horizontale lijn.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Rijen";
+"tutorial_cols_title" = "Kolommen";
+"ab_purpose_multiplication" = "Oefen tafels met een leuk puzzelbord.";
+"ab_purpose_turn_based" = "Beurtspel voor 1–16 spelers.";
+"ab_purpose_fun_learning" = "Leer en onthul plaatjes.";
+
+// MARK: - Tutorial Buttons
+"back" = "Terug";
+"cancel" = "Annuleren";
+"next" = "Volgende";
+"quit" = "Afsluiten";
+"repeat" = "Herhalen";
+"skip_to_practice" = "Sla over naar oefening";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Je verlaat de uitleg. Je kunt altijd terugkomen.";
+"tutorial_quit_title" = "Weet je het zeker?";
+
+// MARK: - Quick Practice
+"division_note" = "Deling alleen met gehele getallen: (quotiënt × deler) ÷ deler = quotiënt.";
+"division_premium_hint" = "Deling vereist Premium.";
+"quick_divide" = "Snelle deling";
+"quick_divide_locked" = "Snelle deling (vergrendeld)";
+"quick_multiply" = "Snelle vermenigvuldiging";
+"quick_practice" = "Snelle oefening";
+"range_division" = "Bereik deling: %d–%d";
+"range_multiplication" = "Bereik vermenigvuldiging: %d–%d";
+"unlock_division" = "Ontgrendel deling";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Goed!";
+"qp_correct_title" = "Goed";
+"qp_d_prompt" = "Wat is %d ÷ %d ?";
+"qp_incorrect_title" = "Fout";
+"qp_m_prompt" = "Wat is %d × %d ?";
+"qp_next" = "Volgende";
+"qp_score" = "Score: %d  •  %d/%d";
+"qp_score_title" = "Score";
+"qp_wrong" = "Correct antwoord: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Prestaties";
+"achievements_title" = "Prestaties";
+"achv_locked" = "Vergrendeld";
+"achv_unlocked" = "Ontgrendeld";
+"achv_unlocked_toast" = "Prestatie behaald: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Uitlegmeester";
+"achv_tutorial_master_sub" = "Verdien 1000 uitlegpunten";
+
+"achv_puzzle_solver_title" = "Puzzeloplosser";
+"achv_puzzle_solver_sub" = "Voltooi 100 puzzels";
+
+"achv_explorer_title" = "Ontdekker";
+"achv_explorer_sub" = "Ontdek 50 unieke plaatjes";
+
+"achv_speedrunner_title" = "Speedrunner";
+"achv_speedrunner_sub" = "Win een spel in minder dan 2 min";
+
+"achv_perfectionist_title" = "Perfectionist";
+"achv_perfectionist_sub" = "Win zonder fouten";
+
+"achv_multiplayer_champ_title" = "Multiplayer-kampioen";
+"achv_multiplayer_champ_sub" = "Win met ≥4 spelers";
+
+// MARK: - Paywall / Legal
+"legal" = "Juridisch";
+"privacy_policy" = "Privacybeleid";
+"terms_of_use" = "Gebruiksvoorwaarden";
+
+"unlock_premium_cta" = "Ontgrendel Premium";
+"premium_unlocked_badge" = "✅ Premium ontgrendeld";
+"restore_purchases" = "Herstel aankopen";
+"loading_price" = "Prijs laden…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Ontgrendel alle functies en verwijder limieten.";
+
+"feat_bigger_boards_title" = "Grotere borden";
+"feat_bigger_boards_detail" = "Tot 33×33";
+"feat_more_players_title" = "Meer spelers";
+"feat_more_players_detail" = "Tot 32 spelers";
+"feat_timer_title" = "Beurt-timer";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 sec";
+"feat_labels_title" = "Labelstijl";
+"feat_labels_detail" = "Kleuren & posities";
+"feat_puzzles_title" = "Volledige set";
+"feat_puzzles_detail" = "Gratis + Premium";
+"feat_division_title" = "Snelle deling";
+"feat_division_detail" = "Delingsmodus";
+
+"paywall_smallprint" = "Eenmalige aankoop. Delen met gezin ondersteund. Gekoppeld aan je Apple ID.";

@@ -1,0 +1,245 @@
+//
+//  Localizable.strings (Traditional Chinese - Hong Kong)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "關於";
+"app_title" = "Memul";
+"settings" = "設定";
+"start_game" = "開始遊戲";
+"start_tagline" = "乘法．遊戲．學習";
+"tutorial" = "教學";
+
+// MARK: - Board & Players
+"add_player" = "新增玩家";
+"board_size" = "棋盤大小";
+"board_size_value" = "大小：%d × %d";
+"player_n" = "玩家 %d";
+"players" = "玩家";
+"remove_last_player" = "移除最後一位";
+
+// MARK: - Puzzle
+"puzzle" = "圖片";
+"puzzle_enable" = "在棋盤下顯示圖片";
+"puzzle_free_info" = "免費用戶會看到隨機圖片（免費包）。";
+"puzzle_premium_info" = "Premium 用戶會看到隨機圖片（免費 + Premium 包）。";
+
+// MARK: - Difficulty
+"difficulty" = "難度";
+"difficulty_easy" = "容易";
+"difficulty_hard" = "困難";
+"difficulty_mode" = "模式";
+"difficulty_normal" = "中等";
+"difficulty_premium_hint" = "免費版：只可選容易。中等/困難需要 Premium。";
+
+// MARK: - Index Labels
+"bottom_color" = "下方顏色";
+"index_customize" = "自訂標籤";
+"index_labels" = "索引標籤";
+"index_labels_premium_hint" = "自訂顏色需要 Premium。";
+"left_color" = "左方顏色";
+"make_labels_transparent" = "標籤透明";
+"reset_label_colors" = "重設顏色";
+"right_color" = "右方顏色";
+"show_bottom_labels" = "顯示下方";
+"show_left_labels" = "顯示左方";
+"show_right_labels" = "顯示右方";
+"show_top_labels" = "顯示上方";
+"top_color" = "上方顏色";
+
+// MARK: - Header & UX
+"header_options" = "標題";
+"show_selected_coordinates_button" = "顯示座標按鈕";
+
+// MARK: - Turn Timer
+"turn_30s" = "30秒";
+"turn_60s" = "60秒";
+"turn_120s" = "120秒";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = "（%@）";
+"turn_seconds_suffix" = "（%ds）";
+"turn_timer_free_hint" = "免費版：每回合固定 30 秒。";
+"turn_timer_per_turn" = "每回合限制";
+"turn_timer_title" = "回合計時器";
+
+// MARK: - Premium Access
+"free_limitations" = "免費版：最多 %d×%d，%d 位玩家。";
+"premium_limitations" = "Premium 功能全開 — 最多 %dx%d，%d 位玩家。";
+"premium_access" = "Premium 存取";
+"unlock_premium" = "解鎖 Premium";
+
+// MARK: - General UI
+"close" = "關閉";
+"end_game" = "結束";
+"find_cell_with" = "找出含有 %d 的格子";
+"new_game" = "新遊戲";
+"player_score" = "%@: %d";
+"results_title" = "結果";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "設定";
+"tap_to_close" = "輕觸以關閉";
+"total_points" = "總分";
+"turn_title" = "%@ 的回合";
+"winner_announcement" = "🏆 勝利者：%@！";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "已選：第 %d 列，第 %d 欄";
+"gv_submit" = "提交";
+"gv_submit_hint" = "請先選擇格子";
+"gv_submit_sel" = "提交 (%d, %d)";
+"gv_submit_sel_ax" = "提交座標 %d, %d";
+"gv_submit_prefix" = "提交 (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "再次點擊或按提交";
+"gv_target" = "目標：%d";
+
+// MARK: - About
+"ab_navigation_title" = "關於";
+"ab_section_about_app" = "關於 Memul";
+"ab_app_name" = "Memul — 乘法拼圖遊戲";
+"ab_version" = "版本：%@";
+"ab_developer" = "開發者：Grzegorz Kulesza";
+"ab_section_purpose" = "目的";
+"ab_purpose_accessible" = "適合小學生，也能長遠受用。";
+"ab_purpose_carries_forward" = "培養技能：陣列表示法、列–欄位置、笛卡兒思維。";
+"ab_purpose_commutativity" = "幫助直觀理解乘法交換律。";
+"ab_purpose_learn_tables" = "令學習乘法表更簡單 — 適合兒童與成人。";
+"ab_section_features" = "功能";
+"ab_feature_customization" = "豐富設定：棋盤大小、難度（容易/中等/困難）、計時器、標籤選項、圖片切換、座標提示。";
+"ab_feature_multiplayer" = "回合制多人遊戲（1–16 位）保持趣味性。";
+"ab_feature_puzzle_reveal" = "正確回答時逐步顯示隱藏圖片。";
+"ab_feature_quick_practice" = "快速練習模式：乘法和（Premium）除法。";
+"ab_feature_tutorial" = "互動教學：列、欄和交叉點。";
+"ab_section_author" = "作者";
+"ab_author_line1" = "由 Grzegorz Kulesza 創作（電機、資訊、物理、醫學、教育背景）。";
+"ab_author_line2" = "這些經驗塑造了 Memul：陣列、座標、直觀解題。";
+"ab_section_support" = "支援";
+
+// MARK: - Tutorial
+"tutorial_title" = "教學";
+"tutorial_cols_card_body" = "想像冰柱垂直落下，這就是垂直掃描。試試吧！點擊下面按鈕或上方欄號。";
+"tutorial_cols_card_title" = "練習欄";
+"tutorial_cols_sub" = "觀察垂直線掃過一欄。";
+"tutorial_col_button" = "欄 %d"; // ≤6
+"tutorial_col_label" = "欄：%d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "你選了一列紅色和一欄藍色。找出它們交叉的位置。想像西洋棋的車在列和欄上自由移動。那就是遊戲目標。";
+"tutorial_framed_card_title" = "魔法點";
+"tutorial_framed_title" = "交叉點 - 第2部分";
+"tutorial_framed_sub" = "點擊列與欄交會處。";
+"tutorial_feedback_great" = "很好！";
+"tutorial_feedback_not_quite" = "差一點";
+"tutorial_intersect_card_body" = "列與欄交會處：列 × 欄。你要找到指定的格子。";
+"tutorial_intersect_card_title" = "遊戲中的交叉點";
+"tutorial_intersect_sub" = "列與欄交會：列 × 欄。";
+"tutorial_intersect_title" = "交叉點 - 第1部分";
+"tutorial_next_quest" = "下一步";
+"tutorial_practice_callout" = "無限挑戰";
+"tutorial_practice_hint" = "找出指定列與欄的交叉格。";
+"tutorial_practice_sub" = "點擊激光交叉的格子。";
+"tutorial_practice_title" = "交叉點 - 第3部分";
+"tutorial_quest_tap_pair" = "點擊 (%d ; %d)";
+"tutorial_quest_title" = "任務：";
+"tutorial_row_button" = "列 %d"; // ≤6
+"tutorial_row_label" = "列：%d";
+"tutorial_rows_card_body" = "想像熔岩水平流動，這就是水平掃描。試試吧！點擊下面按鈕或上方列號。";
+"tutorial_rows_card_title" = "練習列";
+"tutorial_rows_sub" = "觀察水平線掃過一列。";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "列";
+"tutorial_cols_title" = "欄";
+"ab_purpose_multiplication" = "在拼圖棋盤上練習乘法表。";
+"ab_purpose_turn_based" = "回合制玩法（1–16 位玩家）。";
+"ab_purpose_fun_learning" = "邊學邊揭開圖片。";
+
+// MARK: - Tutorial Buttons
+"back" = "返回";
+"cancel" = "取消";
+"next" = "下一步";
+"quit" = "完成";
+"repeat" = "重複";
+"skip_to_practice" = "跳到練習";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "你將退出教學，可隨時回來。";
+"tutorial_quit_title" = "確定嗎？";
+
+// MARK: - Quick Practice
+"division_note" = "除法只用整數結果：（商 × 除數）÷ 除數 = 商。";
+"division_premium_hint" = "解鎖除法需要 Premium。";
+"quick_divide" = "快速除法";
+"quick_divide_locked" = "快速除法（鎖定）";
+"quick_multiply" = "快速乘法";
+"quick_practice" = "快速練習";
+"range_division" = "除法範圍：%d–%d";
+"range_multiplication" = "乘法範圍：%d–%d";
+"unlock_division" = "解鎖快速除法";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "正確！";
+"qp_correct_title" = "正確";
+"qp_d_prompt" = "%d ÷ %d 等於多少？";
+"qp_incorrect_title" = "錯誤";
+"qp_m_prompt" = "%d × %d 等於多少？";
+"qp_next" = "下一題";
+"qp_score" = "分數：%d  •  %d/%d";
+"qp_score_title" = "分數";
+"qp_wrong" = "不對。正確答案：%d";
+
+// MARK: - Achievements (UI)
+"achievements" = "成就";
+"achievements_title" = "成就";
+"achv_locked" = "鎖定";
+"achv_unlocked" = "已解鎖";
+"achv_unlocked_toast" = "成就已解鎖：%@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "教學大師";
+"achv_tutorial_master_sub" = "獲得 1000 教學分";
+
+"achv_puzzle_solver_title" = "圖片高手";
+"achv_puzzle_solver_sub" = "完成 100 張圖片";
+
+"achv_explorer_title" = "探索者";
+"achv_explorer_sub" = "發現 50 張圖片";
+
+"achv_speedrunner_title" = "速通玩家";
+"achv_speedrunner_sub" = "2 分鐘內完成一局";
+
+"achv_perfectionist_title" = "完美主義者";
+"achv_perfectionist_sub" = "零錯誤完成一局";
+
+"achv_multiplayer_champ_title" = "多人冠軍";
+"achv_multiplayer_champ_sub" = "≥4 人局中獲勝";
+
+// MARK: - Paywall / Legal
+"legal" = "法律資訊";
+"privacy_policy" = "私隱政策";
+"terms_of_use" = "使用條款";
+
+"unlock_premium_cta" = "解鎖 Premium";
+"premium_unlocked_badge" = "✅ Premium 已解鎖";
+"restore_purchases" = "恢復購買";
+"loading_price" = "載入價格…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "解鎖全部功能並移除限制。";
+
+"feat_bigger_boards_title" = "更大棋盤";
+"feat_bigger_boards_detail" = "最多 33×33";
+"feat_more_players_title" = "更多玩家";
+"feat_more_players_detail" = "最多 32 位";
+"feat_timer_title" = "回合計時器";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 秒";
+"feat_labels_title" = "標籤樣式";
+"feat_labels_detail" = "顏色與位置";
+"feat_puzzles_title" = "完整圖片集";
+"feat_puzzles_detail" = "免費 + Premium 圖片";
+"feat_division_title" = "快速除法";
+"feat_division_detail" = "解鎖除法模式";
+
+"paywall_smallprint" = "一次性購買。支援家庭共享。購買連結至你的 Apple ID。";

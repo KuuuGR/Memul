@@ -1,0 +1,246 @@
+//
+//  Localizable.strings (Norwegian Bokmål - nb)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Om";
+"app_title" = "Memul";
+"settings" = "Innstillinger";
+"start_game" = "Start spill";
+"start_tagline" = "Gange. Spill. Lær.";
+"tutorial" = "Veiledning";
+
+// MARK: - Board & Players
+"add_player" = "Legg til spiller";
+"board_size" = "Brettstørrelse";
+"board_size_value" = "Størrelse: %d × %d";
+"player_n" = "Spiller %d";
+"players" = "Spillere";
+"remove_last_player" = "Fjern siste spiller";
+
+// MARK: - Puzzle
+"puzzle" = "Puslespill";
+"puzzle_enable" = "Vis puslespillbilde under brettet";
+"puzzle_free_info" = "Gratis: tilfeldig bilde fra gratispakken.";
+"puzzle_premium_info" = "Premium: tilfeldig bilde fra alle pakker.";
+
+// MARK: - Difficulty
+"difficulty" = "Vanskelighetsgrad";
+"difficulty_easy" = "Lett";
+"difficulty_hard" = "Vanskelig";
+"difficulty_mode" = "Modus";
+"difficulty_normal" = "Normal";
+"difficulty_premium_hint" = "Gratis: bare Lett. Normal/Vanskelig krever Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Farge nederst";
+"index_customize" = "Tilpass etiketter";
+"index_labels" = "Indeksetiketter";
+"index_labels_premium_hint" = "Fargetilpasning krever Premium.";
+"left_color" = "Farge venstre";
+"make_labels_transparent" = "Gjør etiketter gjennomsiktige";
+"reset_label_colors" = "Tilbakestill farger";
+"right_color" = "Farge høyre";
+"show_bottom_labels" = "Vis nederst";
+"show_left_labels" = "Vis venstre";
+"show_right_labels" = "Vis høyre";
+"show_top_labels" = "Vis øverst";
+"top_color" = "Farge øverst";
+
+// MARK: - Header & UX
+"header_options" = "Topptekst";
+"show_selected_coordinates_button" = "Vis valgt koordinat-knapp";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Gratis: fast 30s per tur.";
+"turn_timer_per_turn" = "Per-tur grense";
+"turn_timer_title" = "Turtimer";
+
+// MARK: - Premium Access
+"free_limitations" = "Gratis: maks %d×%d, %d spillere.";
+"premium_limitations" = "Premium: opptil %dx%d, %d spillere.";
+"premium_access" = "Premium-tilgang";
+"unlock_premium" = "Lås opp Premium";
+
+// MARK: - General UI
+"close" = "Lukk";
+"end_game" = "Avslutt spill";
+"find_cell_with" = "Finn rute med %d";
+"new_game" = "Nytt spill";
+"player_score" = "%@: %d";
+"results_title" = "Resultater";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Innstillinger";
+"tap_to_close" = "Trykk for å lukke";
+"total_points" = "Poengsum";
+"turn_title" = "%@ sin tur";
+"winner_announcement" = "🏆 Vinner: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Valgt rad %d, kolonne %d";
+"gv_submit" = "Send inn";
+"gv_submit_hint" = "Velg en rute først";
+"gv_submit_sel" = "Send inn (%d, %d)";
+"gv_submit_sel_ax" = "Send inn koordinat %d, %d";
+"gv_submit_prefix" = "Send inn (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Trykk igjen eller Send inn";
+"gv_target" = "Mål: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Om";
+"ab_section_about_app" = "Om Memul";
+"ab_app_name" = "Memul — Multiplikasjonspuslespill";
+"ab_version" = "Versjon: %@";
+"ab_developer" = "Utvikler: Grzegorz Kulesza";
+"ab_section_purpose" = "Formål";
+"ab_purpose_accessible" = "Tilgjengelig for barn, nyttig for alle aldre.";
+"ab_purpose_carries_forward" = "Bygger ferdigheter i rader, kolonner og koordinater.";
+"ab_purpose_commutativity" = "Hjelper å forstå kommutativitet i multiplikasjon.";
+"ab_purpose_learn_tables" = "Gjør gange-tabellen enklere å lære.";
+"ab_section_features" = "Funksjoner";
+"ab_feature_customization" = "Brettstørrelse, vanskelighet, timere, etiketter, puslespill.";
+"ab_feature_multiplayer" = "Tur-basert flerspiller (1–16).";
+"ab_feature_puzzle_reveal" = "Skjult bilde vises gradvis.";
+"ab_feature_quick_practice" = "Hurtigøvelser i gange og (Premium) deling.";
+"ab_feature_tutorial" = "Interaktiv veiledning: rader, kolonner, krysspunkt.";
+"ab_section_author" = "Forfatter";
+"ab_author_line1" = "Laget av Grzegorz Kulesza, med tverrfaglig bakgrunn.";
+"ab_author_line2" = "Memul fokuserer på arrays, koordinater og problemløsning.";
+"ab_section_support" = "Støtte";
+
+// MARK: - Tutorial
+"tutorial_title" = "Veiledning";
+"tutorial_cols_card_body" = "Tenk på istapper som faller rett ned. Trykk en knapp eller kolonnenummer.";
+"tutorial_cols_card_title" = "Øv på kolonner";
+"tutorial_cols_sub" = "Se den vertikale linjen.";
+"tutorial_col_button" = "Kol %d"; // ≤6
+"tutorial_col_label" = "Kolonne: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Du valgte en rad og en kolonne. Finn krysset, som et tårn i sjakk.";
+"tutorial_framed_card_title" = "Magisk punkt";
+"tutorial_framed_title" = "Krysspunkt - Del 2";
+"tutorial_framed_sub" = "Trykk der rad møter kolonne.";
+"tutorial_feedback_great" = "Bra!";
+"tutorial_feedback_not_quite" = "Ikke helt";
+"tutorial_intersect_card_body" = "Rad × Kolonne = kryss. Finn riktig rute.";
+"tutorial_intersect_card_title" = "Kryss i spillet";
+"tutorial_intersect_sub" = "Rad × Kolonne";
+"tutorial_intersect_title" = "Krysspunkt - Del 1";
+"tutorial_next_quest" = "Neste oppgave";
+"tutorial_practice_callout" = "Uendelig utfordring";
+"tutorial_practice_hint" = "Finn ruten for gitt rad og kolonne.";
+"tutorial_practice_sub" = "Trykk der laserne krysser.";
+"tutorial_practice_title" = "Krysspunkt - Del 3";
+"tutorial_quest_tap_pair" = "Trykk (%d ; %d)";
+"tutorial_quest_title" = "Oppgave:";
+"tutorial_row_button" = "Rad %d"; // ≤6
+"tutorial_row_label" = "Rad: %d";
+"tutorial_rows_card_body" = "Tenk på lava som flyter sidelengs. Trykk knapp eller radnummer.";
+"tutorial_rows_card_title" = "Øv på rader";
+"tutorial_rows_sub" = "Se den horisontale linjen.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Rader";
+"tutorial_cols_title" = "Kolonner";
+
+"ab_purpose_multiplication" = "Øv på gangetabeller gjennom et puslespill.";
+"ab_purpose_turn_based" = "Tur-basert spill for 1–16 spillere.";
+"ab_purpose_fun_learning" = "Lær mens du avdekker bilder.";
+
+// MARK: - Tutorial Buttons
+"back" = "Tilbake";
+"cancel" = "Avbryt";
+"next" = "Neste";
+"quit" = "Ferdig";
+"repeat" = "Gjenta";
+"skip_to_practice" = "Hopp til øvelse";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Du forlater veiledningen. Du kan komme tilbake senere.";
+"tutorial_quit_title" = "Er du sikker?";
+
+// MARK: - Quick Practice
+"division_note" = "Deling gir heltall: (kvotient × divisor) ÷ divisor = kvotient.";
+"division_premium_hint" = "Deling krever Premium.";
+"quick_divide" = "Hurtigdeling";
+"quick_divide_locked" = "Hurtigdeling (låst)";
+"quick_multiply" = "Hurtiggange";
+"quick_practice" = "Hurtigøvelse";
+"range_division" = "Delingsområde: %d–%d";
+"range_multiplication" = "Gangeområde: %d–%d";
+"unlock_division" = "Lås opp deling";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Riktig!";
+"qp_correct_title" = "Riktig";
+"qp_d_prompt" = "Hva er %d ÷ %d ?";
+"qp_incorrect_title" = "Feil";
+"qp_m_prompt" = "Hva er %d × %d ?";
+"qp_next" = "Neste";
+"qp_score" = "Poeng: %d  •  %d/%d";
+"qp_score_title" = "Poeng";
+"qp_wrong" = "Riktig svar: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Prestasjoner";
+"achievements_title" = "Prestasjoner";
+"achv_locked" = "Låst";
+"achv_unlocked" = "Opplåst";
+"achv_unlocked_toast" = "Prestasjon oppnådd: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Veiledningsmester";
+"achv_tutorial_master_sub" = "Tjen 1000 poeng i veiledning";
+
+"achv_puzzle_solver_title" = "Puslespilløser";
+"achv_puzzle_solver_sub" = "Fullfør 100 puslespill";
+
+"achv_explorer_title" = "Utforsker";
+"achv_explorer_sub" = "Oppdag 50 unike bilder";
+
+"achv_speedrunner_title" = "Fartsrunner";
+"achv_speedrunner_sub" = "Vinn på under 2 min";
+
+"achv_perfectionist_title" = "Perfeksjonist";
+"achv_perfectionist_sub" = "Vinn uten feil";
+
+"achv_multiplayer_champ_title" = "Flerspiller-mester";
+"achv_multiplayer_champ_sub" = "Vinn med ≥4 spillere";
+
+// MARK: - Paywall / Legal
+"legal" = "Juridisk";
+"privacy_policy" = "Personvern";
+"terms_of_use" = "Bruksvilkår";
+
+"unlock_premium_cta" = "Lås opp Premium";
+"premium_unlocked_badge" = "✅ Premium låst opp";
+"restore_purchases" = "Gjenopprett kjøp";
+"loading_price" = "Laster pris…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Lås opp alle funksjoner uten begrensning.";
+
+"feat_bigger_boards_title" = "Større brett";
+"feat_bigger_boards_detail" = "Opptil 33×33";
+"feat_more_players_title" = "Flere spillere";
+"feat_more_players_detail" = "Opptil 32 spillere";
+"feat_timer_title" = "Turtimer";
+"feat_timer_detail" = "∞ / 30 / 60 / 120s";
+"feat_labels_title" = "Etikettstil";
+"feat_labels_detail" = "Farger og plassering";
+"feat_puzzles_title" = "Hele puslespillsettet";
+"feat_puzzles_detail" = "Gratis + premiumbilder";
+"feat_division_title" = "Hurtigdeling";
+"feat_division_detail" = "Lås opp delingsmodus";
+
+"paywall_smallprint" = "Engangskjøp. Familiedeling støttes. Knyttet til Apple-ID.";

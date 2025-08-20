@@ -1,0 +1,246 @@
+//
+//  Localizable.strings (Slovak - sk)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "O aplikácii";
+"app_title" = "Memul";
+"settings" = "Nastavenia";
+"start_game" = "Spustiť hru";
+"start_tagline" = "Násob. Hraj. Uč sa.";
+"tutorial" = "Tutoriál";
+
+// MARK: - Board & Players
+"add_player" = "Pridať hráča";
+"board_size" = "Veľkosť poľa";
+"board_size_value" = "Veľkosť: %d × %d";
+"player_n" = "Hráč %d";
+"players" = "Hráči";
+"remove_last_player" = "Odstrániť posledného hráča";
+
+// MARK: - Puzzle
+"puzzle" = "Obrázok";
+"puzzle_enable" = "Zobraziť obrázok pod poľom";
+"puzzle_free_info" = "Bezplatní používatelia vidia náhodný obrázok z voľného balíka.";
+"puzzle_premium_info" = "Prémioví používatelia vidia náhodné obrázky zo všetkých balíkov.";
+
+// MARK: - Difficulty
+"difficulty" = "Obtiažnosť";
+"difficulty_easy" = "Ľahká";
+"difficulty_hard" = "Ťažká";
+"difficulty_mode" = "Režim";
+"difficulty_normal" = "Normálna";
+"difficulty_premium_hint" = "Bezplatne: iba Ľahká. Normálna/Ťažká vyžadujú Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Farba dole";
+"index_customize" = "Prispôsobiť menovky";
+"index_labels" = "Menovky";
+"index_labels_premium_hint" = "Prispôsobenie farieb vyžaduje Premium.";
+"left_color" = "Farba vľavo";
+"make_labels_transparent" = "Spriehľadniť menovky";
+"reset_label_colors" = "Obnoviť farby";
+"right_color" = "Farba vpravo";
+"show_bottom_labels" = "Zobraziť dole";
+"show_left_labels" = "Zobraziť vľavo";
+"show_right_labels" = "Zobraziť vpravo";
+"show_top_labels" = "Zobraziť hore";
+"top_color" = "Farba hore";
+
+// MARK: - Header & UX
+"header_options" = "Hlavička";
+"show_selected_coordinates_button" = "Tlačidlo vybraných súradníc";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Bezplatná verzia používa pevný limit 30s na ťah.";
+"turn_timer_per_turn" = "Limit na ťah";
+"turn_timer_title" = "Časovač ťahu";
+
+// MARK: - Premium Access
+"free_limitations" = "Zdarma: max %d×%d, %d hráči.";
+"premium_limitations" = "Premium: až %dx%d a %d hráčov.";
+"premium_access" = "Premium prístup";
+"unlock_premium" = "Odomknúť Premium";
+
+// MARK: - General UI
+"close" = "Zavrieť";
+"end_game" = "Koniec hry";
+"find_cell_with" = "Nájdi políčko s %d";
+"new_game" = "Nová hra";
+"player_score" = "%@: %d";
+"results_title" = "Výsledky";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Nastavenia";
+"tap_to_close" = "Ťukni na zatvorenie";
+"total_points" = "Spolu body";
+"turn_title" = "Ťah %@";
+"winner_announcement" = "🏆 Víťaz: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Vybraný riadok %d, stĺpec %d";
+"gv_submit" = "Potvrdiť";
+"gv_submit_hint" = "Najprv vyber políčko";
+"gv_submit_sel" = "Potvrdiť (%d, %d)";
+"gv_submit_sel_ax" = "Potvrdiť súradnice %d, %d";
+"gv_submit_prefix" = "Potvrdiť (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Ťukni znova alebo Potvrdiť";
+"gv_target" = "Cieľ: %d";
+
+// MARK: - About
+"ab_navigation_title" = "O aplikácii";
+"ab_section_about_app" = "O Memul";
+"ab_app_name" = "Memul — hra s násobením";
+"ab_version" = "Verzia: %@";
+"ab_developer" = "Vývojár: Grzegorz Kulesza";
+"ab_section_purpose" = "Účel";
+"ab_purpose_accessible" = "Prístupné žiakom aj dospelým.";
+"ab_purpose_carries_forward" = "Rozvíja: polia, riadok–stĺpec, kartézske myslenie.";
+"ab_purpose_commutativity" = "Pomáha pochopiť komutatívnosť násobenia.";
+"ab_purpose_learn_tables" = "Zjednodušuje učenie malej násobilky.";
+"ab_section_features" = "Funkcie";
+"ab_feature_customization" = "Prispôsobenie: veľkosť, obtiažnosť, časovač, menovky, obrázky, súradnice.";
+"ab_feature_multiplayer" = "Ťahový multiplayer (1–16 hráčov).";
+"ab_feature_puzzle_reveal" = "Obrázok sa odhaľuje po častiach.";
+"ab_feature_quick_practice" = "Rýchla prax: násobenie a (Premium) delenie.";
+"ab_feature_tutorial" = "Interaktívny tutoriál: riadky, stĺpce, priesečníky.";
+"ab_section_author" = "Autor";
+"ab_author_line1" = "Vytvoril Grzegorz Kulesza s rozmanitým odborným pozadím.";
+"ab_author_line2" = "Skúsenosti formovali cieľ Memul: polia, súradnice a riešenie problémov.";
+"ab_section_support" = "Podpora";
+
+// MARK: - Tutorial
+"tutorial_title" = "Tutoriál";
+"tutorial_cols_card_body" = "Predstav si cencúle padajúce nadol. To je stĺpec. Skús: klikni tlačidlo alebo číslo stĺpca.";
+"tutorial_cols_card_title" = "Cvičíme stĺpce";
+"tutorial_cols_sub" = "Pozri vertikálnu čiaru.";
+"tutorial_col_button" = "Stl %d"; // ≤6
+"tutorial_col_label" = "Stĺpec: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Vybral si riadok a stĺpec. Nájdeš priesečník? Predstav si vežu v šachu.";
+"tutorial_framed_card_title" = "Magické miesto";
+"tutorial_framed_title" = "Priesečník - Časť 2";
+"tutorial_framed_sub" = "Ťukni, kde sa riadok stretne so stĺpcom.";
+"tutorial_feedback_great" = "Skvelé!";
+"tutorial_feedback_not_quite" = "Nie celkom";
+"tutorial_intersect_card_body" = "Riadok × Stĺpec = priesečník.";
+"tutorial_intersect_card_title" = "Priesečníky v hre";
+"tutorial_intersect_sub" = "Riadok × Stĺpec";
+"tutorial_intersect_title" = "Priesečník - Časť 1";
+"tutorial_next_quest" = "Ďalšia úloha";
+"tutorial_practice_callout" = "Nekonečná výzva";
+"tutorial_practice_hint" = "Nájdi políčko podľa súradníc.";
+"tutorial_practice_sub" = "Ťukni na políčko priesečníka.";
+"tutorial_practice_title" = "Priesečník - Časť 3";
+"tutorial_quest_tap_pair" = "Ťukni (%d ; %d)";
+"tutorial_quest_title" = "Úloha:";
+"tutorial_row_button" = "R %d"; // ≤6
+"tutorial_row_label" = "Riadok: %d";
+"tutorial_rows_card_body" = "Predstav si lávu tečúcu vodorovne. To je riadok. Skús: klikni tlačidlo alebo číslo riadku.";
+"tutorial_rows_card_title" = "Cvičíme riadky";
+"tutorial_rows_sub" = "Pozri horizontálnu čiaru.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Riadky";
+"tutorial_cols_title" = "Stĺpce";
+
+"ab_purpose_multiplication" = "Uč sa násobilku cez zábavnú hru.";
+"ab_purpose_turn_based" = "Ťahová hra pre 1–16 hráčov.";
+"ab_purpose_fun_learning" = "Uč sa a odhaľuj obrázky.";
+
+// MARK: - Tutorial Buttons
+"back" = "Späť";
+"cancel" = "Zrušiť";
+"next" = "Ďalej";
+"quit" = "Koniec";
+"repeat" = "Opakuj";
+"skip_to_practice" = "Preskoč na prax";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Opustíš tutoriál. Môžeš sa vrátiť kedykoľvek.";
+"tutorial_quit_title" = "Si si istý?";
+
+// MARK: - Quick Practice
+"division_note" = "Delenie s celými: (podiel × deliteľ) ÷ deliteľ = podiel.";
+"division_premium_hint" = "Delenie dostupné len v Premium.";
+"quick_divide" = "Rýchle delenie";
+"quick_divide_locked" = "Delenie (zamknuté)";
+"quick_multiply" = "Rýchle násobenie";
+"quick_practice" = "Rýchla prax";
+"range_division" = "Rozsah delenia: %d–%d";
+"range_multiplication" = "Rozsah násobenia: %d–%d";
+"unlock_division" = "Odomknúť delenie";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Správne!";
+"qp_correct_title" = "Správne";
+"qp_d_prompt" = "Koľko je %d ÷ %d ?";
+"qp_incorrect_title" = "Nesprávne";
+"qp_m_prompt" = "Koľko je %d × %d ?";
+"qp_next" = "Ďalej";
+"qp_score" = "Skóre: %d  •  %d/%d";
+"qp_score_title" = "Skóre";
+"qp_wrong" = "Správna odpoveď: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Úspechy";
+"achievements_title" = "Úspechy";
+"achv_locked" = "Zamknuté";
+"achv_unlocked" = "Odomknuté";
+"achv_unlocked_toast" = "Úspech: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Majster tutoriálu";
+"achv_tutorial_master_sub" = "Získaj 1000 bodov v tutoriáli";
+
+"achv_puzzle_solver_title" = "Riešiteľ obrázkov";
+"achv_puzzle_solver_sub" = "Dokonči 100 obrázkov";
+
+"achv_explorer_title" = "Prieskumník";
+"achv_explorer_sub" = "Objav 50 obrázkov";
+
+"achv_speedrunner_title" = "Rýchlik";
+"achv_speedrunner_sub" = "Vyhraj za <2 minúty";
+
+"achv_perfectionist_title" = "Perfekcionista";
+"achv_perfectionist_sub" = "Vyhraj bez chýb";
+
+"achv_multiplayer_champ_title" = "Multiplayer šampión";
+"achv_multiplayer_champ_sub" = "Vyhraj s ≥4 hráčmi";
+
+// MARK: - Paywall / Legal
+"legal" = "Právne";
+"privacy_policy" = "Ochrana súkromia";
+"terms_of_use" = "Podmienky použitia";
+
+"unlock_premium_cta" = "Odomknúť Premium";
+"premium_unlocked_badge" = "✅ Premium odomknuté";
+"restore_purchases" = "Obnoviť nákupy";
+"loading_price" = "Načítavam cenu…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Odomkni všetky funkcie a odstráň limity.";
+
+"feat_bigger_boards_title" = "Väčšie polia";
+"feat_bigger_boards_detail" = "Až 33×33";
+"feat_more_players_title" = "Viac hráčov";
+"feat_more_players_detail" = "Až 32";
+"feat_timer_title" = "Časovač ťahu";
+"feat_timer_detail" = "∞ / 30 / 60 / 120";
+"feat_labels_title" = "Štýl menoviek";
+"feat_labels_detail" = "Farby a pozície";
+"feat_puzzles_title" = "Všetky obrázky";
+"feat_puzzles_detail" = "Voľné + prémiové";
+"feat_division_title" = "Rýchle delenie";
+"feat_division_detail" = "Režim delenia";
+
+"paywall_smallprint" = "Jednorazový nákup. Family Sharing podporovaný. Viazané na Apple ID.";

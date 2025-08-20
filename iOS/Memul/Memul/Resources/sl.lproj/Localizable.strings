@@ -1,0 +1,246 @@
+//
+//  Localizable.strings (Slovenian - sl)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "O aplikaciji";
+"app_title" = "Memul";
+"settings" = "Nastavitve";
+"start_game" = "Začni igro";
+"start_tagline" = "Množi. Igraj. Uči se.";
+"tutorial" = "Vodič";
+
+// MARK: - Board & Players
+"add_player" = "Dodaj igralca";
+"board_size" = "Velikost plošče";
+"board_size_value" = "Velikost: %d × %d";
+"player_n" = "Igralec %d";
+"players" = "Igralci";
+"remove_last_player" = "Odstrani zadnjega igralca";
+
+// MARK: - Puzzle
+"puzzle" = "Sličica";
+"puzzle_enable" = "Prikaži sličico pod mrežo";
+"puzzle_free_info" = "Brezplačni uporabniki vidijo naključno sličico iz brezplačnega paketa.";
+"puzzle_premium_info" = "Uporabniki Premium vidijo naključno sličico iz vseh paketov.";
+
+// MARK: - Difficulty
+"difficulty" = "Težavnost";
+"difficulty_easy" = "Lahka";
+"difficulty_hard" = "Težka";
+"difficulty_mode" = "Način";
+"difficulty_normal" = "Srednja";
+"difficulty_premium_hint" = "Brezplačno: samo Lahka. Srednja/Težka zahtevata Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Barva spodaj";
+"index_customize" = "Prilagodi oznake";
+"index_labels" = "Oznake";
+"index_labels_premium_hint" = "Prilagoditev barv zahteva Premium.";
+"left_color" = "Barva levo";
+"make_labels_transparent" = "Naredi oznake prosojne";
+"reset_label_colors" = "Ponastavi barve";
+"right_color" = "Barva desno";
+"show_bottom_labels" = "Prikaži spodaj";
+"show_left_labels" = "Prikaži levo";
+"show_right_labels" = "Prikaži desno";
+"show_top_labels" = "Prikaži zgoraj";
+"top_color" = "Barva zgoraj";
+
+// MARK: - Header & UX
+"header_options" = "Glava";
+"show_selected_coordinates_button" = "Gumb za izbrane koordinate";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Brezplačna različica uporablja fiksno 30s na potezo.";
+"turn_timer_per_turn" = "Omejitev na potezo";
+"turn_timer_title" = "Časovnik poteze";
+
+// MARK: - Premium Access
+"free_limitations" = "Brezplačno: največ %d×%d, %d igralci.";
+"premium_limitations" = "Premium: do %dx%d in %d igralcev.";
+"premium_access" = "Premium dostop";
+"unlock_premium" = "Odkleni Premium";
+
+// MARK: - General UI
+"close" = "Zapri";
+"end_game" = "Konec igre";
+"find_cell_with" = "Najdi polje z %d";
+"new_game" = "Nova igra";
+"player_score" = "%@: %d";
+"results_title" = "Rezultati";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Nastavitve";
+"tap_to_close" = "Tapni za zaprtje";
+"total_points" = "Skupaj točk";
+"turn_title" = "Poteza %@";
+"winner_announcement" = "🏆 Zmagovalec: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Izbrana vrstica %d, stolpec %d";
+"gv_submit" = "Potrdi";
+"gv_submit_hint" = "Najprej izberi polje";
+"gv_submit_sel" = "Potrdi (%d, %d)";
+"gv_submit_sel_ax" = "Potrdi koordinate %d, %d";
+"gv_submit_prefix" = "Potrdi (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Tapni znova ali Potrdi";
+"gv_target" = "Cilj: %d";
+
+// MARK: - About
+"ab_navigation_title" = "O aplikaciji";
+"ab_section_about_app" = "O Memul";
+"ab_app_name" = "Memul — igra z množenjem";
+"ab_version" = "Različica: %@";
+"ab_developer" = "Razvijalec: Grzegorz Kulesza";
+"ab_section_purpose" = "Namen";
+"ab_purpose_accessible" = "Dostopno osnovnošolcem in odraslim.";
+"ab_purpose_carries_forward" = "Razvija: matrike, vrstice–stolpci, kartezično mišljenje.";
+"ab_purpose_commutativity" = "Pomaga razumeti komutativnost množenja.";
+"ab_purpose_learn_tables" = "Poenostavi učenje poštevanke.";
+"ab_section_features" = "Funkcije";
+"ab_feature_customization" = "Prilagoditev: velikost, težavnost, časovniki, oznake, slike, koordinate.";
+"ab_feature_multiplayer" = "Igra za 1–16 igralcev na poteze.";
+"ab_feature_puzzle_reveal" = "Sličica se odkriva po delih.";
+"ab_feature_quick_practice" = "Hitra vaja: množenje in (Premium) deljenje.";
+"ab_feature_tutorial" = "Interaktivni vodič: vrstice, stolpci, presečišča.";
+"ab_section_author" = "Avtor";
+"ab_author_line1" = "Ustvaril Grzegorz Kulesza z raznolikim strokovnim ozadjem.";
+"ab_author_line2" = "Izkušnje so oblikovale cilj Memul: matrike, koordinate in reševanje problemov.";
+"ab_section_support" = "Podpora";
+
+// MARK: - Tutorial
+"tutorial_title" = "Vodič";
+"tutorial_cols_card_body" = "Predstavljaj si ledene sveče, ki padajo navzdol. To je stolpec. Poskusi: klikni gumb ali številko stolpca.";
+"tutorial_cols_card_title" = "Vadimo stolpce";
+"tutorial_cols_sub" = "Poglej navpično črto.";
+"tutorial_col_button" = "St %d"; // ≤6
+"tutorial_col_label" = "Stolpec: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Izbral si vrstico in stolpec. Najdi presečišče. Predstavljaj si trdnjavo v šahu.";
+"tutorial_framed_card_title" = "Čarobna točka";
+"tutorial_framed_title" = "Presečišče - 2. del";
+"tutorial_framed_sub" = "Tapni, kjer se križata.";
+"tutorial_feedback_great" = "Odlično!";
+"tutorial_feedback_not_quite" = "Ni čisto";
+"tutorial_intersect_card_body" = "Vrstica × Stolpec = presečišče.";
+"tutorial_intersect_card_title" = "Presečišča v igri";
+"tutorial_intersect_sub" = "Vrstica × Stolpec";
+"tutorial_intersect_title" = "Presečišče - 1. del";
+"tutorial_next_quest" = "Naslednja naloga";
+"tutorial_practice_callout" = "Neskončni izziv";
+"tutorial_practice_hint" = "Najdi polje po koordinatah.";
+"tutorial_practice_sub" = "Tapni polje presečišča.";
+"tutorial_practice_title" = "Presečišče - 3. del";
+"tutorial_quest_tap_pair" = "Tapni (%d ; %d)";
+"tutorial_quest_title" = "Naloga:";
+"tutorial_row_button" = "Vr %d"; // ≤6
+"tutorial_row_label" = "Vrstica: %d";
+"tutorial_rows_card_body" = "Predstavljaj si lavo, ki teče vodoravno. To je vrstica. Poskusi: klikni gumb ali številko vrstice.";
+"tutorial_rows_card_title" = "Vadimo vrstice";
+"tutorial_rows_sub" = "Poglej vodoravno črto.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Vrstice";
+"tutorial_cols_title" = "Stolpci";
+
+"ab_purpose_multiplication" = "Uči se poštevanko skozi zabavno igro.";
+"ab_purpose_turn_based" = "Igra na poteze za 1–16 igralcev.";
+"ab_purpose_fun_learning" = "Uči se in odkrivaj sličice.";
+
+// MARK: - Tutorial Buttons
+"back" = "Nazaj";
+"cancel" = "Prekliči";
+"next" = "Naprej";
+"quit" = "Konec";
+"repeat" = "Ponovi";
+"skip_to_practice" = "Preskoči na vajo";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Izhod iz vodiča. Lahko se vrneš kadar koli.";
+"tutorial_quit_title" = "Si prepričan?";
+
+// MARK: - Quick Practice
+"division_note" = "Deljenje s celimi: (kvocient × delitelj) ÷ delitelj = kvocient.";
+"division_premium_hint" = "Deljenje na voljo samo v Premium.";
+"quick_divide" = "Hitro deljenje";
+"quick_divide_locked" = "Deljenje (zaklenjeno)";
+"quick_multiply" = "Hitro množenje";
+"quick_practice" = "Hitra vaja";
+"range_division" = "Obseg deljenja: %d–%d";
+"range_multiplication" = "Obseg množenja: %d–%d";
+"unlock_division" = "Odkleni deljenje";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Pravilno!";
+"qp_correct_title" = "Pravilno";
+"qp_d_prompt" = "Koliko je %d ÷ %d ?";
+"qp_incorrect_title" = "Napačno";
+"qp_m_prompt" = "Koliko je %d × %d ?";
+"qp_next" = "Naprej";
+"qp_score" = "Rezultat: %d  •  %d/%d";
+"qp_score_title" = "Rezultat";
+"qp_wrong" = "Pravilen odgovor: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Dosežki";
+"achievements_title" = "Dosežki";
+"achv_locked" = "Zaklenjeno";
+"achv_unlocked" = "Odklenjeno";
+"achv_unlocked_toast" = "Dosežek: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Mojster vodiča";
+"achv_tutorial_master_sub" = "Osvoji 1000 točk v vodiču";
+
+"achv_puzzle_solver_title" = "Reševalec sličic";
+"achv_puzzle_solver_sub" = "Dokončaj 100 sličic";
+
+"achv_explorer_title" = "Raziskovalec";
+"achv_explorer_sub" = "Odkrij 50 sličic";
+
+"achv_speedrunner_title" = "Hitri igralec";
+"achv_speedrunner_sub" = "Zmagaj v manj kot 2 minutah";
+
+"achv_perfectionist_title" = "Perfekcionist";
+"achv_perfectionist_sub" = "Zmagaj brez napak";
+
+"achv_multiplayer_champ_title" = "Multiplayer prvak";
+"achv_multiplayer_champ_sub" = "Zmagaj z ≥4 igralci";
+
+// MARK: - Paywall / Legal
+"legal" = "Pravno";
+"privacy_policy" = "Zasebnost";
+"terms_of_use" = "Pogoji uporabe";
+
+"unlock_premium_cta" = "Odkleni Premium";
+"premium_unlocked_badge" = "✅ Premium odklenjen";
+"restore_purchases" = "Obnovi nakupe";
+"loading_price" = "Nalagam ceno…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Odkleni vse funkcije in odstrani omejitve.";
+
+"feat_bigger_boards_title" = "Večje plošče";
+"feat_bigger_boards_detail" = "Do 33×33";
+"feat_more_players_title" = "Več igralcev";
+"feat_more_players_detail" = "Do 32";
+"feat_timer_title" = "Časovnik";
+"feat_timer_detail" = "∞ / 30 / 60 / 120";
+"feat_labels_title" = "Slog oznak";
+"feat_labels_detail" = "Barve in pozicije";
+"feat_puzzles_title" = "Vse sličice";
+"feat_puzzles_detail" = "Brezplačne + Premium";
+"feat_division_title" = "Hitro deljenje";
+"feat_division_detail" = "Način deljenja";
+
+"paywall_smallprint" = "Enkratni nakup. Family Sharing podprt. Povezano z Apple ID.";

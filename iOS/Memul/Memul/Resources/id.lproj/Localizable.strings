@@ -1,0 +1,246 @@
+//
+//  Localizable.strings (Indonesian - id)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Tentang";
+"app_title" = "Memul";
+"settings" = "Pengaturan";
+"start_game" = "Mulai";
+"start_tagline" = "Kali. Main. Belajar.";
+"tutorial" = "Tutorial";
+
+// MARK: - Board & Players
+"add_player" = "Tambah pemain";
+"board_size" = "Ukuran papan";
+"board_size_value" = "Ukuran: %d × %d";
+"player_n" = "Pemain %d";
+"players" = "Pemain";
+"remove_last_player" = "Hapus terakhir";
+
+// MARK: - Puzzle
+"puzzle" = "Gambar";
+"puzzle_enable" = "Tampilkan gambar di bawah papan";
+"puzzle_free_info" = "Gratis: gambar acak dari paket gratis.";
+"puzzle_premium_info" = "Premium: gambar acak dari semua paket.";
+
+// MARK: - Difficulty
+"difficulty" = "Tingkat";
+"difficulty_easy" = "Mudah";
+"difficulty_hard" = "Sulit";
+"difficulty_mode" = "Mode";
+"difficulty_normal" = "Sedang";
+"difficulty_premium_hint" = "Gratis: hanya Mudah. Sedang/Sulit butuh Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Warna bawah";
+"index_customize" = "Atur label";
+"index_labels" = "Label indeks";
+"index_labels_premium_hint" = "Atur warna label butuh Premium.";
+"left_color" = "Warna kiri";
+"make_labels_transparent" = "Buat label transparan";
+"reset_label_colors" = "Atur ulang warna";
+"right_color" = "Warna kanan";
+"show_bottom_labels" = "Tampilkan bawah";
+"show_left_labels" = "Tampilkan kiri";
+"show_right_labels" = "Tampilkan kanan";
+"show_top_labels" = "Tampilkan atas";
+"top_color" = "Warna atas";
+
+// MARK: - Header & UX
+"header_options" = "Header";
+"show_selected_coordinates_button" = "Tampilkan tombol koordinat";
+
+// MARK: - Turn Timer
+"turn_30s" = "30d";
+"turn_60s" = "60d";
+"turn_120s" = "120d";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%dd)";
+"turn_timer_free_hint" = "Gratis: selalu 30 detik per giliran.";
+"turn_timer_per_turn" = "Batas per giliran";
+"turn_timer_title" = "Timer giliran";
+
+// MARK: - Premium Access
+"free_limitations" = "Gratis: max %d×%d papan, %d pemain.";
+"premium_limitations" = "Premium: semua fitur — hingga %dx%d papan dan %d pemain.";
+"premium_access" = "Akses Premium";
+"unlock_premium" = "Buka Premium";
+
+// MARK: - General UI
+"close" = "Tutup";
+"end_game" = "Akhiri";
+"find_cell_with" = "Cari sel dengan %d";
+"new_game" = "Permainan baru";
+"player_score" = "%@: %d";
+"results_title" = "Hasil";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Pengaturan";
+"tap_to_close" = "Ketuk untuk menutup";
+"total_points" = "Total poin";
+"turn_title" = "Giliran %@";
+"winner_announcement" = "🏆 Pemenang: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Dipilih baris %d, kolom %d";
+"gv_submit" = "Kirim";
+"gv_submit_hint" = "Pilih sel dulu";
+"gv_submit_sel" = "Kirim (%d, %d)";
+"gv_submit_sel_ax" = "Kirim koordinat %d, %d";
+"gv_submit_prefix" = "Kirim (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Ketuk lagi untuk konfirmasi";
+"gv_target" = "Target: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Tentang";
+"ab_section_about_app" = "Tentang Memul";
+"ab_app_name" = "Memul — Game Puzzle Perkalian";
+"ab_version" = "Versi: %@";
+"ab_developer" = "Pengembang: Grzegorz Kulesza";
+"ab_section_purpose" = "Tujuan";
+"ab_purpose_accessible" = "Mudah untuk anak SD, berguna juga seterusnya.";
+"ab_purpose_carries_forward" = "Bangun keterampilan: array, posisi baris–kolom, koordinat.";
+"ab_purpose_commutativity" = "Bantu memahami sifat komutatif perkalian.";
+"ab_purpose_learn_tables" = "Mempermudah belajar tabel perkalian — anak & dewasa.";
+"ab_section_features" = "Fitur";
+"ab_feature_customization" = "Atur ukuran papan, tingkat, timer, label, gambar, koordinat.";
+"ab_feature_multiplayer" = "Multiplayer bergiliran (1–16 pemain).";
+"ab_feature_puzzle_reveal" = "Gambar tersembunyi terbuka saat menjawab benar.";
+"ab_feature_quick_practice" = "Latihan cepat: perkalian & (Premium) pembagian.";
+"ab_feature_tutorial" = "Tutorial interaktif: baris, kolom, perpotongan.";
+"ab_section_author" = "Penulis";
+"ab_author_line1" = "Dibuat oleh Grzegorz Kulesza, dengan latar belakang teknik, komputer, fisika, medis, dan pendidikan.";
+"ab_author_line2" = "Pengalaman ini membentuk fokus Memul: array, koordinat, pemecahan masalah intuitif.";
+"ab_section_support" = "Dukungan";
+
+// MARK: - Tutorial
+"tutorial_title" = "Tutorial";
+"tutorial_cols_card_body" = "Bayangkan es jatuh lurus ke bawah — itu kolom. Coba! Tekan tombol atau ketuk nomor kolom di papan.";
+"tutorial_cols_card_title" = "Latihan kolom";
+"tutorial_cols_sub" = "Lihat garis vertikal menyapu kolom.";
+"tutorial_col_button" = "Kol %d"; // ≤6
+"tutorial_col_label" = "Kolom: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Kamu pilih baris merah dan kolom biru. Temukan titik perpotongan. Bayangkan benteng catur bergerak di baris dan kolom.";
+"tutorial_framed_card_title" = "Titik Ajaib";
+"tutorial_framed_title" = "Perpotongan - Bagian 2";
+"tutorial_framed_sub" = "Ketuk di mana baris & kolom bertemu.";
+"tutorial_feedback_great" = "Bagus!";
+"tutorial_feedback_not_quite" = "Belum tepat";
+"tutorial_intersect_card_body" = "Baris × kolom = sel. Kamu harus menemukan sel itu.";
+"tutorial_intersect_card_title" = "Perpotongan di game";
+"tutorial_intersect_sub" = "Baris × kolom.";
+"tutorial_intersect_title" = "Perpotongan - Bagian 1";
+"tutorial_next_quest" = "Tantangan berikut";
+"tutorial_practice_callout" = "Tantangan tanpa akhir";
+"tutorial_practice_hint" = "Temukan sel di titik perpotongan baris & kolom.";
+"tutorial_practice_sub" = "Ketuk sel di mana garis menyilang.";
+"tutorial_practice_title" = "Perpotongan - Bagian 3";
+"tutorial_quest_tap_pair" = "Ketuk (%d ; %d)";
+"tutorial_quest_title" = "Tugas:";
+"tutorial_row_button" = "Brs %d"; // ≤6
+"tutorial_row_label" = "Baris: %d";
+"tutorial_rows_card_body" = "Bayangkan lava mengalir mendatar — itu baris. Coba! Tekan tombol atau ketuk nomor baris di papan.";
+"tutorial_rows_card_title" = "Latihan baris";
+"tutorial_rows_sub" = "Lihat garis horizontal menyapu baris.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Baris";
+"tutorial_cols_title" = "Kolom";
+
+"ab_purpose_multiplication" = "Belajar tabel perkalian lewat puzzle.";
+"ab_purpose_turn_based" = "Game bergiliran, 1–16 pemain.";
+"ab_purpose_fun_learning" = "Belajar sambil buka gambar.";
+
+// MARK: - Tutorial Buttons
+"back" = "Kembali";
+"cancel" = "Batal";
+"next" = "Lanjut";
+"quit" = "Selesai";
+"repeat" = "Ulangi";
+"skip_to_practice" = "Loncat ke latihan";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Keluar dari tutorial. Bisa kembali kapan saja.";
+"tutorial_quit_title" = "Yakin?";
+
+// MARK: - Quick Practice
+"division_note" = "Pembagian hasil bulat: (hasil × pembagi) ÷ pembagi = hasil.";
+"division_premium_hint" = "Butuh Premium untuk pembagian.";
+"quick_divide" = "Cepat Bagi";
+"quick_divide_locked" = "Cepat Bagi (Terkunci)";
+"quick_multiply" = "Cepat Kali";
+"quick_practice" = "Latihan Cepat";
+"range_division" = "Rentang bagi: %d–%d";
+"range_multiplication" = "Rentang kali: %d–%d";
+"unlock_division" = "Buka Cepat Bagi";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Benar!";
+"qp_correct_title" = "Benar";
+"qp_d_prompt" = "Berapa %d ÷ %d ?";
+"qp_incorrect_title" = "Salah";
+"qp_m_prompt" = "Berapa %d × %d ?";
+"qp_next" = "Lanjut";
+"qp_score" = "Skor: %d  •  %d/%d";
+"qp_score_title" = "Skor";
+"qp_wrong" = "Jawaban benar: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Pencapaian";
+"achievements_title" = "Pencapaian";
+"achv_locked" = "Terkunci";
+"achv_unlocked" = "Terbuka";
+"achv_unlocked_toast" = "Pencapaian terbuka: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Master Tutorial";
+"achv_tutorial_master_sub" = "Dapatkan 1000 poin tutorial";
+
+"achv_puzzle_solver_title" = "Pemecah Gambar";
+"achv_puzzle_solver_sub" = "Selesaikan 100 gambar";
+
+"achv_explorer_title" = "Penjelajah";
+"achv_explorer_sub" = "Temukan 50 gambar";
+
+"achv_speedrunner_title" = "Cepat Menang";
+"achv_speedrunner_sub" = "Menang <2 menit";
+
+"achv_perfectionist_title" = "Sempurna";
+"achv_perfectionist_sub" = "Menang tanpa salah";
+
+"achv_multiplayer_champ_title" = "Juara Multiplayer";
+"achv_multiplayer_champ_sub" = "Menang dengan ≥4 pemain";
+
+// MARK: - Paywall / Legal
+"legal" = "Legal";
+"privacy_policy" = "Kebijakan Privasi";
+"terms_of_use" = "Syarat Penggunaan";
+
+"unlock_premium_cta" = "Buka Premium";
+"premium_unlocked_badge" = "✅ Premium aktif";
+"restore_purchases" = "Pulihkan pembelian";
+"loading_price" = "Memuat harga…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Buka semua fitur, hilangkan batasan.";
+
+"feat_bigger_boards_title" = "Papan besar";
+"feat_bigger_boards_detail" = "Hingga 33×33";
+"feat_more_players_title" = "Lebih banyak pemain";
+"feat_more_players_detail" = "Hingga 32";
+"feat_timer_title" = "Timer giliran";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 d";
+"feat_labels_title" = "Atur label";
+"feat_labels_detail" = "Warna & posisi";
+"feat_puzzles_title" = "Set lengkap";
+"feat_puzzles_detail" = "Gratis + Premium";
+"feat_division_title" = "Cepat Bagi";
+"feat_division_detail" = "Mode pembagian";
+
+"paywall_smallprint" = "Pembelian sekali saja. Family Sharing didukung. Terkait Apple ID.";

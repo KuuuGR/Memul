@@ -1,0 +1,246 @@
+//
+//  Localizable.strings (Italian - it)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Info";
+"app_title" = "Memul";
+"settings" = "Impostazioni";
+"start_game" = "Gioca";
+"start_tagline" = "Moltiplica. Gioca. Impara.";
+"tutorial" = "Tutorial";
+
+// MARK: - Board & Players
+"add_player" = "Aggiungi giocatore";
+"board_size" = "Dimensione";
+"board_size_value" = "Dim: %d × %d";
+"player_n" = "Giocatore %d";
+"players" = "Giocatori";
+"remove_last_player" = "Rimuovi ultimo";
+
+// MARK: - Puzzle
+"puzzle" = "Immagine";
+"puzzle_enable" = "Mostra immagine sotto la griglia";
+"puzzle_free_info" = "Gratis: immagine casuale dal pacchetto gratuito.";
+"puzzle_premium_info" = "Premium: immagini casuali da tutti i pacchetti.";
+
+// MARK: - Difficulty
+"difficulty" = "Difficoltà";
+"difficulty_easy" = "Facile";
+"difficulty_hard" = "Difficile";
+"difficulty_mode" = "Modalità";
+"difficulty_normal" = "Normale";
+"difficulty_premium_hint" = "Gratis: solo Facile. Normale/Difficile richiedono Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Colore basso";
+"index_customize" = "Personalizza etichette";
+"index_labels" = "Etichette indici";
+"index_labels_premium_hint" = "Personalizzare i colori richiede Premium.";
+"left_color" = "Colore sinistra";
+"make_labels_transparent" = "Rendi etichette trasparenti";
+"reset_label_colors" = "Reimposta colori";
+"right_color" = "Colore destra";
+"show_bottom_labels" = "Mostra in basso";
+"show_left_labels" = "Mostra a sinistra";
+"show_right_labels" = "Mostra a destra";
+"show_top_labels" = "Mostra in alto";
+"top_color" = "Colore alto";
+
+// MARK: - Header & UX
+"header_options" = "Intestazioni";
+"show_selected_coordinates_button" = "Mostra pulsante coordinate";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Gratis: sempre 30s a turno.";
+"turn_timer_per_turn" = "Limite a turno";
+"turn_timer_title" = "Timer turno";
+
+// MARK: - Premium Access
+"free_limitations" = "Gratis: max %d×%d, %d giocatori.";
+"premium_limitations" = "Premium: tutte le funzioni — fino a %dx%d e %d giocatori.";
+"premium_access" = "Accesso Premium";
+"unlock_premium" = "Sblocca Premium";
+
+// MARK: - General UI
+"close" = "Chiudi";
+"end_game" = "Termina";
+"find_cell_with" = "Trova cella con %d";
+"new_game" = "Nuova partita";
+"player_score" = "%@: %d";
+"results_title" = "Risultati";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Impostazioni";
+"tap_to_close" = "Tocca per chiudere";
+"total_points" = "Punti totali";
+"turn_title" = "Turno di %@";
+"winner_announcement" = "🏆 Vincitore: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Selezionata riga %d, colonna %d";
+"gv_submit" = "Conferma";
+"gv_submit_hint" = "Seleziona prima una cella";
+"gv_submit_sel" = "Conferma (%d, %d)";
+"gv_submit_sel_ax" = "Conferma coordinate %d, %d";
+"gv_submit_prefix" = "Conferma (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Tocca di nuovo per confermare";
+"gv_target" = "Obiettivo: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Info";
+"ab_section_about_app" = "Su Memul";
+"ab_app_name" = "Memul — Puzzle di Moltiplicazione";
+"ab_version" = "Versione: %@";
+"ab_developer" = "Sviluppatore: Grzegorz Kulesza";
+"ab_section_purpose" = "Scopo";
+"ab_purpose_accessible" = "Adatto alle elementari ma utile molto oltre.";
+"ab_purpose_carries_forward" = "Costruisce abilità: array, posizioni riga–colonna, pensiero cartesiano.";
+"ab_purpose_commutativity" = "Aiuta a capire la proprietà commutativa.";
+"ab_purpose_learn_tables" = "Rende più semplice imparare le tabelline.";
+"ab_section_features" = "Funzioni";
+"ab_feature_customization" = "Personalizza dimensione, difficoltà, timer, etichette, immagini, coordinate.";
+"ab_feature_multiplayer" = "Multiplayer a turni (1–16 giocatori).";
+"ab_feature_puzzle_reveal" = "Immagine nascosta si rivela a poco a poco.";
+"ab_feature_quick_practice" = "Pratica veloce: moltiplicazione e (Premium) divisione.";
+"ab_feature_tutorial" = "Tutorial interattivo: righe, colonne, intersezioni.";
+"ab_section_author" = "Autore";
+"ab_author_line1" = "Creato da Grzegorz Kulesza, con esperienza in ingegneria, informatica, fisica, medicina e insegnamento.";
+"ab_author_line2" = "Esperienze che hanno plasmato Memul: array, coordinate, problem solving intuitivo.";
+"ab_section_support" = "Supporto";
+
+// MARK: - Tutorial
+"tutorial_title" = "Tutorial";
+"tutorial_cols_card_body" = "Immagina ghiaccioli che cadono dritti — ecco una colonna. Prova! Tocca un pulsante o un numero di colonna.";
+"tutorial_cols_card_title" = "Alleniamo le colonne";
+"tutorial_cols_sub" = "Guarda la linea verticale.";
+"tutorial_col_button" = "Col %d"; // ≤6
+"tutorial_col_label" = "Colonna: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Hai scelto riga rossa e colonna blu. Trova l’incrocio. Immagina la torre degli scacchi che si muove.";
+"tutorial_framed_card_title" = "Punto Magico";
+"tutorial_framed_title" = "Incrocio - Parte 2";
+"tutorial_framed_sub" = "Tocca dove riga e colonna si incontrano.";
+"tutorial_feedback_great" = "Ottimo!";
+"tutorial_feedback_not_quite" = "Non proprio";
+"tutorial_intersect_card_body" = "Riga × colonna = cella. Trova quella giusta.";
+"tutorial_intersect_card_title" = "Incroci nel gioco";
+"tutorial_intersect_sub" = "Riga × colonna.";
+"tutorial_intersect_title" = "Incrocio - Parte 1";
+"tutorial_next_quest" = "Prossima sfida";
+"tutorial_practice_callout" = "Sfida Infinita";
+"tutorial_practice_hint" = "Trova la cella dell’incrocio dato.";
+"tutorial_practice_sub" = "Tocca la cella dove si incrociano.";
+"tutorial_practice_title" = "Incrocio - Parte 3";
+"tutorial_quest_tap_pair" = "Tocca (%d ; %d)";
+"tutorial_quest_title" = "Missione:";
+"tutorial_row_button" = "R %d"; // ≤6
+"tutorial_row_label" = "Riga: %d";
+"tutorial_rows_card_body" = "Immagina lava che scorre orizzontale — ecco una riga. Prova! Tocca un pulsante o un numero di riga.";
+"tutorial_rows_card_title" = "Alleniamo le righe";
+"tutorial_rows_sub" = "Guarda la linea orizzontale.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Righe";
+"tutorial_cols_title" = "Colonne";
+
+"ab_purpose_multiplication" = "Impara le tabelline con i puzzle.";
+"ab_purpose_turn_based" = "Gioco a turni, 1–16 giocatori.";
+"ab_purpose_fun_learning" = "Impara rivelando immagini.";
+
+// MARK: - Tutorial Buttons
+"back" = "Indietro";
+"cancel" = "Annulla";
+"next" = "Avanti";
+"quit" = "Fine";
+"repeat" = "Ripeti";
+"skip_to_practice" = "Salta alla pratica";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Esci dal tutorial. Puoi tornare quando vuoi.";
+"tutorial_quit_title" = "Sei sicuro?";
+
+// MARK: - Quick Practice
+"division_note" = "Divisione con risultati interi: (quoziente × divisore) ÷ divisore = quoziente.";
+"division_premium_hint" = "La divisione richiede Premium.";
+"quick_divide" = "Divisione veloce";
+"quick_divide_locked" = "Divisione (bloccata)";
+"quick_multiply" = "Moltiplicazione veloce";
+"quick_practice" = "Pratica veloce";
+"range_division" = "Intervallo divisione: %d–%d";
+"range_multiplication" = "Intervallo moltiplicazione: %d–%d";
+"unlock_division" = "Sblocca Divisione";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Corretto!";
+"qp_correct_title" = "Corretto";
+"qp_d_prompt" = "Quanto fa %d ÷ %d ?";
+"qp_incorrect_title" = "Errato";
+"qp_m_prompt" = "Quanto fa %d × %d ?";
+"qp_next" = "Avanti";
+"qp_score" = "Punti: %d  •  %d/%d";
+"qp_score_title" = "Punti";
+"qp_wrong" = "Risposta corretta: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Obiettivi";
+"achievements_title" = "Obiettivi";
+"achv_locked" = "Bloccato";
+"achv_unlocked" = "Sbloccato";
+"achv_unlocked_toast" = "Obiettivo sbloccato: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Maestro Tutorial";
+"achv_tutorial_master_sub" = "Ottieni 1000 punti tutorial";
+
+"achv_puzzle_solver_title" = "Risolutore Immagini";
+"achv_puzzle_solver_sub" = "Completa 100 immagini";
+
+"achv_explorer_title" = "Esploratore";
+"achv_explorer_sub" = "Scopri 50 immagini";
+
+"achv_speedrunner_title" = "Velocista";
+"achv_speedrunner_sub" = "Vinci in meno di 2 minuti";
+
+"achv_perfectionist_title" = "Perfezionista";
+"achv_perfectionist_sub" = "Vinci con 0 errori";
+
+"achv_multiplayer_champ_title" = "Campione Multiplayer";
+"achv_multiplayer_champ_sub" = "Vinci con ≥4 giocatori";
+
+// MARK: - Paywall / Legal
+"legal" = "Legale";
+"privacy_policy" = "Privacy";
+"terms_of_use" = "Termini d’uso";
+
+"unlock_premium_cta" = "Sblocca Premium";
+"premium_unlocked_badge" = "✅ Premium attivo";
+"restore_purchases" = "Ripristina acquisti";
+"loading_price" = "Caricamento…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Sblocca tutte le funzioni senza limiti.";
+
+"feat_bigger_boards_title" = "Pannelli grandi";
+"feat_bigger_boards_detail" = "Fino a 33×33";
+"feat_more_players_title" = "Più giocatori";
+"feat_more_players_detail" = "Fino a 32";
+"feat_timer_title" = "Timer turno";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 s";
+"feat_labels_title" = "Stile etichette";
+"feat_labels_detail" = "Colori & posizioni";
+"feat_puzzles_title" = "Tutte le immagini";
+"feat_puzzles_detail" = "Gratis + Premium";
+"feat_division_title" = "Divisione veloce";
+"feat_division_detail" = "Modalità divisione";
+
+"paywall_smallprint" = "Acquisto una tantum. Family Sharing supportato. Legato al tuo Apple ID.";

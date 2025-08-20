@@ -1,0 +1,246 @@
+//
+//  Localizable.strings (Korean - ko)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "정보";
+"app_title" = "Memul";
+"settings" = "설정";
+"start_game" = "게임 시작";
+"start_tagline" = "곱셈·놀이·학습";
+"tutorial" = "튜토리얼";
+
+// MARK: - Board & Players
+"add_player" = "플레이어 추가";
+"board_size" = "보드 크기";
+"board_size_value" = "크기: %d × %d";
+"player_n" = "플레이어 %d";
+"players" = "플레이어";
+"remove_last_player" = "마지막 제거";
+
+// MARK: - Puzzle
+"puzzle" = "퍼즐";
+"puzzle_enable" = "보드 아래 퍼즐 표시";
+"puzzle_free_info" = "무료: 무료 팩 이미지 랜덤 표시.";
+"puzzle_premium_info" = "프리미엄: 전체 팩 이미지 랜덤 표시.";
+
+// MARK: - Difficulty
+"difficulty" = "난이도";
+"difficulty_easy" = "쉬움";
+"difficulty_hard" = "어려움";
+"difficulty_mode" = "모드";
+"difficulty_normal" = "보통";
+"difficulty_premium_hint" = "무료: 쉬움만 가능. 보통/어려움은 프리미엄.";
+
+// MARK: - Index Labels
+"bottom_color" = "아래 색상";
+"index_customize" = "라벨 사용자화";
+"index_labels" = "인덱스 라벨";
+"index_labels_premium_hint" = "색상 변경은 프리미엄 필요.";
+"left_color" = "왼쪽 색상";
+"make_labels_transparent" = "라벨 투명화";
+"reset_label_colors" = "색상 초기화";
+"right_color" = "오른쪽 색상";
+"show_bottom_labels" = "아래 표시";
+"show_left_labels" = "왼쪽 표시";
+"show_right_labels" = "오른쪽 표시";
+"show_top_labels" = "위 표시";
+"top_color" = "위 색상";
+
+// MARK: - Header & UX
+"header_options" = "헤더";
+"show_selected_coordinates_button" = "좌표 버튼 표시";
+
+// MARK: - Turn Timer
+"turn_30s" = "30초";
+"turn_60s" = "60초";
+"turn_120s" = "120초";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "무료: 턴당 30초 고정.";
+"turn_timer_per_turn" = "턴 제한";
+"turn_timer_title" = "턴 타이머";
+
+// MARK: - Premium Access
+"free_limitations" = "무료: 최대 %d×%d, %d명.";
+"premium_limitations" = "프리미엄: 최대 %dx%d, %d명.";
+"premium_access" = "프리미엄";
+"unlock_premium" = "프리미엄 해제";
+
+// MARK: - General UI
+"close" = "닫기";
+"end_game" = "게임 종료";
+"find_cell_with" = "%d 칸 찾기";
+"new_game" = "새 게임";
+"player_score" = "%@: %d";
+"results_title" = "결과";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "설정";
+"tap_to_close" = "탭하여 닫기";
+"total_points" = "총 점수";
+"turn_title" = "%@의 차례";
+"winner_announcement" = "🏆 승자: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "행 %d, 열 %d 선택";
+"gv_submit" = "확인";
+"gv_submit_hint" = "칸을 먼저 선택하세요";
+"gv_submit_sel" = "확인 (%d, %d)";
+"gv_submit_sel_ax" = "좌표 %d, %d 확인";
+"gv_submit_prefix" = "확인 (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "다시 탭하거나 확인 버튼 누르기";
+"gv_target" = "목표: %d";
+
+// MARK: - About
+"ab_navigation_title" = "정보";
+"ab_section_about_app" = "Memul 소개";
+"ab_app_name" = "Memul — 곱셈 퍼즐 게임";
+"ab_version" = "버전: %@";
+"ab_developer" = "개발자: Grzegorz Kulesza";
+"ab_section_purpose" = "목적";
+"ab_purpose_accessible" = "초등학생부터 성인까지 쉽게 접근.";
+"ab_purpose_carries_forward" = "배열·좌표·데카르트 사고력 습득.";
+"ab_purpose_commutativity" = "곱셈의 교환법칙을 이해.";
+"ab_purpose_learn_tables" = "구구단을 재미있게 학습.";
+"ab_section_features" = "특징";
+"ab_feature_customization" = "크기, 난이도, 타이머, 라벨, 퍼즐 등 설정.";
+"ab_feature_multiplayer" = "턴제 멀티플레이 (1~16명).";
+"ab_feature_puzzle_reveal" = "정답 시 퍼즐이 점차 드러남.";
+"ab_feature_quick_practice" = "곱셈 및 (프리미엄) 나눗셈 연습.";
+"ab_feature_tutorial" = "행·열·교차점 학습 튜토리얼.";
+"ab_section_author" = "제작자";
+"ab_author_line1" = "다양한 학문 경험을 가진 Grzegorz Kulesza 제작.";
+"ab_author_line2" = "배열·좌표 개념을 더 일찍 배우고 싶었다는 바람이 Memul에 담김.";
+"ab_section_support" = "지원";
+
+// MARK: - Tutorial
+"tutorial_title" = "튜토리얼";
+"tutorial_cols_card_body" = "고드름이 똑바로 떨어지는 걸 상상하세요. 그것이 열입니다. 아래 버튼이나 보드의 열을 탭하세요.";
+"tutorial_cols_card_title" = "열 연습";
+"tutorial_cols_sub" = "세로 줄을 봅시다.";
+"tutorial_col_button" = "열 %d"; // ≤6
+"tutorial_col_label" = "열: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "빨간 행과 파란 열을 선택했습니다. 교차점을 찾으세요. 체스 룩의 움직임을 상상하세요.";
+"tutorial_framed_card_title" = "마법의 지점";
+"tutorial_framed_title" = "교차점 - 파트2";
+"tutorial_framed_sub" = "행과 열이 만나는 칸을 탭하세요.";
+"tutorial_feedback_great" = "잘했어요!";
+"tutorial_feedback_not_quite" = "아직이야";
+"tutorial_intersect_card_body" = "행 × 열 = 교차점. 정답 칸을 찾으세요.";
+"tutorial_intersect_card_title" = "게임 속 교차점";
+"tutorial_intersect_sub" = "행 × 열";
+"tutorial_intersect_title" = "교차점 - 파트1";
+"tutorial_next_quest" = "다음 문제";
+"tutorial_practice_callout" = "끝없는 도전";
+"tutorial_practice_hint" = "지정된 행과 열의 교차 칸을 찾으세요.";
+"tutorial_practice_sub" = "레이저가 교차하는 칸을 탭하세요.";
+"tutorial_practice_title" = "교차점 - 파트3";
+"tutorial_quest_tap_pair" = "(%d ; %d) 탭";
+"tutorial_quest_title" = "퀘스트:";
+"tutorial_row_button" = "행 %d"; // ≤6
+"tutorial_row_label" = "행: %d";
+"tutorial_rows_card_body" = "용암이 옆으로 흐르는 것을 상상하세요. 그것이 행입니다. 아래 버튼이나 보드의 행을 탭하세요.";
+"tutorial_rows_card_title" = "행 연습";
+"tutorial_rows_sub" = "가로 줄을 봅시다.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "행";
+"tutorial_cols_title" = "열";
+
+"ab_purpose_multiplication" = "곱셈표를 퍼즐로 학습.";
+"ab_purpose_turn_based" = "턴제로 1~16명 플레이.";
+"ab_purpose_fun_learning" = "학습하며 그림 해제.";
+
+// MARK: - Tutorial Buttons
+"back" = "뒤로";
+"cancel" = "취소";
+"next" = "다음";
+"quit" = "끝내기";
+"repeat" = "반복";
+"skip_to_practice" = "연습으로";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "튜토리얼을 종료합니다. 언제든 다시 시작할 수 있습니다.";
+"tutorial_quit_title" = "확실합니까?";
+
+// MARK: - Quick Practice
+"division_note" = "정수 나눗셈: (몫 × 나누는 수) ÷ 나누는 수 = 몫.";
+"division_premium_hint" = "나눗셈은 프리미엄 전용.";
+"quick_divide" = "나눗셈";
+"quick_divide_locked" = "나눗셈 (잠금)";
+"quick_multiply" = "곱셈";
+"quick_practice" = "빠른 연습";
+"range_division" = "범위: %d–%d (나눗셈)";
+"range_multiplication" = "범위: %d–%d (곱셈)";
+"unlock_division" = "나눗셈 해제";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "정답!";
+"qp_correct_title" = "정답";
+"qp_d_prompt" = "%d ÷ %d = ?";
+"qp_incorrect_title" = "오답";
+"qp_m_prompt" = "%d × %d = ?";
+"qp_next" = "다음";
+"qp_score" = "점수: %d  •  %d/%d";
+"qp_score_title" = "점수";
+"qp_wrong" = "정답: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "업적";
+"achievements_title" = "업적";
+"achv_locked" = "잠김";
+"achv_unlocked" = "해제";
+"achv_unlocked_toast" = "업적 달성: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "튜토리얼 마스터";
+"achv_tutorial_master_sub" = "튜토리얼 점수 1000점";
+
+"achv_puzzle_solver_title" = "퍼즐 해결사";
+"achv_puzzle_solver_sub" = "퍼즐 100개 완료";
+
+"achv_explorer_title" = "탐험가";
+"achv_explorer_sub" = "이미지 50개 발견";
+
+"achv_speedrunner_title" = "스피드러너";
+"achv_speedrunner_sub" = "2분 내 승리";
+
+"achv_perfectionist_title" = "완벽주의자";
+"achv_perfectionist_sub" = "실수 0으로 승리";
+
+"achv_multiplayer_champ_title" = "멀티플레이 챔피언";
+"achv_multiplayer_champ_sub" = "4명 이상과 게임에서 승리";
+
+// MARK: - Paywall / Legal
+"legal" = "법적 고지";
+"privacy_policy" = "개인정보 처리방침";
+"terms_of_use" = "이용 약관";
+
+"unlock_premium_cta" = "프리미엄 해제";
+"premium_unlocked_badge" = "✅ 프리미엄 해제됨";
+"restore_purchases" = "구매 복원";
+"loading_price" = "가격 불러오는 중…";
+
+"paywall_title" = "Memul 프리미엄";
+"paywall_subtitle" = "모든 기능 해제, 제한 없음.";
+
+"feat_bigger_boards_title" = "큰 보드";
+"feat_bigger_boards_detail" = "최대 33×33";
+"feat_more_players_title" = "플레이어 추가";
+"feat_more_players_detail" = "최대 32명";
+"feat_timer_title" = "턴 타이머";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 초";
+"feat_labels_title" = "라벨 설정";
+"feat_labels_detail" = "색상 & 위치";
+"feat_puzzles_title" = "전체 퍼즐";
+"feat_puzzles_detail" = "무료 + 프리미엄";
+"feat_division_title" = "나눗셈";
+"feat_division_detail" = "나눗셈 모드 해제";
+
+"paywall_smallprint" = "일회성 구매. 가족 공유 지원. Apple ID에 연결됩니다.";

@@ -1,0 +1,247 @@
+//
+//  Localizable.strings (Swedish - sv)
+//  Memul
+//
+
+// MARK: - Start Screen
+"about" = "Om";
+"app_title" = "Memul";
+"settings" = "Inställningar";
+"start_game" = "Starta spel";
+"start_tagline" = "Multiplicera. Spela. Lär.";
+"tutorial" = "Guide";
+
+// MARK: - Board & Players
+"add_player" = "Lägg till spelare";
+"board_size" = "Brädstorlek";
+"board_size_value" = "Storlek: %d × %d";
+"player_n" = "Spelare %d";
+"players" = "Spelare";
+"remove_last_player" = "Ta bort sista spelare";
+
+// MARK: - Puzzle
+"puzzle" = "Bild";
+"puzzle_enable" = "Visa bild under rutnätet";
+"puzzle_free_info" = "Gratis: slumpmässig bild från gratispaket.";
+"puzzle_premium_info" = "Premium: slumpmässig bild från alla paket.";
+
+// MARK: - Difficulty
+"difficulty" = "Svårighet";
+"difficulty_easy" = "Lätt";
+"difficulty_hard" = "Svår";
+"difficulty_mode" = "Läge";
+"difficulty_normal" = "Normal";
+"difficulty_premium_hint" = "Gratis: endast Lätt. Normal/Svår kräver Premium.";
+
+// MARK: - Index Labels
+"bottom_color" = "Färg nere";
+"index_customize" = "Anpassa etiketter";
+"index_labels" = "Etiketter";
+"index_labels_premium_hint" = "Färgval kräver Premium.";
+"left_color" = "Färg vänster";
+"make_labels_transparent" = "Gör etiketter genomskinliga";
+"reset_label_colors" = "Återställ färger";
+"right_color" = "Färg höger";
+"show_bottom_labels" = "Visa nere";
+"show_left_labels" = "Visa vänster";
+"show_right_labels" = "Visa höger";
+"show_top_labels" = "Visa uppe";
+"top_color" = "Färg uppe";
+
+// MARK: - Header & UX
+"header_options" = "Rubrik";
+"show_selected_coordinates_button" = "Visa valda koordinater-knapp";
+
+// MARK: - Turn Timer
+"turn_30s" = "30s";
+"turn_60s" = "60s";
+"turn_120s" = "120s";
+"turn_infinity" = "∞";
+"turn_infinity_suffix" = " (%@)";
+"turn_seconds_suffix" = " (%ds)";
+"turn_timer_free_hint" = "Gratis: fast 30s per tur.";
+"turn_timer_per_turn" = "Per-tur gräns";
+"turn_timer_title" = "Tur-timer";
+
+// MARK: - Premium Access
+"free_limitations" = "Gratis: max %d×%d, %d spelare.";
+"premium_limitations" = "Premium: upp till %dx%d och %d spelare.";
+"premium_access" = "Premiumåtkomst";
+"unlock_premium" = "Lås upp Premium";
+
+// MARK: - General UI
+"close" = "Stäng";
+"end_game" = "Avsluta spel";
+"find_cell_with" = "Hitta ruta med %d";
+"new_game" = "Nytt spel";
+"player_score" = "%@: %d";
+"results_title" = "Resultat";
+"selected_coordinates" = "(%d, %d)";
+"settings_title" = "Inställningar";
+"tap_to_close" = "Tryck för att stänga";
+"total_points" = "Totala poäng";
+"turn_title" = "%@ tur";
+"winner_announcement" = "🏆 Vinnare: %@!";
+
+// MARK: - GameView Actions
+"gv_selected_ax" = "Rad %d, kolumn %d vald";
+"gv_submit" = "Skicka";
+"gv_submit_hint" = "Välj en ruta först";
+"gv_submit_sel" = "Skicka (%d, %d)";
+"gv_submit_sel_ax" = "Skicka valda koordinater %d, %d";
+"gv_submit_prefix" = "Skicka (";
+"gv_submit_separator" = " ; ";
+"gv_submit_suffix" = ")";
+"gv_tap_again" = "Tryck igen eller Skicka";
+"gv_target" = "Mål: %d";
+
+// MARK: - About
+"ab_navigation_title" = "Om";
+"ab_section_about_app" = "Om Memul";
+"ab_app_name" = "Memul — Multiplikationsspel";
+"ab_version" = "Version: %@";
+"ab_developer" = "Utvecklare: Grzegorz Kulesza";
+"ab_section_purpose" = "Syfte";
+"ab_purpose_accessible" = "Lättillgängligt för barn men användbart längre fram.";
+"ab_purpose_carries_forward" = "Bygger färdigheter i matriser, rader–kolumner och koordinater.";
+"ab_purpose_commutativity" = "Hjälper förstå den kommutativa egenskapen.";
+"ab_purpose_learn_tables" = "Gör multiplikationstabellen enklare att lära sig.";
+"ab_section_features" = "Funktioner";
+"ab_feature_customization" = "Anpassning: storlek, svårighet, timers, etiketter, bilder.";
+"ab_feature_multiplayer" = "Tur-baserad multiplayer (1–16 spelare).";
+"ab_feature_puzzle_reveal" = "Dold bild visas bit för bit.";
+"ab_feature_quick_practice" = "Snabbträning i multiplikation och (Premium) division.";
+"ab_feature_tutorial" = "Interaktiv guide: rader, kolumner, korsningar.";
+"ab_section_author" = "Författare";
+"ab_author_line1" = "Skapat av Grzegorz Kulesza med bred erfarenhet.";
+"ab_author_line2" = "Den erfarenheten formade Memul: matriser, koordinater, problemlösning.";
+"ab_section_support" = "Support";
+
+// MARK: - Tutorial
+"tutorial_title" = "Guide";
+"tutorial_cols_card_body" = "Föreställ dig istappar som faller rakt ner. Det är en kolumn. Försök nu!";
+"tutorial_cols_card_title" = "Träna kolumner";
+"tutorial_cols_sub" = "Se den vertikala linjen.";
+"tutorial_col_button" = "Kol %d";
+"tutorial_col_label" = "Kolumn: %d";
+"tutorial_equation" = "%d × %d = %d";
+"tutorial_framed_card_body" = "Du valde en röd rad och en blå kolumn. Hitta korset. Föreställ dig ett torn i schack som kan gå båda vägarna.";
+"tutorial_framed_card_title" = "Magiska punkten";
+"tutorial_framed_title" = "Korsning - Del 2";
+"tutorial_framed_sub" = "Tryck där de möts.";
+"tutorial_feedback_great" = "Bra!";
+"tutorial_feedback_not_quite" = "Inte riktigt";
+"tutorial_intersect_card_body" = "Där rad × kolumn = ruta.";
+"tutorial_intersect_card_title" = "Korsningar i spelet";
+"tutorial_intersect_sub" = "Rad × Kolumn.";
+"tutorial_intersect_title" = "Korsning - Del 1";
+"tutorial_next_quest" = "Nästa uppdrag";
+"tutorial_practice_callout" = "Oändlig utmaning";
+"tutorial_practice_hint" = "Hitta rutan för rad och kolumn.";
+"tutorial_practice_sub" = "Tryck på korsningsrutan.";
+"tutorial_practice_title" = "Korsning - Del 3";
+"tutorial_quest_tap_pair" = "Tryck (%d ; %d)";
+"tutorial_quest_title" = "Uppdrag:";
+"tutorial_row_button" = "Rad %d";
+"tutorial_row_label" = "Rad: %d";
+"tutorial_rows_card_body" = "Föreställ dig lava som flyter åt sidan. Det är en rad.";
+"tutorial_rows_card_title" = "Träna rader";
+"tutorial_rows_sub" = "Se den horisontella linjen.";
+"tutorial_score_right" = "✅ %d";
+"tutorial_score_wrong" = "❌ %d";
+"tutorial_rows_title" = "Rader";
+"tutorial_cols_title" = "Kolumner";
+
+"ab_purpose_multiplication" = "Träna multiplikationstabellen på ett roligt sätt.";
+"ab_purpose_turn_based" = "Tur-baserat spel 1–16 spelare.";
+"ab_purpose_fun_learning" = "Lär och upptäck bilder.";
+
+// MARK: - Tutorial Buttons
+"back" = "Tillbaka";
+"cancel" = "Avbryt";
+"next" = "Nästa";
+"quit" = "Avsluta";
+"repeat" = "Upprepa";
+"skip_to_practice" = "Hoppa till träning";
+
+// MARK: - Tutorial Alerts
+"tutorial_quit_message" = "Du lämnar guiden. Du kan komma tillbaka när som helst.";
+"tutorial_quit_title" = "Är du säker?";
+
+// MARK: - Quick Practice
+"division_note" = "Division med heltal: (kvot × divisor) ÷ divisor = kvot.";
+"division_premium_hint" = "Division kräver Premium.";
+"quick_divide" = "Snabb division";
+"quick_divide_locked" = "Division (låst)";
+"quick_multiply" = "Snabb multiplikation";
+"quick_practice" = "Snabbträning";
+"range_division" = "Divisionsintervall: %d–%d";
+"range_multiplication" = "Multiplikationsintervall: %d–%d";
+"unlock_division" = "Lås upp division";
+
+// MARK: - QuickPracticeView UI
+"qp_correct" = "Rätt!";
+"qp_correct_title" = "Rätt";
+"qp_d_prompt" = "Vad är %d ÷ %d ?";
+"qp_incorrect_title" = "Fel";
+"qp_m_prompt" = "Vad är %d × %d ?";
+"qp_next" = "Nästa";
+"qp_score" = "Poäng: %d  •  %d/%d";
+"qp_score_title" = "Poäng";
+"qp_wrong" = "Svar: %d";
+
+// MARK: - Achievements (UI)
+"achievements" = "Prestationer";
+"achievements_title" = "Prestationer";
+"achv_locked" = "Låst";
+"achv_unlocked" = "Upplåst";
+"achv_unlocked_toast" = "Prestation upplåst: %@";
+"achv_progress" = "%d / %d";
+
+// MARK: - Achievements (Titles & Subtitles)
+"achv_tutorial_master_title" = "Guidemästare";
+"achv_tutorial_master_sub" = "Tjäna 1000 guidepoäng";
+
+"achv_puzzle_solver_title" = "Bildlösare";
+"achv_puzzle_solver_sub" = "Klara 100 bilder";
+
+"achv_explorer_title" = "Utforskare";
+"achv_explorer_sub" = "Upptäck 50 bilder";
+
+"achv_speedrunner_title" = "Snabblöpare";
+"achv_speedrunner_sub" = "Vinn på under 2 min";
+
+"achv_perfectionist_title" = "Perfektionist";
+"achv_perfectionist_sub" = "Vinn utan fel";
+
+"achv_multiplayer_champ_title" = "Multispelmästare";
+"achv_multiplayer_champ_sub" = "Vinn med ≥4 spelare";
+
+// MARK: - Paywall / Legal
+"legal" = "Juridiskt";
+"privacy_policy" = "Integritetspolicy";
+"terms_of_use" = "Användarvillkor";
+
+"unlock_premium_cta" = "Lås upp Premium";
+"premium_unlocked_badge" = "✅ Premium upplåst";
+"restore_purchases" = "Återställ köp";
+"loading_price" = "Laddar pris…";
+
+"paywall_title" = "Memul Premium";
+"paywall_subtitle" = "Lås upp allt och ta bort begränsningar.";
+
+"feat_bigger_boards_title" = "Större bräden";
+"feat_bigger_boards_detail" = "Upp till 33×33";
+"feat_more_players_title" = "Fler spelare";
+"feat_more_players_detail" = "Upp till 32";
+"feat_timer_title" = "Timer";
+"feat_timer_detail" = "∞ / 30 / 60 / 120 s";
+"feat_labels_title" = "Etikettstil";
+"feat_labels_detail" = "Färger & placeringar";
+"feat_puzzles_title" = "Alla bilder";
+"feat_puzzles_detail" = "Gratis + Premium";
+"feat_division_title" = "Snabb division";
+"feat_division_detail" = "Lås upp division";
+
+"paywall_smallprint" = "Engångsköp. Family Sharing stöds. Kopplat till ditt Apple-ID.";
+ 
