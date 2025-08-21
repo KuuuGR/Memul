@@ -13,18 +13,16 @@ struct GameView: View {
 
     // MARK: - State
     @State private var showResults = false
-    @State private var hasConfirmedOnce = false   // hides helper after first submit
+    @State private var hasConfirmedOnce = false
 
-    private let cellSize: CGFloat = 40
+    // Visual spacing between tiles
     private let spacing: CGFloat = 2
 
-    // MARK: - Body
     var body: some View {
         VStack(spacing: 12) {
-
             headerSection
             submitSection
-            boardSection
+            boardSection        // adaptive board
             hudSection
         }
         .overlay(puzzleOverlay)
@@ -33,8 +31,7 @@ struct GameView: View {
                 .onAppear { viewModel.pauseTurnTimer() }
         }
         .onChange(of: viewModel.showPuzzleOverlay) { _, isShown in
-            if isShown { viewModel.pauseTurnTimer() }
-            else { viewModel.resumeTurnTimerIfNeeded() }
+            if isShown { viewModel.pauseTurnTimer() } else { viewModel.resumeTurnTimerIfNeeded() }
         }
         .animation(.easeInOut, value: viewModel.currentPlayer.id)
     }
@@ -43,10 +40,8 @@ struct GameView: View {
 // MARK: - UI Sections
 private extension GameView {
 
-    /// Top player info and target
     var headerSection: some View {
         VStack(spacing: 10) {
-            // Player + timer chips
             HStack(spacing: 8) {
                 Label(
                     String(format: NSLocalizedString("turn_title", comment: "%@'s turn"),
@@ -70,7 +65,6 @@ private extension GameView {
             }
             .id(viewModel.currentPlayer.id)
 
-            // Target chip
             HStack {
                 Label(
                     String(format: NSLocalizedString("gv_target", comment: "Target: %d"),
@@ -88,50 +82,34 @@ private extension GameView {
         }
     }
 
-    /// Submit button row + helper text
     var submitSection: some View {
         VStack(spacing: 2) {
             HStack {
                 if let sel = viewModel.currentSelection {
-                    // When a selection exists, show either detailed (with coordinates) or plain submit
                     Button { submitSelectionConfirmed() } label: {
-                        if viewModel.settings.showSelectedCoordinatesButton {
-                            // Detailed label with coordinates capsules
-                            Label {
-                                HStack(spacing: 4) {
-                                    Text(NSLocalizedString("gv_submit_prefix", comment: "Submit prefix"))
-                                        .foregroundColor(.secondary)
-
-                                    capsuleText("\(sel.row)", color: .red)
-                                    Text(NSLocalizedString("gv_submit_separator", comment: ","))
-                                        .foregroundColor(.secondary)
-                                    capsuleText("\(sel.col)", color: .blue)
-
-                                    Text(NSLocalizedString("gv_submit_suffix", comment: ")"))
-                                        .foregroundColor(.secondary)
-                                }
-                                .font(.body.weight(.semibold))
-                            } icon: {
-                                Image(systemName: "checkmark.circle.fill")
+                        Label {
+                            HStack(spacing: 4) {
+                                Text(NSLocalizedString("gv_submit_prefix", comment: "Submit ("))
+                                    .foregroundColor(.secondary)
+                                capsuleText("\(sel.row)", color: .red)
+                                Text(NSLocalizedString("gv_submit_separator", comment: ","))
+                                    .foregroundColor(.secondary)
+                                capsuleText("\(sel.col)", color: .blue)
+                                Text(NSLocalizedString("gv_submit_suffix", comment: ")"))
+                                    .foregroundColor(.secondary)
                             }
-                        } else {
-                            // Plain submit (no coordinates)
-                            Label(NSLocalizedString("gv_submit", comment: "Submit"),
-                                  systemImage: "checkmark.circle.fill")
-                                .font(.body.weight(.semibold))
+                            .font(.body.weight(.semibold))
+                        } icon: {
+                            Image(systemName: "checkmark.circle.fill")
                         }
                     }
                     .buttonStyle(.borderedProminent)
                     .tint(.blue)
                     .accessibilityLabel(
-                        Text(
-                            viewModel.settings.showSelectedCoordinatesButton
-                            ? String(format: NSLocalizedString("gv_submit_sel_ax", comment: "Submit %d, %d"), sel.row, sel.col)
-                            : NSLocalizedString("gv_submit", comment: "Submit")
-                        )
+                        Text(String(format: NSLocalizedString("gv_submit_sel_ax", comment: "Submit %d, %d"),
+                                    sel.row, sel.col))
                     )
                 } else {
-                    // No selection yet → disabled submit
                     Button {} label: {
                         Label(NSLocalizedString("gv_submit", comment: "Submit"),
                               systemImage: "checkmark.circle.fill")
@@ -156,37 +134,119 @@ private extension GameView {
         }
     }
 
-    /// Main board with scroll
+    // MARK: Adaptive board
     var boardSection: some View {
-        ScrollView([.horizontal, .vertical]) {
-            VStack(spacing: spacing) {
-                topColumns
+        GeometryReader { geo in
+            let availW: CGFloat = geo.size.width  - 16
+            let availH: CGFloat = geo.size.height - 16
 
-                ForEach(1...viewModel.settings.boardSize, id: \.self) { row in
-                    HStack(spacing: spacing) {
-                        leftRow(row)
+            let sizeN: Int = viewModel.settings.boardSize
+            let n: CGFloat = CGFloat(sizeN)
 
-                        ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
-                            if let cell = viewModel.cells.first(where: { $0.row == row && $0.col == col }) {
-                                boardCell(cell, row: row, col: col)
+            // visible index headers
+            let showTop    = viewModel.settings.indexVisibility.top
+            let showBottom = viewModel.settings.indexVisibility.bottom && sizeN >= 7
+            let showLeft   = viewModel.settings.indexVisibility.left
+            let showRight  = viewModel.settings.indexVisibility.right && sizeN >= 7
+
+            let headerCols: CGFloat = CGFloat((showLeft ? 1 : 0) + (showRight ? 1 : 0))
+            let headerRows: CGFloat = CGFloat((showTop ? 1 : 0) + (showBottom ? 1 : 0))
+
+            // counts including headers
+            let totalCols: CGFloat = n + headerCols
+            let totalRows: CGFloat = n + headerRows
+
+            // pixels taken by gaps
+            let gapW: CGFloat = spacing * (totalCols - 1)
+            let gapH: CGFloat = spacing * (totalRows - 1)
+
+            // max tile size that fits both axes
+            let tileW: CGFloat = (availW  - gapW) / totalCols
+            let tileH: CGFloat = (availH - gapH) / totalRows
+
+            let minTile: CGFloat = 32  // ✅ minimum square side in points
+            let tileSize: CGFloat = max(minTile, floor(min(tileW, tileH)))
+
+
+            // final board pixels
+            let boardW: CGFloat = tileSize * totalCols + gapW
+            let boardH: CGFloat = tileSize * totalRows + gapH
+
+            // arrays for ForEach (helps compiler)
+            let rows = Array(1...sizeN)
+            let cols = Array(1...sizeN)
+
+            ScrollView([.vertical, .horizontal], showsIndicators: false) {
+                VStack(spacing: spacing) {
+
+                    // Top numbers
+                    if showTop {
+                        HStack(spacing: spacing) {
+                            if showLeft { spacerCell(tileSize) }
+                            ForEach(cols, id: \.self) { col in
+                                Text("\(col)")
+                                    .frame(width: tileSize, height: tileSize)
+                                    .font(.caption)
+                                    .foregroundColor(viewModel.settings.indexColors.top)
+                            }
+                            if showRight { spacerCell(tileSize) }
+                        }
+                    }
+
+                    // Grid rows
+                    ForEach(rows, id: \.self) { row in
+                        HStack(spacing: spacing) {
+                            if showLeft {
+                                Text("\(row)")
+                                    .frame(width: tileSize, height: tileSize)
+                                    .font(.caption)
+                                    .foregroundColor(viewModel.settings.indexColors.left)
+                            }
+
+                            ForEach(cols, id: \.self) { col in
+                                if let cell = viewModel.cells.first(where: { $0.row == row && $0.col == col }) {
+                                    boardCell(cell, row: row, col: col, cellSize: tileSize)
+                                } else {
+                                    Rectangle()
+                                        .fill(Color.clear)
+                                        .frame(width: tileSize, height: tileSize)
+                                }
+                            }
+
+                            if showRight {
+                                Text("\(row)")
+                                    .frame(width: tileSize, height: tileSize)
+                                    .font(.caption)
+                                    .foregroundColor(viewModel.settings.indexColors.right)
                             }
                         }
+                    }
 
-                        rightRow(row)
+                    // Bottom numbers
+                    if showBottom {
+                        HStack(spacing: spacing) {
+                            if showLeft { spacerCell(tileSize) }
+                            ForEach(cols, id: \.self) { col in
+                                Text("\(col)")
+                                    .frame(width: tileSize, height: tileSize)
+                                    .font(.caption)
+                                    .foregroundColor(viewModel.settings.indexColors.bottom)
+                            }
+                            if showRight { spacerCell(tileSize) }
+                        }
                     }
                 }
-
-                bottomColumns
+                .frame(width: boardW, height: boardH)
+                .padding(.horizontal, max(0, (availW  - boardW) / 2))
+                .padding(.vertical,   max(0, (availH - boardH) / 2))
             }
-            .padding()
-            .frame(
-                minWidth: CGFloat(viewModel.settings.boardSize + 2) * cellSize + spacing,
-                minHeight: CGFloat(viewModel.settings.boardSize + 2) * cellSize + spacing
-            )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 8)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    /// Scores + End Game
     var hudSection: some View {
         VStack(spacing: 10) {
             Text(NSLocalizedString("total_points", comment: "Section title for scores"))
@@ -206,7 +266,6 @@ private extension GameView {
         .background(Color(UIColor.systemBackground))
     }
 
-    /// Overlay with puzzle image
     var puzzleOverlay: some View {
         Group {
             if viewModel.showPuzzleOverlay, let image = viewModel.puzzleImageName {
@@ -230,51 +289,12 @@ private extension GameView {
 
 // MARK: - Board helpers
 private extension GameView {
-    var topColumns: some View {
-        HStack(spacing: spacing) {
-            Text("").frame(width: cellSize, height: cellSize)
-            ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
-                Text("\(col)")
-                    .frame(width: cellSize, height: cellSize)
-                    .font(.caption)
-                    .foregroundColor(viewModel.settings.indexColors.top)
-                    .opacity(viewModel.settings.indexVisibility.top ? 1 : 0)
-            }
-            Text("").frame(width: cellSize, height: cellSize)
-        }
+
+    func spacerCell(_ side: CGFloat) -> some View {
+        Rectangle().fill(Color.clear).frame(width: side, height: side)
     }
 
-    func leftRow(_ row: Int) -> some View {
-        Text("\(row)")
-            .frame(width: cellSize, height: cellSize)
-            .font(.caption)
-            .foregroundColor(viewModel.settings.indexColors.left)
-            .opacity(viewModel.settings.indexVisibility.left ? 1 : 0)
-    }
-
-    func rightRow(_ row: Int) -> some View {
-        Text("\(row)")
-            .frame(width: cellSize, height: cellSize)
-            .font(.caption)
-            .foregroundColor(viewModel.settings.indexColors.right)
-            .opacity((viewModel.settings.indexVisibility.right && viewModel.settings.boardSize >= 7) ? 1 : 0)
-    }
-
-    var bottomColumns: some View {
-        HStack(spacing: spacing) {
-            Text("").frame(width: cellSize, height: cellSize)
-            ForEach(1...viewModel.settings.boardSize, id: \.self) { col in
-                Text("\(col)")
-                    .frame(width: cellSize, height: cellSize)
-                    .font(.caption)
-                    .foregroundColor(viewModel.settings.indexColors.bottom)
-                    .opacity((viewModel.settings.indexVisibility.bottom && viewModel.settings.boardSize >= 7) ? 1 : 0)
-            }
-            Text("").frame(width: cellSize, height: cellSize)
-        }
-    }
-
-    func boardCell(_ cell: Cell, row: Int, col: Int) -> some View {
+    func boardCell(_ cell: Cell, row: Int, col: Int, cellSize: CGFloat) -> some View {
         ZStack {
             CellView(
                 cell: cell,
@@ -285,7 +305,8 @@ private extension GameView {
             )
 
             if isCellHighlighted(cell) {
-                RoundedRectangle(cornerRadius: cellSize * 0.2)
+                let corner = cellSize * 0.2
+                RoundedRectangle(cornerRadius: corner)
                     .stroke(Color(.systemYellow), lineWidth: 2)
                     .frame(width: cellSize / 5, height: cellSize / 5)
             }
@@ -343,20 +364,19 @@ private extension GameView {
     }
 
     func getPuzzlePiece(row: Int, col: Int) -> Image? {
-        let r = row - 1, c = col - 1
-        if viewModel.puzzlePieces.indices.contains(r),
-           viewModel.puzzlePieces[r].indices.contains(c) {
-            return viewModel.puzzlePieces[r][c]
-        }
-        return nil
+        let r = row - 1
+        let c = col - 1
+        guard viewModel.puzzlePieces.indices.contains(r) else { return nil }
+        guard viewModel.puzzlePieces[r].indices.contains(c) else { return nil }
+        return viewModel.puzzlePieces[r][c]
     }
 
     func timerChipText() -> String {
         if let remaining = viewModel.timeRemaining {
             return String(format: NSLocalizedString("turn_seconds_suffix", comment: " (%ds)"), remaining)
         } else {
-            return String(format: NSLocalizedString("turn_infinity_suffix", comment: " (%@)"),
-                          NSLocalizedString("turn_infinity", comment: "∞"))
+            let inf = NSLocalizedString("turn_infinity", comment: "∞")
+            return String(format: NSLocalizedString("turn_infinity_suffix", comment: " (%@)"), inf)
         }
     }
 
