@@ -9,12 +9,10 @@ import SwiftUI
 
 @main
 struct MemulApp: App {
-    // Keep a reference so SwiftUI observes IAP changes (optional but handy)
-    @StateObject private var iap = IAPManager.shared
-
     init() {
-        // Configure StoreKit on app launch
+        // Configure StoreKit on app launch and refresh entitlements
         IAPManager.shared.configureOnLaunch()
+        Task { await IAPManager.shared.refreshEntitlements() }
     }
 
     var body: some Scene {

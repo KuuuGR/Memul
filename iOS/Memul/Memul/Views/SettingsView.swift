@@ -10,6 +10,9 @@ import SwiftUI
 struct SettingsView: View {
     @Binding var settings: GameSettings
 
+    // Persisted purchase flag from IAPManager
+    @AppStorage("premiumUnlocked") private var premiumUnlocked: Bool = false
+
     // Use a single sheet with an enum to avoid double-present issues
     private enum ActiveSheet: Identifiable {
         case paywall
@@ -253,9 +256,7 @@ struct SettingsView: View {
         .sheet(item: $activeSheet, onDismiss: { activeSheet = nil }) { sheet in
             switch sheet {
             case .paywall:
-                NavigationStack {
-                    PaywallView(settings: $settings)
-                }
+                NavigationStack { PaywallView(settings: $settings) }
             case .privacy:
                 SafariView(url: URL(string: "https://github.com/KuuuGR/Memul/wiki/POLICIES#privacy-policy-for-memul")!)
                     .ignoresSafeArea()
@@ -264,11 +265,17 @@ struct SettingsView: View {
                     .ignoresSafeArea()
             }
         }
+
+        // Keep settings in sync with stored entitlement + enforce free clamps
         .onAppear {
+            settings.isPremium = premiumUnlocked
             if !settings.isPremium { settings.turnTimeLimit = 30 }
             if !settings.isPremium && settings.difficulty != .easy {
                 settings.difficulty = .easy
             }
+        }
+        .onChange(of: premiumUnlocked) { _, newValue in
+            settings.isPremium = newValue
         }
     }
 

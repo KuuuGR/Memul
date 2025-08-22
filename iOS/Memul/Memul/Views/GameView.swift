@@ -164,15 +164,18 @@ private extension GameView {
             let tileW: CGFloat = (availW  - gapW) / totalCols
             let tileH: CGFloat = (availH - gapH) / totalRows
 
-            let minTile: CGFloat = 32  // ✅ minimum square side in points
+            let minTile: CGFloat = 32  // minimum square side in points
             let tileSize: CGFloat = max(minTile, floor(min(tileW, tileH)))
 
+            // Scalable fonts for index labels
+            let labelPt = max(10, tileSize * 0.28)
+            let labelFont = Font.system(size: labelPt, weight: .regular, design: .rounded)
 
             // final board pixels
             let boardW: CGFloat = tileSize * totalCols + gapW
             let boardH: CGFloat = tileSize * totalRows + gapH
 
-            // arrays for ForEach (helps compiler)
+            // arrays for ForEach
             let rows = Array(1...sizeN)
             let cols = Array(1...sizeN)
 
@@ -186,7 +189,7 @@ private extension GameView {
                             ForEach(cols, id: \.self) { col in
                                 Text("\(col)")
                                     .frame(width: tileSize, height: tileSize)
-                                    .font(.caption)
+                                    .font(labelFont)
                                     .foregroundColor(viewModel.settings.indexColors.top)
                             }
                             if showRight { spacerCell(tileSize) }
@@ -199,7 +202,7 @@ private extension GameView {
                             if showLeft {
                                 Text("\(row)")
                                     .frame(width: tileSize, height: tileSize)
-                                    .font(.caption)
+                                    .font(labelFont)
                                     .foregroundColor(viewModel.settings.indexColors.left)
                             }
 
@@ -216,7 +219,7 @@ private extension GameView {
                             if showRight {
                                 Text("\(row)")
                                     .frame(width: tileSize, height: tileSize)
-                                    .font(.caption)
+                                    .font(labelFont)
                                     .foregroundColor(viewModel.settings.indexColors.right)
                             }
                         }
@@ -229,7 +232,7 @@ private extension GameView {
                             ForEach(cols, id: \.self) { col in
                                 Text("\(col)")
                                     .frame(width: tileSize, height: tileSize)
-                                    .font(.caption)
+                                    .font(labelFont)
                                     .foregroundColor(viewModel.settings.indexColors.bottom)
                             }
                             if showRight { spacerCell(tileSize) }
