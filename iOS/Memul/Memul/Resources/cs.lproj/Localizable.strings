@@ -172,10 +172,10 @@
 "division_premium_hint" = "Odemknutí dělení vyžaduje Premium.";
 "quick_divide" = "Rychlé dělení";
 "quick_divide_locked" = "Rychlé dělení (zamčeno)";
-"quick_multiply" = "Rychlé násobení";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Rychlé násobení";
 "quick_practice" = "Rychlé cvičení";
 "range_division" = "Rozsah dělení: %d–%d";
-"range_multiplication" = "Rozsah násobení: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Rozsah násobení: %d–%d";
 "unlock_division" = "Odemknout dělení";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +184,7 @@
 "qp_d_prompt" = "%d ÷ %d = ?";
 "qp_incorrect_title" = "Špatně";
 "qp_m_prompt" = "%d × %d = ?";
-"qp_next" = "Další";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Další";
 "qp_score" = "Body: %d  •  %d/%d";
 "qp_score_title" = "Body";
 "qp_wrong" = "Správná odpověď: %d";

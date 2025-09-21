@@ -172,10 +172,10 @@
 "division_premium_hint" = "Division kræver Premium.";
 "quick_divide" = "Hurtig division";
 "quick_divide_locked" = "Hurtig division (låst)";
-"quick_multiply" = "Hurtig multiplikation";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Hurtig multiplikation";
 "quick_practice" = "Hurtig øvelse";
 "range_division" = "Divisionsområde: %d–%d";
-"range_multiplication" = "Multiplikationsområde: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Multiplikationsområde: %d–%d";
 "unlock_division" = "Lås op for division";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +184,7 @@
 "qp_d_prompt" = "Hvad er %d ÷ %d ?";
 "qp_incorrect_title" = "Forkert";
 "qp_m_prompt" = "Hvad er %d × %d ?";
-"qp_next" = "Næste";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Næste";
 "qp_score" = "Point: %d  •  %d/%d";
 "qp_score_title" = "Point";
 "qp_wrong" = "Korrekt svar: %d";

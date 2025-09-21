@@ -173,10 +173,10 @@
 "division_premium_hint" = "わり算はプレミアム専用。";
 "quick_divide" = "わり算";
 "quick_divide_locked" = "わり算 (ロック)";
-"quick_multiply" = "かけ算";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "かけ算";
 "quick_practice" = "クイック練習";
 "range_division" = "範囲: %d–%d (わり算)";
-"range_multiplication" = "範囲: %d–%d (かけ算)";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "範囲: %d–%d (かけ算)";
 "unlock_division" = "わり算を解除";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +185,7 @@
 "qp_d_prompt" = "%d ÷ %d = ?";
 "qp_incorrect_title" = "不正解";
 "qp_m_prompt" = "%d × %d = ?";
-"qp_next" = "次へ";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "次へ";
 "qp_score" = "スコア: %d  •  %d/%d";
 "qp_score_title" = "スコア";
 "qp_wrong" = "正しい答え: %d";

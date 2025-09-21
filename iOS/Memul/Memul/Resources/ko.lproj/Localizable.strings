@@ -173,10 +173,10 @@
 "division_premium_hint" = "나눗셈은 프리미엄 전용.";
 "quick_divide" = "나눗셈";
 "quick_divide_locked" = "나눗셈 (잠금)";
-"quick_multiply" = "곱셈";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "곱셈";
 "quick_practice" = "빠른 연습";
 "range_division" = "범위: %d–%d (나눗셈)";
-"range_multiplication" = "범위: %d–%d (곱셈)";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "범위: %d–%d (곱셈)";
 "unlock_division" = "나눗셈 해제";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +185,7 @@
 "qp_d_prompt" = "%d ÷ %d = ?";
 "qp_incorrect_title" = "오답";
 "qp_m_prompt" = "%d × %d = ?";
-"qp_next" = "다음";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "다음";
 "qp_score" = "점수: %d  •  %d/%d";
 "qp_score_title" = "점수";
 "qp_wrong" = "정답: %d";

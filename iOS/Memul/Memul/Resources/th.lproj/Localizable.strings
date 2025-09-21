@@ -173,10 +173,10 @@
 "division_premium_hint" = "การหารต้องพรีเมียม";
 "quick_divide" = "ฝึกหาร";
 "quick_divide_locked" = "หาร (ล็อก)";
-"quick_multiply" = "ฝึกคูณ";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "ฝึกคูณ";
 "quick_practice" = "ฝึกเร็ว";
 "range_division" = "ช่วงหาร: %d–%d";
-"range_multiplication" = "ช่วงคูณ: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "ช่วงคูณ: %d–%d";
 "unlock_division" = "ปลดล็อกหาร";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +185,7 @@
 "qp_d_prompt" = "%d ÷ %d = ?";
 "qp_incorrect_title" = "ผิด";
 "qp_m_prompt" = "%d × %d = ?";
-"qp_next" = "ถัดไป";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "ถัดไป";
 "qp_score" = "คะแนน: %d  •  %d/%d";
 "qp_score_title" = "คะแนน";
 "qp_wrong" = "คำตอบ: %d";

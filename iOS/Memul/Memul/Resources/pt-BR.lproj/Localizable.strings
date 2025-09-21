@@ -173,10 +173,10 @@
 "division_premium_hint" = "Divisão requer Premium.";
 "quick_divide" = "Divisão rápida";
 "quick_divide_locked" = "Divisão rápida (bloqueada)";
-"quick_multiply" = "Multiplicação rápida";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Multiplicação rápida";
 "quick_practice" = "Prática rápida";
 "range_division" = "Intervalo divisão: %d–%d";
-"range_multiplication" = "Intervalo multiplicação: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Intervalo multiplicação: %d–%d";
 "unlock_division" = "Desbloquear divisão";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +185,7 @@
 "qp_d_prompt" = "Quanto é %d ÷ %d ?";
 "qp_incorrect_title" = "Errado";
 "qp_m_prompt" = "Quanto é %d × %d ?";
-"qp_next" = "Próximo";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Próximo";
 "qp_score" = "Pontos: %d  •  %d/%d";
 "qp_score_title" = "Pontuação";
 "qp_wrong" = "Resposta correta: %d";

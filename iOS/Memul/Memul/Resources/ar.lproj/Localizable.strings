@@ -172,10 +172,10 @@
 "division_premium_hint" = "فتح القسمة يتطلب بريميوم.";
 "quick_divide" = "قسمة سريعة";
 "quick_divide_locked" = "قسمة سريعة (مقفلة)";
-"quick_multiply" = "ضرب سريع";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "ضرب سريع";
 "quick_practice" = "تدريب سريع";
 "range_division" = "مدى القسمة: %d–%d";
-"range_multiplication" = "مدى الضرب: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "مدى الضرب: %d–%d";
 "unlock_division" = "افتح القسمة";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +184,7 @@
 "qp_d_prompt" = "كم يساوي %d ÷ %d ؟";
 "qp_incorrect_title" = "خطأ";
 "qp_m_prompt" = "كم يساوي %d × %d ؟";
-"qp_next" = "التالي";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "التالي";
 "qp_score" = "النتيجة: %d  •  %d/%d";
 "qp_score_title" = "النتيجة";
 "qp_wrong" = "غير صحيح. الإجابة: %d";

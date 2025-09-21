@@ -172,10 +172,10 @@
 "division_premium_hint" = "Déverrouiller la division exige Premium.";
 "quick_divide" = "Division rapide";
 "quick_divide_locked" = "Division rapide (verrouillée)";
-"quick_multiply" = "Multiplication rapide";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Multiplication rapide";
 "quick_practice" = "Pratique rapide";
 "range_division" = "Plage de division : %d–%d";
-"range_multiplication" = "Plage de multiplication : %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Plage de multiplication : %d–%d";
 "unlock_division" = "Déverrouiller la division";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +184,7 @@
 "qp_d_prompt" = "Combien font %d ÷ %d ?";
 "qp_incorrect_title" = "Incorrect";
 "qp_m_prompt" = "Combien font %d × %d ?";
-"qp_next" = "Suivant";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Suivant";
 "qp_score" = "Pointage : %d  •  %d/%d";
 "qp_score_title" = "Pointage";
 "qp_wrong" = "Pas tout à fait. Réponse : %d";

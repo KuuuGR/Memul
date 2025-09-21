@@ -173,10 +173,10 @@
 "division_premium_hint" = "Bahagi perlukan Premium.";
 "quick_divide" = "Bahagi";
 "quick_divide_locked" = "Bahagi (Terkunci)";
-"quick_multiply" = "Darab";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Darab";
 "quick_practice" = "Latihan Pantas";
 "range_division" = "Julat bahagi: %d–%d";
-"range_multiplication" = "Julat darab: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Julat darab: %d–%d";
 "unlock_division" = "Buka Bahagi";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +185,7 @@
 "qp_d_prompt" = "Berapakah %d ÷ %d ?";
 "qp_incorrect_title" = "Salah";
 "qp_m_prompt" = "Berapakah %d × %d ?";
-"qp_next" = "Seterusnya";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Seterusnya";
 "qp_score" = "Mata: %d  •  %d/%d";
 "qp_score_title" = "Mata";
 "qp_wrong" = "Jawapan: %d";

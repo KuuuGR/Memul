@@ -173,10 +173,10 @@
 "division_premium_hint" = "Împărțirea necesită Premium.";
 "quick_divide" = "Împărțire rapidă";
 "quick_divide_locked" = "Împărțire rapidă (blocat)";
-"quick_multiply" = "Înmulțire rapidă";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Înmulțire rapidă";
 "quick_practice" = "Practică rapidă";
 "range_division" = "Interval împărțire: %d–%d";
-"range_multiplication" = "Interval înmulțire: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Interval înmulțire: %d–%d";
 "unlock_division" = "Deblochează împărțirea";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +185,7 @@
 "qp_d_prompt" = "Cât este %d ÷ %d ?";
 "qp_incorrect_title" = "Greșit";
 "qp_m_prompt" = "Cât este %d × %d ?";
-"qp_next" = "Următor";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Următor";
 "qp_score" = "Scor: %d  •  %d/%d";
 "qp_score_title" = "Scor";
 "qp_wrong" = "Răspuns corect: %d";

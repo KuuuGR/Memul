@@ -173,10 +173,10 @@
 "division_premium_hint" = "Деление доступно в Премиум.";
 "quick_divide" = "Быстрое деление";
 "quick_divide_locked" = "Деление (закрыто)";
-"quick_multiply" = "Быстрое умножение";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Быстрое умножение";
 "quick_practice" = "Быстрая практика";
 "range_division" = "Диапазон деления: %d–%d";
-"range_multiplication" = "Диапазон умножения: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Диапазон умножения: %d–%d";
 "unlock_division" = "Открыть деление";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +185,7 @@
 "qp_d_prompt" = "Сколько будет %d ÷ %d ?";
 "qp_incorrect_title" = "Неверно";
 "qp_m_prompt" = "Сколько будет %d × %d ?";
-"qp_next" = "Далее";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Далее";
 "qp_score" = "Счет: %d  •  %d/%d";
 "qp_score_title" = "Счет";
 "qp_wrong" = "Правильный ответ: %d";

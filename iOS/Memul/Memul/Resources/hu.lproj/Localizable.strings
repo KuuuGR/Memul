@@ -173,10 +173,10 @@
 "division_premium_hint" = "Osztás mód feloldásához Prémium szükséges.";
 "quick_divide" = "Gyors osztás";
 "quick_divide_locked" = "Gyors osztás (zárva)";
-"quick_multiply" = "Gyors szorzás";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Gyors szorzás";
 "quick_practice" = "Gyors gyakorlás";
 "range_division" = "Osztás tartomány: %d–%d";
-"range_multiplication" = "Szorzás tartomány: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Szorzás tartomány: %d–%d";
 "unlock_division" = "Osztás feloldása";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +185,7 @@
 "qp_d_prompt" = "Mennyi %d ÷ %d ?";
 "qp_incorrect_title" = "Helytelen";
 "qp_m_prompt" = "Mennyi %d × %d ?";
-"qp_next" = "Tovább";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Tovább";
 "qp_score" = "Pont: %d  •  %d/%d";
 "qp_score_title" = "Pontszám";
 "qp_wrong" = "Helyes válasz: %d";

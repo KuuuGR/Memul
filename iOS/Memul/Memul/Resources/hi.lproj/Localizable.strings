@@ -174,10 +174,10 @@
 "division_premium_hint" = "डिवीजन अनलॉक करने हेतु प्रीमियम चाहिए.";
 "quick_divide" = "त्वरित भाग";
 "quick_divide_locked" = "त्वरित भाग (लॉक)";
-"quick_multiply" = "त्वरित गुणा";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "त्वरित गुणा";
 "quick_practice" = "त्वरित अभ्यास";
 "range_division" = "भाग सीमा: %d–%d";
-"range_multiplication" = "गुणा सीमा: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "गुणा सीमा: %d–%d";
 "unlock_division" = "त्वरित भाग अनलॉक करें";
 
 // MARK: - QuickPracticeView UI
@@ -186,7 +186,7 @@
 "qp_d_prompt" = "%d ÷ %d कितना?";
 "qp_incorrect_title" = "ग़लत";
 "qp_m_prompt" = "%d × %d कितना?";
-"qp_next" = "आगे";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "आगे";
 "qp_score" = "स्कोर: %d  •  %d/%d";
 "qp_score_title" = "स्कोर";
 "qp_wrong" = "सही उत्तर: %d";

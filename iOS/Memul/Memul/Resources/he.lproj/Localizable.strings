@@ -172,10 +172,10 @@
 "division_premium_hint" = "חילוק דורש פרימיום.";
 "quick_divide" = "חילוק מהיר";
 "quick_divide_locked" = "חילוק (נעול)";
-"quick_multiply" = "כפל מהיר";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "כפל מהיר";
 "quick_practice" = "תרגול מהיר";
 "range_division" = "טווח חילוק: %d–%d";
-"range_multiplication" = "טווח כפל: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "טווח כפל: %d–%d";
 "unlock_division" = "פתח חילוק";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +184,7 @@
 "qp_d_prompt" = "מהו %d ÷ %d ?";
 "qp_incorrect_title" = "שגוי";
 "qp_m_prompt" = "מהו %d × %d ?";
-"qp_next" = "הבא";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "הבא";
 "qp_score" = "ניקוד: %d  •  %d/%d";
 "qp_score_title" = "ניקוד";
 "qp_wrong" = "לא. תשובה נכונה: %d";

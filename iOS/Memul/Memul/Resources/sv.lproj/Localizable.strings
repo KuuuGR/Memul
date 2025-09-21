@@ -173,10 +173,10 @@
 "division_premium_hint" = "Division kräver Premium.";
 "quick_divide" = "Snabb division";
 "quick_divide_locked" = "Division (låst)";
-"quick_multiply" = "Snabb multiplikation";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Snabb multiplikation";
 "quick_practice" = "Snabbträning";
 "range_division" = "Divisionsintervall: %d–%d";
-"range_multiplication" = "Multiplikationsintervall: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Multiplikationsintervall: %d–%d";
 "unlock_division" = "Lås upp division";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +185,7 @@
 "qp_d_prompt" = "Vad är %d ÷ %d ?";
 "qp_incorrect_title" = "Fel";
 "qp_m_prompt" = "Vad är %d × %d ?";
-"qp_next" = "Nästa";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Nästa";
 "qp_score" = "Poäng: %d  •  %d/%d";
 "qp_score_title" = "Poäng";
 "qp_wrong" = "Svar: %d";

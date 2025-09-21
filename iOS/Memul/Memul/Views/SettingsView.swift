@@ -297,6 +297,9 @@ struct SettingsView: View {
         .onChange(of: premiumUnlocked) { _, newValue in
             settings.isPremium = newValue
         }
+        .onChange(of: settings) { _, _ in
+            settings.save()
+        }
     }
 
     // MARK: Helpers

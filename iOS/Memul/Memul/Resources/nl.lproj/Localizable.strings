@@ -172,10 +172,10 @@
 "division_premium_hint" = "Deling vereist Premium.";
 "quick_divide" = "Snelle deling";
 "quick_divide_locked" = "Snelle deling (vergrendeld)";
-"quick_multiply" = "Snelle vermenigvuldiging";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Snelle vermenigvuldiging";
 "quick_practice" = "Snelle oefening";
 "range_division" = "Bereik deling: %d–%d";
-"range_multiplication" = "Bereik vermenigvuldiging: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Bereik vermenigvuldiging: %d–%d";
 "unlock_division" = "Ontgrendel deling";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +184,7 @@
 "qp_d_prompt" = "Wat is %d ÷ %d ?";
 "qp_incorrect_title" = "Fout";
 "qp_m_prompt" = "Wat is %d × %d ?";
-"qp_next" = "Volgende";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Volgende";
 "qp_score" = "Score: %d  •  %d/%d";
 "qp_score_title" = "Score";
 "qp_wrong" = "Correct antwoord: %d";

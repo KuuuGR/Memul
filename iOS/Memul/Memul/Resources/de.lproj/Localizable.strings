@@ -172,9 +172,11 @@
 "division_premium_hint" = "Division freischalten erfordert Premium.";
 "quick_divide" = "Schnelle Division";
 "quick_divide_locked" = "Schnelle Division (gesperrt)";
+"quick_modulo" = "Schnelles Modulo";
 "quick_multiply" = "Schnelles Multiplizieren";
 "quick_practice" = "Schnellübung";
 "range_division" = "Divisionsbereich: %d–%d";
+"range_modulo" = "Modulo-Bereich: %d–%d";
 "range_multiplication" = "Multiplikationsbereich: %d–%d";
 "unlock_division" = "Division freischalten";
 
@@ -184,6 +186,7 @@
 "qp_d_prompt" = "Wie viel ist %d ÷ %d ?";
 "qp_incorrect_title" = "Falsch";
 "qp_m_prompt" = "Wie viel ist %d × %d ?";
+"qp_mod_prompt" = "Wie viel ist %d mod %d ?";
 "qp_next" = "Weiter";
 "qp_score" = "Punkte: %d  •  %d/%d";
 "qp_score_title" = "Punkte";

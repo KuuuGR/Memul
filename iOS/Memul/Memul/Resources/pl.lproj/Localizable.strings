@@ -172,10 +172,10 @@
 "division_premium_hint" = "Odblokowanie dzielenia wymaga Premium.";
 "quick_divide" = "Szybkie dzielenie";
 "quick_divide_locked" = "Szybkie dzielenie (blokada)";
-"quick_multiply" = "Szybkie mnożenie";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "Szybkie mnożenie";
 "quick_practice" = "Szybka praktyka";
 "range_division" = "Zakres dzielenia: %d–%d";
-"range_multiplication" = "Zakres mnożenia: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Zakres mnożenia: %d–%d";
 "unlock_division" = "Odblokuj dzielenie";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +184,7 @@
 "qp_d_prompt" = "Ile to %d ÷ %d ?";
 "qp_incorrect_title" = "Błąd";
 "qp_m_prompt" = "Ile to %d × %d ?";
-"qp_next" = "Dalej";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Dalej";
 "qp_score" = "Wynik: %d  •  %d/%d";
 "qp_score_title" = "Wynik";
 "qp_wrong" = "Nie tak. Poprawna: %d";

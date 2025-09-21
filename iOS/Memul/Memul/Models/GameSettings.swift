@@ -47,7 +47,7 @@ struct IndexVisibility: Equatable {
 // MARK: - Global settings container
 
 /// Global game configuration passed into the view model and views.
-struct GameSettings {
+struct GameSettings: Equatable {
     // Board
     var boardSize: Int = 4
 

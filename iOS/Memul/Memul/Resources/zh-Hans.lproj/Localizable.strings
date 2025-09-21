@@ -172,10 +172,10 @@
 "division_premium_hint" = "解锁除法需高级版。";
 "quick_divide" = "快速除法";
 "quick_divide_locked" = "快速除法 (锁定)";
-"quick_multiply" = "快速乘法";
+"quick_modulo" = "Quick Modulo";"quick_multiply" = "快速乘法";
 "quick_practice" = "快速练习";
 "range_division" = "除法范围: %d–%d";
-"range_multiplication" = "乘法范围: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "乘法范围: %d–%d";
 "unlock_division" = "解锁除法";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +184,7 @@
 "qp_d_prompt" = "%d ÷ %d = ?";
 "qp_incorrect_title" = "错误";
 "qp_m_prompt" = "%d × %d = ?";
-"qp_next" = "下一步";
+"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "下一步";
 "qp_score" = "得分: %d  •  %d/%d";
 "qp_score_title" = "得分";
 "qp_wrong" = "正确答案: %d";
