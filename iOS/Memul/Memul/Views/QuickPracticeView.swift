@@ -185,22 +185,50 @@ struct QuickPracticeView: View {
             options = makeOptions(correct: correctAnswer, base: correctAnswer, span: 5)
             
         case .modulo:
+            // Ensure divisor is at least 2 and within valid range
             let d = Int.random(in: max(2, minValue)...maxValue)   // divisor (must be >= 2 for meaningful modulo)
             let q = Int.random(in: max(1, minValue)...maxValue)   // quotient
             let remainder = Int.random(in: 0..<d)                 // remainder (0 to divisor-1)
+            
+            // Safety check: ensure divisor is not zero
+            guard d > 0 else {
+                // Fallback to safe values
+                dividend = 7
+                divisor = 3
+                correctAnswer = 1
+                options = makeOptions(correct: correctAnswer, base: correctAnswer, span: 3)
+                return
+            }
+            
             dividend = q * d + remainder
             divisor = d
             correctAnswer = remainder
-            options = makeOptions(correct: correctAnswer, base: correctAnswer, span: min(3, d-1))
+            // Ensure we have enough span for meaningful options
+            let span = max(3, min(5, d-1))
+            options = makeOptions(correct: correctAnswer, base: correctAnswer, span: span)
         }
     }
 
     private func makeOptions(correct: Int, base: Int, span: Int) -> [Int] {
         var set = Set<Int>([correct])
-        let candidates = (base - span ... base + span).filter { $0 > 0 }
-        while set.count < 4, let cand = candidates.randomElement() {
-            set.insert(cand)
+        let candidates = (base - span ... base + span).filter { $0 >= 0 } // Allow 0 for modulo
+        var attempts = 0
+        while set.count < 4 && attempts < 100 { // Prevent infinite loop
+            if let cand = candidates.randomElement() {
+                set.insert(cand)
+            }
+            attempts += 1
         }
+        
+        // If we still don't have 4 options, add some fallback values
+        if set.count < 4 {
+            let fallbacks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            for fallback in fallbacks {
+                if set.count >= 4 { break }
+                set.insert(fallback)
+            }
+        }
+        
         return Array(set).shuffled()
     }
 }
