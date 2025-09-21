@@ -80,10 +80,13 @@ struct GameSettings {
 
     // Quick Practice ranges & locks
     var isDivisionUnlocked: Bool = false          // premium-gated
+    var isModuloUnlocked: Bool = true             // free feature
     var multiplicationMin: Int = 1
     var multiplicationMax: Int = 10
     var divisionMin: Int = 1
     var divisionMax: Int = 10
+    var moduloMin: Int = 2
+    var moduloMax: Int = 10
 
     // MARK: - Free version limits
     static let freeMinBoardSize = 3

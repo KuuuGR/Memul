@@ -11,7 +11,7 @@ Players reveal hidden puzzle images by solving multiplication problems, compete 
 - 👥 **Multiplayer:** Play with up to 16 players locally, perfect for classrooms or family fun.  
 - 🧩 **Puzzle mode:** Unlock images piece by piece while solving math problems.  
 - ⚙️ **Customizable settings:** Board size, difficulty, turn timers, and more.  
-- 🚀 **Quick practice:** Fast multiplication training, with optional Premium division practice.  
+- 🚀 **Quick practice:** Fast multiplication training, with optional Premium division practice and free modulo practice.  
 - 🎉 **Fun extras:** Confetti, score animations, and a sleek modern design.  
 
 ---

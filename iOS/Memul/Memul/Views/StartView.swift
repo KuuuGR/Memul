@@ -146,6 +146,24 @@ struct StartView: View {
                                         locked: true
                                     )
                                 }
+
+                                StartNavCard(
+                                    title: NSLocalizedString("quick_modulo", comment: ""),
+                                    subtitle: String(
+                                        format: NSLocalizedString("range_modulo", comment: ""),
+                                        settings.moduloMin, settings.moduloMax
+                                    ),
+                                    systemImage: "percent",
+                                    tint: .purple
+                                ) {
+                                    QuickPracticeView(
+                                        mode: .modulo,
+                                        minValue: settings.moduloMin,
+                                        maxValue: settings.moduloMax,
+                                        difficulty: settings.difficulty
+                                    )
+                                    .navigationTitle(NSLocalizedString("quick_modulo", comment: ""))
+                                }
                             }
                         }
                         .padding(.horizontal)

@@ -156,6 +156,26 @@ struct SettingsView: View {
                         .font(.caption)
                         .foregroundColor(.gray)
                 }
+
+                // Modulo range (always available - free feature)
+                Stepper {
+                    Text(String(
+                        format: NSLocalizedString("range_modulo", comment: "Modulo range"),
+                        settings.moduloMin, settings.moduloMax
+                    ))
+                } onIncrement: {
+                    settings.moduloMax = min(settings.moduloMax + 1, 20)
+                } onDecrement: {
+                    if settings.moduloMin < settings.moduloMax {
+                        settings.moduloMax = max(settings.moduloMin, settings.moduloMax - 1)
+                    } else {
+                        settings.moduloMin = max(2, settings.moduloMin - 1)
+                    }
+                }
+
+                Text(NSLocalizedString("modulo_note", comment: "Modulo note"))
+                    .font(.caption)
+                    .foregroundColor(.gray)
             }
 
             // MARK: Index Labels

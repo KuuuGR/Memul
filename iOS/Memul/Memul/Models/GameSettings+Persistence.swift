@@ -54,6 +54,9 @@ private struct PersistedSettings: Codable {
     var isDivisionUnlocked: Bool
     var divisionMin: Int
     var divisionMax: Int
+    var isModuloUnlocked: Bool
+    var moduloMin: Int
+    var moduloMax: Int
 
     // Index labels
     var enableIndexCustomization: Bool
@@ -76,6 +79,9 @@ private struct PersistedSettings: Codable {
         self.isDivisionUnlocked = s.isDivisionUnlocked
         self.divisionMin = s.divisionMin
         self.divisionMax = s.divisionMax
+        self.isModuloUnlocked = s.isModuloUnlocked
+        self.moduloMin = s.moduloMin
+        self.moduloMax = s.moduloMax
 
         self.enableIndexCustomization = s.enableIndexCustomization
         self.indexVisibility = .init(from: s.indexVisibility)
@@ -103,6 +109,9 @@ private struct PersistedSettings: Codable {
         s.isDivisionUnlocked = isDivisionUnlocked
         s.divisionMin = divisionMin
         s.divisionMax = divisionMax
+        s.isModuloUnlocked = isModuloUnlocked
+        s.moduloMin = moduloMin
+        s.moduloMax = moduloMax
 
         // Index labels
         s.enableIndexCustomization = enableIndexCustomization

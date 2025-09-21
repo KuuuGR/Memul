@@ -6,7 +6,7 @@
 import SwiftUI
 
 struct QuickPracticeView: View {
-    enum Mode { case multiplication, division }
+    enum Mode { case multiplication, division, modulo }
 
     let mode: Mode
     let minValue: Int
@@ -108,6 +108,8 @@ struct QuickPracticeView: View {
             return String(format: NSLocalizedString("qp_m_prompt", comment: "%d × %d = ?"), a, b)
         case .division:
             return String(format: NSLocalizedString("qp_d_prompt", comment: "%d ÷ %d = ?"), dividend, divisor)
+        case .modulo:
+            return String(format: NSLocalizedString("qp_mod_prompt", comment: "%d mod %d = ?"), dividend, divisor)
         }
     }
 
@@ -181,6 +183,15 @@ struct QuickPracticeView: View {
             divisor = d
             correctAnswer = q
             options = makeOptions(correct: correctAnswer, base: correctAnswer, span: 5)
+            
+        case .modulo:
+            let d = Int.random(in: max(2, minValue)...maxValue)   // divisor (must be >= 2 for meaningful modulo)
+            let q = Int.random(in: max(1, minValue)...maxValue)   // quotient
+            let remainder = Int.random(in: 0..<d)                 // remainder (0 to divisor-1)
+            dividend = q * d + remainder
+            divisor = d
+            correctAnswer = remainder
+            options = makeOptions(correct: correctAnswer, base: correctAnswer, span: min(3, d-1))
         }
     }
 
