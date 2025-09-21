@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Pembagian hasil bulat: (hasil × pembagi) ÷ pembagi = hasil.";
+"modulo_note" = "Modulo mencari sisa: pembagi mod pembagi = sisa.";
 "division_premium_hint" = "Butuh Premium untuk pembagian.";
 "quick_divide" = "Cepat Bagi";
 "quick_divide_locked" = "Cepat Bagi (Terkunci)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Cepat Kali";
+"quick_modulo" = "Modulo Cepat";
+"quick_multiply" = "Cepat Kali";
 "quick_practice" = "Latihan Cepat";
 "range_division" = "Rentang bagi: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Rentang kali: %d–%d";
+"range_modulo" = "Rentang modulo: %d–%d";
+"range_multiplication" = "Rentang kali: %d–%d";
 "unlock_division" = "Buka Cepat Bagi";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "Berapa %d ÷ %d ?";
 "qp_incorrect_title" = "Salah";
 "qp_m_prompt" = "Berapa %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Lanjut";
+"qp_mod_prompt" = "Berapa %d mod %d ?";
+"qp_next" = "Lanjut";
 "qp_score" = "Skor: %d  •  %d/%d";
 "qp_score_title" = "Skor";
 "qp_wrong" = "Jawaban benar: %d";
@@ -242,5 +246,6 @@
 "feat_puzzles_detail" = "Gratis + Premium";
 "feat_division_title" = "Cepat Bagi";
 "feat_division_detail" = "Mode pembagian";
-
+"feat_modulo_title" = "Modulo Cepat";
+"feat_modulo_detail" = "Buka kunci mode modulo";
 "paywall_smallprint" = "Pembelian sekali saja. Family Sharing didukung. Terkait Apple ID.";

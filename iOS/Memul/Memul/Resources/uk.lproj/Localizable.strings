@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Ділення з цілими: (частка × дільник) ÷ дільник = частка.";
+"modulo_note" = "Модуло знаходить залишок: ділене mod дільник = залишок.";
 "division_premium_hint" = "Ділення доступне з Преміум.";
 "quick_divide" = "Швидке ділення";
 "quick_divide_locked" = "Швидке ділення (заблок.)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Швидке множення";
+"quick_modulo" = "Швидкий Модуло";
+"quick_multiply" = "Швидке множення";
 "quick_practice" = "Швидка практика";
 "range_division" = "Ділення: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Множення: %d–%d";
+"range_modulo" = "Діапазон модуло: %d–%d";
+"range_multiplication" = "Множення: %d–%d";
 "unlock_division" = "Відкрити ділення";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "%d ÷ %d = ?";
 "qp_incorrect_title" = "Неправильно";
 "qp_m_prompt" = "%d × %d = ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Далі";
+"qp_mod_prompt" = "Скільки %d mod %d ?";
+"qp_next" = "Далі";
 "qp_score" = "Бали: %d  •  %d/%d";
 "qp_score_title" = "Бали";
 "qp_wrong" = "Правильна відповідь: %d";
@@ -242,5 +246,6 @@
 "feat_puzzles_detail" = "Усі зображення";
 "feat_division_title" = "Швидке ділення";
 "feat_division_detail" = "Режим ділення";
-
+"feat_modulo_title" = "Швидкий Модуло";
+"feat_modulo_detail" = "Розблокувати модуло режим";
 "paywall_smallprint" = "Одноразова покупка. Сімейний доступ. Прив’язано до Apple ID.";

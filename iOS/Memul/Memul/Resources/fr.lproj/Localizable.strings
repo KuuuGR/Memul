@@ -169,6 +169,7 @@
 
 // MARK: - Quick Practice
 "division_note" = "La division utilise des résultats entiers : (quotient × diviseur) ÷ diviseur = quotient.";
+"modulo_note" = "Modulo finds the remainder: dividend mod divisor = remainder.";
 "division_premium_hint" = "Débloquer la division nécessite Premium.";
 "quick_divide" = "Division rapide";
 "quick_divide_locked" = "Division rapide (verrouillée)";
@@ -244,5 +245,6 @@
 "feat_puzzles_detail" = "Images gratuites + premium";
 "feat_division_title" = "Division rapide";
 "feat_division_detail" = "Débloquer le mode division";
-
+"feat_modulo_title" = "Quick Modulo";
+"feat_modulo_detail" = "Unlock modulo mode";
 "paywall_smallprint" = "Achat unique. Partage familial pris en charge. Achat lié à votre identifiant Apple.";

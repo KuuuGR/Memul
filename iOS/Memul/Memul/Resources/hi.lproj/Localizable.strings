@@ -171,13 +171,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "भाग में पूर्णांक परिणाम: (भागफल × भाजक) ÷ भाजक = भागफल.";
+"modulo_note" = "मॉड्यूलो शेषफल खोजता है: भाज्य mod भाजक = शेषफल।";
 "division_premium_hint" = "डिवीजन अनलॉक करने हेतु प्रीमियम चाहिए.";
 "quick_divide" = "त्वरित भाग";
 "quick_divide_locked" = "त्वरित भाग (लॉक)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "त्वरित गुणा";
+"quick_modulo" = "त्वरित मॉड्यूलो";
+"quick_multiply" = "त्वरित गुणा";
 "quick_practice" = "त्वरित अभ्यास";
 "range_division" = "भाग सीमा: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "गुणा सीमा: %d–%d";
+"range_modulo" = "मॉड्यूलो रेंज: %d–%d";
+"range_multiplication" = "गुणा सीमा: %d–%d";
 "unlock_division" = "त्वरित भाग अनलॉक करें";
 
 // MARK: - QuickPracticeView UI
@@ -186,7 +189,8 @@
 "qp_d_prompt" = "%d ÷ %d कितना?";
 "qp_incorrect_title" = "ग़लत";
 "qp_m_prompt" = "%d × %d कितना?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "आगे";
+"qp_mod_prompt" = "%d mod %d क्या है?";
+"qp_next" = "आगे";
 "qp_score" = "स्कोर: %d  •  %d/%d";
 "qp_score_title" = "स्कोर";
 "qp_wrong" = "सही उत्तर: %d";
@@ -243,5 +247,6 @@
 "feat_puzzles_detail" = "फ़्री + प्रीमियम चित्र";
 "feat_division_title" = "त्वरित भाग";
 "feat_division_detail" = "भाग मोड";
-
+"feat_modulo_title" = "त्वरित मॉड्यूलो";
+"feat_modulo_detail" = "मॉड्यूलो मोड अनलॉक करें";
 "paywall_smallprint" = "एक बार की खरीद. फैमिली शेयरिंग समर्थित. आपकी खरीद आपके Apple ID से जुड़ी है.";

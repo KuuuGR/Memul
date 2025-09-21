@@ -169,13 +169,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Dijeljenje koristi cijele brojeve: (kvocijent × djelitelj) ÷ djelitelj = kvocijent.";
+"modulo_note" = "Modulo pronalazi ostatak: djeljenik mod djelitelj = ostatak.";
 "division_premium_hint" = "Otključavanje dijeljenja zahtijeva Premium.";
 "quick_divide" = "Brzo dijeljenje";
 "quick_divide_locked" = "Brzo dijeljenje (zaključano)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Brzo množenje";
+"quick_modulo" = "Brza Modulo";
+"quick_multiply" = "Brzo množenje";
 "quick_practice" = "Brza praksa";
 "range_division" = "Raspon dijeljenja: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Raspon množenja: %d–%d";
+"range_modulo" = "Modulo raspon: %d–%d";
+"range_multiplication" = "Raspon množenja: %d–%d";
 "unlock_division" = "Otključaj dijeljenje";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +187,8 @@
 "qp_d_prompt" = "%d ÷ %d = ?";
 "qp_incorrect_title" = "Netočno";
 "qp_m_prompt" = "%d × %d = ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Dalje";
+"qp_mod_prompt" = "Što je %d mod %d ?";
+"qp_next" = "Dalje";
 "qp_score" = "Bodovi: %d  •  %d/%d";
 "qp_score_title" = "Bodovi";
 "qp_wrong" = "Točan odgovor: %d";
@@ -241,5 +245,6 @@
 "feat_puzzles_detail" = "Besplatne + premium";
 "feat_division_title" = "Brzo dijeljenje";
 "feat_division_detail" = "Način dijeljenja";
-
+"feat_modulo_title" = "Brza Modulo";
+"feat_modulo_detail" = "Otključaj modulo način";
 "paywall_smallprint" = "Jednokratna kupnja. Obiteljsko dijeljenje podržano. Povezano s Apple ID-om.";

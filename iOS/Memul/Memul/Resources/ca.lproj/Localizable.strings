@@ -169,13 +169,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Divisió amb enters: (quocient × divisor) ÷ divisor = quocient.";
+"modulo_note" = "Mòdul troba la resta: dividend mod divisor = resta.";
 "division_premium_hint" = "La divisió requereix Premium.";
 "quick_divide" = "Divisió ràpida";
 "quick_divide_locked" = "Divisió (bloquejada)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Multiplicació";
+"quick_modulo" = "Mòdul ràpid";
+"quick_multiply" = "Multiplicació";
 "quick_practice" = "Pràctica ràpida";
 "range_division" = "Rang divisió: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Rang multiplicació: %d–%d";
+"range_modulo" = "Rang mòdul: %d–%d";
+"range_multiplication" = "Rang multiplicació: %d–%d";
 "unlock_division" = "Desbloqueja divisió";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +187,8 @@
 "qp_d_prompt" = "Quant és %d ÷ %d ?";
 "qp_incorrect_title" = "Incorrecte";
 "qp_m_prompt" = "Quant és %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Següent";
+"qp_mod_prompt" = "Quant és %d mod %d ?";
+"qp_next" = "Següent";
 "qp_score" = "Puntuació: %d  •  %d/%d";
 "qp_score_title" = "Puntuació";
 "qp_wrong" = "No. Resposta: %d";
@@ -241,5 +245,6 @@
 "feat_puzzles_detail" = "Gratuït + Premium";
 "feat_division_title" = "Divisió ràpida";
 "feat_division_detail" = "Mode divisió";
-
+"feat_modulo_title" = "Mòdul ràpid";
+"feat_modulo_detail" = "Desbloquejar mode mòdul";
 "paywall_smallprint" = "Compra única. Compartició familiar. Vinculat al teu Apple ID.";

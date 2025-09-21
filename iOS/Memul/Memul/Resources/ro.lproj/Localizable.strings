@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Împărțire cu întregi: (cât × divizor) ÷ divizor = cât.";
+"modulo_note" = "Modulo găsește restul: deîmpărțit mod împărțitor = rest.";
 "division_premium_hint" = "Împărțirea necesită Premium.";
 "quick_divide" = "Împărțire rapidă";
 "quick_divide_locked" = "Împărțire rapidă (blocat)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Înmulțire rapidă";
+"quick_modulo" = "Modulo rapid";
+"quick_multiply" = "Înmulțire rapidă";
 "quick_practice" = "Practică rapidă";
 "range_division" = "Interval împărțire: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Interval înmulțire: %d–%d";
+"range_modulo" = "Interval modulo: %d–%d";
+"range_multiplication" = "Interval înmulțire: %d–%d";
 "unlock_division" = "Deblochează împărțirea";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "Cât este %d ÷ %d ?";
 "qp_incorrect_title" = "Greșit";
 "qp_m_prompt" = "Cât este %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Următor";
+"qp_mod_prompt" = "Cât este %d mod %d ?";
+"qp_next" = "Următor";
 "qp_score" = "Scor: %d  •  %d/%d";
 "qp_score_title" = "Scor";
 "qp_wrong" = "Răspuns corect: %d";
@@ -242,5 +246,6 @@
 "feat_puzzles_detail" = "Gratuit + premium";
 "feat_division_title" = "Împărțire rapidă";
 "feat_division_detail" = "Mod împărțire";
-
+"feat_modulo_title" = "Modulo rapid";
+"feat_modulo_detail" = "Deblochează modul modulo";
 "paywall_smallprint" = "Achiziție unică. Partajare familială disponibilă. Asociat Apple ID.";

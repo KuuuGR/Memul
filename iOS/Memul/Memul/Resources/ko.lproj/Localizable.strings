@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "정수 나눗셈: (몫 × 나누는 수) ÷ 나누는 수 = 몫.";
+"modulo_note" = "모듈로는 나머지를 찾습니다: 피제수 mod 제수 = 나머지.";
 "division_premium_hint" = "나눗셈은 프리미엄 전용.";
 "quick_divide" = "나눗셈";
 "quick_divide_locked" = "나눗셈 (잠금)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "곱셈";
+"quick_modulo" = "빠른 모듈로";
+"quick_multiply" = "곱셈";
 "quick_practice" = "빠른 연습";
 "range_division" = "범위: %d–%d (나눗셈)";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "범위: %d–%d (곱셈)";
+"range_modulo" = "모듈로 범위: %d–%d";
+"range_multiplication" = "범위: %d–%d (곱셈)";
 "unlock_division" = "나눗셈 해제";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "%d ÷ %d = ?";
 "qp_incorrect_title" = "오답";
 "qp_m_prompt" = "%d × %d = ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "다음";
+"qp_mod_prompt" = "%d mod %d는 얼마인가요?";
+"qp_next" = "다음";
 "qp_score" = "점수: %d  •  %d/%d";
 "qp_score_title" = "점수";
 "qp_wrong" = "정답: %d";
@@ -242,5 +246,6 @@
 "feat_puzzles_detail" = "무료 + 프리미엄";
 "feat_division_title" = "나눗셈";
 "feat_division_detail" = "나눗셈 모드 해제";
-
+"feat_modulo_title" = "빠른 모듈로";
+"feat_modulo_detail" = "모듈로 모드 잠금 해제";
 "paywall_smallprint" = "일회성 구매. 가족 공유 지원. Apple ID에 연결됩니다.";

@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Chia nguyên: (thương × số chia) ÷ số chia = thương.";
+"modulo_note" = "Modulo tìm số dư: số bị chia mod số chia = số dư.";
 "division_premium_hint" = "Chia yêu cầu Premium.";
 "quick_divide" = "Chia nhanh";
 "quick_divide_locked" = "Chia nhanh (khóa)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Nhân nhanh";
+"quick_modulo" = "Modulo nhanh";
+"quick_multiply" = "Nhân nhanh";
 "quick_practice" = "Luyện nhanh";
 "range_division" = "Chia: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Nhân: %d–%d";
+"range_modulo" = "Phạm vi modulo: %d–%d";
+"range_multiplication" = "Nhân: %d–%d";
 "unlock_division" = "Mở chia";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "%d ÷ %d = ?";
 "qp_incorrect_title" = "Sai";
 "qp_m_prompt" = "%d × %d = ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Tiếp";
+"qp_mod_prompt" = "%d mod %d là bao nhiêu?";
+"qp_next" = "Tiếp";
 "qp_score" = "Điểm: %d  •  %d/%d";
 "qp_score_title" = "Điểm";
 "qp_wrong" = "Đáp án: %d";
@@ -242,5 +246,6 @@
 "feat_puzzles_detail" = "Miễn phí + Premium";
 "feat_division_title" = "Chia nhanh";
 "feat_division_detail" = "Mở chia";
-
+"feat_modulo_title" = "Modulo nhanh";
+"feat_modulo_detail" = "Mở khóa chế độ modulo";
 "paywall_smallprint" = "Mua một lần. Hỗ trợ gia đình. Gắn với Apple ID.";

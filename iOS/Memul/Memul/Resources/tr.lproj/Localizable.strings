@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Bölme tam sayı: (sonuç × bölen) ÷ bölen = sonuç.";
+"modulo_note" = "Modulo kalanı bulur: bölünen mod bölen = kalan.";
 "division_premium_hint" = "Bölme için Premium gerekir.";
 "quick_divide" = "Hızlı Bölme";
 "quick_divide_locked" = "Hızlı Bölme (Kilitli)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Hızlı Çarpma";
+"quick_modulo" = "Hızlı Modulo";
+"quick_multiply" = "Hızlı Çarpma";
 "quick_practice" = "Hızlı Pratik";
 "range_division" = "Bölme aralığı: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Çarpma aralığı: %d–%d";
+"range_modulo" = "Modulo aralığı: %d–%d";
+"range_multiplication" = "Çarpma aralığı: %d–%d";
 "unlock_division" = "Bölmeyi Aç";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "%d ÷ %d = ?";
 "qp_incorrect_title" = "Yanlış";
 "qp_m_prompt" = "%d × %d = ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "İleri";
+"qp_mod_prompt" = "%d mod %d kaçtır?";
+"qp_next" = "İleri";
 "qp_score" = "Puan: %d  •  %d/%d";
 "qp_score_title" = "Puan";
 "qp_wrong" = "Doğru cevap: %d";
@@ -242,5 +246,6 @@
 "feat_puzzles_detail" = "Ücretsiz + premium";
 "feat_division_title" = "Hızlı Bölme";
 "feat_division_detail" = "Bölme modu aç";
-
+"feat_modulo_title" = "Hızlı Modulo";
+"feat_modulo_detail" = "Modulo modunu kilitle";
 "paywall_smallprint" = "Tek seferlik satın alma. Aile Paylaşımı desteklenir. Apple ID’nize bağlıdır.";

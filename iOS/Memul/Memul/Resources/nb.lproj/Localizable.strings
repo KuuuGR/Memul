@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Deling gir heltall: (kvotient × divisor) ÷ divisor = kvotient.";
+"modulo_note" = "Modulo finner resten: dividende mod divisor = rest.";
 "division_premium_hint" = "Deling krever Premium.";
 "quick_divide" = "Hurtigdeling";
 "quick_divide_locked" = "Hurtigdeling (låst)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Hurtiggange";
+"quick_modulo" = "Rask Modulo";
+"quick_multiply" = "Hurtiggange";
 "quick_practice" = "Hurtigøvelse";
 "range_division" = "Delingsområde: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Gangeområde: %d–%d";
+"range_modulo" = "Modulo område: %d–%d";
+"range_multiplication" = "Gangeområde: %d–%d";
 "unlock_division" = "Lås opp deling";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "Hva er %d ÷ %d ?";
 "qp_incorrect_title" = "Feil";
 "qp_m_prompt" = "Hva er %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Neste";
+"qp_mod_prompt" = "Hva er %d mod %d ?";
+"qp_next" = "Neste";
 "qp_score" = "Poeng: %d  •  %d/%d";
 "qp_score_title" = "Poeng";
 "qp_wrong" = "Riktig svar: %d";
@@ -242,5 +246,6 @@
 "feat_puzzles_detail" = "Gratis + premiumbilder";
 "feat_division_title" = "Hurtigdeling";
 "feat_division_detail" = "Lås opp delingsmodus";
-
+"feat_modulo_title" = "Rask Modulo";
+"feat_modulo_detail" = "Lås opp modulo modus";
 "paywall_smallprint" = "Engangskjøp. Familiedeling støttes. Knyttet til Apple-ID.";

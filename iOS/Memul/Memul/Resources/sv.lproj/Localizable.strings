@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Division med heltal: (kvot × divisor) ÷ divisor = kvot.";
+"modulo_note" = "Modulo hittar resten: täljare mod nämnare = rest.";
 "division_premium_hint" = "Division kräver Premium.";
 "quick_divide" = "Snabb division";
 "quick_divide_locked" = "Division (låst)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Snabb multiplikation";
+"quick_modulo" = "Snabb Modulo";
+"quick_multiply" = "Snabb multiplikation";
 "quick_practice" = "Snabbträning";
 "range_division" = "Divisionsintervall: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Multiplikationsintervall: %d–%d";
+"range_modulo" = "Modulo intervall: %d–%d";
+"range_multiplication" = "Multiplikationsintervall: %d–%d";
 "unlock_division" = "Lås upp division";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "Vad är %d ÷ %d ?";
 "qp_incorrect_title" = "Fel";
 "qp_m_prompt" = "Vad är %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Nästa";
+"qp_mod_prompt" = "Vad är %d mod %d ?";
+"qp_next" = "Nästa";
 "qp_score" = "Poäng: %d  •  %d/%d";
 "qp_score_title" = "Poäng";
 "qp_wrong" = "Svar: %d";
@@ -242,6 +246,7 @@
 "feat_puzzles_detail" = "Gratis + Premium";
 "feat_division_title" = "Snabb division";
 "feat_division_detail" = "Lås upp division";
-
+"feat_modulo_title" = "Snabb Modulo";
+"feat_modulo_detail" = "Lås upp modulo läge";
 "paywall_smallprint" = "Engångsköp. Family Sharing stöds. Kopplat till ditt Apple-ID.";
  

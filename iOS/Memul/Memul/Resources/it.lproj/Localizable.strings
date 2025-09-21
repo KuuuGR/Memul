@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Divisione con risultati interi: (quoziente × divisore) ÷ divisore = quoziente.";
+"modulo_note" = "Modulo trova il resto: dividendo mod divisore = resto.";
 "division_premium_hint" = "La divisione richiede Premium.";
 "quick_divide" = "Divisione veloce";
 "quick_divide_locked" = "Divisione (bloccata)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Moltiplicazione veloce";
+"quick_modulo" = "Modulo veloce";
+"quick_multiply" = "Moltiplicazione veloce";
 "quick_practice" = "Pratica veloce";
 "range_division" = "Intervallo divisione: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Intervallo moltiplicazione: %d–%d";
+"range_modulo" = "Intervallo modulo: %d–%d";
+"range_multiplication" = "Intervallo moltiplicazione: %d–%d";
 "unlock_division" = "Sblocca Divisione";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "Quanto fa %d ÷ %d ?";
 "qp_incorrect_title" = "Errato";
 "qp_m_prompt" = "Quanto fa %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Avanti";
+"qp_mod_prompt" = "Quanto fa %d mod %d ?";
+"qp_next" = "Avanti";
 "qp_score" = "Punti: %d  •  %d/%d";
 "qp_score_title" = "Punti";
 "qp_wrong" = "Risposta corretta: %d";
@@ -242,5 +246,6 @@
 "feat_puzzles_detail" = "Gratis + Premium";
 "feat_division_title" = "Divisione veloce";
 "feat_division_detail" = "Modalità divisione";
-
+"feat_modulo_title" = "Modulo veloce";
+"feat_modulo_detail" = "Sblocca modalità modulo";
 "paywall_smallprint" = "Acquisto una tantum. Family Sharing supportato. Legato al tuo Apple ID.";

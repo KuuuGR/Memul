@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Delenie s celými: (podiel × deliteľ) ÷ deliteľ = podiel.";
+"modulo_note" = "Modulo nájde zvyšok: delenec mod deliteľ = zvyšok.";
 "division_premium_hint" = "Delenie dostupné len v Premium.";
 "quick_divide" = "Rýchle delenie";
 "quick_divide_locked" = "Delenie (zamknuté)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Rýchle násobenie";
+"quick_modulo" = "Rýchle Modulo";
+"quick_multiply" = "Rýchle násobenie";
 "quick_practice" = "Rýchla prax";
 "range_division" = "Rozsah delenia: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Rozsah násobenia: %d–%d";
+"range_modulo" = "Rozsah modulo: %d–%d";
+"range_multiplication" = "Rozsah násobenia: %d–%d";
 "unlock_division" = "Odomknúť delenie";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "Koľko je %d ÷ %d ?";
 "qp_incorrect_title" = "Nesprávne";
 "qp_m_prompt" = "Koľko je %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Ďalej";
+"qp_mod_prompt" = "Koľko je %d mod %d ?";
+"qp_next" = "Ďalej";
 "qp_score" = "Skóre: %d  •  %d/%d";
 "qp_score_title" = "Skóre";
 "qp_wrong" = "Správna odpoveď: %d";
@@ -242,5 +246,6 @@
 "feat_puzzles_detail" = "Voľné + prémiové";
 "feat_division_title" = "Rýchle delenie";
 "feat_division_detail" = "Režim delenia";
-
+"feat_modulo_title" = "Rýchle Modulo";
+"feat_modulo_detail" = "Odomknúť modulo režim";
 "paywall_smallprint" = "Jednorazový nákup. Family Sharing podporovaný. Viazané na Apple ID.";

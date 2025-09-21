@@ -169,13 +169,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Η διαίρεση με ακέραια: (πηλίκο × διαιρέτης) ÷ διαιρέτης = πηλίκο.";
+"modulo_note" = "Modulo βρίσκει το υπόλοιπο: μέρισμα mod διαιρέτης = υπόλοιπο.";
 "division_premium_hint" = "Η διαίρεση απαιτεί Premium.";
 "quick_divide" = "Γρήγορη διαίρεση";
 "quick_divide_locked" = "Διαίρεση (Κλειδ.)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Γρήγορος πολλ/μός";
+"quick_modulo" = "Γρήγορο Modulo";
+"quick_multiply" = "Γρήγορος πολλ/μός";
 "quick_practice" = "Γρήγορη εξάσκηση";
 "range_division" = "Εύρος διαίρεσης: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Εύρος πολλ/σμού: %d–%d";
+"range_modulo" = "Εύρος modulo: %d–%d";
+"range_multiplication" = "Εύρος πολλ/σμού: %d–%d";
 "unlock_division" = "Ξεκλείδωμα διαίρεσης";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +187,8 @@
 "qp_d_prompt" = "Πόσο είναι %d ÷ %d;";
 "qp_incorrect_title" = "Λάθος";
 "qp_m_prompt" = "Πόσο είναι %d × %d;";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Επόμενο";
+"qp_mod_prompt" = "Τι είναι %d mod %d ?";
+"qp_next" = "Επόμενο";
 "qp_score" = "Σκορ: %d  •  %d/%d";
 "qp_score_title" = "Σκορ";
 "qp_wrong" = "Όχι. Σωστό: %d";
@@ -241,5 +245,6 @@
 "feat_puzzles_detail" = "Δωρεάν + Premium";
 "feat_division_title" = "Διαίρεση";
 "feat_division_detail" = "Λειτουργία διαίρεσης";
-
+"feat_modulo_title" = "Γρήγορο Modulo";
+"feat_modulo_detail" = "Ξεκλείδωμα λειτουργίας modulo";
 "paywall_smallprint" = "Μία αγορά. Οικογενειακή κοινή χρήση. Συνδεδεμένο με το Apple ID.";

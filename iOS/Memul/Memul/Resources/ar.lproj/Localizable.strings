@@ -169,13 +169,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "القسمة بنتائج صحيحة: (خارج × مقسوم) ÷ مقسوم = خارج.";
+"modulo_note" = "مودولو يجد الباقي: المقسوم mod المقسوم عليه = الباقي.";
 "division_premium_hint" = "فتح القسمة يتطلب بريميوم.";
 "quick_divide" = "قسمة سريعة";
 "quick_divide_locked" = "قسمة سريعة (مقفلة)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "ضرب سريع";
+"quick_modulo" = "مودولو سريع";
+"quick_multiply" = "ضرب سريع";
 "quick_practice" = "تدريب سريع";
 "range_division" = "مدى القسمة: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "مدى الضرب: %d–%d";
+"range_modulo" = "نطاق مودولو: %d–%d";
+"range_multiplication" = "مدى الضرب: %d–%d";
 "unlock_division" = "افتح القسمة";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +187,8 @@
 "qp_d_prompt" = "كم يساوي %d ÷ %d ؟";
 "qp_incorrect_title" = "خطأ";
 "qp_m_prompt" = "كم يساوي %d × %d ؟";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "التالي";
+"qp_mod_prompt" = "ما هو %d mod %d ؟";
+"qp_next" = "التالي";
 "qp_score" = "النتيجة: %d  •  %d/%d";
 "qp_score_title" = "النتيجة";
 "qp_wrong" = "غير صحيح. الإجابة: %d";
@@ -241,5 +245,6 @@
 "feat_puzzles_detail" = "صور مجانية + مميزة";
 "feat_division_title" = "قسمة سريعة";
 "feat_division_detail" = "فتح وضع القسمة";
-
+"feat_modulo_title" = "مودولو سريع";
+"feat_modulo_detail" = "إلغاء قفل وضع مودولو";
 "paywall_smallprint" = "شراء لمرة واحدة. مشاركة عائلية مدعومة. الشراء مرتبط بـ Apple ID.";

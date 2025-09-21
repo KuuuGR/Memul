@@ -169,6 +169,7 @@
 
 // MARK: - Quick Practice
 "division_note" = "Division mit ganzzahligem Ergebnis: (Quotient × Divisor) ÷ Divisor = Quotient.";
+"modulo_note" = "Modulo findet den Rest: Dividend mod Divisor = Rest.";
 "division_premium_hint" = "Division freischalten erfordert Premium.";
 "quick_divide" = "Schnelle Division";
 "quick_divide_locked" = "Schnelle Division (gesperrt)";
@@ -244,5 +245,6 @@
 "feat_puzzles_detail" = "Gratis + Premium-Bilder";
 "feat_division_title" = "Schnelle Division";
 "feat_division_detail" = "Divisionsmodus freischalten";
-
+"feat_modulo_title" = "Quick Modulo";
+"feat_modulo_detail" = "Unlock modulo mode";
 "paywall_smallprint" = "Einmalkauf. Familienfreigabe unterstützt. Kauf ist mit deiner Apple-ID verknüpft.";

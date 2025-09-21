@@ -170,13 +170,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Деление с целыми: (частное × делитель) ÷ делитель = частное.";
+"modulo_note" = "Modulo finds the remainder: dividend mod divisor = remainder.";
 "division_premium_hint" = "Деление доступно в Премиум.";
 "quick_divide" = "Быстрое деление";
 "quick_divide_locked" = "Деление (закрыто)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Быстрое умножение";
+"quick_modulo" = "Быстрое Модуло";
+"quick_multiply" = "Быстрое умножение";
 "quick_practice" = "Быстрая практика";
 "range_division" = "Диапазон деления: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Диапазон умножения: %d–%d";
+"range_modulo" = "Modulo range: %d–%d";
+"range_multiplication" = "Диапазон умножения: %d–%d";
 "unlock_division" = "Открыть деление";
 
 // MARK: - QuickPracticeView UI
@@ -185,7 +188,8 @@
 "qp_d_prompt" = "Сколько будет %d ÷ %d ?";
 "qp_incorrect_title" = "Неверно";
 "qp_m_prompt" = "Сколько будет %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Далее";
+"qp_mod_prompt" = "Чему равно %d mod %d ?";
+"qp_next" = "Далее";
 "qp_score" = "Счет: %d  •  %d/%d";
 "qp_score_title" = "Счет";
 "qp_wrong" = "Правильный ответ: %d";
@@ -242,5 +246,6 @@
 "feat_puzzles_detail" = "Бесплатные + премиум";
 "feat_division_title" = "Быстрое деление";
 "feat_division_detail" = "Режим деления";
-
+"feat_modulo_title" = "Quick Modulo";
+"feat_modulo_detail" = "Unlock modulo mode";
 "paywall_smallprint" = "Разовая покупка. Family Sharing поддерживается. Привязка к Apple ID.";

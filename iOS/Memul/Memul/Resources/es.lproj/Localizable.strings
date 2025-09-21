@@ -169,6 +169,7 @@
 
 // MARK: - Quick Practice
 "division_note" = "La división usa resultados enteros: (cociente × divisor) ÷ divisor = cociente.";
+"modulo_note" = "Modulo finds the remainder: dividend mod divisor = remainder.";
 "division_premium_hint" = "Desbloquear División requiere Premium.";
 "quick_divide" = "División rápida";
 "quick_divide_locked" = "División rápida (bloqueada)";
@@ -186,7 +187,8 @@
 "qp_d_prompt" = "¿Cuánto es %d ÷ %d ?";
 "qp_incorrect_title" = "Incorrecto";
 "qp_m_prompt" = "¿Cuánto es %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Siguiente";
+"qp_mod_prompt" = "¿Cuánto es %d mod %d ?";
+"qp_next" = "Siguiente";
 "qp_score" = "Puntuación: %d  •  %d/%d";
 "qp_score_title" = "Puntuación";
 "qp_wrong" = "No es correcto. Respuesta: %d";
@@ -243,5 +245,6 @@
 "feat_puzzles_detail" = "Imágenes gratis + premium";
 "feat_division_title" = "División rápida";
 "feat_division_detail" = "Desbloquea el modo división";
-
+"feat_modulo_title" = "Quick Modulo";
+"feat_modulo_detail" = "Unlock modulo mode";
 "paywall_smallprint" = "Compra única. Compatible con En familia. Tu compra está vinculada a tu ID de Apple.";

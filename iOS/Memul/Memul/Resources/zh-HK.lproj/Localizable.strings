@@ -169,13 +169,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "除法只用整數結果：（商 × 除數）÷ 除數 = 商。";
+"modulo_note" = "取模運算找出餘數：被除數 mod 除數 = 餘數。";
 "division_premium_hint" = "解鎖除法需要 Premium。";
 "quick_divide" = "快速除法";
 "quick_divide_locked" = "快速除法（鎖定）";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "快速乘法";
+"quick_modulo" = "快速取模";
+"quick_multiply" = "快速乘法";
 "quick_practice" = "快速練習";
 "range_division" = "除法範圍：%d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "乘法範圍：%d–%d";
+"range_modulo" = "取模範圍：%d–%d";
+"range_multiplication" = "乘法範圍：%d–%d";
 "unlock_division" = "解鎖快速除法";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +187,8 @@
 "qp_d_prompt" = "%d ÷ %d 等於多少？";
 "qp_incorrect_title" = "錯誤";
 "qp_m_prompt" = "%d × %d 等於多少？";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "下一題";
+"qp_mod_prompt" = "%d mod %d 等於多少？";
+"qp_next" = "下一題";
 "qp_score" = "分數：%d  •  %d/%d";
 "qp_score_title" = "分數";
 "qp_wrong" = "不對。正確答案：%d";
@@ -241,5 +245,6 @@
 "feat_puzzles_detail" = "免費 + Premium 圖片";
 "feat_division_title" = "快速除法";
 "feat_division_detail" = "解鎖除法模式";
-
+"feat_modulo_title" = "快速取模";
+"feat_modulo_detail" = "解鎖取模模式";
 "paywall_smallprint" = "一次性購買。支援家庭共享。購買連結至你的 Apple ID。";

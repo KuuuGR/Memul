@@ -169,13 +169,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "Jakolaskussa käytetään kokonaislukuja.";
+"modulo_note" = "Modulo löytää jakojäännöksen: jaettava mod jakaja = jakojäännös.";
 "division_premium_hint" = "Jakolasku vaatii Premiumin.";
 "quick_divide" = "Nopea jako";
 "quick_divide_locked" = "Nopea jako (lukittu)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "Nopea kerto";
+"quick_modulo" = "Nopea Modulo";
+"quick_multiply" = "Nopea kerto";
 "quick_practice" = "Nopea harjoitus";
 "range_division" = "Jakoväli: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "Kertoväli: %d–%d";
+"range_modulo" = "Modulo alue: %d–%d";
+"range_multiplication" = "Kertoväli: %d–%d";
 "unlock_division" = "Avaa jakoharjoitus";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +187,8 @@
 "qp_d_prompt" = "Mikä on %d ÷ %d ?";
 "qp_incorrect_title" = "Väärin";
 "qp_m_prompt" = "Mikä on %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "Seuraava";
+"qp_mod_prompt" = "Mikä on %d mod %d ?";
+"qp_next" = "Seuraava";
 "qp_score" = "Pisteet: %d  •  %d/%d";
 "qp_score_title" = "Pisteet";
 "qp_wrong" = "Ei aivan. Oikea vastaus: %d";
@@ -241,5 +245,6 @@
 "feat_puzzles_detail" = "Ilmaiset + Premium";
 "feat_division_title" = "Nopea jako";
 "feat_division_detail" = "Avaa jakotila";
-
+"feat_modulo_title" = "Nopea Modulo";
+"feat_modulo_detail" = "Avaa modulo-tila";
 "paywall_smallprint" = "Kertaostos. Perhejaolla tuettu. Osto liittyy Apple ID:hen.";

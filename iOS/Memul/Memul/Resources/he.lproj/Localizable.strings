@@ -169,13 +169,16 @@
 
 // MARK: - Quick Practice
 "division_note" = "חילוק בשלמים: (מנה × מחלק) ÷ מחלק = מנה.";
+"modulo_note" = "מודולו מוצא את השארית: מחולק mod מחלק = שארית.";
 "division_premium_hint" = "חילוק דורש פרימיום.";
 "quick_divide" = "חילוק מהיר";
 "quick_divide_locked" = "חילוק (נעול)";
-"quick_modulo" = "Quick Modulo";"quick_multiply" = "כפל מהיר";
+"quick_modulo" = "מודולו מהיר";
+"quick_multiply" = "כפל מהיר";
 "quick_practice" = "תרגול מהיר";
 "range_division" = "טווח חילוק: %d–%d";
-"range_modulo" = "Modulo range: %d–%d";"range_multiplication" = "טווח כפל: %d–%d";
+"range_modulo" = "טווח מודולו: %d–%d";
+"range_multiplication" = "טווח כפל: %d–%d";
 "unlock_division" = "פתח חילוק";
 
 // MARK: - QuickPracticeView UI
@@ -184,7 +187,8 @@
 "qp_d_prompt" = "מהו %d ÷ %d ?";
 "qp_incorrect_title" = "שגוי";
 "qp_m_prompt" = "מהו %d × %d ?";
-"qp_mod_prompt" = "What is %d mod %d ?";"qp_next" = "הבא";
+"qp_mod_prompt" = "מה זה %d mod %d ?";
+"qp_next" = "הבא";
 "qp_score" = "ניקוד: %d  •  %d/%d";
 "qp_score_title" = "ניקוד";
 "qp_wrong" = "לא. תשובה נכונה: %d";
@@ -241,5 +245,6 @@
 "feat_puzzles_detail" = "חינם + פרימיום";
 "feat_division_title" = "חילוק";
 "feat_division_detail" = "מצב חילוק";
-
+"feat_modulo_title" = "מודולו מהיר";
+"feat_modulo_detail" = "פתח מצב מודולו";
 "paywall_smallprint" = "רכישה חד פעמית. שיתוף משפחתי נתמך. קשור ל־Apple ID.";
